@@ -33,23 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleCSVRecord" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SingleCSVRecord() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SingleCSVRecord" /> class.
-        /// </summary>
-        /// <param name="values">values (required).</param>
+        /// <param name="values">values.</param>
         public SingleCSVRecord(List<string> values = default(List<string>))
         {
-            // to ensure "values" is required (not null)
-            if (values == null)
-            {
-                throw new InvalidDataException("values is a required property for SingleCSVRecord and cannot be null");
-            }
-            else
-            {
-                this.Values = values;
-            }
+            this.Values = values;
         }
         
         /// <summary>

@@ -25,6 +25,7 @@ import ai.skymind.skil.model.AuthPolicy
 import ai.skymind.skil.model.Base64NDArrayBody
 import ai.skymind.skil.model.Base64NDArrayBodyKNN
 import ai.skymind.skil.model.BatchCSVRecord
+import ai.skymind.skil.model.BatchRecord
 import ai.skymind.skil.model.BestModel
 import ai.skymind.skil.model.ChangePasswordRequest
 import ai.skymind.skil.model.ClassificationResult
@@ -69,6 +70,7 @@ import ai.skymind.skil.model.Role
 import ai.skymind.skil.model.RollbackStatus
 import ai.skymind.skil.model.SetState
 import ai.skymind.skil.model.SingleCSVRecord
+import ai.skymind.skil.model.SingleRecord
 import ai.skymind.skil.model.Token
 import ai.skymind.skil.model.TokenGenerateRequest
 import ai.skymind.skil.model.UpdateBestModel
@@ -1275,11 +1277,12 @@ class DefaultApi(
    * Get the memory mapped array based on the array type.
    * The array is specified through a file path, in the configuration object, during model server deployment.
    *
+   * @param Accept  
    * @param ArrayType The format in which the memory mapped array is returned. 
    * @return void
    */
-  def getArray(ArrayType: String) = {
-    val await = Try(Await.result(getArrayAsync(ArrayType), Duration.Inf))
+  def getArray(Accept: String, ArrayType: String) = {
+    val await = Try(Await.result(getArrayAsync(Accept, ArrayType), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1290,23 +1293,26 @@ class DefaultApi(
    * Get the memory mapped array based on the array type. asynchronously
    * The array is specified through a file path, in the configuration object, during model server deployment.
    *
+   * @param Accept  
    * @param ArrayType The format in which the memory mapped array is returned. 
    * @return Future(void)
    */
-  def getArrayAsync(ArrayType: String) = {
-      helper.getArray(ArrayType)
+  def getArrayAsync(Accept: String, ArrayType: String) = {
+      helper.getArray(Accept, ArrayType)
   }
 
   /**
    * Get the memory mapped array indices based on the array type.
    * 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+   * @param Accept  
    * @param ArrayType Format in which the memory mapped array is returned in. 
    * @param Input Input indices array (optional)
    * @return void
    */
-  def getArrayIndices(ArrayType: String, Input: Option[Any] = None) = {
-    val await = Try(Await.result(getArrayIndicesAsync(ArrayType, Input), Duration.Inf))
+  def getArrayIndices(`ContentType`: String, Accept: String, ArrayType: String, Input: Option[String] = None) = {
+    val await = Try(Await.result(getArrayIndicesAsync(`ContentType`, Accept, ArrayType, Input), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1317,25 +1323,28 @@ class DefaultApi(
    * Get the memory mapped array indices based on the array type. asynchronously
    * 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+   * @param Accept  
    * @param ArrayType Format in which the memory mapped array is returned in. 
    * @param Input Input indices array (optional)
    * @return Future(void)
    */
-  def getArrayIndicesAsync(ArrayType: String, Input: Option[Any] = None) = {
-      helper.getArrayIndices(ArrayType, Input)
+  def getArrayIndicesAsync(`ContentType`: String, Accept: String, ArrayType: String, Input: Option[String] = None) = {
+      helper.getArrayIndices(`ContentType`, Accept, ArrayType, Input)
   }
 
   /**
    * Get the memory mapped array within a range based on the array type.
    * 
    *
+   * @param Accept  
    * @param ArrayType Format in which the memory mapped array is returned in. 
    * @param From  
    * @param To  
    * @return void
    */
-  def getArrayRange(ArrayType: String, From: Integer, To: Integer) = {
-    val await = Try(Await.result(getArrayRangeAsync(ArrayType, From, To), Duration.Inf))
+  def getArrayRange(Accept: String, ArrayType: String, From: Integer, To: Integer) = {
+    val await = Try(Await.result(getArrayRangeAsync(Accept, ArrayType, From, To), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -1346,13 +1355,14 @@ class DefaultApi(
    * Get the memory mapped array within a range based on the array type. asynchronously
    * 
    *
+   * @param Accept  
    * @param ArrayType Format in which the memory mapped array is returned in. 
    * @param From  
    * @param To  
    * @return Future(void)
    */
-  def getArrayRangeAsync(ArrayType: String, From: Integer, To: Integer) = {
-      helper.getArrayRange(ArrayType, From, To)
+  def getArrayRangeAsync(Accept: String, ArrayType: String, From: Integer, To: Integer) = {
+      helper.getArrayRange(Accept, ArrayType, From, To)
   }
 
   /**
@@ -2243,14 +2253,14 @@ class DefaultApi(
    * Get logs
    * 
    *
-   * @param Body the the log request 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
+   * @param LogRequest The log object 
    * @return LogBatch
    */
-  def logs(Body: LogRequest, DeploymentName: String, VersionName: String, ModelName: String): Option[LogBatch] = {
-    val await = Try(Await.result(logsAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
+  def logs(DeploymentName: String, VersionName: String, ModelName: String, LogRequest: LogRequest): Option[LogBatch] = {
+    val await = Try(Await.result(logsAsync(DeploymentName, VersionName, ModelName, LogRequest), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2261,14 +2271,14 @@ class DefaultApi(
    * Get logs asynchronously
    * 
    *
-   * @param Body the the log request 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
+   * @param LogRequest The log object 
    * @return Future(LogBatch)
    */
-  def logsAsync(Body: LogRequest, DeploymentName: String, VersionName: String, ModelName: String): Future[LogBatch] = {
-      helper.logs(Body, DeploymentName, VersionName, ModelName)
+  def logsAsync(DeploymentName: String, VersionName: String, ModelName: String, LogRequest: LogRequest): Future[LogBatch] = {
+      helper.logs(DeploymentName, VersionName, ModelName, LogRequest)
   }
 
   /**
@@ -2305,14 +2315,15 @@ class DefaultApi(
    * This method can be used to set meta data for the current model which is set to the server
    * 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; 
    * @param Body the meta data object 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return MetaData
    */
-  def metaPost(Body: MetaData, DeploymentName: String, VersionName: String, ModelName: String): Option[MetaData] = {
-    val await = Try(Await.result(metaPostAsync(Body, DeploymentName, VersionName, ModelName), Duration.Inf))
+  def metaPost(`ContentType`: String, Body: String, DeploymentName: String, VersionName: String, ModelName: String): Option[MetaData] = {
+    val await = Try(Await.result(metaPostAsync(`ContentType`, Body, DeploymentName, VersionName, ModelName), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2323,14 +2334,15 @@ class DefaultApi(
    * This method can be used to set meta data for the current model which is set to the server asynchronously
    * 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; 
    * @param Body the meta data object 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param ModelName ID or name of the deployed model 
    * @return Future(MetaData)
    */
-  def metaPostAsync(Body: MetaData, DeploymentName: String, VersionName: String, ModelName: String): Future[MetaData] = {
-      helper.metaPost(Body, DeploymentName, VersionName, ModelName)
+  def metaPostAsync(`ContentType`: String, Body: String, DeploymentName: String, VersionName: String, ModelName: String): Future[MetaData] = {
+      helper.metaPost(`ContentType`, Body, DeploymentName, VersionName, ModelName)
   }
 
   /**
@@ -2613,13 +2625,14 @@ class DefaultApi(
    * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
    * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
    * @param Operation Operation to perform on the input data. 
    * @param InputType Type of the input data. 
    * @param InputData  (optional)
    * @return void
    */
-  def predictError(Operation: String, InputType: String, InputData: Option[Any] = None) = {
-    val await = Try(Await.result(predictErrorAsync(Operation, InputType, InputData), Duration.Inf))
+  def predictError(`ContentType`: String, Operation: String, InputType: String, InputData: Option[String] = None) = {
+    val await = Try(Await.result(predictErrorAsync(`ContentType`, Operation, InputType, InputData), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2630,26 +2643,27 @@ class DefaultApi(
    * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. asynchronously
    * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
    * @param Operation Operation to perform on the input data. 
    * @param InputType Type of the input data. 
    * @param InputData  (optional)
    * @return Future(void)
    */
-  def predictErrorAsync(Operation: String, InputType: String, InputData: Option[Any] = None) = {
-      helper.predictError(Operation, InputType, InputData)
+  def predictErrorAsync(`ContentType`: String, Operation: String, InputType: String, InputData: Option[String] = None) = {
+      helper.predictError(`ContentType`, Operation, InputType, InputData)
   }
 
   /**
    * Runs inference based on the input data. Output is defined relative to the output adapter specified.
    * 
    *
-   * @param Operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-   * @param InputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-   * @param InputData The input data to run inference on. (optional)
+   * @param Operation The operation to perform on the input data.  
+   * @param InputTypeFile Type of the input data.  
+   * @param InputData The input data to run inference on. 
    * @return void
    */
-  def predictV2(Operation: String, InputType: String, InputData: Option[String] = None) = {
-    val await = Try(Await.result(predictV2Async(Operation, InputType, InputData), Duration.Inf))
+  def predictV2File(Operation: String, InputTypeFile: String, InputData: File) = {
+    val await = Try(Await.result(predictV2FileAsync(Operation, InputTypeFile, InputData), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -2660,13 +2674,45 @@ class DefaultApi(
    * Runs inference based on the input data. Output is defined relative to the output adapter specified. asynchronously
    * 
    *
-   * @param Operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-   * @param InputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-   * @param InputData The input data to run inference on. (optional)
+   * @param Operation The operation to perform on the input data.  
+   * @param InputTypeFile Type of the input data.  
+   * @param InputData The input data to run inference on. 
    * @return Future(void)
    */
-  def predictV2Async(Operation: String, InputType: String, InputData: Option[String] = None) = {
-      helper.predictV2(Operation, InputType, InputData)
+  def predictV2FileAsync(Operation: String, InputTypeFile: String, InputData: File) = {
+      helper.predictV2File(Operation, InputTypeFile, InputData)
+  }
+
+  /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+   * 
+   *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+   * @param Operation The operation to perform on the input data.  
+   * @param InputTypeJson Type of the input data.  
+   * @param InputData The input data to run inference on. (Specify a JSON string here) 
+   * @return void
+   */
+  def predictV2Json(`ContentType`: String, Operation: String, InputTypeJson: String, InputData: String) = {
+    val await = Try(Await.result(predictV2JsonAsync(`ContentType`, Operation, InputTypeJson, InputData), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified. asynchronously
+   * 
+   *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+   * @param Operation The operation to perform on the input data.  
+   * @param InputTypeJson Type of the input data.  
+   * @param InputData The input data to run inference on. (Specify a JSON string here) 
+   * @return Future(void)
+   */
+  def predictV2JsonAsync(`ContentType`: String, Operation: String, InputTypeJson: String, InputData: String) = {
+      helper.predictV2Json(`ContentType`, Operation, InputTypeJson, InputData)
   }
 
   /**
@@ -2997,7 +3043,7 @@ class DefaultApi(
    * @param BatchRecord The input batch of record arrays (optional)
    * @return Base64NDArrayBody
    */
-  def transformarray(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[Any] = None): Option[Base64NDArrayBody] = {
+  def transformarray(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[BatchRecord] = None): Option[Base64NDArrayBody] = {
     val await = Try(Await.result(transformarrayAsync(DeploymentName, VersionName, TransformName, BatchRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -3015,7 +3061,7 @@ class DefaultApi(
    * @param BatchRecord The input batch of record arrays (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[Any] = None): Future[Base64NDArrayBody] = {
+  def transformarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, BatchRecord: Option[BatchRecord] = None): Future[Base64NDArrayBody] = {
       helper.transformarray(DeploymentName, VersionName, TransformName, BatchRecord)
   }
 
@@ -3093,7 +3139,7 @@ class DefaultApi(
    * @param SingleRecord The input record array (optional)
    * @return Base64NDArrayBody
    */
-  def transformincrementalarray(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[Any] = None): Option[Base64NDArrayBody] = {
+  def transformincrementalarray(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[SingleRecord] = None): Option[Base64NDArrayBody] = {
     val await = Try(Await.result(transformincrementalarrayAsync(DeploymentName, VersionName, TransformName, SingleRecord), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -3111,7 +3157,7 @@ class DefaultApi(
    * @param SingleRecord The input record array (optional)
    * @return Future(Base64NDArrayBody)
    */
-  def transformincrementalarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[Any] = None): Future[Base64NDArrayBody] = {
+  def transformincrementalarrayAsync(DeploymentName: String, VersionName: String, TransformName: String, SingleRecord: Option[SingleRecord] = None): Future[Base64NDArrayBody] = {
       helper.transformincrementalarray(DeploymentName, VersionName, TransformName, SingleRecord)
   }
 
@@ -3181,14 +3227,15 @@ class DefaultApi(
    * Sets the deployed (CSV or Image) transform process through the provided JSON string
    * 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @param TransformProcess The transform process to set (optional)
+   * @param TransformProcess The transform process to set (Specify a JSON string here). (optional)
    * @return Any
    */
-  def transformprocessPost(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[Any] = None): Option[Any] = {
-    val await = Try(Await.result(transformprocessPostAsync(DeploymentName, VersionName, TransformName, TransformProcess), Duration.Inf))
+  def transformprocessPost(`ContentType`: String, DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[String] = None): Option[Any] = {
+    val await = Try(Await.result(transformprocessPostAsync(`ContentType`, DeploymentName, VersionName, TransformName, TransformProcess), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -3199,14 +3246,15 @@ class DefaultApi(
    * Sets the deployed (CSV or Image) transform process through the provided JSON string asynchronously
    * 
    *
+   * @param `ContentType` The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. 
    * @param DeploymentName Name of the deployment group 
    * @param VersionName Version name of the endpoint. The default value is \&quot;default\&quot; 
    * @param TransformName ID or name of the deployed transform 
-   * @param TransformProcess The transform process to set (optional)
+   * @param TransformProcess The transform process to set (Specify a JSON string here). (optional)
    * @return Future(Any)
    */
-  def transformprocessPostAsync(DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[Any] = None): Future[Any] = {
-      helper.transformprocessPost(DeploymentName, VersionName, TransformName, TransformProcess)
+  def transformprocessPostAsync(`ContentType`: String, DeploymentName: String, VersionName: String, TransformName: String, TransformProcess: Option[String] = None): Future[Any] = {
+      helper.transformprocessPost(`ContentType`, DeploymentName, VersionName, TransformName, TransformProcess)
   }
 
   /**
@@ -4183,7 +4231,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getArray(ArrayType: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def getArray(Accept: String,
+    ArrayType: String)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/array/{arrayType}")
       replaceAll("\\{" + "arrayType" + "\\}", ArrayType.toString))
@@ -4192,8 +4241,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (Accept == null) throw new Exception("Missing required parameter 'Accept' when calling DefaultApi->getArray")
+
     if (ArrayType == null) throw new Exception("Missing required parameter 'ArrayType' when calling DefaultApi->getArray")
 
+    headerParams += "accept" -> Accept.toString
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
@@ -4201,9 +4253,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getArrayIndices(ArrayType: String,
-    Input: Option[Any] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[Any]]): Future[Unit] = {
+  def getArrayIndices(`ContentType`: String,
+    Accept: String,
+    ArrayType: String,
+    Input: Option[String] = None
+    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[String]]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/array/indices/{arrayType}")
       replaceAll("\\{" + "arrayType" + "\\}", ArrayType.toString))
@@ -4212,8 +4266,14 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (`ContentType` == null) throw new Exception("Missing required parameter '`ContentType`' when calling DefaultApi->getArrayIndices")
+
+    if (Accept == null) throw new Exception("Missing required parameter 'Accept' when calling DefaultApi->getArrayIndices")
+
     if (ArrayType == null) throw new Exception("Missing required parameter 'ArrayType' when calling DefaultApi->getArrayIndices")
 
+    headerParams += "Content-Type" -> `ContentType`.toString
+    headerParams += "accept" -> Accept.toString
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Input))
     resFuture flatMap { resp =>
@@ -4221,7 +4281,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def getArrayRange(ArrayType: String,
+  def getArrayRange(Accept: String,
+    ArrayType: String,
     From: Integer,
     To: Integer)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
@@ -4234,8 +4295,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (Accept == null) throw new Exception("Missing required parameter 'Accept' when calling DefaultApi->getArrayRange")
+
     if (ArrayType == null) throw new Exception("Missing required parameter 'ArrayType' when calling DefaultApi->getArrayRange")
 
+    headerParams += "accept" -> Accept.toString
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>
@@ -4877,10 +4941,10 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def logs(Body: LogRequest,
-    DeploymentName: String,
+  def logs(DeploymentName: String,
     VersionName: String,
-    ModelName: String)(implicit reader: ClientResponseReader[LogBatch], writer: RequestWriter[LogRequest]): Future[LogBatch] = {
+    ModelName: String,
+    LogRequest: LogRequest)(implicit reader: ClientResponseReader[LogBatch], writer: RequestWriter[LogRequest]): Future[LogBatch] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4891,15 +4955,15 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->logs")
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->logs")
 
     if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->logs")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->logs")
 
+    if (LogRequest == null) throw new Exception("Missing required parameter 'LogRequest' when calling DefaultApi->logs")
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(LogRequest))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -4931,10 +4995,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def metaPost(Body: MetaData,
+  def metaPost(`ContentType`: String,
+    Body: String,
     DeploymentName: String,
     VersionName: String,
-    ModelName: String)(implicit reader: ClientResponseReader[MetaData], writer: RequestWriter[MetaData]): Future[MetaData] = {
+    ModelName: String)(implicit reader: ClientResponseReader[MetaData], writer: RequestWriter[String]): Future[MetaData] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -4945,13 +5010,17 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (`ContentType` == null) throw new Exception("Missing required parameter '`ContentType`' when calling DefaultApi->metaPost")
+
     if (Body == null) throw new Exception("Missing required parameter 'Body' when calling DefaultApi->metaPost")
+
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->metaPost")
 
     if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->metaPost")
 
     if (ModelName == null) throw new Exception("Missing required parameter 'ModelName' when calling DefaultApi->metaPost")
 
+    headerParams += "Content-Type" -> `ContentType`.toString
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(Body))
     resFuture flatMap { resp =>
@@ -5188,10 +5257,11 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def predictError(Operation: String,
+  def predictError(`ContentType`: String,
+    Operation: String,
     InputType: String,
-    InputData: Option[Any] = None
-    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[Any]]): Future[Unit] = {
+    InputData: Option[String] = None
+    )(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[Option[String]]): Future[Unit] = {
     // create path and map variables
     val path = (addFmt("/{operation}/{inputType}/error")
       replaceAll("\\{" + "operation" + "\\}", Operation.toString)
@@ -5201,10 +5271,13 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (`ContentType` == null) throw new Exception("Missing required parameter '`ContentType`' when calling DefaultApi->predictError")
+
     if (Operation == null) throw new Exception("Missing required parameter 'Operation' when calling DefaultApi->predictError")
 
     if (InputType == null) throw new Exception("Missing required parameter 'InputType' when calling DefaultApi->predictError")
 
+    headerParams += "Content-Type" -> `ContentType`.toString
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(InputData))
     resFuture flatMap { resp =>
@@ -5212,25 +5285,54 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def predictV2(Operation: String,
-    InputType: String,
-    InputData: Option[String] = None
-    )(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
+  def predictV2File(Operation: String,
+    InputTypeFile: String,
+    InputData: File)(implicit reader: ClientResponseReader[Unit]): Future[Unit] = {
     // create path and map variables
-    val path = (addFmt("/{operation}/{inputType}")
+    val path = (addFmt("/{operation}/{inputTypeFile}")
       replaceAll("\\{" + "operation" + "\\}", Operation.toString)
-      replaceAll("\\{" + "inputType" + "\\}", InputType.toString))
+      replaceAll("\\{" + "inputTypeFile" + "\\}", InputTypeFile.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
-    if (Operation == null) throw new Exception("Missing required parameter 'Operation' when calling DefaultApi->predictV2")
+    if (Operation == null) throw new Exception("Missing required parameter 'Operation' when calling DefaultApi->predictV2File")
 
-    if (InputType == null) throw new Exception("Missing required parameter 'InputType' when calling DefaultApi->predictV2")
+    if (InputTypeFile == null) throw new Exception("Missing required parameter 'InputTypeFile' when calling DefaultApi->predictV2File")
 
+    if (InputData == null) throw new Exception("Missing required parameter 'InputData' when calling DefaultApi->predictV2File")
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def predictV2Json(`ContentType`: String,
+    Operation: String,
+    InputTypeJson: String,
+    InputData: String)(implicit reader: ClientResponseReader[Unit], writer: RequestWriter[String]): Future[Unit] = {
+    // create path and map variables
+    val path = (addFmt("/{operation}/{inputTypeJson}")
+      replaceAll("\\{" + "operation" + "\\}", Operation.toString)
+      replaceAll("\\{" + "inputTypeJson" + "\\}", InputTypeJson.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (`ContentType` == null) throw new Exception("Missing required parameter '`ContentType`' when calling DefaultApi->predictV2Json")
+
+    if (Operation == null) throw new Exception("Missing required parameter 'Operation' when calling DefaultApi->predictV2Json")
+
+    if (InputTypeJson == null) throw new Exception("Missing required parameter 'InputTypeJson' when calling DefaultApi->predictV2Json")
+
+    if (InputData == null) throw new Exception("Missing required parameter 'InputData' when calling DefaultApi->predictV2Json")
+
+    headerParams += "Content-Type" -> `ContentType`.toString
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(InputData))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }
@@ -5477,8 +5579,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def transformarray(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    BatchRecord: Option[Any] = None
-    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[Any]]): Future[Base64NDArrayBody] = {
+    BatchRecord: Option[BatchRecord] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[BatchRecord]]): Future[Base64NDArrayBody] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -5561,8 +5663,8 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def transformincrementalarray(DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    SingleRecord: Option[Any] = None
-    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[Any]]): Future[Base64NDArrayBody] = {
+    SingleRecord: Option[SingleRecord] = None
+    )(implicit reader: ClientResponseReader[Base64NDArrayBody], writer: RequestWriter[Option[SingleRecord]]): Future[Base64NDArrayBody] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -5640,11 +5742,12 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def transformprocessPost(DeploymentName: String,
+  def transformprocessPost(`ContentType`: String,
+    DeploymentName: String,
     VersionName: String,
     TransformName: String,
-    TransformProcess: Option[Any] = None
-    )(implicit reader: ClientResponseReader[Any], writer: RequestWriter[Option[Any]]): Future[Any] = {
+    TransformProcess: Option[String] = None
+    )(implicit reader: ClientResponseReader[Any], writer: RequestWriter[Option[String]]): Future[Any] = {
     // create path and map variables
     val path = (addFmt("/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess")
       replaceAll("\\{" + "deploymentName" + "\\}", DeploymentName.toString)
@@ -5655,12 +5758,15 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (`ContentType` == null) throw new Exception("Missing required parameter '`ContentType`' when calling DefaultApi->transformprocessPost")
+
     if (DeploymentName == null) throw new Exception("Missing required parameter 'DeploymentName' when calling DefaultApi->transformprocessPost")
 
     if (VersionName == null) throw new Exception("Missing required parameter 'VersionName' when calling DefaultApi->transformprocessPost")
 
     if (TransformName == null) throw new Exception("Missing required parameter 'TransformName' when calling DefaultApi->transformprocessPost")
 
+    headerParams += "Content-Type" -> `ContentType`.toString
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(TransformProcess))
     resFuture flatMap { resp =>

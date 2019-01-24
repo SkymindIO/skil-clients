@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Base64NDArrayBodyKNN
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class Base64NDArrayBodyKNN {
   @SerializedName("ndarray")
   private String ndarray = null;
@@ -47,7 +47,7 @@ public class Base64NDArrayBodyKNN {
    * the array to run the search on. Note that this must be a row vector
    * @return ndarray
   **/
-  @ApiModelProperty(required = true, value = "the array to run the search on. Note that this must be a row vector")
+  @ApiModelProperty(value = "the array to run the search on. Note that this must be a row vector")
   public String getNdarray() {
     return ndarray;
   }
@@ -65,7 +65,7 @@ public class Base64NDArrayBodyKNN {
    * the number of results to retrieve
    * @return k
   **/
-  @ApiModelProperty(example = "2", required = true, value = "the number of results to retrieve")
+  @ApiModelProperty(example = "2", value = "the number of results to retrieve")
   public Integer getK() {
     return k;
   }

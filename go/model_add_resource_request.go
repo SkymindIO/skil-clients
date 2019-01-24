@@ -12,8 +12,8 @@ package skilclient
 type AddResourceRequest struct {
 	// Name of the new resource
 	ResourceName string `json:"resourceName,omitempty"`
-	// One of the resource details object
-	ResourceDetails *interface{} `json:"resourceDetails,omitempty"`
+	// One of the resource details object (Specify a JSON string here)
+	ResourceDetails string `json:"resourceDetails,omitempty"`
 	// URI of the credentials. If this is present, you can leave out the 'credentialId'
 	CredentialUri string `json:"credentialUri,omitempty"`
 	// Resource type (whether COMPUTE or STORAGE)

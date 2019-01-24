@@ -761,9 +761,8 @@ margin-bottom: 20px;
       "description" : "Name of the new resource"
     },
     "resourceDetails" : {
-      "type" : "object",
-      "description" : "One of the resource details object",
-      "properties" : { }
+      "type" : "string",
+      "description" : "One of the resource details object (Specify a JSON string here)"
     },
     "credentialUri" : {
       "type" : "string",
@@ -791,7 +790,6 @@ margin-bottom: 20px;
   "properties" : {
     "modelId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of model instance"
     },
     "evalType" : {
@@ -839,7 +837,7 @@ margin-bottom: 20px;
   }
 };
             defs.Base64NDArrayBody = {
-  "required" : [ "ndarray" ],
+  "type" : "object",
   "properties" : {
     "ndarray" : {
       "type" : "string"
@@ -847,7 +845,7 @@ margin-bottom: 20px;
   }
 };
             defs.Base64NDArrayBodyKNN = {
-  "required" : [ "k", "ndarray" ],
+  "type" : "object",
   "properties" : {
     "ndarray" : {
       "type" : "string",
@@ -866,7 +864,7 @@ margin-bottom: 20px;
   }
 };
             defs.BatchCSVRecord = {
-  "required" : [ "records" ],
+  "type" : "object",
   "properties" : {
     "records" : {
       "type" : "array",
@@ -876,13 +874,13 @@ margin-bottom: 20px;
     }
   }
 };
-            defs.BatchImageRecord = {
-  "required" : [ "records" ],
+            defs.BatchRecord = {
+  "type" : "object",
   "properties" : {
     "records" : {
       "type" : "array",
       "items" : {
-        "$ref" : "#/definitions/SingleImageRecord"
+        "$ref" : "#/definitions/SingleRecord"
       }
     }
   }
@@ -894,8 +892,7 @@ margin-bottom: 20px;
       "type" : "array",
       "description" : "the list of GUIDs for the models to get the best model from",
       "items" : {
-        "type" : "string",
-        "format" : "guid"
+        "type" : "string"
       }
     },
     "columnNameMetric" : {
@@ -919,6 +916,7 @@ margin-bottom: 20px;
   }
 };
             defs.ClassificationResult = {
+  "type" : "object",
   "properties" : {
     "results" : {
       "type" : "array",
@@ -1156,8 +1154,7 @@ margin-bottom: 20px;
       "type" : "string"
     },
     "modelInstanceId" : {
-      "type" : "string",
-      "format" : "guid"
+      "type" : "string"
     },
     "created" : {
       "type" : "integer",
@@ -1202,7 +1199,6 @@ margin-bottom: 20px;
     },
     "evalId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of the evaluation"
     },
     "evalVersion" : {
@@ -1222,7 +1218,6 @@ margin-bottom: 20px;
   "properties" : {
     "exampleId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "the GUID of the example"
     },
     "exampleVersion" : {
@@ -1240,7 +1235,6 @@ margin-bottom: 20px;
     },
     "miniBatchId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "The GUID of the minibatch"
     },
     "miniBatchVersion" : {
@@ -1448,8 +1442,7 @@ margin-bottom: 20px;
   "type" : "object",
   "properties" : {
     "array" : {
-      "type" : "string",
-      "format" : "guid"
+      "type" : "string"
     },
     "shape" : {
       "type" : "array",
@@ -1584,6 +1577,7 @@ margin-bottom: 20px;
   }
 };
             defs.JsonArrayResponse = {
+  "type" : "object",
   "properties" : {
     "array" : {
       "$ref" : "#/definitions/INDArray"
@@ -1596,6 +1590,7 @@ margin-bottom: 20px;
   }
 };
             defs.LogBatch = {
+  "type" : "object",
   "properties" : {
     "offset" : {
       "type" : "integer",
@@ -1616,24 +1611,19 @@ margin-bottom: 20px;
   }
 };
             defs.LogRequest = {
+  "type" : "object",
   "properties" : {
     "offset" : {
       "type" : "integer",
-      "example" : 0
+      "format" : "int32"
     },
     "rowCount" : {
       "type" : "integer",
-      "example" : 2
+      "format" : "int32"
     },
     "head" : {
-      "type" : "boolean",
-      "example" : false
+      "type" : "boolean"
     }
-  },
-  "example" : {
-    "head" : false,
-    "offset" : 0,
-    "rowCount" : 2
   }
 };
             defs.LoginRequest = {
@@ -1671,12 +1661,10 @@ margin-bottom: 20px;
   "properties" : {
     "miniBatchId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of mini batch"
     },
     "evalId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of the evaluation"
     },
     "evalVersion" : {
@@ -1752,7 +1740,6 @@ margin-bottom: 20px;
   "properties" : {
     "batchId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "The GUID of the minibatch this feedback corresponds to"
     },
     "guesses" : {
@@ -1783,7 +1770,6 @@ margin-bottom: 20px;
     },
     "modelHistoryId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "The GUID of the model history / workspace"
     },
     "modelName" : {
@@ -1810,7 +1796,6 @@ margin-bottom: 20px;
     },
     "modelId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of the model."
     },
     "modelLabels" : {
@@ -1832,7 +1817,6 @@ margin-bottom: 20px;
     },
     "evalId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID for the model evaluation"
     },
     "modelName" : {
@@ -1841,7 +1825,6 @@ margin-bottom: 20px;
     },
     "originalModelId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "Original GUID of the model (used for maintaining revisions of a particular model)"
     },
     "modelVersion" : {
@@ -1850,7 +1833,6 @@ margin-bottom: 20px;
     },
     "experimentId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of the Experiment which is associated with the model."
     }
   }
@@ -1879,11 +1861,12 @@ margin-bottom: 20px;
   }
 };
             defs.ModelStatus = {
+  "type" : "object",
   "properties" : {
     "status" : {
       "type" : "integer",
       "example" : 100,
-      "description" : "100 - Model set successfully \n200 - Model Updated Successfully \n201 - Model Update Failed\n"
+      "description" : "100 - Model set successfully.\n200 - Model Updated Successfully.\n201 - Model Update Failed.\n"
     }
   },
   "example" : {
@@ -1891,6 +1874,7 @@ margin-bottom: 20px;
   }
 };
             defs.MultiClassClassificationResult = {
+  "type" : "object",
   "properties" : {
     "rankedOutcomes" : {
       "type" : "array",
@@ -1929,8 +1913,7 @@ margin-bottom: 20px;
   "type" : "object",
   "properties" : {
     "id" : {
-      "type" : "string",
-      "format" : "guid"
+      "type" : "string"
     },
     "needsPreProcessing" : {
       "type" : "boolean"
@@ -1953,8 +1936,7 @@ margin-bottom: 20px;
   "type" : "object",
   "properties" : {
     "id" : {
-      "type" : "string",
-      "format" : "guid"
+      "type" : "string"
     },
     "needsPreProcessing" : {
       "type" : "boolean"
@@ -1968,6 +1950,7 @@ margin-bottom: 20px;
   }
 };
             defs.NearestNeighborRequest = {
+  "type" : "object",
   "properties" : {
     "k" : {
       "type" : "integer",
@@ -1982,6 +1965,7 @@ margin-bottom: 20px;
   }
 };
             defs.NearestNeighborsResult = {
+  "type" : "object",
   "properties" : {
     "index" : {
       "type" : "integer",
@@ -1997,6 +1981,7 @@ margin-bottom: 20px;
   }
 };
             defs.NearestNeighborsResults = {
+  "type" : "object",
   "properties" : {
     "results" : {
       "type" : "array",
@@ -2021,8 +2006,7 @@ margin-bottom: 20px;
   "type" : "object",
   "properties" : {
     "id" : {
-      "type" : "string",
-      "format" : "guid"
+      "type" : "string"
     },
     "needsPreProcessing" : {
       "type" : "boolean"
@@ -2066,7 +2050,6 @@ margin-bottom: 20px;
     },
     "credentialId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "Credentials GUID"
     }
   }
@@ -2198,7 +2181,7 @@ margin-bottom: 20px;
   }
 };
             defs.SingleCSVRecord = {
-  "required" : [ "values" ],
+  "type" : "object",
   "properties" : {
     "values" : {
       "type" : "array",
@@ -2208,12 +2191,18 @@ margin-bottom: 20px;
     }
   }
 };
-            defs.SingleImageRecord = {
-  "required" : [ "uri" ],
+            defs.SingleRecord = {
+  "type" : "object",
   "properties" : {
+    "values" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
     "uri" : {
       "type" : "string",
-      "example" : "file:/E:/Image/image.jpg"
+      "example" : "file:///E:/Image/image.jpg"
     }
   }
 };
@@ -2264,12 +2253,10 @@ margin-bottom: 20px;
   "properties" : {
     "experimentId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of the experiment to update."
     },
     "bestModelId" : {
       "type" : "string",
-      "format" : "guid",
       "description" : "GUID of the model to set as the best model."
     }
   }
@@ -2611,8 +2598,11 @@ margin-bottom: 20px;
                     <li data-group="Default" data-name="predictError" class="">
                       <a href="#api-Default-predictError">predictError</a>
                     </li>
-                    <li data-group="Default" data-name="predictV2" class="">
-                      <a href="#api-Default-predictV2">predictV2</a>
+                    <li data-group="Default" data-name="predictV2File" class="">
+                      <a href="#api-Default-predictV2File">predictV2File</a>
+                    </li>
+                    <li data-group="Default" data-name="predictV2Json" class="">
+                      <a href="#api-Default-predictV2Json">predictV2Json</a>
                     </li>
                     <li data-group="Default" data-name="predictimage" class="">
                       <a href="#api-Default-predictimage">predictimage</a>
@@ -3272,7 +3262,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AddCredentialsRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -3622,9 +3613,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -3660,7 +3648,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/EvaluationResultsEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -4010,9 +3999,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -4048,7 +4034,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AddExampleRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -4398,9 +4385,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -4436,7 +4420,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ExampleEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -4786,9 +4771,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -4824,7 +4806,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ExperimentEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -5618,7 +5601,8 @@ $(document).ready(function() {
         "format" : "double"
       }
     }
-  }
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -5968,9 +5952,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -6006,7 +5987,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/MinibatchEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -6356,9 +6338,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -6394,7 +6373,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ModelFeedBackRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -6744,9 +6724,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -6782,7 +6759,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AddModelHistoryRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -7132,9 +7110,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -7170,7 +7145,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ModelInstanceEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -7515,7 +7491,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AddResourceRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -7861,7 +7838,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "type" : "string"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -8539,9 +8517,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -8577,7 +8552,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AggregatePrediction"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -8962,7 +8938,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ChangePasswordRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -9413,7 +9390,9 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Prediction"
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -9880,7 +9859,9 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Prediction"
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -11019,7 +11000,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/CreateJobRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -11369,9 +11351,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -11407,7 +11386,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ModelHistoryEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -12049,9 +12029,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -12075,9 +12052,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the experiment to delete
@@ -13122,9 +13096,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -13148,9 +13119,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the model history / workspace to delete
@@ -13528,9 +13496,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -14897,7 +14862,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ImportModelRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -15242,7 +15208,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/CreateDeploymentRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -17132,7 +17099,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/DownloadOutputFileRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -17442,7 +17410,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/TokenGenerateRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -17866,9 +17835,10 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
+        String accept = accept_example; // String | 
         String arrayType = arrayType_example; // String | The format in which the memory mapped array is returned.
         try {
-            apiInstance.getArray(arrayType);
+            apiInstance.getArray(accept, arrayType);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getArray");
             e.printStackTrace();
@@ -17884,9 +17854,10 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
+        String accept = accept_example; // String | 
         String arrayType = arrayType_example; // String | The format in which the memory mapped array is returned.
         try {
-            apiInstance.getArray(arrayType);
+            apiInstance.getArray(accept, arrayType);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getArray");
             e.printStackTrace();
@@ -17906,12 +17877,14 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
+String *accept = accept_example; // 
 String *arrayType = arrayType_example; // The format in which the memory mapped array is returned.
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Get the memory mapped array based on the array type.
-[apiInstance getArrayWith:arrayType
+[apiInstance getArrayWith:accept
+    arrayType:arrayType
               completionHandler: ^(NSError* error) {
                             if (error) {
                                 NSLog(@"Error: %@", error);
@@ -17932,6 +17905,8 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
+var accept = accept_example; // {String} 
+
 var arrayType = arrayType_example; // {String} The format in which the memory mapped array is returned.
 
 
@@ -17942,7 +17917,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.getArray(arrayType, callback);
+api.getArray(accept, arrayType, callback);
 </code></pre>
                             </div>
 
@@ -17969,12 +17944,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var accept = accept_example;  // String | 
             var arrayType = arrayType_example;  // String | The format in which the memory mapped array is returned.
 
             try
             {
                 // Get the memory mapped array based on the array type.
-                apiInstance.getArray(arrayType);
+                apiInstance.getArray(accept, arrayType);
             }
             catch (Exception e)
             {
@@ -17996,10 +17972,11 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
+$accept = accept_example; // String | 
 $arrayType = arrayType_example; // String | The format in which the memory mapped array is returned.
 
 try {
-    $api_instance->getArray($arrayType);
+    $api_instance->getArray($accept, $arrayType);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getArray: ', $e->getMessage(), PHP_EOL;
 }
@@ -18017,10 +17994,11 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $accept = accept_example; # String | 
 my $arrayType = arrayType_example; # String | The format in which the memory mapped array is returned.
 
 eval { 
-    $api_instance->getArray(arrayType => $arrayType);
+    $api_instance->getArray(accept => $accept, arrayType => $arrayType);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->getArray: $@\n";
@@ -18041,11 +18019,12 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+accept = accept_example # String | 
 arrayType = arrayType_example # String | The format in which the memory mapped array is returned.
 
 try: 
     # Get the memory mapped array based on the array type.
-    api_instance.get_array(arrayType)
+    api_instance.get_array(accept, arrayType)
 except ApiException as e:
     print("Exception when calling DefaultApi->getArray: %s\n" % e)</code></pre>
                             </div>
@@ -18084,6 +18063,33 @@ except ApiException as e:
 
                             </table>
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">accept*</td>
+<td>
+
+
+    <div id="d2e199_getArray_accept">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -18155,10 +18161,12 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
+        String accept = accept_example; // String | 
         String arrayType = arrayType_example; // String | Format in which the memory mapped array is returned in.
-        Object input = ; // Object | Input indices array
+        String input = input_example; // String | Input indices array
         try {
-            apiInstance.getArrayIndices(arrayType, input);
+            apiInstance.getArrayIndices(contentType, accept, arrayType, input);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getArrayIndices");
             e.printStackTrace();
@@ -18174,10 +18182,12 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
+        String accept = accept_example; // String | 
         String arrayType = arrayType_example; // String | Format in which the memory mapped array is returned in.
-        Object input = ; // Object | Input indices array
+        String input = input_example; // String | Input indices array
         try {
-            apiInstance.getArrayIndices(arrayType, input);
+            apiInstance.getArrayIndices(contentType, accept, arrayType, input);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getArrayIndices");
             e.printStackTrace();
@@ -18197,13 +18207,17 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
+String *contentType = contentType_example; // The `Content-Type` should always be `application/json`.
+String *accept = accept_example; // 
 String *arrayType = arrayType_example; // Format in which the memory mapped array is returned in.
-Object *input = ; // Input indices array (optional)
+String *input = input_example; // Input indices array (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Get the memory mapped array indices based on the array type.
-[apiInstance getArrayIndicesWith:arrayType
+[apiInstance getArrayIndicesWith:contentType
+    accept:accept
+    arrayType:arrayType
     input:input
               completionHandler: ^(NSError* error) {
                             if (error) {
@@ -18225,10 +18239,14 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
+var contentType = contentType_example; // {String} The `Content-Type` should always be `application/json`.
+
+var accept = accept_example; // {String} 
+
 var arrayType = arrayType_example; // {String} Format in which the memory mapped array is returned in.
 
 var opts = { 
-  'input':  // {Object} Input indices array
+  'input': input_example // {String} Input indices array
 };
 
 var callback = function(error, data, response) {
@@ -18238,7 +18256,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.getArrayIndices(arrayType, opts, callback);
+api.getArrayIndices(contentType, accept, arrayType, opts, callback);
 </code></pre>
                             </div>
 
@@ -18265,13 +18283,15 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // String | The `Content-Type` should always be `application/json`.
+            var accept = accept_example;  // String | 
             var arrayType = arrayType_example;  // String | Format in which the memory mapped array is returned in.
-            var input = new Object(); // Object | Input indices array (optional) 
+            var input = input_example;  // String | Input indices array (optional) 
 
             try
             {
                 // Get the memory mapped array indices based on the array type.
-                apiInstance.getArrayIndices(arrayType, input);
+                apiInstance.getArrayIndices(contentType, accept, arrayType, input);
             }
             catch (Exception e)
             {
@@ -18293,11 +18313,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
+$contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
+$accept = accept_example; // String | 
 $arrayType = arrayType_example; // String | Format in which the memory mapped array is returned in.
-$input = ; // Object | Input indices array
+$input = input_example; // String | Input indices array
 
 try {
-    $api_instance->getArrayIndices($arrayType, $input);
+    $api_instance->getArrayIndices($contentType, $accept, $arrayType, $input);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getArrayIndices: ', $e->getMessage(), PHP_EOL;
 }
@@ -18315,11 +18337,13 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $contentType = contentType_example; # String | The `Content-Type` should always be `application/json`.
+my $accept = accept_example; # String | 
 my $arrayType = arrayType_example; # String | Format in which the memory mapped array is returned in.
-my $input = WWW::SwaggerClient::Object::Object->new(); # Object | Input indices array
+my $input = WWW::SwaggerClient::Object::String->new(); # String | Input indices array
 
 eval { 
-    $api_instance->getArrayIndices(arrayType => $arrayType, input => $input);
+    $api_instance->getArrayIndices(contentType => $contentType, accept => $accept, arrayType => $arrayType, input => $input);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->getArrayIndices: $@\n";
@@ -18340,12 +18364,14 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+contentType = contentType_example # String | The `Content-Type` should always be `application/json`.
+accept = accept_example # String | 
 arrayType = arrayType_example # String | Format in which the memory mapped array is returned in.
-input =  # Object | Input indices array (optional)
+input = input_example # String | Input indices array (optional)
 
 try: 
     # Get the memory mapped array indices based on the array type.
-    api_instance.get_array_indices(arrayType, input=input)
+    api_instance.get_array_indices(contentType, accept, arrayType, input=input)
 except ApiException as e:
     print("Exception when calling DefaultApi->getArrayIndices: %s\n" % e)</code></pre>
                             </div>
@@ -18384,6 +18410,56 @@ except ApiException as e:
 
                             </table>
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">Content-Type*</td>
+<td>
+
+
+    <div id="d2e199_getArrayIndices_contentType">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">accept*</td>
+<td>
+
+
+    <div id="d2e199_getArrayIndices_accept">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -18403,8 +18479,9 @@ $(document).ready(function() {
   "description" : "Input indices array",
   "required" : false,
   "schema" : {
-    "type" : "object"
-  }
+    "type" : "string"
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -18497,11 +18574,12 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
+        String accept = accept_example; // String | 
         String arrayType = arrayType_example; // String | Format in which the memory mapped array is returned in.
         Integer from = 56; // Integer | 
         Integer to = 56; // Integer | 
         try {
-            apiInstance.getArrayRange(arrayType, from, to);
+            apiInstance.getArrayRange(accept, arrayType, from, to);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getArrayRange");
             e.printStackTrace();
@@ -18517,11 +18595,12 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
+        String accept = accept_example; // String | 
         String arrayType = arrayType_example; // String | Format in which the memory mapped array is returned in.
         Integer from = 56; // Integer | 
         Integer to = 56; // Integer | 
         try {
-            apiInstance.getArrayRange(arrayType, from, to);
+            apiInstance.getArrayRange(accept, arrayType, from, to);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getArrayRange");
             e.printStackTrace();
@@ -18541,6 +18620,7 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
+String *accept = accept_example; // 
 String *arrayType = arrayType_example; // Format in which the memory mapped array is returned in.
 Integer *from = 56; // 
 Integer *to = 56; // 
@@ -18548,7 +18628,8 @@ Integer *to = 56; //
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Get the memory mapped array within a range based on the array type.
-[apiInstance getArrayRangeWith:arrayType
+[apiInstance getArrayRangeWith:accept
+    arrayType:arrayType
     from:from
     to:to
               completionHandler: ^(NSError* error) {
@@ -18571,6 +18652,8 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
+var accept = accept_example; // {String} 
+
 var arrayType = arrayType_example; // {String} Format in which the memory mapped array is returned in.
 
 var from = 56; // {Integer} 
@@ -18585,7 +18668,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.getArrayRange(arrayType, from, to, callback);
+api.getArrayRange(accept, arrayType, from, to, callback);
 </code></pre>
                             </div>
 
@@ -18612,6 +18695,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var accept = accept_example;  // String | 
             var arrayType = arrayType_example;  // String | Format in which the memory mapped array is returned in.
             var from = 56;  // Integer | 
             var to = 56;  // Integer | 
@@ -18619,7 +18703,7 @@ namespace Example
             try
             {
                 // Get the memory mapped array within a range based on the array type.
-                apiInstance.getArrayRange(arrayType, from, to);
+                apiInstance.getArrayRange(accept, arrayType, from, to);
             }
             catch (Exception e)
             {
@@ -18641,12 +18725,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
+$accept = accept_example; // String | 
 $arrayType = arrayType_example; // String | Format in which the memory mapped array is returned in.
 $from = 56; // Integer | 
 $to = 56; // Integer | 
 
 try {
-    $api_instance->getArrayRange($arrayType, $from, $to);
+    $api_instance->getArrayRange($accept, $arrayType, $from, $to);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->getArrayRange: ', $e->getMessage(), PHP_EOL;
 }
@@ -18664,12 +18749,13 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $accept = accept_example; # String | 
 my $arrayType = arrayType_example; # String | Format in which the memory mapped array is returned in.
 my $from = 56; # Integer | 
 my $to = 56; # Integer | 
 
 eval { 
-    $api_instance->getArrayRange(arrayType => $arrayType, from => $from, to => $to);
+    $api_instance->getArrayRange(accept => $accept, arrayType => $arrayType, from => $from, to => $to);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->getArrayRange: $@\n";
@@ -18690,13 +18776,14 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+accept = accept_example # String | 
 arrayType = arrayType_example # String | Format in which the memory mapped array is returned in.
 from = 56 # Integer | 
 to = 56 # Integer | 
 
 try: 
     # Get the memory mapped array within a range based on the array type.
-    api_instance.get_array_range(arrayType, from, to)
+    api_instance.get_array_range(accept, arrayType, from, to)
 except ApiException as e:
     print("Exception when calling DefaultApi->getArrayRange: %s\n" % e)</code></pre>
                             </div>
@@ -18781,6 +18868,33 @@ except ApiException as e:
 
                             </table>
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">accept*</td>
+<td>
+
+
+    <div id="d2e199_getArrayRange_accept">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
 
 
@@ -19367,9 +19481,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -19405,7 +19516,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/BestModel"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -20340,9 +20452,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -20712,9 +20821,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -21084,9 +21190,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -21110,9 +21213,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the experiment to obtain
@@ -21456,9 +21556,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -21482,9 +21579,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the model history / workspace
@@ -22457,9 +22551,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -22826,9 +22917,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -23195,9 +23283,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -23564,9 +23649,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -23590,9 +23672,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the experiment
@@ -28247,7 +28326,9 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Prediction"
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -28705,7 +28786,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/NearestNeighborRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -29172,7 +29254,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Base64NDArrayBodyKNN"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -29528,9 +29611,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -30239,7 +30319,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/LoginRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -30375,12 +30456,12 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
-        LogRequest body = ; // LogRequest | the the log request
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String modelName = modelName_example; // String | ID or name of the deployed model
+        LogRequest logRequest = ; // LogRequest | The log object
         try {
-            LogBatch result = apiInstance.logs(body, deploymentName, versionName, modelName);
+            LogBatch result = apiInstance.logs(deploymentName, versionName, modelName, logRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#logs");
@@ -30397,12 +30478,12 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        LogRequest body = ; // LogRequest | the the log request
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String modelName = modelName_example; // String | ID or name of the deployed model
+        LogRequest logRequest = ; // LogRequest | The log object
         try {
-            LogBatch result = apiInstance.logs(body, deploymentName, versionName, modelName);
+            LogBatch result = apiInstance.logs(deploymentName, versionName, modelName, logRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#logs");
@@ -30423,18 +30504,18 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
-LogRequest *body = ; // the the log request
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *modelName = modelName_example; // ID or name of the deployed model
+LogRequest *logRequest = ; // The log object
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Get logs
-[apiInstance logsWith:body
-    deploymentName:deploymentName
+[apiInstance logsWith:deploymentName
     versionName:versionName
     modelName:modelName
+    logRequest:logRequest
               completionHandler: ^(LogBatch output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -30458,13 +30539,13 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
-var body = ; // {LogRequest} the the log request
-
 var deploymentName = deploymentName_example; // {String} Name of the deployment group
 
 var versionName = versionName_example; // {String} Version name of the endpoint. The default value is "default"
 
 var modelName = modelName_example; // {String} ID or name of the deployed model
+
+var logRequest = ; // {LogRequest} The log object
 
 
 var callback = function(error, data, response) {
@@ -30474,7 +30555,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.logs(body, deploymentName, versionName, modelName, callback);
+api.logs(deploymentName, versionName, modelName, logRequest, callback);
 </code></pre>
                             </div>
 
@@ -30501,15 +30582,15 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var body = new LogRequest(); // LogRequest | the the log request
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var modelName = modelName_example;  // String | ID or name of the deployed model
+            var logRequest = new LogRequest(); // LogRequest | The log object
 
             try
             {
                 // Get logs
-                LogBatch result = apiInstance.logs(body, deploymentName, versionName, modelName);
+                LogBatch result = apiInstance.logs(deploymentName, versionName, modelName, logRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -30532,13 +30613,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$body = ; // LogRequest | the the log request
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $modelName = modelName_example; // String | ID or name of the deployed model
+$logRequest = ; // LogRequest | The log object
 
 try {
-    $result = $api_instance->logs($body, $deploymentName, $versionName, $modelName);
+    $result = $api_instance->logs($deploymentName, $versionName, $modelName, $logRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->logs: ', $e->getMessage(), PHP_EOL;
@@ -30557,13 +30638,13 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $body = WWW::SwaggerClient::Object::LogRequest->new(); # LogRequest | the the log request
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $modelName = modelName_example; # String | ID or name of the deployed model
+my $logRequest = WWW::SwaggerClient::Object::LogRequest->new(); # LogRequest | The log object
 
 eval { 
-    my $result = $api_instance->logs(body => $body, deploymentName => $deploymentName, versionName => $versionName, modelName => $modelName);
+    my $result = $api_instance->logs(deploymentName => $deploymentName, versionName => $versionName, modelName => $modelName, logRequest => $logRequest);
     print Dumper($result);
 };
 if ($@) {
@@ -30585,14 +30666,14 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-body =  # LogRequest | the the log request
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 modelName = modelName_example # String | ID or name of the deployed model
+logRequest =  # LogRequest | The log object
 
 try: 
     # Get logs
-    api_response = api_instance.logs(body, deploymentName, versionName, modelName)
+    api_response = api_instance.logs(deploymentName, versionName, modelName, logRequest)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->logs: %s\n" % e)</code></pre>
@@ -30685,7 +30766,7 @@ except ApiException as e:
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <tr><td style="width:150px;">logRequest <span style="color:red;">*</span></td>
 <td>
 
 
@@ -30693,12 +30774,13 @@ except ApiException as e:
 $(document).ready(function() {
   var schemaWrapper = {
   "in" : "body",
-  "name" : "body",
-  "description" : "the the log request",
+  "name" : "LogRequest",
+  "description" : "The log object",
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/LogRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -30711,12 +30793,12 @@ $(document).ready(function() {
   }
 
   var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_logs_body');
+  var result = $('#d2e199_logs_logRequest');
   result.empty();
   result.append(view.render());
 });
 </script>
-<div id="d2e199_logs_body"></div>
+<div id="d2e199_logs_logRequest"></div>
 </td>
 </tr>
 
@@ -30725,7 +30807,7 @@ $(document).ready(function() {
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - logs obtained successfully </h3>
+                            <h3> Status: 200 - Logs obtained successfully </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -30740,7 +30822,7 @@ $(document).ready(function() {
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "logs obtained successfully",
+  "description" : "Logs obtained successfully",
   "schema" : {
     "$ref" : "#/definitions/LogBatch"
   }
@@ -31233,12 +31315,13 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
-        MetaData body = ; // MetaData | the meta data object
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`
+        String body = body_example; // String | the meta data object
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String modelName = modelName_example; // String | ID or name of the deployed model
         try {
-            MetaData result = apiInstance.metaPost(body, deploymentName, versionName, modelName);
+            MetaData result = apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#metaPost");
@@ -31255,12 +31338,13 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        MetaData body = ; // MetaData | the meta data object
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`
+        String body = body_example; // String | the meta data object
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String modelName = modelName_example; // String | ID or name of the deployed model
         try {
-            MetaData result = apiInstance.metaPost(body, deploymentName, versionName, modelName);
+            MetaData result = apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#metaPost");
@@ -31281,7 +31365,8 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
-MetaData *body = ; // the meta data object
+String *contentType = contentType_example; // The `Content-Type` should always be `application/json`
+String *body = body_example; // the meta data object
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *modelName = modelName_example; // ID or name of the deployed model
@@ -31289,7 +31374,8 @@ String *modelName = modelName_example; // ID or name of the deployed model
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // This method can be used to set meta data for the current model which is set to the server
-[apiInstance metaPostWith:body
+[apiInstance metaPostWith:contentType
+    body:body
     deploymentName:deploymentName
     versionName:versionName
     modelName:modelName
@@ -31316,7 +31402,9 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
-var body = ; // {MetaData} the meta data object
+var contentType = contentType_example; // {String} The `Content-Type` should always be `application/json`
+
+var body = body_example; // {String} the meta data object
 
 var deploymentName = deploymentName_example; // {String} Name of the deployment group
 
@@ -31332,7 +31420,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.metaPost(body, deploymentName, versionName, modelName, callback);
+api.metaPost(contentType, body, deploymentName, versionName, modelName, callback);
 </code></pre>
                             </div>
 
@@ -31359,7 +31447,8 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var body = new MetaData(); // MetaData | the meta data object
+            var contentType = contentType_example;  // String | The `Content-Type` should always be `application/json`
+            var body = body_example;  // String | the meta data object
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var modelName = modelName_example;  // String | ID or name of the deployed model
@@ -31367,7 +31456,7 @@ namespace Example
             try
             {
                 // This method can be used to set meta data for the current model which is set to the server
-                MetaData result = apiInstance.metaPost(body, deploymentName, versionName, modelName);
+                MetaData result = apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31390,13 +31479,14 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$body = ; // MetaData | the meta data object
+$contentType = contentType_example; // String | The `Content-Type` should always be `application/json`
+$body = body_example; // String | the meta data object
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $modelName = modelName_example; // String | ID or name of the deployed model
 
 try {
-    $result = $api_instance->metaPost($body, $deploymentName, $versionName, $modelName);
+    $result = $api_instance->metaPost($contentType, $body, $deploymentName, $versionName, $modelName);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->metaPost: ', $e->getMessage(), PHP_EOL;
@@ -31415,13 +31505,14 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $body = WWW::SwaggerClient::Object::MetaData->new(); # MetaData | the meta data object
+my $contentType = contentType_example; # String | The `Content-Type` should always be `application/json`
+my $body = WWW::SwaggerClient::Object::String->new(); # String | the meta data object
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $modelName = modelName_example; # String | ID or name of the deployed model
 
 eval { 
-    my $result = $api_instance->metaPost(body => $body, deploymentName => $deploymentName, versionName => $versionName, modelName => $modelName);
+    my $result = $api_instance->metaPost(contentType => $contentType, body => $body, deploymentName => $deploymentName, versionName => $versionName, modelName => $modelName);
     print Dumper($result);
 };
 if ($@) {
@@ -31443,14 +31534,15 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-body =  # MetaData | the meta data object
+contentType = contentType_example # String | The `Content-Type` should always be `application/json`
+body = body_example # String | the meta data object
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 modelName = modelName_example # String | ID or name of the deployed model
 
 try: 
     # This method can be used to set meta data for the current model which is set to the server
-    api_response = api_instance.meta_post(body, deploymentName, versionName, modelName)
+    api_response = api_instance.meta_post(contentType, body, deploymentName, versionName, modelName)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->metaPost: %s\n" % e)</code></pre>
@@ -31536,6 +31628,36 @@ except ApiException as e:
 
                             </table>
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">Content-Type*</td>
+<td>
+
+
+    <div id="d2e199_metaPost_contentType">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -31555,8 +31677,10 @@ $(document).ready(function() {
   "description" : "the meta data object",
   "required" : true,
   "schema" : {
-    "$ref" : "#/definitions/MetaData"
-  }
+    "type" : "string"
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -31974,7 +32098,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/SetState"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -33653,7 +33778,9 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Prediction"
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -34120,7 +34247,9 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/MultiPredictRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -35385,7 +35514,9 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/Prediction"
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -35532,11 +35663,12 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
         String operation = operation_example; // String | Operation to perform on the input data.
         String inputType = inputType_example; // String | Type of the input data.
-        Object inputData = ; // Object | 
+        String inputData = inputData_example; // String | 
         try {
-            apiInstance.predictError(operation, inputType, inputData);
+            apiInstance.predictError(contentType, operation, inputType, inputData);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#predictError");
             e.printStackTrace();
@@ -35552,11 +35684,12 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
         String operation = operation_example; // String | Operation to perform on the input data.
         String inputType = inputType_example; // String | Type of the input data.
-        Object inputData = ; // Object | 
+        String inputData = inputData_example; // String | 
         try {
-            apiInstance.predictError(operation, inputType, inputData);
+            apiInstance.predictError(contentType, operation, inputType, inputData);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#predictError");
             e.printStackTrace();
@@ -35576,14 +35709,16 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
+String *contentType = contentType_example; // The `Content-Type` should always be `application/json`.
 String *operation = operation_example; // Operation to perform on the input data.
 String *inputType = inputType_example; // Type of the input data.
-Object *inputData = ; //  (optional)
+String *inputData = inputData_example; //  (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[apiInstance predictErrorWith:operation
+[apiInstance predictErrorWith:contentType
+    operation:operation
     inputType:inputType
     inputData:inputData
               completionHandler: ^(NSError* error) {
@@ -35606,12 +35741,14 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
+var contentType = contentType_example; // {String} The `Content-Type` should always be `application/json`.
+
 var operation = operation_example; // {String} Operation to perform on the input data.
 
 var inputType = inputType_example; // {String} Type of the input data.
 
 var opts = { 
-  'inputData':  // {Object} 
+  'inputData': inputData_example // {String} 
 };
 
 var callback = function(error, data, response) {
@@ -35621,7 +35758,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.predictError(operation, inputType, opts, callback);
+api.predictError(contentType, operation, inputType, opts, callback);
 </code></pre>
                             </div>
 
@@ -35648,14 +35785,15 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // String | The `Content-Type` should always be `application/json`.
             var operation = operation_example;  // String | Operation to perform on the input data.
             var inputType = inputType_example;  // String | Type of the input data.
-            var inputData = new Object(); // Object |  (optional) 
+            var inputData = inputData_example;  // String |  (optional) 
 
             try
             {
                 // Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-                apiInstance.predictError(operation, inputType, inputData);
+                apiInstance.predictError(contentType, operation, inputType, inputData);
             }
             catch (Exception e)
             {
@@ -35677,12 +35815,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
+$contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
 $operation = operation_example; // String | Operation to perform on the input data.
 $inputType = inputType_example; // String | Type of the input data.
-$inputData = ; // Object | 
+$inputData = inputData_example; // String | 
 
 try {
-    $api_instance->predictError($operation, $inputType, $inputData);
+    $api_instance->predictError($contentType, $operation, $inputType, $inputData);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->predictError: ', $e->getMessage(), PHP_EOL;
 }
@@ -35700,12 +35839,13 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $contentType = contentType_example; # String | The `Content-Type` should always be `application/json`.
 my $operation = operation_example; # String | Operation to perform on the input data.
 my $inputType = inputType_example; # String | Type of the input data.
-my $inputData = WWW::SwaggerClient::Object::Object->new(); # Object | 
+my $inputData = WWW::SwaggerClient::Object::String->new(); # String | 
 
 eval { 
-    $api_instance->predictError(operation => $operation, inputType => $inputType, inputData => $inputData);
+    $api_instance->predictError(contentType => $contentType, operation => $operation, inputType => $inputType, inputData => $inputData);
 };
 if ($@) {
     warn "Exception when calling DefaultApi->predictError: $@\n";
@@ -35726,13 +35866,14 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+contentType = contentType_example # String | The `Content-Type` should always be `application/json`.
 operation = operation_example # String | Operation to perform on the input data.
 inputType = inputType_example # String | Type of the input data.
-inputData =  # Object |  (optional)
+inputData = inputData_example # String |  (optional)
 
 try: 
     # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-    api_instance.predict_error(operation, inputType, inputData=inputData)
+    api_instance.predict_error(contentType, operation, inputType, inputData=inputData)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictError: %s\n" % e)</code></pre>
                             </div>
@@ -35794,6 +35935,36 @@ except ApiException as e:
 
                             </table>
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">Content-Type*</td>
+<td>
+
+
+    <div id="d2e199_predictError_contentType">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -35812,8 +35983,9 @@ $(document).ready(function() {
   "name" : "inputData",
   "required" : false,
   "schema" : {
-    "type" : "object"
-  }
+    "type" : "string"
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -35851,10 +36023,10 @@ $(document).ready(function() {
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Default-predictV2">
-                      <article id="api-Default-predictV2-0" data-group="User" data-name="predictV2" data-version="0">
+                    <div id="api-Default-predictV2File">
+                      <article id="api-Default-predictV2File-0" data-group="User" data-name="predictV2File" data-version="0">
                         <div class="pull-left">
-                          <h1>predictV2</h1>
+                          <h1>predictV2File</h1>
                           <p>Runs inference based on the input data. Output is defined relative to the output adapter specified.</p>
                         </div>
                         <div class="pull-right"></div>
@@ -35863,29 +36035,29 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{operation}/{inputType}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{operation}/{inputTypeFile}</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Default-predictV2-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Default-predictV2-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Default-predictV2-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Default-predictV2-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Default-predictV2-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Default-predictV2-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Default-predictV2-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Default-predictV2-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Default-predictV2-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Default-predictV2-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Default-predictV2-0-python">Python</a></li>
+                          <li class="active"><a href="#examples-Default-predictV2File-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-predictV2File-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-predictV2File-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-predictV2File-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-predictV2File-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-predictV2File-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-predictV2File-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-predictV2File-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-predictV2File-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-predictV2File-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-predictV2File-0-python">Python</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Default-predictV2-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/{operation}/{inputType}"</code></pre>
+                          <div class="tab-pane active" id="examples-Default-predictV2File-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/{operation}/{inputTypeFile}"</code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-Default-predictV2-0-java">
+                          <div class="tab-pane" id="examples-Default-predictV2File-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -35906,55 +36078,47 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
-        String operation = operation_example; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+        String operation = operation_example; // String | The operation to perform on the input data.
 
-        String inputType = inputType_example; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+        String inputTypeFile = inputTypeFile_example; // String | Type of the input data.
 
-        String inputData = inputData_example; // String | The input data to run inference on.
+        File inputData = /path/to/file.txt; // File | The input data to run inference on.
         try {
-            apiInstance.predictV2(operation, inputType, inputData);
+            apiInstance.predictV2File(operation, inputTypeFile, inputData);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#predictV2");
+            System.err.println("Exception when calling DefaultApi#predictV2File");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-Default-predictV2-0-android">
+                          <div class="tab-pane" id="examples-Default-predictV2File-0-android">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
 
 public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
-        String operation = operation_example; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+        String operation = operation_example; // String | The operation to perform on the input data.
 
-        String inputType = inputType_example; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+        String inputTypeFile = inputTypeFile_example; // String | Type of the input data.
 
-        String inputData = inputData_example; // String | The input data to run inference on.
+        File inputData = /path/to/file.txt; // File | The input data to run inference on.
         try {
-            apiInstance.predictV2(operation, inputType, inputData);
+            apiInstance.predictV2File(operation, inputTypeFile, inputData);
         } catch (ApiException e) {
-            System.err.println("Exception when calling DefaultApi#predictV2");
+            System.err.println("Exception when calling DefaultApi#predictV2File");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-Default-predictV2-0-groovy">
+  <div class="tab-pane" id="examples-Default-predictV2File-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-Default-predictV2-0-objc">
+                            <div class="tab-pane" id="examples-Default-predictV2File-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
 // Configure API key authorization: (authentication scheme: api_key)
@@ -35962,21 +36126,17 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
-String *operation = operation_example; // The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+String *operation = operation_example; // The operation to perform on the input data.
 
-String *inputType = inputType_example; // Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+String *inputTypeFile = inputTypeFile_example; // Type of the input data.
 
-String *inputData = inputData_example; // The input data to run inference on. (optional)
+File *inputData = /path/to/file.txt; // The input data to run inference on.
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
-[apiInstance predictV2With:operation
-    inputType:inputType
+[apiInstance predictV2FileWith:operation
+    inputTypeFile:inputTypeFile
     inputData:inputData
               completionHandler: ^(NSError* error) {
                             if (error) {
@@ -35986,7 +36146,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-predictV2-0-javascript">
+                            <div class="tab-pane" id="examples-Default-predictV2File-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
 var defaultClient = Endpoints.ApiClient.instance;
 
@@ -35998,19 +36158,14 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
-var operation = operation_example; // {String} The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+var operation = operation_example; // {String} The operation to perform on the input data.
 
 
-var inputType = inputType_example; // {String} Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+var inputTypeFile = inputTypeFile_example; // {String} Type of the input data.
 
 
-var opts = { 
-  'inputData': inputData_example // {String} The input data to run inference on.
-};
+var inputData = /path/to/file.txt; // {File} The input data to run inference on.
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -36019,14 +36174,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.predictV2(operation, inputType, opts, callback);
+api.predictV2File(operation, inputTypeFile, inputData, callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-Default-predictV2-0-angular">
+                            <!--<div class="tab-pane" id="examples-Default-predictV2File-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-Default-predictV2-0-csharp">
+                            <div class="tab-pane" id="examples-Default-predictV2File-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using IO.Swagger.Api;
@@ -36035,7 +36190,7 @@ using IO.Swagger.Model;
 
 namespace Example
 {
-    public class predictV2Example
+    public class predictV2FileExample
     {
         public void main()
         {
@@ -36046,24 +36201,20 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var operation = operation_example;  // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+            var operation = operation_example;  // String | The operation to perform on the input data.
 
-            var inputType = inputType_example;  // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+            var inputTypeFile = inputTypeFile_example;  // String | Type of the input data.
 
-            var inputData = inputData_example;  // String | The input data to run inference on. (optional) 
+            var inputData = new File(); // File | The input data to run inference on.
 
             try
             {
                 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
-                apiInstance.predictV2(operation, inputType, inputData);
+                apiInstance.predictV2File(operation, inputTypeFile, inputData);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.predictV2: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.predictV2File: " + e.Message );
             }
         }
     }
@@ -36071,7 +36222,7 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-predictV2-0-php">
+                            <div class="tab-pane" id="examples-Default-predictV2File-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
@@ -36081,25 +36232,21 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
-$operation = operation_example; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+$operation = operation_example; // String | The operation to perform on the input data.
 
-$inputType = inputType_example; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+$inputTypeFile = inputTypeFile_example; // String | Type of the input data.
 
-$inputData = inputData_example; // String | The input data to run inference on.
+$inputData = /path/to/file.txt; // File | The input data to run inference on.
 
 try {
-    $api_instance->predictV2($operation, $inputType, $inputData);
+    $api_instance->predictV2File($operation, $inputTypeFile, $inputData);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->predictV2: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->predictV2File: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-predictV2-0-perl">
+                            <div class="tab-pane" id="examples-Default-predictV2File-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::SwaggerClient::Configuration;
 use WWW::SwaggerClient::DefaultApi;
@@ -36110,25 +36257,21 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
-my $operation = operation_example; # String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+my $operation = operation_example; # String | The operation to perform on the input data.
 
-my $inputType = inputType_example; # String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+my $inputTypeFile = inputTypeFile_example; # String | Type of the input data.
 
-my $inputData = inputData_example; # String | The input data to run inference on.
+my $inputData = /path/to/file.txt; # File | The input data to run inference on.
 
 eval { 
-    $api_instance->predictV2(operation => $operation, inputType => $inputType, inputData => $inputData);
+    $api_instance->predictV2File(operation => $operation, inputTypeFile => $inputTypeFile, inputData => $inputData);
 };
 if ($@) {
-    warn "Exception when calling DefaultApi->predictV2: $@\n";
+    warn "Exception when calling DefaultApi->predictV2File: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-Default-predictV2-0-python">
+                            <div class="tab-pane" id="examples-Default-predictV2File-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import swagger_client
@@ -36142,21 +36285,17 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
-operation = operation_example # String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-`application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-`multipart/form-data` content-type.
+operation = operation_example # String | The operation to perform on the input data.
 
-inputType = inputType_example # String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-`application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-`multipart/form-data` content-type.
+inputTypeFile = inputTypeFile_example # String | Type of the input data.
 
-inputData = inputData_example # String | The input data to run inference on. (optional)
+inputData = /path/to/file.txt # File | The input data to run inference on.
 
 try: 
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
-    api_instance.predict_v2(operation, inputType, inputData=inputData)
+    api_instance.predict_v2_file(operation, inputTypeFile, inputData)
 except ApiException as e:
-    print("Exception when calling DefaultApi->predictV2: %s\n" % e)</code></pre>
+    print("Exception when calling DefaultApi->predictV2File: %s\n" % e)</code></pre>
                             </div>
                           </div>
 
@@ -36172,7 +36311,7 @@ except ApiException as e:
 <td>
 
 
-    <div id="d2e199_predictV2_operation">
+    <div id="d2e199_predictV2File_operation">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -36180,9 +36319,7 @@ except ApiException as e:
                 </span>
 
                     <div class="inner description">
-                        The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for
-&#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for
-&#x60;multipart/form-data&#x60; content-type.
+                        The operation to perform on the input data.
 
                     </div>
             </div>
@@ -36194,11 +36331,11 @@ except ApiException as e:
 </td>
 </tr>
 
-                                  <tr><td style="width:150px;">inputType*</td>
+                                  <tr><td style="width:150px;">inputTypeFile*</td>
 <td>
 
 
-    <div id="d2e199_predictV2_inputType">
+    <div id="d2e199_predictV2File_inputTypeFile">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -36206,9 +36343,7 @@ except ApiException as e:
                 </span>
 
                     <div class="inner description">
-                        Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for
-&#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for
-&#x60;multipart/form-data&#x60; content-type.
+                        Type of the input data.
 
                     </div>
             </div>
@@ -36230,11 +36365,343 @@ except ApiException as e:
                                 <th width="150px">Name</th>
                                 <th>Description</th>
                               </tr>
-                                  <tr><td style="width:150px;">inputData</td>
+                                  <tr><td style="width:150px;">inputData*</td>
 <td>
 
 
-    <div id="d2e199_predictV2_inputData">
+    <div id="d2e199_predictV2File_inputData">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    File
+                </span>
+
+                    <div class="inner description">
+                        The input data to run inference on.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Input data returned a prediction. </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-predictV2Json">
+                      <article id="api-Default-predictV2Json-0" data-group="User" data-name="predictV2Json" data-version="0">
+                        <div class="pull-left">
+                          <h1>predictV2Json</h1>
+                          <p>Runs inference based on the input data. Output is defined relative to the output adapter specified.</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/{operation}/{inputTypeJson}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-predictV2Json-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-predictV2Json-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-predictV2Json-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-predictV2Json-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-predictV2Json-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-predictV2Json-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-predictV2Json-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-predictV2Json-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-predictV2Json-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-predictV2Json-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-predictV2Json-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-predictV2Json-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST -H "authorization: [[apiKey]]" "http://localhost:9008/{operation}/{inputTypeJson}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-predictV2Json-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        
+        // Configure API key authorization: api_key
+        ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+        api_key.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //api_key.setApiKeyPrefix("Token");
+
+        DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
+        String operation = operation_example; // String | The operation to perform on the input data.
+
+        String inputTypeJson = inputTypeJson_example; // String | Type of the input data.
+
+        String inputData = inputData_example; // String | The input data to run inference on. (Specify a JSON string here)
+        try {
+            apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#predictV2Json");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Default-predictV2Json-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.DefaultApi;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
+        String operation = operation_example; // String | The operation to perform on the input data.
+
+        String inputTypeJson = inputTypeJson_example; // String | Type of the input data.
+
+        String inputData = inputData_example; // String | The input data to run inference on. (Specify a JSON string here)
+        try {
+            apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#predictV2Json");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-predictV2Json-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-predictV2Json-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure API key authorization: (authentication scheme: api_key)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
+
+String *contentType = contentType_example; // The `Content-Type` should always be `application/json`.
+String *operation = operation_example; // The operation to perform on the input data.
+
+String *inputTypeJson = inputTypeJson_example; // Type of the input data.
+
+String *inputData = inputData_example; // The input data to run inference on. (Specify a JSON string here)
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[apiInstance predictV2JsonWith:contentType
+    operation:operation
+    inputTypeJson:inputTypeJson
+    inputData:inputData
+              completionHandler: ^(NSError* error) {
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-predictV2Json-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var Endpoints = require('endpoints');
+var defaultClient = Endpoints.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix['authorization'] = "Token"
+
+var api = new Endpoints.DefaultApi()
+
+var contentType = contentType_example; // {String} The `Content-Type` should always be `application/json`.
+
+var operation = operation_example; // {String} The operation to perform on the input data.
+
+
+var inputTypeJson = inputTypeJson_example; // {String} Type of the input data.
+
+
+var inputData = inputData_example; // {String} The input data to run inference on. (Specify a JSON string here)
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.predictV2Json(contentType, operation, inputTypeJson, inputData, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-predictV2Json-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-predictV2Json-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class predictV2JsonExample
+    {
+        public void main()
+        {
+            
+            // Configure API key authorization: api_key
+            Configuration.Default.ApiKey.Add("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // String | The `Content-Type` should always be `application/json`.
+            var operation = operation_example;  // String | The operation to perform on the input data.
+
+            var inputTypeJson = inputTypeJson_example;  // String | Type of the input data.
+
+            var inputData = inputData_example;  // String | The input data to run inference on. (Specify a JSON string here)
+
+            try
+            {
+                // Runs inference based on the input data. Output is defined relative to the output adapter specified.
+                apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.predictV2Json: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-predictV2Json-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: api_key
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
+
+$api_instance = new Swagger\Client\Api\DefaultApi();
+$contentType = contentType_example; // String | The `Content-Type` should always be `application/json`.
+$operation = operation_example; // String | The operation to perform on the input data.
+
+$inputTypeJson = inputTypeJson_example; // String | Type of the input data.
+
+$inputData = inputData_example; // String | The input data to run inference on. (Specify a JSON string here)
+
+try {
+    $api_instance->predictV2Json($contentType, $operation, $inputTypeJson, $inputData);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->predictV2Json: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-predictV2Json-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+# Configure API key authorization: api_key
+$WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $contentType = contentType_example; # String | The `Content-Type` should always be `application/json`.
+my $operation = operation_example; # String | The operation to perform on the input data.
+
+my $inputTypeJson = inputTypeJson_example; # String | Type of the input data.
+
+my $inputData = WWW::SwaggerClient::Object::String->new(); # String | The input data to run inference on. (Specify a JSON string here)
+
+eval { 
+    $api_instance->predictV2Json(contentType => $contentType, operation => $operation, inputTypeJson => $inputTypeJson, inputData => $inputData);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->predictV2Json: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-predictV2Json-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+contentType = contentType_example # String | The `Content-Type` should always be `application/json`.
+operation = operation_example # String | The operation to perform on the input data.
+
+inputTypeJson = inputTypeJson_example # String | Type of the input data.
+
+inputData = inputData_example # String | The input data to run inference on. (Specify a JSON string here)
+
+try: 
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    api_instance.predict_v2_json(contentType, operation, inputTypeJson, inputData)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predictV2Json: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">operation*</td>
+<td>
+
+
+    <div id="d2e199_predictV2Json_operation">
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
@@ -36242,15 +36709,119 @@ except ApiException as e:
                 </span>
 
                     <div class="inner description">
-                        The input data to run inference on.
+                        The operation to perform on the input data.
+
                     </div>
             </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                                  <tr><td style="width:150px;">inputTypeJson*</td>
+<td>
+
+
+    <div id="d2e199_predictV2Json_inputTypeJson">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        Type of the input data.
+
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
         </div>
     </div>
 </td>
 </tr>
 
                             </table>
+
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">Content-Type*</td>
+<td>
+
+
+    <div id="d2e199_predictV2Json_contentType">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">inputData <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "in" : "body",
+  "name" : "inputData",
+  "description" : "The input data to run inference on. (Specify a JSON string here)",
+  "required" : true,
+  "schema" : {
+    "type" : "string"
+  },
+  "x-codegen-hasMoreRequired" : false
+};
+  var schema = schemaWrapper.schema;
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_predictV2Json_inputData');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_predictV2Json_inputData"></div>
+</td>
+</tr>
+
+                            </table>
+
 
 
                           <h2>Responses</h2>
@@ -37091,7 +37662,9 @@ $(document).ready(function() {
     "items" : {
       "type" : "string"
     }
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -37553,7 +38126,9 @@ $(document).ready(function() {
     "items" : {
       "type" : "string"
     }
-  }
+  },
+  "x-codegen-hasMoreRequired" : true,
+  "x-codegen-hasMoreOptional" : true
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -38602,7 +39177,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/User"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -39020,7 +39596,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ImportModelRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -40480,7 +41057,8 @@ $(document).ready(function() {
   "required" : false,
   "schema" : {
     "$ref" : "#/definitions/BatchCSVRecord"
-  }
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -40619,7 +41197,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        Object batchRecord = ; // Object | The input batch of record arrays
+        BatchRecord batchRecord = ; // BatchRecord | The input batch of record arrays
         try {
             Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
             System.out.println(result);
@@ -40641,7 +41219,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        Object batchRecord = ; // Object | The input batch of record arrays
+        BatchRecord batchRecord = ; // BatchRecord | The input batch of record arrays
         try {
             Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
             System.out.println(result);
@@ -40667,7 +41245,7 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
-Object *batchRecord = ; // The input batch of record arrays (optional)
+BatchRecord *batchRecord = ; // The input batch of record arrays (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -40706,7 +41284,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'batchRecord':  // {Object} The input batch of record arrays
+  'batchRecord':  // {BatchRecord} The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -40746,7 +41324,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var batchRecord = new Object(); // Object | The input batch of record arrays (optional) 
+            var batchRecord = new BatchRecord(); // BatchRecord | The input batch of record arrays (optional) 
 
             try
             {
@@ -40777,7 +41355,7 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$batchRecord = ; // Object | The input batch of record arrays
+$batchRecord = ; // BatchRecord | The input batch of record arrays
 
 try {
     $result = $api_instance->transformarray($deploymentName, $versionName, $transformName, $batchRecord);
@@ -40802,7 +41380,7 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $batchRecord = WWW::SwaggerClient::Object::Object->new(); # Object | The input batch of record arrays
+my $batchRecord = WWW::SwaggerClient::Object::BatchRecord->new(); # BatchRecord | The input batch of record arrays
 
 eval { 
     my $result = $api_instance->transformarray(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, batchRecord => $batchRecord);
@@ -40830,7 +41408,7 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-batchRecord =  # Object | The input batch of record arrays (optional)
+batchRecord =  # BatchRecord | The input batch of record arrays (optional)
 
 try: 
     # Takes a batch input arrays and transforms it
@@ -40939,8 +41517,9 @@ $(document).ready(function() {
   "description" : "The input batch of record arrays",
   "required" : false,
   "schema" : {
-    "type" : "object"
-  }
+    "$ref" : "#/definitions/BatchRecord"
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -41858,7 +42437,8 @@ $(document).ready(function() {
   "required" : false,
   "schema" : {
     "$ref" : "#/definitions/SingleCSVRecord"
-  }
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -41885,7 +42465,7 @@ $(document).ready(function() {
 
 
                           <h2>Responses</h2>
-                            <h3> Status: 200 - array transformed and returned successfully </h3>
+                            <h3> Status: 200 - Array transformed and returned successfully </h3>
 
                             <ul class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
@@ -41900,7 +42480,7 @@ $(document).ready(function() {
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = {
-  "description" : "array transformed and returned successfully",
+  "description" : "Array transformed and returned successfully",
   "schema" : {
     "$ref" : "#/definitions/SingleCSVRecord"
   }
@@ -41997,7 +42577,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        Object singleRecord = ; // Object | The input record array
+        SingleRecord singleRecord = ; // SingleRecord | The input record array
         try {
             Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             System.out.println(result);
@@ -42019,7 +42599,7 @@ public class DefaultApiExample {
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        Object singleRecord = ; // Object | The input record array
+        SingleRecord singleRecord = ; // SingleRecord | The input record array
         try {
             Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             System.out.println(result);
@@ -42045,7 +42625,7 @@ public class DefaultApiExample {
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
-Object *singleRecord = ; // The input record array (optional)
+SingleRecord *singleRecord = ; // The input record array (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
@@ -42084,7 +42664,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'singleRecord':  // {Object} The input record array
+  'singleRecord':  // {SingleRecord} The input record array
 };
 
 var callback = function(error, data, response) {
@@ -42124,7 +42704,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var singleRecord = new Object(); // Object | The input record array (optional) 
+            var singleRecord = new SingleRecord(); // SingleRecord | The input record array (optional) 
 
             try
             {
@@ -42155,7 +42735,7 @@ $api_instance = new Swagger\Client\Api\DefaultApi();
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$singleRecord = ; // Object | The input record array
+$singleRecord = ; // SingleRecord | The input record array
 
 try {
     $result = $api_instance->transformincrementalarray($deploymentName, $versionName, $transformName, $singleRecord);
@@ -42180,7 +42760,7 @@ my $api_instance = WWW::SwaggerClient::DefaultApi->new();
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $singleRecord = WWW::SwaggerClient::Object::Object->new(); # Object | The input record array
+my $singleRecord = WWW::SwaggerClient::Object::SingleRecord->new(); # SingleRecord | The input record array
 
 eval { 
     my $result = $api_instance->transformincrementalarray(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, singleRecord => $singleRecord);
@@ -42208,7 +42788,7 @@ api_instance = swagger_client.DefaultApi()
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-singleRecord =  # Object | The input record array (optional)
+singleRecord =  # SingleRecord | The input record array (optional)
 
 try: 
     # Same as /transformincremental but returns Base64NDArrayBody.
@@ -42317,8 +42897,9 @@ $(document).ready(function() {
   "description" : "The input record array",
   "required" : false,
   "schema" : {
-    "type" : "object"
-  }
+    "$ref" : "#/definitions/SingleRecord"
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -43325,12 +43906,13 @@ public class DefaultApiExample {
         //api_key.setApiKeyPrefix("Token");
 
         DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should be `application/json`.
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        Object transformProcess = ; // Object | The transform process to set
+        String transformProcess = transformProcess_example; // String | The transform process to set (Specify a JSON string here).
         try {
-            Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            Object result = apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessPost");
@@ -43347,12 +43929,13 @@ public class DefaultApiExample {
 
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
+        String contentType = contentType_example; // String | The `Content-Type` should be `application/json`.
         String deploymentName = deploymentName_example; // String | Name of the deployment group
         String versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
         String transformName = transformName_example; // String | ID or name of the deployed transform
-        Object transformProcess = ; // Object | The transform process to set
+        String transformProcess = transformProcess_example; // String | The transform process to set (Specify a JSON string here).
         try {
-            Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            Object result = apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#transformprocessPost");
@@ -43373,15 +43956,17 @@ public class DefaultApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"authorization"];
 
+String *contentType = contentType_example; // The `Content-Type` should be `application/json`.
 String *deploymentName = deploymentName_example; // Name of the deployment group
 String *versionName = versionName_example; // Version name of the endpoint. The default value is "default"
 String *transformName = transformName_example; // ID or name of the deployed transform
-Object *transformProcess = ; // The transform process to set (optional)
+String *transformProcess = transformProcess_example; // The transform process to set (Specify a JSON string here). (optional)
 
 DefaultApi *apiInstance = [[DefaultApi alloc] init];
 
 // Sets the deployed (CSV or Image) transform process through the provided JSON string
-[apiInstance transformprocessPostWith:deploymentName
+[apiInstance transformprocessPostWith:contentType
+    deploymentName:deploymentName
     versionName:versionName
     transformName:transformName
     transformProcess:transformProcess
@@ -43408,6 +43993,8 @@ api_key.apiKey = "YOUR API KEY"
 
 var api = new Endpoints.DefaultApi()
 
+var contentType = contentType_example; // {String} The `Content-Type` should be `application/json`.
+
 var deploymentName = deploymentName_example; // {String} Name of the deployment group
 
 var versionName = versionName_example; // {String} Version name of the endpoint. The default value is "default"
@@ -43415,7 +44002,7 @@ var versionName = versionName_example; // {String} Version name of the endpoint.
 var transformName = transformName_example; // {String} ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess':  // {Object} The transform process to set
+  'transformProcess': transformProcess_example // {String} The transform process to set (Specify a JSON string here).
 };
 
 var callback = function(error, data, response) {
@@ -43425,7 +44012,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.transformprocessPost(deploymentName, versionName, transformName, opts, callback);
+api.transformprocessPost(contentType, deploymentName, versionName, transformName, opts, callback);
 </code></pre>
                             </div>
 
@@ -43452,15 +44039,16 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // String | The `Content-Type` should be `application/json`.
             var deploymentName = deploymentName_example;  // String | Name of the deployment group
             var versionName = versionName_example;  // String | Version name of the endpoint. The default value is "default"
             var transformName = transformName_example;  // String | ID or name of the deployed transform
-            var transformProcess = new Object(); // Object | The transform process to set (optional) 
+            var transformProcess = transformProcess_example;  // String | The transform process to set (Specify a JSON string here). (optional) 
 
             try
             {
                 // Sets the deployed (CSV or Image) transform process through the provided JSON string
-                Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Object result = apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -43483,13 +44071,14 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\Api\DefaultApi();
+$contentType = contentType_example; // String | The `Content-Type` should be `application/json`.
 $deploymentName = deploymentName_example; // String | Name of the deployment group
 $versionName = versionName_example; // String | Version name of the endpoint. The default value is "default"
 $transformName = transformName_example; // String | ID or name of the deployed transform
-$transformProcess = ; // Object | The transform process to set
+$transformProcess = transformProcess_example; // String | The transform process to set (Specify a JSON string here).
 
 try {
-    $result = $api_instance->transformprocessPost($deploymentName, $versionName, $transformName, $transformProcess);
+    $result = $api_instance->transformprocessPost($contentType, $deploymentName, $versionName, $transformName, $transformProcess);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->transformprocessPost: ', $e->getMessage(), PHP_EOL;
@@ -43508,13 +44097,14 @@ $WWW::SwaggerClient::Configuration::api_key->{'authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+my $contentType = contentType_example; # String | The `Content-Type` should be `application/json`.
 my $deploymentName = deploymentName_example; # String | Name of the deployment group
 my $versionName = versionName_example; # String | Version name of the endpoint. The default value is "default"
 my $transformName = transformName_example; # String | ID or name of the deployed transform
-my $transformProcess = WWW::SwaggerClient::Object::Object->new(); # Object | The transform process to set
+my $transformProcess = WWW::SwaggerClient::Object::String->new(); # String | The transform process to set (Specify a JSON string here).
 
 eval { 
-    my $result = $api_instance->transformprocessPost(deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, transformProcess => $transformProcess);
+    my $result = $api_instance->transformprocessPost(contentType => $contentType, deploymentName => $deploymentName, versionName => $versionName, transformName => $transformName, transformProcess => $transformProcess);
     print Dumper($result);
 };
 if ($@) {
@@ -43536,14 +44126,15 @@ swagger_client.configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.DefaultApi()
+contentType = contentType_example # String | The `Content-Type` should be `application/json`.
 deploymentName = deploymentName_example # String | Name of the deployment group
 versionName = versionName_example # String | Version name of the endpoint. The default value is "default"
 transformName = transformName_example # String | ID or name of the deployed transform
-transformProcess =  # Object | The transform process to set (optional)
+transformProcess = transformProcess_example # String | The transform process to set (Specify a JSON string here). (optional)
 
 try: 
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
-    api_response = api_instance.transformprocess_post(deploymentName, versionName, transformName, transformProcess=transformProcess)
+    api_response = api_instance.transformprocess_post(contentType, deploymentName, versionName, transformName, transformProcess=transformProcess)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocessPost: %s\n" % e)</code></pre>
@@ -43629,6 +44220,36 @@ except ApiException as e:
 
                             </table>
 
+                            <div class="methodsubtabletitle">Header parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">Content-Type*</td>
+<td>
+
+
+    <div id="d2e199_transformprocessPost_contentType">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    String
+                </span>
+
+                    <div class="inner description">
+                        The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
 
                             <div class="methodsubtabletitle">Body parameters</div>
                             <table id="methodsubtable">
@@ -43645,11 +44266,12 @@ $(document).ready(function() {
   var schemaWrapper = {
   "in" : "body",
   "name" : "TransformProcess",
-  "description" : "The transform process to set",
+  "description" : "The transform process to set (Specify a JSON string here).",
   "required" : false,
   "schema" : {
-    "type" : "object"
-  }
+    "type" : "string"
+  },
+  "x-codegen-hasMoreOptional" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -44003,7 +44625,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AuthPolicy"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -44353,9 +44976,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -44391,7 +45011,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/UpdateBestModel"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -44751,9 +45372,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -44777,9 +45395,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the experiment to update
@@ -44815,7 +45430,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/ExperimentEntity"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -45175,9 +45791,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
@@ -45201,9 +45814,6 @@ except ApiException as e:
                 <span class="type">
                     String
                 </span>
-                    <span class="format">
-                        (guid)
-                    </span>
 
                     <div class="inner description">
                         the GUID of the model history / workspace to update
@@ -45239,7 +45849,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/AddModelHistoryRequest"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {
@@ -45584,7 +46195,8 @@ $(document).ready(function() {
   "required" : true,
   "schema" : {
     "$ref" : "#/definitions/User"
-  }
+  },
+  "x-codegen-hasMoreRequired" : false
 };
   var schema = schemaWrapper.schema;
   if (schema.$ref != null) {

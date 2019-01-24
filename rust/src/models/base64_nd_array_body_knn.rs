@@ -16,51 +16,57 @@ use serde_json::Value;
 pub struct Base64NdArrayBodyKnn {
   /// the array to run the search on. Note that this must be a row vector
   #[serde(rename = "ndarray")]
-  ndarray: String,
+  ndarray: Option<String>,
   /// the number of results to retrieve
   #[serde(rename = "k")]
-  k: i32,
+  k: Option<i32>,
   /// If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   #[serde(rename = "forceFillK")]
   force_fill_k: Option<bool>
 }
 
 impl Base64NdArrayBodyKnn {
-  pub fn new(ndarray: String, k: i32) -> Base64NdArrayBodyKnn {
+  pub fn new() -> Base64NdArrayBodyKnn {
     Base64NdArrayBodyKnn {
-      ndarray: ndarray,
-      k: k,
+      ndarray: None,
+      k: None,
       force_fill_k: None
     }
   }
 
   pub fn set_ndarray(&mut self, ndarray: String) {
-    self.ndarray = ndarray;
+    self.ndarray = Some(ndarray);
   }
 
   pub fn with_ndarray(mut self, ndarray: String) -> Base64NdArrayBodyKnn {
-    self.ndarray = ndarray;
+    self.ndarray = Some(ndarray);
     self
   }
 
-  pub fn ndarray(&self) -> &String {
-    &self.ndarray
+  pub fn ndarray(&self) -> Option<&String> {
+    self.ndarray.as_ref()
   }
 
+  pub fn reset_ndarray(&mut self) {
+    self.ndarray = None;
+  }
 
   pub fn set_k(&mut self, k: i32) {
-    self.k = k;
+    self.k = Some(k);
   }
 
   pub fn with_k(mut self, k: i32) -> Base64NdArrayBodyKnn {
-    self.k = k;
+    self.k = Some(k);
     self
   }
 
-  pub fn k(&self) -> &i32 {
-    &self.k
+  pub fn k(&self) -> Option<&i32> {
+    self.k.as_ref()
   }
 
+  pub fn reset_k(&mut self) {
+    self.k = None;
+  }
 
   pub fn set_force_fill_k(&mut self, force_fill_k: bool) {
     self.force_fill_k = Some(force_fill_k);

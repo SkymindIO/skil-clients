@@ -69,7 +69,7 @@
   }
 
   /**
-   * 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+   * 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
    * @member {Number} status
    */
   exports.prototype['status'] = undefined;

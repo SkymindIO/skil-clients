@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**NumRevisions**](DefaultApi.md#numrevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**Predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**PredictError**](DefaultApi.md#predicterror) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**PredictV2**](DefaultApi.md#predictv2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**PredictV2File**](DefaultApi.md#predictv2file) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**PredictV2Json**](DefaultApi.md#predictv2json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**Predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**Predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -2800,7 +2801,7 @@ This endpoint does not need any parameter.
 
 <a name="getarray"></a>
 # **GetArray**
-> void GetArray (string arrayType)
+> void GetArray (string accept, string arrayType)
 
 Get the memory mapped array based on the array type.
 
@@ -2826,12 +2827,13 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var accept = accept_example;  // string | 
             var arrayType = arrayType_example;  // string | The format in which the memory mapped array is returned.
 
             try
             {
                 // Get the memory mapped array based on the array type.
-                apiInstance.GetArray(arrayType);
+                apiInstance.GetArray(accept, arrayType);
             }
             catch (Exception e)
             {
@@ -2846,6 +2848,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string**|  | 
  **arrayType** | **string**| The format in which the memory mapped array is returned. | 
 
 ### Return type
@@ -2865,7 +2868,7 @@ void (empty response body)
 
 <a name="getarrayindices"></a>
 # **GetArrayIndices**
-> void GetArrayIndices (string arrayType, Object input = null)
+> void GetArrayIndices (string contentType, string accept, string arrayType, string input = null)
 
 Get the memory mapped array indices based on the array type.
 
@@ -2889,13 +2892,15 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`.
+            var accept = accept_example;  // string | 
             var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
-            var input = ;  // Object | Input indices array (optional) 
+            var input = input_example;  // string | Input indices array (optional) 
 
             try
             {
                 // Get the memory mapped array indices based on the array type.
-                apiInstance.GetArrayIndices(arrayType, input);
+                apiInstance.GetArrayIndices(contentType, accept, arrayType, input);
             }
             catch (Exception e)
             {
@@ -2910,8 +2915,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **accept** | **string**|  | 
  **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
- **input** | **Object**| Input indices array | [optional] 
+ **input** | **string**| Input indices array | [optional] 
 
 ### Return type
 
@@ -2923,14 +2930,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="getarrayrange"></a>
 # **GetArrayRange**
-> void GetArrayRange (string arrayType, int? from, int? to)
+> void GetArrayRange (string accept, string arrayType, int? from, int? to)
 
 Get the memory mapped array within a range based on the array type.
 
@@ -2954,6 +2961,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var accept = accept_example;  // string | 
             var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
             var from = 56;  // int? | 
             var to = 56;  // int? | 
@@ -2961,7 +2969,7 @@ namespace Example
             try
             {
                 // Get the memory mapped array within a range based on the array type.
-                apiInstance.GetArrayRange(arrayType, from, to);
+                apiInstance.GetArrayRange(accept, arrayType, from, to);
             }
             catch (Exception e)
             {
@@ -2976,6 +2984,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **string**|  | 
  **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
  **from** | **int?**|  | 
  **to** | **int?**|  | 
@@ -2990,8 +2999,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5117,7 +5126,7 @@ No authorization required
 
 <a name="logs"></a>
 # **Logs**
-> LogBatch Logs (LogRequest body, string deploymentName, string versionName, string modelName)
+> LogBatch Logs (string deploymentName, string versionName, string modelName, LogRequest logRequest)
 
 Get logs
 
@@ -5141,15 +5150,15 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var body = new LogRequest(); // LogRequest | the the log request
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var logRequest = new LogRequest(); // LogRequest | The log object
 
             try
             {
                 // Get logs
-                LogBatch result = apiInstance.Logs(body, deploymentName, versionName, modelName);
+                LogBatch result = apiInstance.Logs(deploymentName, versionName, modelName, logRequest);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -5165,10 +5174,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LogRequest**](LogRequest.md)| the the log request | 
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
+ **logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -5255,7 +5264,7 @@ Name | Type | Description  | Notes
 
 <a name="metapost"></a>
 # **MetaPost**
-> MetaData MetaPost (MetaData body, string deploymentName, string versionName, string modelName)
+> MetaData MetaPost (string contentType, string body, string deploymentName, string versionName, string modelName)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -5279,7 +5288,8 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var body = new MetaData(); // MetaData | the meta data object
+            var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`
+            var body = body_example;  // string | the meta data object
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var modelName = modelName_example;  // string | ID or name of the deployed model
@@ -5287,7 +5297,7 @@ namespace Example
             try
             {
                 // This method can be used to set meta data for the current model which is set to the server
-                MetaData result = apiInstance.MetaPost(body, deploymentName, versionName, modelName);
+                MetaData result = apiInstance.MetaPost(contentType, body, deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -5303,7 +5313,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MetaData**](MetaData.md)| the meta data object | 
+ **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+ **body** | **string**| the meta data object | 
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **string**| ID or name of the deployed model | 
@@ -5318,7 +5329,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5945,7 +5956,7 @@ Name | Type | Description  | Notes
 
 <a name="predicterror"></a>
 # **PredictError**
-> void PredictError (string operation, string inputType, Object inputData = null)
+> void PredictError (string contentType, string operation, string inputType, string inputData = null)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -5971,14 +5982,15 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`.
             var operation = operation_example;  // string | Operation to perform on the input data.
             var inputType = inputType_example;  // string | Type of the input data.
-            var inputData = ;  // Object |  (optional) 
+            var inputData = inputData_example;  // string |  (optional) 
 
             try
             {
                 // Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-                apiInstance.PredictError(operation, inputType, inputData);
+                apiInstance.PredictError(contentType, operation, inputType, inputData);
             }
             catch (Exception e)
             {
@@ -5993,9 +6005,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
  **operation** | **string**| Operation to perform on the input data. | 
  **inputType** | **string**| Type of the input data. | 
- **inputData** | **Object**|  | [optional] 
+ **inputData** | **string**|  | [optional] 
 
 ### Return type
 
@@ -6007,14 +6020,14 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="predictv2"></a>
-# **PredictV2**
-> void PredictV2 (string operation, string inputType, string inputData = null)
+<a name="predictv2file"></a>
+# **PredictV2File**
+> void PredictV2File (string operation, string inputTypeFile, System.IO.Stream inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -6028,7 +6041,7 @@ using Skymind.SKIL.Model;
 
 namespace Example
 {
-    public class PredictV2Example
+    public class PredictV2FileExample
     {
         public void main()
         {
@@ -6038,18 +6051,18 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
-            var operation = operation_example;  // string | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
-            var inputType = inputType_example;  // string | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
-            var inputData = inputData_example;  // string | The input data to run inference on. (optional) 
+            var operation = operation_example;  // string | The operation to perform on the input data. 
+            var inputTypeFile = inputTypeFile_example;  // string | Type of the input data. 
+            var inputData = new System.IO.Stream(); // System.IO.Stream | The input data to run inference on.
 
             try
             {
                 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
-                apiInstance.PredictV2(operation, inputType, inputData);
+                apiInstance.PredictV2File(operation, inputTypeFile, inputData);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling DefaultApi.PredictV2: " + e.Message );
+                Debug.Print("Exception when calling DefaultApi.PredictV2File: " + e.Message );
             }
         }
     }
@@ -6060,9 +6073,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **string**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **inputType** | **string**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **inputData** | **string**| The input data to run inference on. | [optional] 
+ **operation** | **string**| The operation to perform on the input data.  | 
+ **inputTypeFile** | **string**| Type of the input data.  | 
+ **inputData** | **System.IO.Stream**| The input data to run inference on. | 
 
 ### Return type
 
@@ -6074,7 +6087,76 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="predictv2json"></a>
+# **PredictV2Json**
+> void PredictV2Json (string contentType, string operation, string inputTypeJson, string inputData)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.SKIL.Api;
+using Skymind.SKIL.Client;
+using Skymind.SKIL.Model;
+
+namespace Example
+{
+    public class PredictV2JsonExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`.
+            var operation = operation_example;  // string | The operation to perform on the input data. 
+            var inputTypeJson = inputTypeJson_example;  // string | Type of the input data. 
+            var inputData = inputData_example;  // string | The input data to run inference on. (Specify a JSON string here)
+
+            try
+            {
+                // Runs inference based on the input data. Output is defined relative to the output adapter specified.
+                apiInstance.PredictV2Json(contentType, operation, inputTypeJson, inputData);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.PredictV2Json: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **operation** | **string**| The operation to perform on the input data.  | 
+ **inputTypeJson** | **string**| Type of the input data.  | 
+ **inputData** | **string**| The input data to run inference on. (Specify a JSON string here) | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -6818,7 +6900,7 @@ Name | Type | Description  | Notes
 
 <a name="transformarray"></a>
 # **Transformarray**
-> Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null)
+> Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null)
 
 Takes a batch input arrays and transforms it
 
@@ -6845,7 +6927,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var batchRecord = ;  // Object | The input batch of record arrays (optional) 
+            var batchRecord = new BatchRecord(); // BatchRecord | The input batch of record arrays (optional) 
 
             try
             {
@@ -6869,7 +6951,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **batchRecord** | **Object**| The input batch of record arrays | [optional] 
+ **batchRecord** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -7032,7 +7114,7 @@ Name | Type | Description  | Notes
 
 <a name="transformincrementalarray"></a>
 # **Transformincrementalarray**
-> Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null)
+> Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null)
 
 Same as /transformincremental but returns Base64NDArrayBody.
 
@@ -7059,7 +7141,7 @@ namespace Example
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var singleRecord = ;  // Object | The input record array (optional) 
+            var singleRecord = new SingleRecord(); // SingleRecord | The input record array (optional) 
 
             try
             {
@@ -7083,7 +7165,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **singleRecord** | **Object**| The input record array | [optional] 
+ **singleRecord** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -7242,7 +7324,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocesspost"></a>
 # **TransformprocessPost**
-> Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null)
+> Object TransformprocessPost (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -7266,15 +7348,16 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
 
             var apiInstance = new DefaultApi();
+            var contentType = contentType_example;  // string | The `Content-Type` should be `application/json`.
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
             var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
             var transformName = transformName_example;  // string | ID or name of the deployed transform
-            var transformProcess = ;  // Object | The transform process to set (optional) 
+            var transformProcess = transformProcess_example;  // string | The transform process to set (Specify a JSON string here). (optional) 
 
             try
             {
                 // Sets the deployed (CSV or Image) transform process through the provided JSON string
-                Object result = apiInstance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
+                Object result = apiInstance.TransformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7290,10 +7373,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **string**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deploymentName** | **string**| Name of the deployment group | 
  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **string**| ID or name of the deployed transform | 
- **transformProcess** | **Object**| The transform process to set | [optional] 
+ **transformProcess** | **string**| The transform process to set (Specify a JSON string here). | [optional] 
 
 ### Return type
 
@@ -7305,7 +7389,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

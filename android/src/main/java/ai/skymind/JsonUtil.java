@@ -101,8 +101,8 @@ public class JsonUtil {
       return new TypeToken<List<BatchCSVRecord>>(){}.getType();
     }
     
-    if ("BatchImageRecord".equalsIgnoreCase(className)) {
-      return new TypeToken<List<BatchImageRecord>>(){}.getType();
+    if ("BatchRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<List<BatchRecord>>(){}.getType();
     }
     
     if ("BestModel".equalsIgnoreCase(className)) {
@@ -333,8 +333,8 @@ public class JsonUtil {
       return new TypeToken<List<SingleCSVRecord>>(){}.getType();
     }
     
-    if ("SingleImageRecord".equalsIgnoreCase(className)) {
-      return new TypeToken<List<SingleImageRecord>>(){}.getType();
+    if ("SingleRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<List<SingleRecord>>(){}.getType();
     }
     
     if ("Token".equalsIgnoreCase(className)) {
@@ -411,8 +411,8 @@ public class JsonUtil {
       return new TypeToken<BatchCSVRecord>(){}.getType();
     }
     
-    if ("BatchImageRecord".equalsIgnoreCase(className)) {
-      return new TypeToken<BatchImageRecord>(){}.getType();
+    if ("BatchRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<BatchRecord>(){}.getType();
     }
     
     if ("BestModel".equalsIgnoreCase(className)) {
@@ -643,8 +643,8 @@ public class JsonUtil {
       return new TypeToken<SingleCSVRecord>(){}.getType();
     }
     
-    if ("SingleImageRecord".equalsIgnoreCase(className)) {
-      return new TypeToken<SingleImageRecord>(){}.getType();
+    if ("SingleRecord".equalsIgnoreCase(className)) {
+      return new TypeToken<SingleRecord>(){}.getType();
     }
     
     if ("Token".equalsIgnoreCase(className)) {

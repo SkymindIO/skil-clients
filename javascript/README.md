@@ -212,7 +212,8 @@ Class | Method | HTTP request | Description
 *SkilClient.DefaultApi* | [**numRevisions**](docs/DefaultApi.md#numRevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 *SkilClient.DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 *SkilClient.DefaultApi* | [**predictError**](docs/DefaultApi.md#predictError) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-*SkilClient.DefaultApi* | [**predictV2**](docs/DefaultApi.md#predictV2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+*SkilClient.DefaultApi* | [**predictV2File**](docs/DefaultApi.md#predictV2File) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+*SkilClient.DefaultApi* | [**predictV2Json**](docs/DefaultApi.md#predictV2Json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *SkilClient.DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 *SkilClient.DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 *SkilClient.DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -252,7 +253,7 @@ Class | Method | HTTP request | Description
  - [SkilClient.Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [SkilClient.Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [SkilClient.BatchCSVRecord](docs/BatchCSVRecord.md)
- - [SkilClient.BatchImageRecord](docs/BatchImageRecord.md)
+ - [SkilClient.BatchRecord](docs/BatchRecord.md)
  - [SkilClient.BestModel](docs/BestModel.md)
  - [SkilClient.ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [SkilClient.ClassificationResult](docs/ClassificationResult.md)
@@ -310,7 +311,7 @@ Class | Method | HTTP request | Description
  - [SkilClient.S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SkilClient.SetState](docs/SetState.md)
  - [SkilClient.SingleCSVRecord](docs/SingleCSVRecord.md)
- - [SkilClient.SingleImageRecord](docs/SingleImageRecord.md)
+ - [SkilClient.SingleRecord](docs/SingleRecord.md)
  - [SkilClient.Token](docs/Token.md)
  - [SkilClient.TokenGenerateRequest](docs/TokenGenerateRequest.md)
  - [SkilClient.TransformProcess](docs/TransformProcess.md)

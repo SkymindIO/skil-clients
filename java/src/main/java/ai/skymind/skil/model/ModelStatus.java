@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ModelStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class ModelStatus {
   @SerializedName("status")
   private Integer status = null;
@@ -38,10 +38,10 @@ public class ModelStatus {
   }
 
    /**
-   * 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+   * 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
    * @return status
   **/
-  @ApiModelProperty(example = "100", value = "100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed ")
+  @ApiModelProperty(example = "100", value = "100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. ")
   public Integer getStatus() {
     return status;
   }

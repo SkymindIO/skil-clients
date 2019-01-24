@@ -14,7 +14,7 @@ package ai.skymind.skil.model
 
 
 case class ModelStatus (
-  // 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+  // 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
   Status: Option[Integer] = None
 )
 

@@ -43,12 +43,11 @@
    * Constructs a new <code>BatchCSVRecord</code>.
    * @alias module:ai/skymind/skil/model/BatchCSVRecord
    * @class
-   * @param records {Array.<module:ai/skymind/skil/model/SingleCSVRecord>} 
    */
-  var exports = function(records) {
+  var exports = function() {
     var _this = this;
 
-    _this['records'] = records;
+
   };
 
   /**

@@ -2042,6 +2042,14 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter accept
+     */
+    public enum Accept_getArray: String { 
+        case json = "application/json"
+        case octetStream = "application/octet-stream"
+    }
+
+    /**
      * enum for parameter arrayType
      */
     public enum ArrayType_getArray: String { 
@@ -2052,11 +2060,12 @@ open class DefaultAPI: APIBase {
 
     /**
      Get the memory mapped array based on the array type.
+     - parameter accept: (header)  
      - parameter arrayType: (path) The format in which the memory mapped array is returned. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getArray(arrayType: ArrayType_getArray, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        getArrayWithRequestBuilder(arrayType: arrayType).execute { (response, error) -> Void in
+    open class func getArray(accept: Accept_getArray, arrayType: ArrayType_getArray, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getArrayWithRequestBuilder(accept: accept, arrayType: arrayType).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -2069,10 +2078,11 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
+     - parameter accept: (header)  
      - parameter arrayType: (path) The format in which the memory mapped array is returned. 
      - returns: RequestBuilder<Void> 
      */
-    open class func getArrayWithRequestBuilder(arrayType: ArrayType_getArray) -> RequestBuilder<Void> {
+    open class func getArrayWithRequestBuilder(accept: Accept_getArray, arrayType: ArrayType_getArray) -> RequestBuilder<Void> {
         var path = "/array/{arrayType}"
         let arrayTypePreEscape = "\(arrayType.rawValue)"
         let arrayTypePostEscape = arrayTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2081,10 +2091,29 @@ open class DefaultAPI: APIBase {
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "accept": accept.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false, headers: headerParameters)
+    }
+
+    /**
+     * enum for parameter contentType
+     */
+    public enum ContentType_getArrayIndices: String { 
+        case applicationJson = "application/json"
+    }
+
+    /**
+     * enum for parameter accept
+     */
+    public enum Accept_getArrayIndices: String { 
+        case json = "application/json"
+        case octetStream = "application/octet-stream"
     }
 
     /**
@@ -2098,12 +2127,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Get the memory mapped array indices based on the array type.
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+     - parameter accept: (header)  
      - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
      - parameter input: (body) Input indices array (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getArrayIndices(arrayType: ArrayType_getArrayIndices, input: Any? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        getArrayIndicesWithRequestBuilder(arrayType: arrayType, input: input).execute { (response, error) -> Void in
+    open class func getArrayIndices(contentType: ContentType_getArrayIndices, accept: Accept_getArrayIndices, arrayType: ArrayType_getArrayIndices, input: String? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getArrayIndicesWithRequestBuilder(contentType: contentType, accept: accept, arrayType: arrayType, input: input).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -2115,11 +2146,13 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+     - parameter accept: (header)  
      - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
      - parameter input: (body) Input indices array (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func getArrayIndicesWithRequestBuilder(arrayType: ArrayType_getArrayIndices, input: Any? = nil) -> RequestBuilder<Void> {
+    open class func getArrayIndicesWithRequestBuilder(contentType: ContentType_getArrayIndices, accept: Accept_getArrayIndices, arrayType: ArrayType_getArrayIndices, input: String? = nil) -> RequestBuilder<Void> {
         var path = "/array/indices/{arrayType}"
         let arrayTypePreEscape = "\(arrayType.rawValue)"
         let arrayTypePostEscape = arrayTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2128,10 +2161,23 @@ open class DefaultAPI: APIBase {
         let parameters = input?.encodeToJSON()
 
         let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Content-Type": contentType.rawValue,
+            "accept": accept.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
+    }
+
+    /**
+     * enum for parameter accept
+     */
+    public enum Accept_getArrayRange: String { 
+        case json = "application/json"
+        case octetStream = "application/octet-stream"
     }
 
     /**
@@ -2145,13 +2191,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Get the memory mapped array within a range based on the array type.
+     - parameter accept: (header)  
      - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
      - parameter from: (path)  
      - parameter to: (path)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getArrayRange(arrayType: ArrayType_getArrayRange, from: Int32, to: Int32, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        getArrayRangeWithRequestBuilder(arrayType: arrayType, from: from, to: to).execute { (response, error) -> Void in
+    open class func getArrayRange(accept: Accept_getArrayRange, arrayType: ArrayType_getArrayRange, from: Int32, to: Int32, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        getArrayRangeWithRequestBuilder(accept: accept, arrayType: arrayType, from: from, to: to).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -2163,12 +2210,13 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
+     - parameter accept: (header)  
      - parameter arrayType: (path) Format in which the memory mapped array is returned in. 
      - parameter from: (path)  
      - parameter to: (path)  
      - returns: RequestBuilder<Void> 
      */
-    open class func getArrayRangeWithRequestBuilder(arrayType: ArrayType_getArrayRange, from: Int32, to: Int32) -> RequestBuilder<Void> {
+    open class func getArrayRangeWithRequestBuilder(accept: Accept_getArrayRange, arrayType: ArrayType_getArrayRange, from: Int32, to: Int32) -> RequestBuilder<Void> {
         var path = "/array/range/{from}/{to}/{arrayType}"
         let arrayTypePreEscape = "\(arrayType.rawValue)"
         let arrayTypePostEscape = arrayTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2183,10 +2231,14 @@ open class DefaultAPI: APIBase {
         let parameters: [String:Any]? = nil
         
         let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "accept": accept.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false, headers: headerParameters)
     }
 
     /**
@@ -3808,14 +3860,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Get logs
-     - parameter body: (body) the the log request 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
+     - parameter logRequest: (body) The log object 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func logs(body: LogRequest, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: LogBatch?, _ error: ErrorResponse?) -> Void)) {
-        logsWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
+    open class func logs(deploymentName: String, versionName: String, modelName: String, logRequest: LogRequest, completion: @escaping ((_ data: LogBatch?, _ error: ErrorResponse?) -> Void)) {
+        logsWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, modelName: modelName, logRequest: logRequest).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3832,13 +3884,13 @@ open class DefaultAPI: APIBase {
   "rowCount" : 2,
   "logs" : "logs"
 }}]
-     - parameter body: (body) the the log request 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
+     - parameter logRequest: (body) The log object 
      - returns: RequestBuilder<LogBatch> 
      */
-    open class func logsWithRequestBuilder(body: LogRequest, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<LogBatch> {
+    open class func logsWithRequestBuilder(deploymentName: String, versionName: String, modelName: String, logRequest: LogRequest) -> RequestBuilder<LogBatch> {
         var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -3850,7 +3902,7 @@ open class DefaultAPI: APIBase {
         let modelNamePostEscape = modelNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{modelName}", with: modelNamePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
-        let parameters = body.encodeToJSON()
+        let parameters = logRequest.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
@@ -3907,15 +3959,23 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter contentType
+     */
+    public enum ContentType_metaPost: String { 
+        case applicationJson = "application/json"
+    }
+
+    /**
      This method can be used to set meta data for the current model which is set to the server
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; 
      - parameter body: (body) the meta data object 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func metaPost(body: MetaData, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
-        metaPostWithRequestBuilder(body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
+    open class func metaPost(contentType: ContentType_metaPost, body: String, deploymentName: String, versionName: String, modelName: String, completion: @escaping ((_ data: MetaData?, _ error: ErrorResponse?) -> Void)) {
+        metaPostWithRequestBuilder(contentType: contentType, body: body, deploymentName: deploymentName, versionName: versionName, modelName: modelName).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -3928,13 +3988,14 @@ open class DefaultAPI: APIBase {
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example={ }}]
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; 
      - parameter body: (body) the meta data object 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter modelName: (path) ID or name of the deployed model 
      - returns: RequestBuilder<MetaData> 
      */
-    open class func metaPostWithRequestBuilder(body: MetaData, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MetaData> {
+    open class func metaPostWithRequestBuilder(contentType: ContentType_metaPost, body: String, deploymentName: String, versionName: String, modelName: String) -> RequestBuilder<MetaData> {
         var path = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -3949,10 +4010,14 @@ open class DefaultAPI: APIBase {
         let parameters = body.encodeToJSON()
 
         let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Content-Type": contentType.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<MetaData>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
     }
 
     /**
@@ -4482,6 +4547,13 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter contentType
+     */
+    public enum ContentType_predictError: String { 
+        case applicationJson = "application/json"
+    }
+
+    /**
      * enum for parameter operation
      */
     public enum Operation_predictError: String { 
@@ -4502,13 +4574,14 @@ open class DefaultAPI: APIBase {
 
     /**
      Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
      - parameter operation: (path) Operation to perform on the input data. 
      - parameter inputType: (path) Type of the input data. 
      - parameter inputData: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictError(operation: Operation_predictError, inputType: InputType_predictError, inputData: Any? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        predictErrorWithRequestBuilder(operation: operation, inputType: inputType, inputData: inputData).execute { (response, error) -> Void in
+    open class func predictError(contentType: ContentType_predictError, operation: Operation_predictError, inputType: InputType_predictError, inputData: String? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        predictErrorWithRequestBuilder(contentType: contentType, operation: operation, inputType: inputType, inputData: inputData).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -4521,12 +4594,13 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
      - parameter operation: (path) Operation to perform on the input data. 
      - parameter inputType: (path) Type of the input data. 
      - parameter inputData: (body)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func predictErrorWithRequestBuilder(operation: Operation_predictError, inputType: InputType_predictError, inputData: Any? = nil) -> RequestBuilder<Void> {
+    open class func predictErrorWithRequestBuilder(contentType: ContentType_predictError, operation: Operation_predictError, inputType: InputType_predictError, inputData: String? = nil) -> RequestBuilder<Void> {
         var path = "/{operation}/{inputType}/error"
         let operationPreEscape = "\(operation.rawValue)"
         let operationPostEscape = operationPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4538,16 +4612,20 @@ open class DefaultAPI: APIBase {
         let parameters = inputData?.encodeToJSON()
 
         let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Content-Type": contentType.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
     }
 
     /**
      * enum for parameter operation
      */
-    public enum Operation_predictV2: String { 
+    public enum Operation_predictV2File: String { 
         case regression = "REGRESSION"
         case classification = "CLASSIFICATION"
         case raw = "RAW"
@@ -4557,13 +4635,9 @@ open class DefaultAPI: APIBase {
     }
 
     /**
-     * enum for parameter inputType
+     * enum for parameter inputTypeFile
      */
-    public enum InputType_predictV2: String { 
-        case csv = "CSV"
-        case dictionary = "DICTIONARY"
-        case csvpubsub = "CSVPUBSUB"
-        case dictionarypubsub = "DICTIONARYPUBSUB"
+    public enum InputTypeFile_predictV2File: String { 
         case image = "IMAGE"
         case numpy = "NUMPY"
         case ndarray = "NDARRAY"
@@ -4572,13 +4646,13 @@ open class DefaultAPI: APIBase {
 
     /**
      Runs inference based on the input data. Output is defined relative to the output adapter specified.
-     - parameter operation: (path) The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-     - parameter inputType: (path) Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-     - parameter inputData: (form) The input data to run inference on. (optional)
+     - parameter operation: (path) The operation to perform on the input data.  
+     - parameter inputTypeFile: (path) Type of the input data.  
+     - parameter inputData: (form) The input data to run inference on. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func predictV2(operation: Operation_predictV2, inputType: InputType_predictV2, inputData: String? = nil, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
-        predictV2WithRequestBuilder(operation: operation, inputType: inputType, inputData: inputData).execute { (response, error) -> Void in
+    open class func predictV2File(operation: Operation_predictV2File, inputTypeFile: InputTypeFile_predictV2File, inputData: URL, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        predictV2FileWithRequestBuilder(operation: operation, inputTypeFile: inputTypeFile, inputData: inputData).execute { (response, error) -> Void in
             completion(error)
         }
     }
@@ -4586,23 +4660,23 @@ open class DefaultAPI: APIBase {
 
     /**
      Runs inference based on the input data. Output is defined relative to the output adapter specified.
-     - POST /{operation}/{inputType}
+     - POST /{operation}/{inputTypeFile}
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - parameter operation: (path) The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-     - parameter inputType: (path) Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  
-     - parameter inputData: (form) The input data to run inference on. (optional)
+     - parameter operation: (path) The operation to perform on the input data.  
+     - parameter inputTypeFile: (path) Type of the input data.  
+     - parameter inputData: (form) The input data to run inference on. 
      - returns: RequestBuilder<Void> 
      */
-    open class func predictV2WithRequestBuilder(operation: Operation_predictV2, inputType: InputType_predictV2, inputData: String? = nil) -> RequestBuilder<Void> {
-        var path = "/{operation}/{inputType}"
+    open class func predictV2FileWithRequestBuilder(operation: Operation_predictV2File, inputTypeFile: InputTypeFile_predictV2File, inputData: URL) -> RequestBuilder<Void> {
+        var path = "/{operation}/{inputTypeFile}"
         let operationPreEscape = "\(operation.rawValue)"
         let operationPostEscape = operationPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{operation}", with: operationPostEscape, options: .literal, range: nil)
-        let inputTypePreEscape = "\(inputType.rawValue)"
-        let inputTypePostEscape = inputTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{inputType}", with: inputTypePostEscape, options: .literal, range: nil)
+        let inputTypeFilePreEscape = "\(inputTypeFile.rawValue)"
+        let inputTypeFilePostEscape = inputTypeFilePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{inputTypeFile}", with: inputTypeFilePostEscape, options: .literal, range: nil)
         let URLString = SkilClientAPI.basePath + path
         let formParams: [String:Any?] = [
             "inputData": inputData
@@ -4616,6 +4690,81 @@ open class DefaultAPI: APIBase {
         let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     * enum for parameter contentType
+     */
+    public enum ContentType_predictV2Json: String { 
+        case applicationJson = "application/json"
+    }
+
+    /**
+     * enum for parameter operation
+     */
+    public enum Operation_predictV2Json: String { 
+        case regression = "REGRESSION"
+        case classification = "CLASSIFICATION"
+        case raw = "RAW"
+    }
+
+    /**
+     * enum for parameter inputTypeJson
+     */
+    public enum InputTypeJson_predictV2Json: String { 
+        case csv = "CSV"
+        case dictionary = "DICTIONARY"
+        case csvpubsub = "CSVPUBSUB"
+        case dictionarypubsub = "DICTIONARYPUBSUB"
+    }
+
+    /**
+     Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+     - parameter operation: (path) The operation to perform on the input data.  
+     - parameter inputTypeJson: (path) Type of the input data.  
+     - parameter inputData: (body) The input data to run inference on. (Specify a JSON string here) 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func predictV2Json(contentType: ContentType_predictV2Json, operation: Operation_predictV2Json, inputTypeJson: InputTypeJson_predictV2Json, inputData: String, completion: @escaping ((_ error: ErrorResponse?) -> Void)) {
+        predictV2JsonWithRequestBuilder(contentType: contentType, operation: operation, inputTypeJson: inputTypeJson, inputData: inputData).execute { (response, error) -> Void in
+            completion(error)
+        }
+    }
+
+
+    /**
+     Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     - POST /{operation}/{inputTypeJson}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. 
+     - parameter operation: (path) The operation to perform on the input data.  
+     - parameter inputTypeJson: (path) Type of the input data.  
+     - parameter inputData: (body) The input data to run inference on. (Specify a JSON string here) 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func predictV2JsonWithRequestBuilder(contentType: ContentType_predictV2Json, operation: Operation_predictV2Json, inputTypeJson: InputTypeJson_predictV2Json, inputData: String) -> RequestBuilder<Void> {
+        var path = "/{operation}/{inputTypeJson}"
+        let operationPreEscape = "\(operation.rawValue)"
+        let operationPostEscape = operationPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{operation}", with: operationPostEscape, options: .literal, range: nil)
+        let inputTypeJsonPreEscape = "\(inputTypeJson.rawValue)"
+        let inputTypeJsonPostEscape = inputTypeJsonPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{inputTypeJson}", with: inputTypeJsonPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters = inputData.encodeToJSON()
+
+        let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Content-Type": contentType.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+
+        let requestBuilder: RequestBuilder<Void>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
     }
 
     /**
@@ -5193,7 +5342,7 @@ open class DefaultAPI: APIBase {
      - parameter batchRecord: (body) The input batch of record arrays (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformarray(deploymentName: String, versionName: String, transformName: String, batchRecord: Any? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformarray(deploymentName: String, versionName: String, transformName: String, batchRecord: BatchRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
         transformarrayWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, batchRecord: batchRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -5215,7 +5364,7 @@ open class DefaultAPI: APIBase {
      - parameter batchRecord: (body) The input batch of record arrays (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchRecord: Any? = nil) -> RequestBuilder<Base64NDArrayBody> {
+    open class func transformarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, batchRecord: BatchRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -5353,7 +5502,7 @@ open class DefaultAPI: APIBase {
      - parameter singleRecord: (body) The input record array (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformincrementalarray(deploymentName: String, versionName: String, transformName: String, singleRecord: Any? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
+    open class func transformincrementalarray(deploymentName: String, versionName: String, transformName: String, singleRecord: SingleRecord? = nil, completion: @escaping ((_ data: Base64NDArrayBody?, _ error: ErrorResponse?) -> Void)) {
         transformincrementalarrayWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, singleRecord: singleRecord).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -5375,7 +5524,7 @@ open class DefaultAPI: APIBase {
      - parameter singleRecord: (body) The input record array (optional)
      - returns: RequestBuilder<Base64NDArrayBody> 
      */
-    open class func transformincrementalarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleRecord: Any? = nil) -> RequestBuilder<Base64NDArrayBody> {
+    open class func transformincrementalarrayWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, singleRecord: SingleRecord? = nil) -> RequestBuilder<Base64NDArrayBody> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -5501,15 +5650,23 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     * enum for parameter contentType
+     */
+    public enum ContentType_transformprocessPost: String { 
+        case applicationJson = "application/json"
+    }
+
+    /**
      Sets the deployed (CSV or Image) transform process through the provided JSON string
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - parameter transformProcess: (body) The transform process to set (optional)
+     - parameter transformProcess: (body) The transform process to set (Specify a JSON string here). (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func transformprocessPost(deploymentName: String, versionName: String, transformName: String, transformProcess: Any? = nil, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
-        transformprocessPostWithRequestBuilder(deploymentName: deploymentName, versionName: versionName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
+    open class func transformprocessPost(contentType: ContentType_transformprocessPost, deploymentName: String, versionName: String, transformName: String, transformProcess: String? = nil, completion: @escaping ((_ data: Any?, _ error: ErrorResponse?) -> Void)) {
+        transformprocessPostWithRequestBuilder(contentType: contentType, deploymentName: deploymentName, versionName: versionName, transformName: transformName, transformProcess: transformProcess).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -5522,13 +5679,14 @@ open class DefaultAPI: APIBase {
        - type: apiKey authorization 
        - name: api_key
      - examples: [{contentType=application/json, example="{}"}]
+     - parameter contentType: (header) The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. 
      - parameter deploymentName: (path) Name of the deployment group 
      - parameter versionName: (path) Version name of the endpoint. The default value is \&quot;default\&quot; 
      - parameter transformName: (path) ID or name of the deployed transform 
-     - parameter transformProcess: (body) The transform process to set (optional)
+     - parameter transformProcess: (body) The transform process to set (Specify a JSON string here). (optional)
      - returns: RequestBuilder<Any> 
      */
-    open class func transformprocessPostWithRequestBuilder(deploymentName: String, versionName: String, transformName: String, transformProcess: Any? = nil) -> RequestBuilder<Any> {
+    open class func transformprocessPostWithRequestBuilder(contentType: ContentType_transformprocessPost, deploymentName: String, versionName: String, transformName: String, transformProcess: String? = nil) -> RequestBuilder<Any> {
         var path = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess"
         let deploymentNamePreEscape = "\(deploymentName)"
         let deploymentNamePostEscape = deploymentNamePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -5543,10 +5701,14 @@ open class DefaultAPI: APIBase {
         let parameters = transformProcess?.encodeToJSON()
 
         let url = URLComponents(string: URLString)
+        let nillableHeaders: [String: Any?] = [
+            "Content-Type": contentType.rawValue
+        ]
+        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
 
         let requestBuilder: RequestBuilder<Any>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true, headers: headerParameters)
     }
 
     /**

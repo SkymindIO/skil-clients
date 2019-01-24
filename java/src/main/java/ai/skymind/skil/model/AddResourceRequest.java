@@ -27,13 +27,13 @@ import java.io.IOException;
 /**
  * AddResourceRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class AddResourceRequest {
   @SerializedName("resourceName")
   private String resourceName = null;
 
   @SerializedName("resourceDetails")
-  private Object resourceDetails = null;
+  private String resourceDetails = null;
 
   @SerializedName("credentialUri")
   private String credentialUri = null;
@@ -171,21 +171,21 @@ public class AddResourceRequest {
     this.resourceName = resourceName;
   }
 
-  public AddResourceRequest resourceDetails(Object resourceDetails) {
+  public AddResourceRequest resourceDetails(String resourceDetails) {
     this.resourceDetails = resourceDetails;
     return this;
   }
 
    /**
-   * One of the resource details object
+   * One of the resource details object (Specify a JSON string here)
    * @return resourceDetails
   **/
-  @ApiModelProperty(value = "One of the resource details object")
-  public Object getResourceDetails() {
+  @ApiModelProperty(value = "One of the resource details object (Specify a JSON string here)")
+  public String getResourceDetails() {
     return resourceDetails;
   }
 
-  public void setResourceDetails(Object resourceDetails) {
+  public void setResourceDetails(String resourceDetails) {
     this.resourceDetails = resourceDetails;
   }
 

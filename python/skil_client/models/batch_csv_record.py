@@ -46,7 +46,8 @@ class BatchCSVRecord(object):
         self._records = None
         self.discriminator = None
 
-        self.records = records
+        if records is not None:
+            self.records = records
 
     @property
     def records(self):
@@ -66,8 +67,6 @@ class BatchCSVRecord(object):
         :param records: The records of this BatchCSVRecord.  # noqa: E501
         :type: list[SingleCSVRecord]
         """
-        if records is None:
-            raise ValueError("Invalid value for `records`, must not be `None`")  # noqa: E501
 
         self._records = records
 

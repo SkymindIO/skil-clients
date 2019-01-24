@@ -413,7 +413,7 @@ class Decoders {
                 case let .failure(error): break
                 
                 }
-                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["resourceDetails"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["resourceDetails"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceDetails = value
                 case let .failure(error): break
@@ -610,16 +610,16 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "BatchCSVRecord", actual: "\(source)"))
             }
         }
-        // Decoder for [BatchImageRecord]
-        Decoders.addDecoder(clazz: [BatchImageRecord].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[BatchImageRecord]> in
-            return Decoders.decode(clazz: [BatchImageRecord].self, source: source)
+        // Decoder for [BatchRecord]
+        Decoders.addDecoder(clazz: [BatchRecord].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[BatchRecord]> in
+            return Decoders.decode(clazz: [BatchRecord].self, source: source)
         }
 
-        // Decoder for BatchImageRecord
-        Decoders.addDecoder(clazz: BatchImageRecord.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<BatchImageRecord> in
+        // Decoder for BatchRecord
+        Decoders.addDecoder(clazz: BatchRecord.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<BatchRecord> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? BatchImageRecord() : instance as! BatchImageRecord
-                switch Decoders.decodeOptional(clazz: [SingleImageRecord].self, source: sourceDictionary["records"] as AnyObject?) {
+                let _result = instance == nil ? BatchRecord() : instance as! BatchRecord
+                switch Decoders.decodeOptional(clazz: [SingleRecord].self, source: sourceDictionary["records"] as AnyObject?) {
                 
                 case let .success(value): _result.records = value
                 case let .failure(error): break
@@ -627,7 +627,7 @@ class Decoders {
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "BatchImageRecord", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "BatchRecord", actual: "\(source)"))
             }
         }
         // Decoder for [BestModel]
@@ -2806,15 +2806,21 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "SingleCSVRecord", actual: "\(source)"))
             }
         }
-        // Decoder for [SingleImageRecord]
-        Decoders.addDecoder(clazz: [SingleImageRecord].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[SingleImageRecord]> in
-            return Decoders.decode(clazz: [SingleImageRecord].self, source: source)
+        // Decoder for [SingleRecord]
+        Decoders.addDecoder(clazz: [SingleRecord].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[SingleRecord]> in
+            return Decoders.decode(clazz: [SingleRecord].self, source: source)
         }
 
-        // Decoder for SingleImageRecord
-        Decoders.addDecoder(clazz: SingleImageRecord.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<SingleImageRecord> in
+        // Decoder for SingleRecord
+        Decoders.addDecoder(clazz: SingleRecord.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<SingleRecord> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? SingleImageRecord() : instance as! SingleImageRecord
+                let _result = instance == nil ? SingleRecord() : instance as! SingleRecord
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["values"] as AnyObject?) {
+                
+                case let .success(value): _result.values = value
+                case let .failure(error): break
+                
+                }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["uri"] as AnyObject?) {
                 
                 case let .success(value): _result.uri = value
@@ -2823,7 +2829,7 @@ class Decoders {
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "SingleImageRecord", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "SingleRecord", actual: "\(source)"))
             }
         }
         // Decoder for [Token]

@@ -597,8 +597,9 @@ namespace Skymind.SKIL.Test
         public void GetArrayTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string accept = null;
             //string arrayType = null;
-            //instance.GetArray(arrayType);
+            //instance.GetArray(accept, arrayType);
             
         }
         
@@ -609,9 +610,11 @@ namespace Skymind.SKIL.Test
         public void GetArrayIndicesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string contentType = null;
+            //string accept = null;
             //string arrayType = null;
-            //Object input = null;
-            //instance.GetArrayIndices(arrayType, input);
+            //string input = null;
+            //instance.GetArrayIndices(contentType, accept, arrayType, input);
             
         }
         
@@ -622,10 +625,11 @@ namespace Skymind.SKIL.Test
         public void GetArrayRangeTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string accept = null;
             //string arrayType = null;
             //int? from = null;
             //int? to = null;
-            //instance.GetArrayRange(arrayType, from, to);
+            //instance.GetArrayRange(accept, arrayType, from, to);
             
         }
         
@@ -1045,11 +1049,11 @@ namespace Skymind.SKIL.Test
         public void LogsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //LogRequest body = null;
             //string deploymentName = null;
             //string versionName = null;
             //string modelName = null;
-            //var response = instance.Logs(body, deploymentName, versionName, modelName);
+            //LogRequest logRequest = null;
+            //var response = instance.Logs(deploymentName, versionName, modelName, logRequest);
             //Assert.IsInstanceOf<LogBatch> (response, "response is LogBatch");
         }
         
@@ -1074,11 +1078,12 @@ namespace Skymind.SKIL.Test
         public void MetaPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //MetaData body = null;
+            //string contentType = null;
+            //string body = null;
             //string deploymentName = null;
             //string versionName = null;
             //string modelName = null;
-            //var response = instance.MetaPost(body, deploymentName, versionName, modelName);
+            //var response = instance.MetaPost(contentType, body, deploymentName, versionName, modelName);
             //Assert.IsInstanceOf<MetaData> (response, "response is MetaData");
         }
         
@@ -1218,24 +1223,40 @@ namespace Skymind.SKIL.Test
         public void PredictErrorTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string contentType = null;
             //string operation = null;
             //string inputType = null;
-            //Object inputData = null;
-            //instance.PredictError(operation, inputType, inputData);
+            //string inputData = null;
+            //instance.PredictError(contentType, operation, inputType, inputData);
             
         }
         
         /// <summary>
-        /// Test PredictV2
+        /// Test PredictV2File
         /// </summary>
         [Test]
-        public void PredictV2Test()
+        public void PredictV2FileTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string operation = null;
-            //string inputType = null;
+            //string inputTypeFile = null;
+            //System.IO.Stream inputData = null;
+            //instance.PredictV2File(operation, inputTypeFile, inputData);
+            
+        }
+        
+        /// <summary>
+        /// Test PredictV2Json
+        /// </summary>
+        [Test]
+        public void PredictV2JsonTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string contentType = null;
+            //string operation = null;
+            //string inputTypeJson = null;
             //string inputData = null;
-            //instance.PredictV2(operation, inputType, inputData);
+            //instance.PredictV2Json(contentType, operation, inputTypeJson, inputData);
             
         }
         
@@ -1397,7 +1418,7 @@ namespace Skymind.SKIL.Test
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //Object batchRecord = null;
+            //BatchRecord batchRecord = null;
             //var response = instance.Transformarray(deploymentName, versionName, transformName, batchRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
@@ -1442,7 +1463,7 @@ namespace Skymind.SKIL.Test
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //Object singleRecord = null;
+            //SingleRecord singleRecord = null;
             //var response = instance.Transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
             //Assert.IsInstanceOf<Base64NDArrayBody> (response, "response is Base64NDArrayBody");
         }
@@ -1483,11 +1504,12 @@ namespace Skymind.SKIL.Test
         public void TransformprocessPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string contentType = null;
             //string deploymentName = null;
             //string versionName = null;
             //string transformName = null;
-            //Object transformProcess = null;
-            //var response = instance.TransformprocessPost(deploymentName, versionName, transformName, transformProcess);
+            //string transformProcess = null;
+            //var response = instance.TransformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
             //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         

@@ -33,23 +33,10 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BatchCSVRecord" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected BatchCSVRecord() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BatchCSVRecord" /> class.
-        /// </summary>
-        /// <param name="records">records (required).</param>
+        /// <param name="records">records.</param>
         public BatchCSVRecord(List<SingleCSVRecord> records = default(List<SingleCSVRecord>))
         {
-            // to ensure "records" is required (not null)
-            if (records == null)
-            {
-                throw new InvalidDataException("records is a required property for BatchCSVRecord and cannot be null");
-            }
-            else
-            {
-                this.Records = records;
-            }
+            this.Records = records;
         }
         
         /// <summary>

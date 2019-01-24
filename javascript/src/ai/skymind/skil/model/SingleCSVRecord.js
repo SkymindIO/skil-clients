@@ -43,12 +43,11 @@
    * Constructs a new <code>SingleCSVRecord</code>.
    * @alias module:ai/skymind/skil/model/SingleCSVRecord
    * @class
-   * @param values {Array.<String>} 
    */
-  var exports = function(values) {
+  var exports = function() {
     var _this = this;
 
-    _this['values'] = values;
+
   };
 
   /**

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * LogRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class LogRequest {
   @SerializedName("offset")
   private Integer offset = null;
@@ -47,7 +47,7 @@ public class LogRequest {
    * Get offset
    * @return offset
   **/
-  @ApiModelProperty(example = "0", value = "")
+  @ApiModelProperty(value = "")
   public Integer getOffset() {
     return offset;
   }
@@ -65,7 +65,7 @@ public class LogRequest {
    * Get rowCount
    * @return rowCount
   **/
-  @ApiModelProperty(example = "2", value = "")
+  @ApiModelProperty(value = "")
   public Integer getRowCount() {
     return rowCount;
   }
@@ -83,7 +83,7 @@ public class LogRequest {
    * Get head
    * @return head
   **/
-  @ApiModelProperty(example = "false", value = "")
+  @ApiModelProperty(value = "")
   public Boolean isHead() {
     return head;
   }

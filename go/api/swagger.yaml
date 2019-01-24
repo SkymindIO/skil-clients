@@ -7,31 +7,31 @@ info:
 host: "localhost:9008"
 tags:
 - name: "User"
-  description: "Users endpoints"
+  description: "Users endpoints."
 - name: "Utilities"
-  description: "Utilities endpoints"
+  description: "Utilities endpoints."
 - name: "ModelHistory"
-  description: "Model History endpoints"
+  description: "Model History endpoints."
 - name: "Deployment"
-  description: "Deployment Endpoints"
+  description: "Deployment Endpoints."
 - name: "Transform"
-  description: "Transform endpoints"
+  description: "Transform endpoints."
 - name: "Inference"
-  description: "Inference endpoints"
+  description: "Inference endpoints."
 - name: "InferenceV2"
-  description: "Inference endpoints for model server V2"
+  description: "Inference endpoints for model server V2."
 - name: "RetrainV2"
-  description: "Retrain endpoints for model server V2"
+  description: "Retrain endpoints for model server V2."
 - name: "MemMapV2"
-  description: "Memory mapped endpoints for model server V2"
+  description: "Memory mapped endpoints for model server V2."
 - name: "KNN"
-  description: "KNN endpoints"
+  description: "KNN endpoints."
 - name: "Resource"
-  description: "Resource Endpoints"
+  description: "Resource Endpoints."
 - name: "Job"
-  description: "Job endpoints"
+  description: "Job endpoints."
 - name: "Default"
-  description: "Default tag containing all the API endpoints"
+  description: "Default tag containing all of the endpoints."
 schemes:
 - "http"
 security:
@@ -40,8 +40,8 @@ paths:
   /login:
     post:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Post JSON credentials and obtain a JWT authorization token."
       operationId: "login"
       consumes:
@@ -67,8 +67,8 @@ paths:
   /user/register:
     post:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Register a new user"
       operationId: "registerUser"
       consumes:
@@ -91,8 +91,8 @@ paths:
   /user/{userId}:
     get:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Get a user by user ID"
       operationId: "getUser"
       produces:
@@ -112,8 +112,8 @@ paths:
   /user:
     put:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Update a user"
       operationId: "updateUser"
       consumes:
@@ -136,8 +136,8 @@ paths:
   /user/{userId}/password:
     post:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Change user's password"
       operationId: "changeUserPassword"
       consumes:
@@ -166,8 +166,8 @@ paths:
   /auth/policy:
     get:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Get auth policy"
       operationId: "getAuthPolicy"
       produces:
@@ -180,8 +180,8 @@ paths:
             $ref: "#/definitions/AuthPolicy"
     put:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Update auth policy"
       operationId: "updateAuthPolicy"
       consumes:
@@ -204,8 +204,8 @@ paths:
   /auth/token:
     post:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Generate new auth token"
       operationId: "generateAuthToken"
       consumes:
@@ -228,8 +228,8 @@ paths:
   /auth/{userId}/tokens:
     get:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Get auth tokens for a user."
       operationId: "getUserAuthTokens"
       produces:
@@ -258,8 +258,8 @@ paths:
   /auth/token/{tokenId}:
     delete:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Revoke a user token."
       operationId: "revokeUserToken"
       produces:
@@ -280,8 +280,8 @@ paths:
   /security/users:
     get:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Get all users."
       operationId: "getUsers"
       produces:
@@ -297,8 +297,8 @@ paths:
   /security/roles:
     get:
       tags:
-      - "Default"
       - "User"
+      - "Default"
       summary: "Get all roles."
       operationId: "getRoles"
       produces:
@@ -314,8 +314,8 @@ paths:
   /api/upload/model:
     post:
       tags:
-      - "Default"
       - "Utilities"
+      - "Default"
       summary: "Upload a model file to SKIL for import."
       operationId: "upload"
       consumes:
@@ -337,8 +337,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
     get:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Gets the JSON string of the deployed transform process (CSV or Image)"
       operationId: "transformprocess_get"
       produces:
@@ -375,16 +375,24 @@ paths:
           description: "internal server error"
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Sets the deployed (CSV or Image) transform process through the provided\
         \ JSON string"
       operationId: "transformprocess_post"
       consumes:
-      - "application/json"
+      - "text/plain"
       produces:
       - "application/json"
       parameters:
+      - name: "Content-Type"
+        in: "header"
+        description: "The `Content-Type` should be `application/json`."
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        x-exportParamName: "ContentType"
       - name: "deploymentName"
         in: "path"
         description: "Name of the deployment group"
@@ -406,11 +414,12 @@ paths:
         x-exportParamName: "TransformName"
       - in: "body"
         name: "TransformProcess"
-        description: "The transform process to set"
+        description: "The transform process to set (Specify a JSON string here)."
         required: false
         schema:
-          type: "object"
+          type: "string"
         x-exportParamName: "TransformProcess"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "transform process set successfully"
@@ -422,8 +431,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Takes SingleCSVRecord as input and returns the transformed array as\
         \ SingleCSVRecord"
       description: "Takes a SingleCSVRecord object and transforms it into the desired\
@@ -462,7 +471,7 @@ paths:
         x-exportParamName: "SingleCSVRecord"
       responses:
         200:
-          description: "array transformed and returned successfully"
+          description: "Array transformed and returned successfully"
           schema:
             $ref: "#/definitions/SingleCSVRecord"
         500:
@@ -470,8 +479,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform:
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord"
       description: "Takes a batch of SingleCSVRecord object and transforms it into\
         \ the desired format"
@@ -517,8 +526,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Same as /transformincremental but returns Base64NDArrayBody."
       operationId: "transformincrementalarray"
       consumes:
@@ -550,7 +559,7 @@ paths:
         description: "The input record array"
         required: false
         schema:
-          type: "object"
+          $ref: "#/definitions/SingleRecord"
         x-exportParamName: "SingleRecord"
       responses:
         200:
@@ -562,8 +571,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Takes a batch input arrays and transforms it"
       operationId: "transformarray"
       consumes:
@@ -595,7 +604,7 @@ paths:
         description: "The input batch of record arrays"
         required: false
         schema:
-          type: "object"
+          $ref: "#/definitions/BatchRecord"
         x-exportParamName: "BatchRecord"
       responses:
         200:
@@ -607,8 +616,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage:
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Takes a single multipart image file to transform and returns Base64NDArrayBody"
       description: "Takes a single multipart image file and transforms it into the\
         \ desired format and returns it in the form of Base64NDArrayBody"
@@ -655,8 +664,8 @@ paths:
   /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
     post:
       tags:
-      - "Default"
       - "Transform"
+      - "Default"
       summary: "Takes multiple multipart image file to transform and returns Base64NDArrayBody"
       description: "Takes multiple multipart image file and transforms it into the\
         \ desired format and returns it in the form of Base64NDArrayBody"
@@ -706,8 +715,8 @@ paths:
   /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn:
     post:
       tags:
-      - "Default"
       - "KNN"
+      - "Default"
       summary: "Runs knn on the given index with the given k"
       description: "Runs knn on the given index with the given k (note that this is\
         \ for data already within the existing dataset not new data)"
@@ -754,8 +763,8 @@ paths:
   /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew:
     post:
       tags:
-      - "Default"
       - "KNN"
+      - "Default"
       summary: "Run a k nearest neighbors search on a NEW data point"
       operationId: "knnnew"
       consumes:
@@ -801,8 +810,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Run inference on the input array."
       operationId: "predict"
       consumes:
@@ -848,8 +857,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Run inference on the input array, using input image file from multipart\
         \ form data."
       operationId: "predictimage"
@@ -893,8 +902,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Get the output from the network, based on the given INDArray[] input"
       description: "Networks with multiple input/output are supported via this method.\
         \ A Normalizer will be used if needsPreProcessing is set to true. The output/returned\
@@ -944,8 +953,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Get the output from the network using the given image file using the\
         \ /multipredict endpoint's method"
       description: "Networks with multiple input/output are supported via this method.\
@@ -1007,8 +1016,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Use the deployed model to classify the input"
       operationId: "classify"
       consumes:
@@ -1054,8 +1063,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Use the deployed model to classify the input, using input image file\
         \ from multipart form data."
       operationId: "classifyimage"
@@ -1099,8 +1108,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Same as /classify but returns the output as Base64NDArrayBody"
       operationId: "classifyarray"
       consumes:
@@ -1146,8 +1155,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Represents all of the labels for a given classification"
       operationId: "multiclassify"
       consumes:
@@ -1193,8 +1202,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Set the model to be served"
       operationId: "modelset"
       consumes:
@@ -1237,8 +1246,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Update the model to be served"
       operationId: "modelupdate"
       consumes:
@@ -1281,8 +1290,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Run inference on the input and returns it as a JsonArrayResponse"
       operationId: "jsonarray"
       consumes:
@@ -1326,8 +1335,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Preprocesses the input and run inference on it"
       operationId: "predictwithpreprocess"
       consumes:
@@ -1373,8 +1382,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Preprocesses the input and run inference on it and returns it as a\
         \ JsonArrayResponse"
       operationId: "predictwithpreprocessjson"
@@ -1421,8 +1430,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Get logs"
       operationId: "logs"
       consumes:
@@ -1430,13 +1439,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "the the log request"
-        required: true
-        schema:
-          $ref: "#/definitions/LogRequest"
-        x-exportParamName: "Body"
       - name: "deploymentName"
         in: "path"
         description: "Name of the deployment group"
@@ -1456,9 +1458,16 @@ paths:
         required: true
         type: "string"
         x-exportParamName: "ModelName"
+      - in: "body"
+        name: "LogRequest"
+        description: "The log object"
+        required: true
+        schema:
+          $ref: "#/definitions/LogRequest"
+        x-exportParamName: "LogRequest"
       responses:
         200:
-          description: "logs obtained successfully"
+          description: "Logs obtained successfully"
           schema:
             $ref: "#/definitions/LogBatch"
         500:
@@ -1466,8 +1475,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath:
     get:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Get logs file path"
       operationId: "logfilepath"
       produces:
@@ -1503,8 +1512,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta:
     get:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "this method can be used to get the meta data for the current model\
         \ which set to the server"
       operationId: "meta_get"
@@ -1539,22 +1548,30 @@ paths:
             $ref: "#/definitions/MetaData"
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "This method can be used to set meta data for the current model which\
         \ is set to the server"
       operationId: "meta_post"
       consumes:
-      - "application/json"
+      - "text/plain"
       produces:
       - "application/json"
       parameters:
+      - name: "Content-Type"
+        in: "header"
+        description: "The `Content-Type` should always be `application/json`"
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        x-exportParamName: "ContentType"
       - in: "body"
         name: "body"
         description: "the meta data object"
         required: true
         schema:
-          $ref: "#/definitions/MetaData"
+          type: "string"
         x-exportParamName: "Body"
       - name: "deploymentName"
         in: "path"
@@ -1583,8 +1600,8 @@ paths:
   /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects:
     post:
       tags:
-      - "Default"
       - "Inference"
+      - "Default"
       summary: "Detect the objects, given a (input) prediction request"
       operationId: "detectobjects"
       consumes:
@@ -1646,8 +1663,8 @@ paths:
   /deployments:
     get:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Get a list of deployments"
       operationId: "deployments"
       produces:
@@ -1663,8 +1680,8 @@ paths:
   /deployment/{deploymentId}:
     get:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Get a deployment details by id"
       operationId: "deployment_get"
       produces:
@@ -1683,8 +1700,8 @@ paths:
             $ref: "#/definitions/DeploymentResponse"
     delete:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Delete a deployment by id"
       operationId: "deployment_delete"
       produces:
@@ -1704,8 +1721,8 @@ paths:
   /deployment:
     post:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Create a new deployment group."
       operationId: "deploymentCreate"
       consumes:
@@ -1730,8 +1747,8 @@ paths:
   /deployment/{deploymentId}/models:
     get:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Retrieve a list of all the deployed models given a deployment id"
       operationId: "models"
       produces:
@@ -1753,8 +1770,8 @@ paths:
   /deployment/{deploymentId}/model:
     post:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Deploy a model in a deployment group."
       operationId: "deployModel"
       consumes:
@@ -1783,8 +1800,8 @@ paths:
   /deployment/{deploymentId}/model/{modelId}:
     post:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Reimport a model to a previous deployed model in a deployment"
       operationId: "reimportModel"
       consumes:
@@ -1818,8 +1835,8 @@ paths:
             $ref: "#/definitions/ModelEntity"
     delete:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Delete a model by deployment and model id"
       operationId: "delete_model"
       produces:
@@ -1845,8 +1862,8 @@ paths:
   /deployment/{deploymentId}/model/{modelId}/state:
     post:
       tags:
-      - "Default"
       - "Deployment"
+      - "Default"
       summary: "Modify the state (start/stop) of a deployed model"
       operationId: "modelStateChange"
       consumes:
@@ -1881,8 +1898,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Gets a model history, given its ID"
       operationId: "getModelHistory"
       produces:
@@ -1894,7 +1911,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
@@ -1910,8 +1926,8 @@ paths:
   /rpc/{modelHistoryServerId}/modelhistory:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Add a model history / workspace"
       operationId: "addModelHistory"
       consumes:
@@ -1925,7 +1941,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "addModelHistoryRequest"
@@ -1942,8 +1957,8 @@ paths:
   /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Update a model history / workspace"
       operationId: "updateModelHistory"
       consumes:
@@ -1957,14 +1972,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "the GUID of the model history / workspace to update"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryID"
       - in: "body"
         name: "updateModelHistoryRequest"
@@ -1980,8 +1993,8 @@ paths:
             $ref: "#/definitions/ModelHistoryEntity"
     delete:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Deletes a model history / workspace, given its ID"
       operationId: "deleteModelHistory"
       produces:
@@ -1993,14 +2006,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "the GUID of the model history / workspace to delete"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryID"
       responses:
         200:
@@ -2014,8 +2025,8 @@ paths:
   /rpc/{modelHistoryServerId}/experiments:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "List all of the experiments in every model history / workspace"
       operationId: "listAllExperiments"
       produces:
@@ -2027,7 +2038,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       responses:
         200:
@@ -2039,8 +2049,8 @@ paths:
   /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Obtain all experiments for a model history / workspace"
       operationId: "getExperimentsForModelHistory"
       produces:
@@ -2052,14 +2062,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelHistoryID"
         in: "path"
         description: "the GUID of the model history / workspace"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryID"
       responses:
         200:
@@ -2069,8 +2077,8 @@ paths:
   /rpc/{modelHistoryServerId}/experiment/{experimentID}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Obtain an experiment's details, given its ID"
       operationId: "getExperiment"
       produces:
@@ -2082,14 +2090,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment to obtain"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ExperimentID"
       responses:
         200:
@@ -2098,8 +2104,8 @@ paths:
             $ref: "#/definitions/ExperimentEntity"
     put:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Updates an experiment, given an experiment entity"
       operationId: "updateExperiment"
       consumes:
@@ -2113,14 +2119,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment to update"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ExperimentID"
       - in: "body"
         name: "experimentEntity"
@@ -2136,8 +2140,8 @@ paths:
             $ref: "#/definitions/ExperimentEntity"
     delete:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Deletes an experiment, given an experiment entity"
       operationId: "deleteExperiment"
       produces:
@@ -2149,14 +2153,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment to delete"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ExperimentID"
       responses:
         200:
@@ -2170,8 +2172,8 @@ paths:
   /rpc/{modelHistoryServerId}/experiment:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Add an experiment, given an experiment entity"
       operationId: "addExperiment"
       consumes:
@@ -2185,7 +2187,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "experimentEntity"
@@ -2202,8 +2203,8 @@ paths:
   /rpc/{modelHistoryServerId}/experiment/best:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Updates the best model for an experiment"
       operationId: "updateBestModelForExperiment"
       consumes:
@@ -2217,7 +2218,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "updateBestModel"
@@ -2235,8 +2235,8 @@ paths:
   /rpc/{modelHistoryServerId}/experiment/{experimentID}/models:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Obtain a list of all the models for an experiment"
       operationId: "getModelsForExperiment"
       produces:
@@ -2248,14 +2248,12 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "experimentID"
         in: "path"
         description: "the GUID of the experiment"
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ExperimentID"
       responses:
         200:
@@ -2267,8 +2265,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/{modelInstanceID}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Gets a model instance, given its ID"
       operationId: "getModelInstance"
       produces:
@@ -2280,7 +2278,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelInstanceID"
         in: "path"
@@ -2295,8 +2292,8 @@ paths:
             $ref: "#/definitions/ModelInstanceEntity"
     delete:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Deletes a model instance, given its ID"
       operationId: "deleteModelInstance"
       produces:
@@ -2308,7 +2305,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelInstanceID"
         in: "path"
@@ -2322,8 +2318,8 @@ paths:
   /rpc/{modelHistoryServerId}/model:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Adds a model"
       operationId: "addModelInstance"
       consumes:
@@ -2337,7 +2333,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "modelInstanceEntity"
@@ -2355,8 +2350,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/best:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Gets the best model among the given model instance IDs, based on the\
         \ evaluation type and column metric"
       operationId: "getBestModelAmongModelIds"
@@ -2371,7 +2366,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "bestModel"
@@ -2389,8 +2383,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/revisions:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Creates model History"
       operationId: "createModelHistory"
       consumes:
@@ -2404,7 +2398,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "modelHistoryEntity"
@@ -2421,8 +2414,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/revisions/evaluations/:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Adds an evaluation result"
       operationId: "addEvaluationResult"
       consumes:
@@ -2436,7 +2429,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "evaluationResultsEntity"
@@ -2453,8 +2445,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Gets the list of evaluation results entity, given a model instance\
         \ ID"
       operationId: "getEvaluationForModelID"
@@ -2467,7 +2459,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "modelInstanceID"
         in: "path"
@@ -2485,8 +2476,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/aggregateresults:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Aggregates the evaluaition results of a model instance, based on the\
         \ evaluation type"
       operationId: "aggregateModelResults"
@@ -2501,7 +2492,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "aggregatePrediction"
@@ -2519,8 +2509,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Gets a minibatch for the model"
       operationId: "getMinibatch"
       produces:
@@ -2532,7 +2522,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "minibatchId"
         in: "path"
@@ -2548,8 +2537,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/minibatch:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Adds a minibatch"
       operationId: "addMinibatch"
       consumes:
@@ -2563,7 +2552,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "minibatchEntity"
@@ -2580,8 +2568,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/example/{minibatchId}:
     get:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Gets all the examples for a minibatch ID"
       operationId: "getExamplesForMinibatch"
       produces:
@@ -2593,7 +2581,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - name: "minibatchId"
         in: "path"
@@ -2611,8 +2598,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/example:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Adds an example to a minibatch"
       operationId: "addExampleToMinibatch"
       consumes:
@@ -2626,7 +2613,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "exampleEntity"
@@ -2643,8 +2629,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/exampleForBatch:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Adds a number of examples to a minibatch ID given an AddExampleRequest."
       operationId: "addExampleForBatch"
       consumes:
@@ -2658,7 +2644,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "AddExampleRequest"
@@ -2676,8 +2661,8 @@ paths:
   /rpc/{modelHistoryServerId}/model/feedback:
     post:
       tags:
-      - "Default"
       - "ModelHistory"
+      - "Default"
       summary: "Adds an evaluation feedback to the model against a given minibatch\
         \ id."
       operationId: "addModelFeedback"
@@ -2692,7 +2677,6 @@ paths:
           \ services` in a console to find out the model history server GUID."
         required: true
         type: "string"
-        format: "guid"
         x-exportParamName: "ModelHistoryServerId"
       - in: "body"
         name: "ModelFeedBackRequest"
@@ -2709,8 +2693,8 @@ paths:
   /resources/resource/{resourceId}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get the resource with the specified resource ID"
       operationId: "getResourceById"
       produces:
@@ -2731,8 +2715,8 @@ paths:
   /resources/details/{resourceId}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get the resource details with the specified resource ID"
       description: "Get the details for the resource, for the given ID. Note that\
         \ a 'ResourceDetails' object contains specific information\nabout the resource\
@@ -2759,8 +2743,8 @@ paths:
   /resources/resources:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "A list of all known/registered resources, of all types"
       operationId: "getResources"
       produces:
@@ -2776,8 +2760,8 @@ paths:
   /resources/resources/type/{resourceType}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get all the resources with the specified resource type"
       operationId: "getResourceByType"
       produces:
@@ -2802,8 +2786,8 @@ paths:
   /resources/resources/subtype/{resourceSubType}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get all the resources with the specified resource subtype"
       operationId: "getResourceBySubType"
       produces:
@@ -2834,8 +2818,8 @@ paths:
   /resources/add/resource:
     post:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Adds a resource"
       operationId: "addResource"
       consumes:
@@ -2859,8 +2843,8 @@ paths:
   /resources/remove/resource/{resourceId}:
     delete:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Delete the resource with the specified resource ID"
       operationId: "deleteResourceById"
       produces:
@@ -2881,8 +2865,8 @@ paths:
   /resources/group/{resourceGroupId}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get the resource group with the specified resource group ID"
       operationId: "getResourceGroupById"
       produces:
@@ -2903,8 +2887,8 @@ paths:
   /resources/groups:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get a list of all the resource groups"
       operationId: "getResourceGroups"
       produces:
@@ -2920,8 +2904,8 @@ paths:
   /resources/add/group:
     post:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Adds a resource group"
       operationId: "addResourceGroup"
       consumes:
@@ -2944,8 +2928,8 @@ paths:
   /resources/remove/group/{resourceGroupId}:
     delete:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Delete the resource group with the specified resource group ID"
       operationId: "deleteResourceGroupById"
       produces:
@@ -2966,8 +2950,8 @@ paths:
   /resources/add/resourcetogroup/{resourceGroupId}/{resourceId}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Adds a resource to a resource group"
       operationId: "addResourceToGroup"
       produces:
@@ -2993,8 +2977,8 @@ paths:
   /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Removes a resource from a resource group"
       operationId: "deleteResourceFromGroup"
       produces:
@@ -3020,8 +3004,8 @@ paths:
   /resources/group/{resourceGroupId}/resources:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get all resources from a resource group"
       operationId: "getResourcesFromGroup"
       produces:
@@ -3044,8 +3028,8 @@ paths:
   /resources/credentials/{credentialId}:
     get:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Get credentials given an ID"
       operationId: "getCredentialsById"
       produces:
@@ -3065,8 +3049,8 @@ paths:
             $ref: "#/definitions/ResourceCredentials"
     delete:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Delete credentials given an ID"
       operationId: "deleteCredentialsById"
       produces:
@@ -3085,8 +3069,8 @@ paths:
   /resources/credentials:
     post:
       tags:
-      - "Default"
       - "Resource"
+      - "Default"
       summary: "Adds credentials"
       operationId: "addCredentials"
       consumes:
@@ -3109,8 +3093,8 @@ paths:
   /jobs/{jobIdOrType}:
     get:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Get a job by its ID"
       operationId: "getJobById"
       produces:
@@ -3130,8 +3114,8 @@ paths:
             $ref: "#/definitions/JobEntity"
     post:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Create a job"
       operationId: "createJob"
       consumes:
@@ -3162,8 +3146,8 @@ paths:
             $ref: "#/definitions/JobEntity"
     delete:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Deletes a job given its ID"
       operationId: "deleteJobById"
       produces:
@@ -3182,8 +3166,8 @@ paths:
   /jobs:
     get:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Get a list of all available jobs"
       operationId: "getAllJobs"
       produces:
@@ -3199,8 +3183,8 @@ paths:
   /jobs/{jobId}/run:
     post:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Start running an (already created) job on the remote resource"
       operationId: "runAJob"
       consumes:
@@ -3223,8 +3207,8 @@ paths:
   /jobs/{jobId}/refresh:
     get:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Refresh the remote job status. Can be used for monitoring."
       operationId: "refreshJobStatus"
       produces:
@@ -3245,8 +3229,8 @@ paths:
   /jobs/{jobId}/outputfile:
     post:
       tags:
-      - "Default"
       - "Job"
+      - "Default"
       summary: "Download the output file from the job's execution. This will ONLY\
         \ work if the job's run status is 'COMPLETE'."
       operationId: "downloadJobOutputFile"
@@ -3272,25 +3256,22 @@ paths:
       responses:
         200:
           description: "The file download has started"
-  /{operation}/{inputType}:
+  /{operation}/{inputTypeFile}:
     post:
       tags:
-      - "Default"
       - "InferenceV2"
+      - "Default"
       summary: "Runs inference based on the input data. Output is defined relative\
         \ to the output adapter specified."
-      operationId: "predictV2"
+      operationId: "predictV2File"
       consumes:
-      - "application/json"
       - "multipart/form-data"
       produces:
       - "application/json"
       parameters:
       - name: "operation"
         in: "path"
-        description: "The operation to perform on the input data. The operations `[REGRESSION,\
-          \ CLASSIFICATION, RAW]` are for\n`application/json` content-type while `[CLASSIFICATION,\
-          \ YOLO, SSD, RCNN, RAW, REGRESSION]` are for\n`multipart/form-data` content-type.\n"
+        description: "The operation to perform on the input data.\n"
         required: true
         type: "string"
         enum:
@@ -3301,11 +3282,60 @@ paths:
         - "SSD"
         - "RCNN"
         x-exportParamName: "Operation"
-      - name: "inputType"
+      - name: "inputTypeFile"
         in: "path"
-        description: "Type of the input data. The input data type. `[CSV, DICTIONARY,\
-          \ CSVPUBSUB, DICTIONARYPUBSUB]` are for\n`application/json` content-type\
-          \ while `[IMAGE, NUMPY, NDARRAY, JSON]` are for\n`multipart/form-data` content-type.\n"
+        description: "Type of the input data.\n"
+        required: true
+        type: "string"
+        enum:
+        - "IMAGE"
+        - "NUMPY"
+        - "NDARRAY"
+        - "JSON"
+        x-exportParamName: "InputTypeFile"
+      - name: "inputData"
+        in: "formData"
+        description: "The input data to run inference on."
+        required: true
+        type: "file"
+        x-exportParamName: "InputData"
+      responses:
+        200:
+          description: "Input data returned a prediction."
+  /{operation}/{inputTypeJson}:
+    post:
+      tags:
+      - "InferenceV2"
+      - "Default"
+      summary: "Runs inference based on the input data. Output is defined relative\
+        \ to the output adapter specified."
+      operationId: "predictV2Json"
+      consumes:
+      - "text/plain"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Content-Type"
+        in: "header"
+        description: "The `Content-Type` should always be `application/json`."
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        x-exportParamName: "ContentType"
+      - name: "operation"
+        in: "path"
+        description: "The operation to perform on the input data.\n"
+        required: true
+        type: "string"
+        enum:
+        - "REGRESSION"
+        - "CLASSIFICATION"
+        - "RAW"
+        x-exportParamName: "Operation"
+      - name: "inputTypeJson"
+        in: "path"
+        description: "Type of the input data.\n"
         required: true
         type: "string"
         enum:
@@ -3313,26 +3343,22 @@ paths:
         - "DICTIONARY"
         - "CSVPUBSUB"
         - "DICTIONARYPUBSUB"
-        - "IMAGE"
-        - "NUMPY"
-        - "NDARRAY"
-        - "JSON"
-        x-exportParamName: "InputType"
-      - name: "inputData"
-        in: "formData"
-        description: "The input data to run inference on."
-        required: false
-        type: "string"
+        x-exportParamName: "InputTypeJson"
+      - in: "body"
+        name: "inputData"
+        description: "The input data to run inference on. (Specify a JSON string here)"
+        required: true
+        schema:
+          type: "string"
         x-exportParamName: "InputData"
-        x-optionalDataType: "String"
       responses:
         200:
           description: "Input data returned a prediction."
   /{operation}/{inputType}/error:
     post:
       tags:
-      - "Default"
       - "InferenceV2"
+      - "Default"
       summary: "Runs inference and find invalid rows based on the input data. Output\
         \ is defined relative to the output adapter specified."
       description: "These \"error\" endpoints are slower for inference, but will also\
@@ -3340,10 +3366,18 @@ paths:
         \ errors were encountered so users can\nfix problems with input data pipelines.\n"
       operationId: "predictError"
       consumes:
-      - "application/json"
+      - "text/plain"
       produces:
       - "application/json"
       parameters:
+      - name: "Content-Type"
+        in: "header"
+        description: "The `Content-Type` should always be `application/json`."
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        x-exportParamName: "ContentType"
       - name: "operation"
         in: "path"
         description: "Operation to perform on the input data."
@@ -3369,8 +3403,9 @@ paths:
         name: "inputData"
         required: false
         schema:
-          type: "object"
+          type: "string"
         x-exportParamName: "InputData"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "Input data returned a prediction along with the skipped, invalid\
@@ -3378,8 +3413,8 @@ paths:
   /raw/{inputType}/{outputType}:
     post:
       tags:
-      - "Default"
       - "InferenceV2"
+      - "Default"
       summary: "Runs inference based on the input data. Output is defined relative\
         \ to the output adapter specified."
       operationId: "rawPredictBinary"
@@ -3422,8 +3457,8 @@ paths:
   /model:
     get:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Returns the current model being used for retraining."
       operationId: "getCurrentModel"
       produces:
@@ -3436,8 +3471,8 @@ paths:
   /feedback/{id}/json:
     post:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Gets the retraining feedback for the given batch ID."
       operationId: "addFeedbackJson"
       consumes:
@@ -3471,8 +3506,8 @@ paths:
   /clear:
     post:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Clears the accumulated data for retraining."
       operationId: "clearState"
       produces:
@@ -3486,8 +3521,8 @@ paths:
   /istraining:
     get:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Get the retraining status"
       operationId: "isTraining"
       produces:
@@ -3501,8 +3536,8 @@ paths:
   /lastevaluation:
     get:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Get the last evaluation specifications from the current model."
       operationId: "getLastEvaluation"
       produces:
@@ -3516,8 +3551,8 @@ paths:
   /numrevisions:
     get:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Gets the number of retrained models written with retraining."
       operationId: "numRevisions"
       produces:
@@ -3531,8 +3566,8 @@ paths:
   /accumulatedresults:
     get:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Tells how many retraining examples have labels associated with them."
       operationId: "accumulatedResults"
       produces:
@@ -3546,8 +3581,8 @@ paths:
   /rollback/{index}:
     post:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       summary: "Rollback to a previous revision of the model."
       operationId: "rollback"
       consumes:
@@ -3570,8 +3605,8 @@ paths:
   /feedback/{id}/{type}:
     post:
       tags:
-      - "Default"
       - "RetrainV2"
+      - "Default"
       operationId: "addFeedbackBinary"
       consumes:
       - "multipart/form-data"
@@ -3607,8 +3642,8 @@ paths:
   /array/{arrayType}:
     post:
       tags:
-      - "Default"
       - "MemMapV2"
+      - "Default"
       summary: "Get the memory mapped array based on the array type."
       description: "The array is specified through a file path, in the configuration\
         \ object, during model server deployment."
@@ -3617,6 +3652,14 @@ paths:
       - "application/json"
       - "application/octet-stream"
       parameters:
+      - name: "accept"
+        in: "header"
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        - "application/octet-stream"
+        x-exportParamName: "Accept"
       - name: "arrayType"
         in: "path"
         description: "The format in which the memory mapped array is returned."
@@ -3633,16 +3676,32 @@ paths:
   /array/indices/{arrayType}:
     post:
       tags:
-      - "Default"
       - "MemMapV2"
+      - "Default"
       summary: "Get the memory mapped array indices based on the array type."
       operationId: "getArrayIndices"
       consumes:
-      - "application/json"
+      - "text/plain"
       produces:
       - "application/json"
       - "application/octet-stream"
       parameters:
+      - name: "Content-Type"
+        in: "header"
+        description: "The `Content-Type` should always be `application/json`."
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        x-exportParamName: "ContentType"
+      - name: "accept"
+        in: "header"
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        - "application/octet-stream"
+        x-exportParamName: "Accept"
       - name: "arrayType"
         in: "path"
         description: "Format in which the memory mapped array is returned in."
@@ -3658,24 +3717,33 @@ paths:
         description: "Input indices array"
         required: false
         schema:
-          type: "object"
+          type: "string"
         x-exportParamName: "Input"
+        x-optionalDataType: "String"
       responses:
         200:
           description: "Returns the arrays given the indices."
   /array/range/{from}/{to}/{arrayType}:
     post:
       tags:
-      - "Default"
       - "MemMapV2"
+      - "Default"
       summary: "Get the memory mapped array within a range based on the array type."
       operationId: "getArrayRange"
       consumes:
       - "application/json"
-      - "application/octet-stream"
       produces:
       - "application/json"
+      - "application/octet-stream"
       parameters:
+      - name: "accept"
+        in: "header"
+        required: true
+        type: "string"
+        enum:
+        - "application/json"
+        - "application/octet-stream"
+        x-exportParamName: "Accept"
       - name: "arrayType"
         in: "path"
         description: "Format in which the memory mapped array is returned in."
@@ -3715,8 +3783,7 @@ definitions:
   TransformProcess:
     type: "object"
   SingleCSVRecord:
-    required:
-    - "values"
+    type: "object"
     properties:
       values:
         type: "array"
@@ -3727,8 +3794,7 @@ definitions:
       - "values"
       - "values"
   BatchCSVRecord:
-    required:
-    - "records"
+    type: "object"
     properties:
       records:
         type: "array"
@@ -3744,33 +3810,47 @@ definitions:
         - "values"
   ImageTransformProcess:
     type: "object"
-  SingleImageRecord:
-    required:
-    - "uri"
+  SingleRecord:
+    type: "object"
     properties:
+      values:
+        type: "array"
+        items:
+          type: "string"
       uri:
         type: "string"
-        example: "file:/E:/Image/image.jpg"
-  BatchImageRecord:
-    required:
-    - "records"
+        example: "file:///E:/Image/image.jpg"
+    example:
+      values:
+      - "values"
+      - "values"
+      uri: "file:///E:/Image/image.jpg"
+  BatchRecord:
+    type: "object"
     properties:
       records:
         type: "array"
         items:
-          $ref: "#/definitions/SingleImageRecord"
+          $ref: "#/definitions/SingleRecord"
+    example:
+      records:
+      - values:
+        - "values"
+        - "values"
+        uri: "file:///E:/Image/image.jpg"
+      - values:
+        - "values"
+        - "values"
+        uri: "file:///E:/Image/image.jpg"
   Base64NDArrayBody:
-    required:
-    - "ndarray"
+    type: "object"
     properties:
       ndarray:
         type: "string"
     example:
       ndarray: "ndarray"
   Base64NDArrayBodyKNN:
-    required:
-    - "k"
-    - "ndarray"
+    type: "object"
     properties:
       ndarray:
         type: "string"
@@ -3787,6 +3867,7 @@ definitions:
           \ to a target but forced to fill the result list until the desired k is\
           \ matched."
   NearestNeighborRequest:
+    type: "object"
     properties:
       k:
         type: "integer"
@@ -3800,6 +3881,7 @@ definitions:
       inputIndex: 3
       k: 2
   NearestNeighborsResult:
+    type: "object"
     properties:
       index:
         type: "integer"
@@ -3814,6 +3896,7 @@ definitions:
       index: 0
       label: "label"
   NearestNeighborsResults:
+    type: "object"
     properties:
       results:
         type: "array"
@@ -4264,7 +4347,6 @@ definitions:
     properties:
       array:
         type: "string"
-        format: "guid"
       shape:
         type: "array"
         items:
@@ -4301,7 +4383,6 @@ definitions:
     properties:
       id:
         type: "string"
-        format: "guid"
       needsPreProcessing:
         type: "boolean"
       prediction:
@@ -4318,7 +4399,6 @@ definitions:
     properties:
       id:
         type: "string"
-        format: "guid"
       needsPreProcessing:
         type: "boolean"
       inputs:
@@ -4375,7 +4455,6 @@ definitions:
     properties:
       id:
         type: "string"
-        format: "guid"
       needsPreProcessing:
         type: "boolean"
       outputs:
@@ -4405,6 +4484,7 @@ definitions:
       needsPreProcessing: true
       id: "id"
   ClassificationResult:
+    type: "object"
     properties:
       results:
         type: "array"
@@ -4429,6 +4509,7 @@ definitions:
       - 0.452
       - 0.452
   MultiClassClassificationResult:
+    type: "object"
     properties:
       rankedOutcomes:
         type: "array"
@@ -4463,15 +4544,17 @@ definitions:
       - - 0.4
         - 0.4
   ModelStatus:
+    type: "object"
     properties:
       status:
         type: "integer"
         example: 100
-        description: "100 - Model set successfully \n200 - Model Updated Successfully\
-          \ \n201 - Model Update Failed\n"
+        description: "100 - Model set successfully.\n200 - Model Updated Successfully.\n\
+          201 - Model Update Failed.\n"
     example:
       status: 100
   JsonArrayResponse:
+    type: "object"
     properties:
       array:
         $ref: "#/definitions/INDArray"
@@ -4479,21 +4562,22 @@ definitions:
       array:
         array: "array"
   LogRequest:
+    type: "object"
     properties:
       offset:
         type: "integer"
-        example: 0
+        format: "int32"
       rowCount:
         type: "integer"
-        example: 2
+        format: "int32"
       head:
         type: "boolean"
-        example: false
     example:
-      head: false
+      head: true
       offset: 0
-      rowCount: 2
+      rowCount: 6
   LogBatch:
+    type: "object"
     properties:
       offset:
         type: "integer"
@@ -4585,7 +4669,6 @@ definitions:
         description: "When the model history / workspace was created"
       modelHistoryId:
         type: "string"
-        format: "guid"
         description: "The GUID of the model history / workspace"
       modelName:
         type: "string"
@@ -4660,11 +4743,9 @@ definitions:
     properties:
       experimentId:
         type: "string"
-        format: "guid"
         description: "GUID of the experiment to update."
       bestModelId:
         type: "string"
-        format: "guid"
         description: "GUID of the model to set as the best model."
     example:
       bestModelId: "bestModelId"
@@ -4681,7 +4762,6 @@ definitions:
         description: "The json string for the ETL (Extract, Transform and Load)"
       modelId:
         type: "string"
-        format: "guid"
         description: "GUID of the model."
       modelLabels:
         type: "string"
@@ -4698,14 +4778,12 @@ definitions:
         description: "JSON string of the associated Zeppelin Notebook"
       evalId:
         type: "string"
-        format: "guid"
         description: "GUID for the model evaluation"
       modelName:
         type: "string"
         description: "Model's name"
       originalModelId:
         type: "string"
-        format: "guid"
         description: "Original GUID of the model (used for maintaining revisions of\
           \ a particular model)"
       modelVersion:
@@ -4713,7 +4791,6 @@ definitions:
         description: "Model version"
       experimentId:
         type: "string"
-        format: "guid"
         description: "GUID of the Experiment which is associated with the model."
     example:
       evalId: "evalId"
@@ -4737,7 +4814,6 @@ definitions:
         type: "string"
       modelInstanceId:
         type: "string"
-        format: "guid"
       created:
         type: "integer"
         format: "int64"
@@ -4771,7 +4847,6 @@ definitions:
         format: "double"
       evalId:
         type: "string"
-        format: "guid"
         description: "GUID of the evaluation"
       evalVersion:
         type: "integer"
@@ -4803,7 +4878,6 @@ definitions:
     properties:
       modelId:
         type: "string"
-        format: "guid"
         description: "GUID of model instance"
       evalType:
         type: "string"
@@ -4823,11 +4897,9 @@ definitions:
     properties:
       miniBatchId:
         type: "string"
-        format: "guid"
         description: "GUID of mini batch"
       evalId:
         type: "string"
-        format: "guid"
         description: "GUID of the evaluation"
       evalVersion:
         type: "integer"
@@ -4845,7 +4917,6 @@ definitions:
     properties:
       exampleId:
         type: "string"
-        format: "guid"
         description: "the GUID of the example"
       exampleVersion:
         type: "integer"
@@ -4859,7 +4930,6 @@ definitions:
         description: "when the example was created"
       miniBatchId:
         type: "string"
-        format: "guid"
         description: "The GUID of the minibatch"
       miniBatchVersion:
         type: "integer"
@@ -4895,7 +4965,6 @@ definitions:
         description: "the list of GUIDs for the models to get the best model from"
         items:
           type: "string"
-          format: "guid"
       columnNameMetric:
         type: "string"
         description: "Name of the column metric (in an evaluation result) to get the\
@@ -4931,7 +5000,6 @@ definitions:
     properties:
       batchId:
         type: "string"
-        format: "guid"
         description: "The GUID of the minibatch this feedback corresponds to"
       guesses:
         type: "array"
@@ -4980,7 +5048,6 @@ definitions:
         - "YARN"
       credentialId:
         type: "string"
-        format: "guid"
         description: "Credentials GUID"
     example:
       resourceId: 0
@@ -5252,9 +5319,8 @@ definitions:
         type: "string"
         description: "Name of the new resource"
       resourceDetails:
-        type: "object"
-        description: "One of the resource details object"
-        properties: {}
+        type: "string"
+        description: "One of the resource details object (Specify a JSON string here)"
       credentialUri:
         type: "string"
         description: "URI of the credentials. If this is present, you can leave out\
@@ -5284,7 +5350,7 @@ definitions:
         description: "ID of the credentials. If this is given then you can leave out\
           \ the 'credentialsUri'"
     example:
-      resourceDetails: "{}"
+      resourceDetails: "resourceDetails"
       credentialId: 0
       resourceName: "resourceName"
       subType: "EMR"
@@ -5447,3 +5513,15 @@ definitions:
         type: "string"
     example:
       status: "status"
+x-samples-languages:
+- "curl"
+- "python"
+- "java"
+- "csharp"
+- "node"
+- "javascript"
+- "objectivec"
+- "php"
+- "ruby"
+- "swift"
+- "go"

@@ -44,7 +44,8 @@ class SingleCSVRecord(object):
         self._values = None
         self.discriminator = None
 
-        self.values = values
+        if values is not None:
+            self.values = values
 
     @property
     def values(self):
@@ -64,8 +65,6 @@ class SingleCSVRecord(object):
         :param values: The values of this SingleCSVRecord.  # noqa: E501
         :type: list[str]
         """
-        if values is None:
-            raise ValueError("Invalid value for `values`, must not be `None`")  # noqa: E501
 
         self._values = values
 

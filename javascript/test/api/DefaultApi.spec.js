@@ -950,10 +950,20 @@
         done();
       });
     });
-    describe('predictV2', function() {
-      it('should call predictV2 successfully', function(done) {
-        //uncomment below and update the code to test predictV2
-        //instance.predictV2(function(error) {
+    describe('predictV2File', function() {
+      it('should call predictV2File successfully', function(done) {
+        //uncomment below and update the code to test predictV2File
+        //instance.predictV2File(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('predictV2Json', function() {
+      it('should call predictV2Json successfully', function(done) {
+        //uncomment below and update the code to test predictV2Json
+        //instance.predictV2Json(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

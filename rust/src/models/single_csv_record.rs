@@ -15,29 +15,32 @@ use serde_json::Value;
 #[derive(Debug, Serialize, Deserialize)]
 pub struct SingleCsvRecord {
   #[serde(rename = "values")]
-  values: Vec<String>
+  values: Option<Vec<String>>
 }
 
 impl SingleCsvRecord {
-  pub fn new(values: Vec<String>) -> SingleCsvRecord {
+  pub fn new() -> SingleCsvRecord {
     SingleCsvRecord {
-      values: values
+      values: None
     }
   }
 
   pub fn set_values(&mut self, values: Vec<String>) {
-    self.values = values;
+    self.values = Some(values);
   }
 
   pub fn with_values(mut self, values: Vec<String>) -> SingleCsvRecord {
-    self.values = values;
+    self.values = Some(values);
     self
   }
 
-  pub fn values(&self) -> &Vec<String> {
-    &self.values
+  pub fn values(&self) -> Option<&Vec<String>> {
+    self.values.as_ref()
   }
 
+  pub fn reset_values(&mut self) {
+    self.values = None;
+  }
 
 }
 

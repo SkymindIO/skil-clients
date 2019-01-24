@@ -44,7 +44,8 @@ class Base64NDArrayBody(object):
         self._ndarray = None
         self.discriminator = None
 
-        self.ndarray = ndarray
+        if ndarray is not None:
+            self.ndarray = ndarray
 
     @property
     def ndarray(self):
@@ -64,8 +65,6 @@ class Base64NDArrayBody(object):
         :param ndarray: The ndarray of this Base64NDArrayBody.  # noqa: E501
         :type: str
         """
-        if ndarray is None:
-            raise ValueError("Invalid value for `ndarray`, must not be `None`")  # noqa: E501
 
         self._ndarray = ndarray
 

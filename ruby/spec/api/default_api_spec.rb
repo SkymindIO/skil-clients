@@ -519,6 +519,7 @@ describe 'DefaultApi' do
   # unit tests for get_array
   # Get the memory mapped array based on the array type.
   # The array is specified through a file path, in the configuration object, during model server deployment.
+  # @param accept 
   # @param array_type The format in which the memory mapped array is returned.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -530,9 +531,11 @@ describe 'DefaultApi' do
 
   # unit tests for get_array_indices
   # Get the memory mapped array indices based on the array type.
+  # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+  # @param accept 
   # @param array_type Format in which the memory mapped array is returned in.
   # @param [Hash] opts the optional parameters
-  # @option opts [Object] :input Input indices array
+  # @option opts [String] :input Input indices array
   # @return [nil]
   describe 'get_array_indices test' do
     it 'should work' do
@@ -542,6 +545,7 @@ describe 'DefaultApi' do
 
   # unit tests for get_array_range
   # Get the memory mapped array within a range based on the array type.
+  # @param accept 
   # @param array_type Format in which the memory mapped array is returned in.
   # @param from 
   # @param to 
@@ -933,10 +937,10 @@ describe 'DefaultApi' do
 
   # unit tests for logs
   # Get logs
-  # @param body the the log request
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param model_name ID or name of the deployed model
+  # @param log_request The log object
   # @param [Hash] opts the optional parameters
   # @return [LogBatch]
   describe 'logs test' do
@@ -960,6 +964,7 @@ describe 'DefaultApi' do
 
   # unit tests for meta_post
   # This method can be used to set meta data for the current model which is set to the server
+  # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;
   # @param body the meta data object
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
@@ -1097,10 +1102,11 @@ describe 'DefaultApi' do
   # unit tests for predict_error
   # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
   # These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+  # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
   # @param operation Operation to perform on the input data.
   # @param input_type Type of the input data.
   # @param [Hash] opts the optional parameters
-  # @option opts [Object] :input_data 
+  # @option opts [String] :input_data 
   # @return [nil]
   describe 'predict_error test' do
     it 'should work' do
@@ -1108,14 +1114,28 @@ describe 'DefaultApi' do
     end
   end
 
-  # unit tests for predict_v2
+  # unit tests for predict_v2_file
   # Runs inference based on the input data. Output is defined relative to the output adapter specified.
-  # @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
-  # @param input_type Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+  # @param operation The operation to perform on the input data. 
+  # @param input_type_file Type of the input data. 
+  # @param input_data The input data to run inference on.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :input_data The input data to run inference on.
   # @return [nil]
-  describe 'predict_v2 test' do
+  describe 'predict_v2_file test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for predict_v2_json
+  # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+  # @param operation The operation to perform on the input data. 
+  # @param input_type_json Type of the input data. 
+  # @param input_data The input data to run inference on. (Specify a JSON string here)
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'predict_v2_json test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -1265,7 +1285,7 @@ describe 'DefaultApi' do
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [Object] :batch_record The input batch of record arrays
+  # @option opts [BatchRecord] :batch_record The input batch of record arrays
   # @return [Base64NDArrayBody]
   describe 'transformarray test' do
     it 'should work' do
@@ -1309,7 +1329,7 @@ describe 'DefaultApi' do
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [Object] :single_record The input record array
+  # @option opts [SingleRecord] :single_record The input record array
   # @return [Base64NDArrayBody]
   describe 'transformincrementalarray test' do
     it 'should work' do
@@ -1347,11 +1367,12 @@ describe 'DefaultApi' do
 
   # unit tests for transformprocess_post
   # Sets the deployed (CSV or Image) transform process through the provided JSON string
+  # @param content_type The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.
   # @param deployment_name Name of the deployment group
   # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
   # @param transform_name ID or name of the deployed transform
   # @param [Hash] opts the optional parameters
-  # @option opts [Object] :transform_process The transform process to set
+  # @option opts [String] :transform_process The transform process to set (Specify a JSON string here).
   # @return [Object]
   describe 'transformprocess_post test' do
     it 'should work' do

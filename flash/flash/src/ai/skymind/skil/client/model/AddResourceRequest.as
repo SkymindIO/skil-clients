@@ -1,15 +1,14 @@
 package ai.skymind.skil.client.model {
 
-import ai.skymind.skil.client.model.Object;
 
     [XmlRootNode(name="AddResourceRequest")]
     public class AddResourceRequest {
         /* Name of the new resource */
         [XmlElement(name="resourceName")]
         public var resourceName: String = null;
-        /* One of the resource details object */
+        /* One of the resource details object (Specify a JSON string here) */
         [XmlElement(name="resourceDetails")]
-        public var resourceDetails: Object = NaN;
+        public var resourceDetails: String = null;
         /* URI of the credentials. If this is present, you can leave out the &#39;credentialId&#39; */
         [XmlElement(name="credentialUri")]
         public var credentialUri: String = null;

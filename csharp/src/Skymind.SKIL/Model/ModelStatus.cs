@@ -33,16 +33,16 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelStatus" /> class.
         /// </summary>
-        /// <param name="status">100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed .</param>
+        /// <param name="status">100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. .</param>
         public ModelStatus(int? status = default(int?))
         {
             this.Status = status;
         }
         
         /// <summary>
-        /// 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+        /// 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
         /// </summary>
-        /// <value>100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed </value>
+        /// <value>100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. </value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public int? Status { get; set; }
 

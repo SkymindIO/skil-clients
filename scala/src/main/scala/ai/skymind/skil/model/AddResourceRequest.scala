@@ -16,8 +16,8 @@ package ai.skymind.skil.model
 case class AddResourceRequest (
   // Name of the new resource
   ResourceName: Option[String] = None,
-  // One of the resource details object
-  ResourceDetails: Option[Any] = None,
+  // One of the resource details object (Specify a JSON string here)
+  ResourceDetails: Option[String] = None,
   // URI of the credentials. If this is present, you can leave out the 'credentialId'
   CredentialUri: Option[String] = None,
   // Resource type (whether COMPUTE or STORAGE)

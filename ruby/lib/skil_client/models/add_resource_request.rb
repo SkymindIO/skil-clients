@@ -17,7 +17,7 @@ module SkilCient
     # Name of the new resource
     attr_accessor :resource_name
 
-    # One of the resource details object
+    # One of the resource details object (Specify a JSON string here)
     attr_accessor :resource_details
 
     # URI of the credentials. If this is present, you can leave out the 'credentialId'
@@ -70,7 +70,7 @@ module SkilCient
     def self.swagger_types
       {
         :'resource_name' => :'String',
-        :'resource_details' => :'Object',
+        :'resource_details' => :'String',
         :'credential_uri' => :'String',
         :'type' => :'String',
         :'sub_type' => :'String',

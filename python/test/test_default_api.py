@@ -658,8 +658,15 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_predict_v2(self):
-        """Test case for predict_v2
+    def test_predict_v2_file(self):
+        """Test case for predict_v2_file
+
+        Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
+        """
+        pass
+
+    def test_predict_v2_json(self):
+        """Test case for predict_v2_json
 
         Runs inference based on the input data. Output is defined relative to the output adapter specified.  # noqa: E501
         """

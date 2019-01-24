@@ -10,5 +10,5 @@
 package skilclient
 
 type BatchCsvRecord struct {
-	Records []SingleCsvRecord `json:"records"`
+	Records []SingleCsvRecord `json:"records,omitempty"`
 }

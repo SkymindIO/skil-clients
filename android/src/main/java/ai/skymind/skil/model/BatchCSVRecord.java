@@ -26,7 +26,7 @@ public class BatchCSVRecord implements Serializable {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public List<SingleCSVRecord> getRecords() {
     return records;
   }

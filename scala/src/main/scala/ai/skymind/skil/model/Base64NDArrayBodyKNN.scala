@@ -15,9 +15,9 @@ package ai.skymind.skil.model
 
 case class Base64NDArrayBodyKNN (
   // the array to run the search on. Note that this must be a row vector
-  Ndarray: String,
+  Ndarray: Option[String] = None,
   // the number of results to retrieve
-  K: Integer,
+  K: Option[Integer] = None,
   // If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   ForceFillK: Option[Boolean] = None
 )

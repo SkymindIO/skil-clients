@@ -28,31 +28,43 @@ security:
 - api_key: []
 tags:
 - name: User
-  description: Users endpoints
+  description: Users endpoints.
 - name: Utilities
-  description: Utilities endpoints
+  description: Utilities endpoints.
 - name: ModelHistory
-  description: Model History endpoints
+  description: Model History endpoints.
 - name: Deployment
-  description: Deployment Endpoints
+  description: Deployment Endpoints.
 - name: Transform
-  description: Transform endpoints
+  description: Transform endpoints.
 - name: Inference
-  description: Inference endpoints
+  description: Inference endpoints.
 - name: InferenceV2
-  description: Inference endpoints for model server V2
+  description: Inference endpoints for model server V2.
 - name: RetrainV2
-  description: Retrain endpoints for model server V2
+  description: Retrain endpoints for model server V2.
 - name: MemMapV2
-  description: Memory mapped endpoints for model server V2
+  description: Memory mapped endpoints for model server V2.
 - name: KNN
-  description: KNN endpoints
+  description: KNN endpoints.
 - name: Resource
-  description: Resource Endpoints
+  description: Resource Endpoints.
 - name: Job
-  description: Job endpoints
+  description: Job endpoints.
 - name: Default
-  description: Default tag containing all the API endpoints
+  description: Default tag containing all of the endpoints.
+x-samples-languages:
+- curl
+- python
+- java
+- csharp
+- node
+- javascript
+- objectivec 
+- php
+- ruby
+- swift
+- go
 paths:
   # ---------------------------------------------------------------------------------------
   # User endpoints
@@ -62,8 +74,8 @@ paths:
       operationId: login
       summary: Post JSON credentials and obtain a JWT authorization token.
       tags:
-      - Default
       - User
+      - Default
       security: []
       consumes:
       - application/json
@@ -88,8 +100,8 @@ paths:
       operationId: registerUser
       summary: Register a new user
       tags:
-      - Default
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -111,8 +123,8 @@ paths:
       operationId: getUser
       summary: Get a user by user ID
       tags:
-      - Default
       - User
+      - Default
       produces:
       - application/json
       parameters:
@@ -131,8 +143,8 @@ paths:
       operationId: updateUser
       summary: Update a user
       tags:
-      - Default
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -154,8 +166,8 @@ paths:
       operationId: changeUserPassword
       summary: Change user's password
       tags:
-      - Default
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -182,8 +194,8 @@ paths:
       operationId: getAuthPolicy
       summary: Get auth policy
       tags:
-      - Default
       - User
+      - Default
       produces:
       - application/json
       responses:
@@ -195,8 +207,8 @@ paths:
       operationId: updateAuthPolicy
       summary: Update auth policy
       tags:
-      - Default
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -218,8 +230,8 @@ paths:
       operationId: generateAuthToken
       summary: Generate new auth token
       tags:
-      - Default
       - User
+      - Default
       consumes:
       - application/json
       produces:
@@ -241,8 +253,8 @@ paths:
       operationId: getUserAuthTokens
       summary: Get auth tokens for a user.
       tags:
-      - Default
       - User
+      - Default
       produces:
       - application/json
       parameters:
@@ -268,8 +280,8 @@ paths:
       operationId: revokeUserToken
       summary: Revoke a user token.
       tags:
-      - Default
       - User
+      - Default
       produces:
       - application/json
       parameters:
@@ -289,8 +301,8 @@ paths:
       operationId: getUsers
       summary: Get all users.
       tags:
-      - Default
       - User
+      - Default
       produces:
       - application/json
       responses:
@@ -305,8 +317,8 @@ paths:
       operationId: getRoles
       summary: Get all roles.
       tags:
-      - Default
       - User
+      - Default
       produces:
       - application/json
       responses:
@@ -324,8 +336,8 @@ paths:
       operationId: upload
       summary: Upload a model file to SKIL for import.
       tags:
-      - Default
       - Utilities
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -348,8 +360,8 @@ paths:
       operationId: transformprocess_get
       summary: Gets the JSON string of the deployed transform process (CSV or Image)
       tags:
-      - Default
       - Transform
+      - Default
       produces:
       - application/json
       parameters:
@@ -382,13 +394,20 @@ paths:
       operationId: transformprocess_post
       summary: Sets the deployed (CSV or Image) transform process through the provided JSON string
       tags:
-      - Default
       - Transform
+      - Default
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        description: The `Content-Type` should be `application/json`.
+        type: string
+        enum:
+        - application/json
       - name: deploymentName
         in: path
         description: Name of the deployment group
@@ -407,9 +426,9 @@ paths:
         type: string
       - in: body
         name: TransformProcess
-        description: The transform process to set
+        description: The transform process to set (Specify a JSON string here).
         schema:
-          type: object
+          type: string
       responses:
         200:
           description: transform process set successfully
@@ -422,8 +441,8 @@ paths:
       operationId: transformincremental_csv
       summary: Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
       tags:
-      - Default
       - Transform
+      - Default
       description: Takes a SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -453,7 +472,7 @@ paths:
           $ref: '#/definitions/SingleCSVRecord'
       responses:
         200:
-          description: array transformed and returned successfully
+          description: Array transformed and returned successfully
           schema:
             $ref: '#/definitions/SingleCSVRecord'
         500:
@@ -463,8 +482,8 @@ paths:
       operationId: transform_csv
       summary: Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
       tags:
-      - Default
       - Transform
+      - Default
       description: Takes a batch of SingleCSVRecord object and transforms it into the desired format
       consumes:
       - application/json
@@ -504,8 +523,8 @@ paths:
       operationId: transformincrementalarray
       summary: Same as /transformincremental but returns Base64NDArrayBody.
       tags:
-      - Default
       - Transform
+      - Default
       consumes:
       - application/json
       produces:
@@ -531,7 +550,7 @@ paths:
         name: SingleRecord
         description: The input record array
         schema:
-          type: object
+          $ref: '#/definitions/SingleRecord'
       responses:
         200:
           description: array transformed and returned successfully
@@ -544,8 +563,8 @@ paths:
       operationId: transformarray
       summary: Takes a batch input arrays and transforms it
       tags:
-      - Default
       - Transform
+      - Default
       consumes:
       - application/json
       produces:
@@ -571,7 +590,7 @@ paths:
         name: BatchRecord
         description: The input batch of record arrays
         schema:
-          type: object
+          $ref: '#/definitions/BatchRecord'
       responses:
         200:
           description: array transformed and returned successfully
@@ -588,8 +607,8 @@ paths:
       summary: Takes a single multipart image file to transform and returns Base64NDArrayBody
       description: Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       tags:
-      - Default
       - Transform
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -631,8 +650,8 @@ paths:
       summary: Takes multiple multipart image file to transform and returns Base64NDArrayBody
       description: Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
       tags:
-      - Default
       - Transform
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -680,8 +699,8 @@ paths:
       summary: Runs knn on the given index with the given k
       description: Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
       tags:
-      - Default
       - KNN
+      - Default
       consumes:
       - application/json
       produces:
@@ -722,8 +741,8 @@ paths:
       operationId: knnnew
       summary: Run a k nearest neighbors search on a NEW data point
       tags:
-      - Default
       - KNN
+      - Default
       consumes:
       - application/json
       produces:
@@ -768,8 +787,8 @@ paths:
       operationId: predict
       summary: Run inference on the input array.
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -811,8 +830,8 @@ paths:
       operationId: predictimage
       summary: Run inference on the input array, using input image file from multipart form data.
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -851,8 +870,8 @@ paths:
       summary: Get the output from the network, based on the given INDArray[] input
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -893,8 +912,8 @@ paths:
       summary: Get the output from the network using the given image file using the /multipredict endpoint's method
       description: Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -943,8 +962,8 @@ paths:
       operationId: classify
       summary: Use the deployed model to classify the input
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -986,8 +1005,8 @@ paths:
       operationId: classifyimage
       summary: Use the deployed model to classify the input, using input image file from multipart form data.
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1025,8 +1044,8 @@ paths:
       operationId: classifyarray
       summary: Same as /classify but returns the output as Base64NDArrayBody
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1068,8 +1087,8 @@ paths:
       operationId: multiclassify
       summary: Represents all of the labels for a given classification
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1111,8 +1130,8 @@ paths:
       operationId: modelset
       summary: Set the model to be served
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1151,8 +1170,8 @@ paths:
       operationId: modelupdate
       summary: Update the model to be served
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1191,8 +1210,8 @@ paths:
       operationId: jsonarray
       summary: Run inference on the input and returns it as a JsonArrayResponse
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1232,8 +1251,8 @@ paths:
       operationId: predictwithpreprocess
       summary: Preprocesses the input and run inference on it
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1275,8 +1294,8 @@ paths:
       operationId: predictwithpreprocessjson
       summary: Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1318,19 +1337,13 @@ paths:
       operationId: logs
       summary: Get logs
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
       - application/json
       parameters:
-      - in: body
-        name: body
-        description: the the log request
-        required: true
-        schema:
-          $ref: '#/definitions/LogRequest'
       - name: deploymentName
         in: path
         description: Name of the deployment group
@@ -1347,9 +1360,15 @@ paths:
         description: ID or name of the deployed model
         required: true
         type: string
+      - in: body
+        name: LogRequest
+        description: The log object
+        required: true
+        schema:
+          $ref: '#/definitions/LogRequest'
       responses:
         200:
-          description: logs obtained successfully
+          description: Logs obtained successfully
           schema:
             $ref: '#/definitions/LogBatch'
         500:
@@ -1359,8 +1378,8 @@ paths:
       operationId: logfilepath
       summary: Get logs file path
       tags:
-      - Default
       - Inference
+      - Default
       produces:
       - text
       parameters:
@@ -1393,8 +1412,8 @@ paths:
       operationId: meta_get
       summary: this method can be used to get the meta data for the current model which set to the server
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - application/json
       produces:
@@ -1425,19 +1444,26 @@ paths:
       operationId: meta_post
       summary: This method can be used to set meta data for the current model which is set to the server
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - in: header
+        name: Content-Type
+        required: true
+        description: The `Content-Type` should always be `application/json`
+        type: string
+        enum:
+        - application/json
       - in: body
         name: body
         description: the meta data object
         required: true
         schema:
-          $ref: '#/definitions/MetaData'
+          type: string
       - name: deploymentName
         in: path
         description: Name of the deployment group
@@ -1464,8 +1490,8 @@ paths:
       operationId: detectobjects
       summary: Detect the objects, given a (input) prediction request
       tags:
-      - Default
       - Inference
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -1521,8 +1547,8 @@ paths:
       operationId: deployments
       summary: Get a list of deployments
       tags:
-      - Default
       - Deployment
+      - Default
       produces:
       - application/json
       responses:
@@ -1537,8 +1563,8 @@ paths:
       operationId: deployment_get
       summary: Get a deployment details by id
       tags:
-      - Default
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1556,8 +1582,8 @@ paths:
       operationId: deployment_delete
       summary: Delete a deployment by id
       tags:
-      - Default
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1579,8 +1605,8 @@ paths:
       operationId: deploymentCreate
       summary: Create a new deployment group.
       tags:
-      - Default
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1604,8 +1630,8 @@ paths:
       operationId: models
       summary: Retrieve a list of all the deployed models given a deployment id
       tags:
-      - Default
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1626,8 +1652,8 @@ paths:
       operationId: deployModel
       summary: Deploy a model in a deployment group.
       tags:
-      - Default
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1654,8 +1680,8 @@ paths:
       operationId: reimportModel
       summary: Reimport a model to a previous deployed model in a deployment
       tags:
-      - Default
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1686,8 +1712,8 @@ paths:
       operationId: delete_model
       summary: Delete a model by deployment and model id
       tags:
-      - Default
       - Deployment
+      - Default
       produces:
       - application/json
       parameters:
@@ -1714,8 +1740,8 @@ paths:
       operationId: modelStateChange
       summary: Modify the state (start/stop) of a deployed model
       tags:
-      - Default
       - Deployment
+      - Default
       consumes:
       - application/json
       produces:
@@ -1750,8 +1776,8 @@ paths:
       operationId: getModelHistory
       summary: Gets a model history, given its ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1760,7 +1786,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
@@ -1776,8 +1801,8 @@ paths:
       operationId: addModelHistory
       summary: Add a model history / workspace
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1788,7 +1813,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: addModelHistoryRequest
         in: body
         required: true
@@ -1805,8 +1829,8 @@ paths:
       operationId: updateModelHistory
       summary: Update a model history / workspace
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1817,12 +1841,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the model history / workspace to update
       - name: updateModelHistoryRequest
         in: body
@@ -1839,8 +1861,8 @@ paths:
       operationId: deleteModelHistory
       summary: Deletes a model history / workspace, given its ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1849,12 +1871,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the model history / workspace to delete
       responses:
         200:
@@ -1876,8 +1896,8 @@ paths:
       operationId: listAllExperiments
       summary: List all of the experiments in every model history / workspace
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1886,7 +1906,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       responses:
         200:
           description: List of all the experiment entities.
@@ -1899,8 +1918,8 @@ paths:
       operationId: getExperimentsForModelHistory
       summary: Obtain all experiments for a model history / workspace
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1909,12 +1928,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the model history / workspace
       responses:
         200:
@@ -1926,8 +1943,8 @@ paths:
       operationId: getExperiment
       summary: Obtain an experiment's details, given its ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1936,12 +1953,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment to obtain
       responses:
         200:
@@ -1952,8 +1967,8 @@ paths:
       operationId: updateExperiment
       summary: Updates an experiment, given an experiment entity
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -1964,12 +1979,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment to update
       - name: experimentEntity
         in: body
@@ -1986,8 +1999,8 @@ paths:
       operationId: deleteExperiment
       summary: Deletes an experiment, given an experiment entity
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -1996,12 +2009,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment to delete
       responses:
         200:
@@ -2023,8 +2034,8 @@ paths:
       operationId: addExperiment
       summary: Add an experiment, given an experiment entity
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2035,7 +2046,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentEntity
         in: body
         required: true
@@ -2052,8 +2062,8 @@ paths:
       operationId: updateBestModelForExperiment
       summary: Updates the best model for an experiment
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2064,7 +2074,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: updateBestModel
         in: body
         required: true
@@ -2081,8 +2090,8 @@ paths:
       operationId: getModelsForExperiment
       summary: Obtain a list of all the models for an experiment
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2091,12 +2100,10 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: experimentID
         in: path
         type: string
         required: true
-        format: guid
         description: the GUID of the experiment
       responses:
         200:
@@ -2110,8 +2117,8 @@ paths:
       operationId: getModelInstance
       summary: Gets a model instance, given its ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2120,7 +2127,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -2135,8 +2141,8 @@ paths:
       operationId: deleteModelInstance
       summary: Deletes a model instance, given its ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2145,7 +2151,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -2159,8 +2164,8 @@ paths:
       operationId: addModelInstance
       summary: Adds a model
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2171,7 +2176,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceEntity
         in: body
         required: true
@@ -2188,8 +2192,8 @@ paths:
       operationId: getBestModelAmongModelIds
       summary: Gets the best model among the given model instance IDs, based on the evaluation type and column metric
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2200,7 +2204,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: bestModel
         in: body
         required: true
@@ -2217,8 +2220,8 @@ paths:
       operationId: createModelHistory
       summary: Creates model History
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2229,7 +2232,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelHistoryEntity
         in: body
         required: true
@@ -2246,8 +2248,8 @@ paths:
       operationId: addEvaluationResult
       summary: Adds an evaluation result
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2258,7 +2260,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: evaluationResultsEntity
         in: body
         required: true
@@ -2275,8 +2276,8 @@ paths:
       operationId: getEvaluationForModelID
       summary: Gets the list of evaluation results entity, given a model instance ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2285,7 +2286,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: modelInstanceID
         in: path
         type: string
@@ -2303,8 +2303,8 @@ paths:
       operationId: aggregateModelResults
       summary: Aggregates the evaluaition results of a model instance, based on the evaluation type
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2315,7 +2315,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: aggregatePrediction
         in: body
         required: true
@@ -2332,8 +2331,8 @@ paths:
       operationId: getMinibatch
       summary: Gets a minibatch for the model
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2342,7 +2341,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: minibatchId
         in: path
         type: string
@@ -2358,8 +2356,8 @@ paths:
       operationId: addMinibatch
       summary: Adds a minibatch
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2370,7 +2368,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: minibatchEntity
         in: body
         required: true
@@ -2387,8 +2384,8 @@ paths:
       operationId: getExamplesForMinibatch
       summary: Gets all the examples for a minibatch ID
       tags:
-      - Default
       - ModelHistory
+      - Default
       produces:
       - application/json
       parameters:
@@ -2397,7 +2394,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: minibatchId
         in: path
         type: string
@@ -2415,8 +2411,8 @@ paths:
       operationId: addExampleToMinibatch
       summary: Adds an example to a minibatch
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2427,7 +2423,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: exampleEntity
         in: body
         required: true
@@ -2444,8 +2439,8 @@ paths:
       operationId: addExampleForBatch
       summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2456,7 +2451,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: AddExampleRequest
         in: body
         required: true
@@ -2473,8 +2467,8 @@ paths:
       operationId: addModelFeedback
       summary: Adds an evaluation feedback to the model against a given minibatch id.
       tags:
-      - Default
       - ModelHistory
+      - Default
       consumes:
       - application/json
       produces:
@@ -2485,7 +2479,6 @@ paths:
         description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         required: true
         type: string
-        format: guid
       - name: ModelFeedBackRequest
         in: body
         required: true
@@ -2505,8 +2498,8 @@ paths:
       operationId: getResourceById
       summary: Get the resource with the specified resource ID
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2530,8 +2523,8 @@ paths:
         about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource'
         object contains only general information (name, id, type, subtype).
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2551,8 +2544,8 @@ paths:
       operationId: getResources
       summary: A list of all known/registered resources, of all types
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       responses:
@@ -2567,8 +2560,8 @@ paths:
       operationId: getResourceByType
       summary: Get all the resources with the specified resource type
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2592,8 +2585,8 @@ paths:
       operationId: getResourceBySubType
       summary: Get all the resources with the specified resource subtype
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2623,8 +2616,8 @@ paths:
       operationId: addResource
       summary: Adds a resource
       tags:
-      - Default
       - Resource
+      - Default
       consumes:
       - application/json
       produces:
@@ -2646,8 +2639,8 @@ paths:
       operationId: deleteResourceById
       summary: Delete the resource with the specified resource ID
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2667,8 +2660,8 @@ paths:
       operationId: getResourceGroupById
       summary: Get the resource group with the specified resource group ID
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2688,8 +2681,8 @@ paths:
       operationId: getResourceGroups
       summary: Get a list of all the resource groups
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       responses:
@@ -2704,8 +2697,8 @@ paths:
       operationId: addResourceGroup
       summary: Adds a resource group
       tags:
-      - Default
       - Resource
+      - Default
       consumes:
       - text/plain; charset=utf-8
       produces:
@@ -2727,8 +2720,8 @@ paths:
       operationId: deleteResourceGroupById
       summary: Delete the resource group with the specified resource group ID
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2748,8 +2741,8 @@ paths:
       operationId: addResourceToGroup
       summary: Adds a resource to a resource group
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2773,8 +2766,8 @@ paths:
       operationId: deleteResourceFromGroup
       summary: Removes a resource from a resource group
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2798,8 +2791,8 @@ paths:
       operationId: getResourcesFromGroup
       summary: Get all resources from a resource group
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2821,8 +2814,8 @@ paths:
       operationId: getCredentialsById
       summary: Get credentials given an ID
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2841,8 +2834,8 @@ paths:
       operationId: deleteCredentialsById
       summary: Delete credentials given an ID
       tags:
-      - Default
       - Resource
+      - Default
       produces:
       - application/json
       parameters:
@@ -2860,8 +2853,8 @@ paths:
       operationId: addCredentials
       summary: Adds credentials
       tags:
-      - Default
       - Resource
+      - Default
       consumes:
       - application/json
       produces:
@@ -2886,8 +2879,8 @@ paths:
       operationId: getJobById
       summary: Get a job by its ID
       tags:
-      - Default
       - Job
+      - Default
       produces:
       - application/json
       parameters:
@@ -2906,8 +2899,8 @@ paths:
       operationId: createJob
       summary: Create a job
       tags:
-      - Default
       - Job
+      - Default
       consumes:
       - application/json
       produces:
@@ -2936,8 +2929,8 @@ paths:
       operationId: deleteJobById
       summary: Deletes a job given its ID
       tags:
-      - Default
       - Job
+      - Default
       produces:
       - application/json
       parameters:
@@ -2955,8 +2948,8 @@ paths:
       operationId: getAllJobs
       summary: Get a list of all available jobs
       tags:
-      - Default
       - Job
+      - Default
       produces:
       - application/json
       responses:
@@ -2971,8 +2964,8 @@ paths:
       operationId: runAJob
       summary: Start running an (already created) job on the remote resource
       tags:
-      - Default
       - Job
+      - Default
       consumes:
       - application/json
       produces:
@@ -2994,8 +2987,8 @@ paths:
       operationId: refreshJobStatus
       summary: Refresh the remote job status. Can be used for monitoring.
       tags:
-      - Default
       - Job
+      - Default
       produces:
       - application/json
       parameters:
@@ -3015,8 +3008,8 @@ paths:
       operationId: downloadJobOutputFile
       summary: Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
       tags:
-      - Default
       - Job
+      - Default
       consumes:
       - application/json
       produces:
@@ -3040,15 +3033,14 @@ paths:
   # ---------------------------------------------------------------------------------------
   # Model Server v2 - Inference
   # ---------------------------------------------------------------------------------------
-  /{operation}/{inputType}:
+  /{operation}/{inputTypeFile}:
     post:
-      operationId: predictV2
+      operationId: predictV2File
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
-      - Default
       - InferenceV2
+      - Default
       consumes:
-      - application/json
       - multipart/form-data
       produces:
       - application/json
@@ -3065,10 +3057,56 @@ paths:
         - SSD
         - RCNN
         description: |
-          The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for
-          `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for
-          `multipart/form-data` content-type.
-      - name: inputType
+          The operation to perform on the input data.
+      - name: inputTypeFile
+        in:   path
+        type: string
+        required: true
+        enum:
+        - IMAGE
+        - NUMPY
+        - NDARRAY
+        - JSON
+        description: |
+          Type of the input data.
+      - name: inputData
+        in: formData
+        type: file
+        required: true
+        description: The input data to run inference on.
+      responses:
+        200:
+          description: Input data returned a prediction.
+  /{operation}/{inputTypeJson}:
+    post:
+      operationId: predictV2Json
+      summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
+      tags:
+      - InferenceV2
+      - Default
+      consumes:
+      - text/plain
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        description: The `Content-Type` should always be `application/json`.
+        required: true
+        type: string
+        enum:
+        - application/json
+      - name: operation
+        in:   path
+        type: string
+        required: true
+        enum:
+        - REGRESSION
+        - CLASSIFICATION
+        - RAW
+        description: |
+          The operation to perform on the input data.
+      - name: inputTypeJson
         in:   path
         type: string
         required: true
@@ -3077,18 +3115,14 @@ paths:
         - DICTIONARY
         - CSVPUBSUB
         - DICTIONARYPUBSUB
-        - IMAGE
-        - NUMPY
-        - NDARRAY
-        - JSON
         description: |
-          Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for
-          `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for
-          `multipart/form-data` content-type.
+          Type of the input data.
       - name: inputData
-        in: formData
-        type: string
-        description: The input data to run inference on.
+        in: body
+        schema: 
+          type: string
+        required: true
+        description: The input data to run inference on. (Specify a JSON string here)
       responses:
         200:
           description: Input data returned a prediction.
@@ -3097,17 +3131,24 @@ paths:
       operationId: predictError
       summary: Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
       tags:
-      - Default
       - InferenceV2
+      - Default
       description: |
         These "error" endpoints are slower for inference, but will also ignore invalid rows
         that are found. They will output skipped rows where errors were encountered so users can
         fix problems with input data pipelines.
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        description: The `Content-Type` should always be `application/json`.
+        required: true
+        type: string
+        enum:
+        - application/json
       - name: operation
         in:   path
         type: string
@@ -3130,7 +3171,7 @@ paths:
       - name: inputData
         in:   body
         schema: 
-          type: object
+          type: string
       responses:
         200:
           description: Input data returned a prediction along with the skipped, invalid data rows
@@ -3139,8 +3180,8 @@ paths:
       operationId: rawPredictBinary
       summary: Runs inference based on the input data. Output is defined relative to the output adapter specified.
       tags:
-      - Default
       - InferenceV2
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -3181,8 +3222,8 @@ paths:
       operationId: getCurrentModel
       summary: Returns the current model being used for retraining.
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/octet-stream
       responses:
@@ -3193,8 +3234,8 @@ paths:
       operationId: addFeedbackJson
       summary: Gets the retraining feedback for the given batch ID.
       tags:
-      - Default
       - RetrainV2
+      - Default
       consumes:
       - application/json
       produces:
@@ -3225,8 +3266,8 @@ paths:
       operationId: clearState
       summary: Clears the accumulated data for retraining.
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3239,8 +3280,8 @@ paths:
       operationId: isTraining
       summary: Get the retraining status
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3253,8 +3294,8 @@ paths:
       operationId: getLastEvaluation
       summary: Get the last evaluation specifications from the current model.
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3267,8 +3308,8 @@ paths:
       operationId: numRevisions
       summary: Gets the number of retrained models written with retraining.
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3281,8 +3322,8 @@ paths:
       operationId: accumulatedResults
       summary: Tells how many retraining examples have labels associated with them.
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/json
       responses:
@@ -3295,8 +3336,8 @@ paths:
       operationId: rollback
       summary: Rollback to a previous revision of the model.
       tags:
-      - Default
       - RetrainV2
+      - Default
       produces:
       - application/json
       consumes:
@@ -3317,8 +3358,8 @@ paths:
     post:
       operationId: addFeedbackBinary
       tags:
-      - Default
       - RetrainV2
+      - Default
       consumes:
       - multipart/form-data
       produces:
@@ -3355,12 +3396,19 @@ paths:
       summary: Get the memory mapped array based on the array type.
       description: The array is specified through a file path, in the configuration object, during model server deployment.
       tags:
-      - Default
       - MemMapV2
+      - Default
       produces:
       - application/json
       - application/octet-stream
       parameters:
+      - name: accept
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - application/octet-stream
       - name: arrayType
         type: string
         enum:
@@ -3378,14 +3426,28 @@ paths:
       operationId: getArrayIndices
       summary: Get the memory mapped array indices based on the array type.
       tags:
-      - Default
       - MemMapV2
+      - Default
       consumes:
-      - application/json
+      - text/plain
       produces:
       - application/json
       - application/octet-stream
       parameters:
+      - name: Content-Type
+        in: header
+        description: The `Content-Type` should always be `application/json`.
+        required: true
+        type: string
+        enum:
+        - application/json
+      - name: accept
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - application/octet-stream
       - name: arrayType
         type: string
         enum:
@@ -3398,7 +3460,7 @@ paths:
       - name: input
         in: body
         schema:
-          type: object
+          type: string
         description: Input indices array
       responses:
         200:
@@ -3408,14 +3470,21 @@ paths:
       operationId: getArrayRange
       summary: Get the memory mapped array within a range based on the array type.
       tags:
-      - Default
       - MemMapV2
-      produces:
-      - application/json
+      - Default
       consumes:
+      - application/json
+      produces:
       - application/json
       - application/octet-stream
       parameters:
+      - name: accept
+        in: header
+        required: true
+        type: string
+        enum: 
+        - application/json
+        - application/octet-stream
       - name: arrayType
         type: string
         enum:
@@ -3442,16 +3511,14 @@ definitions:
   TransformProcess:
     type: object
   SingleCSVRecord:
-    required:
-    - values
+    type: object
     properties:
       values:
         type: array
         items:
           type: string
   BatchCSVRecord:
-    required:
-    - records
+    type: object
     properties:
       records:
         type: array
@@ -3459,31 +3526,30 @@ definitions:
           $ref: '#/definitions/SingleCSVRecord'
   ImageTransformProcess:
     type: object
-  SingleImageRecord:
-    required:
-    - uri
+  SingleRecord:
+    type: object
     properties:
+      values:
+        type: array
+        items:
+          type: string
       uri:
         type: string
-        example: file:/E:/Image/image.jpg
-  BatchImageRecord:
-    required:
-    - records
+        example: file:///E:/Image/image.jpg
+  BatchRecord:
+    type: object
     properties:
       records:
         type: array
         items:
-          $ref: '#/definitions/SingleImageRecord'
+          $ref: '#/definitions/SingleRecord'
   Base64NDArrayBody:
-    required:
-    - ndarray
+    type: object    
     properties:
       ndarray:
         type: string
   Base64NDArrayBodyKNN:
-    required:
-    - ndarray
-    - k
+    type: object    
     properties:
       ndarray:
         type: string
@@ -3497,6 +3563,7 @@ definitions:
         example: false
         description: If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched.
   NearestNeighborRequest:
+    type: object    
     properties:
       k:
         type: integer
@@ -3507,6 +3574,7 @@ definitions:
         description: the index of the EXISTING ndarray to run a search on
         example: 3
   NearestNeighborsResult:
+    type: object    
     properties:
       index:
         type: integer
@@ -3517,6 +3585,7 @@ definitions:
       label:
         type: string
   NearestNeighborsResults:
+    type: object    
     properties:
       results:
         type: array
@@ -3789,7 +3858,6 @@ definitions:
     properties:
       array:
         type: string
-        format: guid
       shape:
         type: array
         items:
@@ -3816,7 +3884,6 @@ definitions:
     properties:
       id:
         type: string
-        format: guid
       needsPreProcessing:
         type: boolean
       prediction:
@@ -3833,7 +3900,6 @@ definitions:
     properties:
       id:
         type: string
-        format: guid
       needsPreProcessing:
         type: boolean
       inputs:
@@ -3849,7 +3915,6 @@ definitions:
     properties:
       id:
         type: string
-        format: guid
       needsPreProcessing:
         type: boolean
       outputs:
@@ -3857,6 +3922,7 @@ definitions:
         items:
           $ref: '#/definitions/INDArray'
   ClassificationResult:
+    type: object    
     properties:
       results:
         type: array
@@ -3881,6 +3947,7 @@ definitions:
       - 0.452
       - 0.452
   MultiClassClassificationResult:
+    type: object    
     properties:
       rankedOutcomes:
         type: array
@@ -3915,15 +3982,19 @@ definitions:
       - - 0.4
         - 0.4
   ModelStatus:
+    type: object    
     properties:
       status:
         type: integer
         example: 100
-        description: "100 - Model set successfully \n200 - Model Updated Successfully\
-          \ \n201 - Model Update Failed\n"
+        description: | 
+          100 - Model set successfully.
+          200 - Model Updated Successfully.
+          201 - Model Update Failed.
     example:
       status: 100
   JsonArrayResponse:
+    type: object    
     properties:
       array:
         $ref: '#/definitions/INDArray'
@@ -3931,21 +4002,18 @@ definitions:
       array:
         array: array
   LogRequest:
+    type: object    
     properties:
       offset:
         type: integer
-        example: 0
+        format: int32
       rowCount:
         type: integer
-        example: 2
+        format: int32
       head:
         type: boolean
-        example: false
-    example:
-      head: false
-      offset: 0
-      rowCount: 2
   LogBatch:
+    type: object    
     properties:
       offset:
         type: integer
@@ -4003,7 +4071,6 @@ definitions:
         description: When the model history / workspace was created
       modelHistoryId:
         type: string
-        format: guid
         description: The GUID of the model history / workspace
       modelName:
         type: string
@@ -4059,11 +4126,9 @@ definitions:
     properties:
       experimentId:
         type: string
-        format: guid
         description: GUID of the experiment to update.
       bestModelId:
         type: string
-        format: guid
         description: GUID of the model to set as the best model.
   ModelInstanceEntity:
     type: object
@@ -4077,7 +4142,6 @@ definitions:
         description: The json string for the ETL (Extract, Transform and Load)
       modelId:
         type: string
-        format: guid
         description: GUID of the model.
       modelLabels:
         type: string
@@ -4094,21 +4158,18 @@ definitions:
         description: JSON string of the associated Zeppelin Notebook
       evalId:
         type: string
-        format: guid
         description: GUID for the model evaluation
       modelName:
         type: string
         description: Model's name
       originalModelId:
         type: string
-        format: guid
         description: Original GUID of the model (used for maintaining revisions of a particular model)
       modelVersion:
         type: string
         description: Model version
       experimentId:
         type: string
-        format: guid
         description: GUID of the Experiment which is associated with the model.
   EvaluationResultsEntity:
     type: object
@@ -4119,7 +4180,6 @@ definitions:
         type: string
       modelInstanceId:
         type: string
-        format: guid
       created:
         type: integer
         format: int64
@@ -4153,7 +4213,6 @@ definitions:
         format: double
       evalId:
         type: string
-        format: guid
         description: GUID of the evaluation
       evalVersion:
         type: integer
@@ -4167,7 +4226,6 @@ definitions:
     properties:
       modelId:
         type: string
-        format: guid
         description: GUID of model instance
       evalType:
         type: string
@@ -4184,11 +4242,9 @@ definitions:
     properties:
       miniBatchId:
         type: string
-        format: guid
         description: GUID of mini batch
       evalId:
         type: string
-        format: guid
         description: GUID of the evaluation
       evalVersion:
         type: integer
@@ -4201,7 +4257,6 @@ definitions:
     properties:
       exampleId:
         type: string
-        format: guid
         description: the GUID of the example
       exampleVersion:
         type: integer
@@ -4215,7 +4270,6 @@ definitions:
         description: when the example was created
       miniBatchId:
         type: string
-        format: guid
         description: The GUID of the minibatch
       miniBatchVersion:
         type: integer
@@ -4236,7 +4290,6 @@ definitions:
         type: array
         items:
           type: string
-          format: guid
         description: the list of GUIDs for the models to get the best model from
       columnNameMetric:
         type: string
@@ -4266,7 +4319,6 @@ definitions:
     properties:
       batchId:
         type: string
-        format: guid
         description: The GUID of the minibatch this feedback corresponds to
       guesses:
         type: array
@@ -4311,7 +4363,6 @@ definitions:
       credentialId:
         type: string
         description: Credentials GUID
-        format: guid
   EMRResourceDetails:
     type: object
     properties:
@@ -4566,8 +4617,8 @@ definitions:
         type: string
         description: Name of the new resource
       resourceDetails:
-        type: object
-        description: One of the resource details object
+        type: string
+        description: One of the resource details object (Specify a JSON string here)
       credentialUri:
         type: string
         description: URI of the credentials. If this is present, you can leave out the 'credentialId'

@@ -33,34 +33,13 @@ namespace Skymind.SKIL.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Base64NDArrayBodyKNN" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Base64NDArrayBodyKNN() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Base64NDArrayBodyKNN" /> class.
-        /// </summary>
-        /// <param name="ndarray">the array to run the search on. Note that this must be a row vector (required).</param>
-        /// <param name="k">the number of results to retrieve (required).</param>
+        /// <param name="ndarray">the array to run the search on. Note that this must be a row vector.</param>
+        /// <param name="k">the number of results to retrieve.</param>
         /// <param name="forceFillK">If &#39;True&#39; it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched..</param>
         public Base64NDArrayBodyKNN(string ndarray = default(string), int? k = default(int?), bool? forceFillK = default(bool?))
         {
-            // to ensure "ndarray" is required (not null)
-            if (ndarray == null)
-            {
-                throw new InvalidDataException("ndarray is a required property for Base64NDArrayBodyKNN and cannot be null");
-            }
-            else
-            {
-                this.Ndarray = ndarray;
-            }
-            // to ensure "k" is required (not null)
-            if (k == null)
-            {
-                throw new InvalidDataException("k is a required property for Base64NDArrayBodyKNN and cannot be null");
-            }
-            else
-            {
-                this.K = k;
-            }
+            this.Ndarray = ndarray;
+            this.K = k;
             this.ForceFillK = forceFillK;
         }
         

@@ -170,7 +170,8 @@ Class | Method | HTTP request | Description
 *SkilCient::DefaultApi* | [**num_revisions**](docs/DefaultApi.md#num_revisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 *SkilCient::DefaultApi* | [**predict**](docs/DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 *SkilCient::DefaultApi* | [**predict_error**](docs/DefaultApi.md#predict_error) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-*SkilCient::DefaultApi* | [**predict_v2**](docs/DefaultApi.md#predict_v2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+*SkilCient::DefaultApi* | [**predict_v2_file**](docs/DefaultApi.md#predict_v2_file) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+*SkilCient::DefaultApi* | [**predict_v2_json**](docs/DefaultApi.md#predict_v2_json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *SkilCient::DefaultApi* | [**predictimage**](docs/DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 *SkilCient::DefaultApi* | [**predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 *SkilCient::DefaultApi* | [**predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -210,7 +211,7 @@ Class | Method | HTTP request | Description
  - [SkilCient::Base64NDArrayBody](docs/Base64NDArrayBody.md)
  - [SkilCient::Base64NDArrayBodyKNN](docs/Base64NDArrayBodyKNN.md)
  - [SkilCient::BatchCSVRecord](docs/BatchCSVRecord.md)
- - [SkilCient::BatchImageRecord](docs/BatchImageRecord.md)
+ - [SkilCient::BatchRecord](docs/BatchRecord.md)
  - [SkilCient::BestModel](docs/BestModel.md)
  - [SkilCient::ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [SkilCient::ClassificationResult](docs/ClassificationResult.md)
@@ -268,7 +269,7 @@ Class | Method | HTTP request | Description
  - [SkilCient::S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SkilCient::SetState](docs/SetState.md)
  - [SkilCient::SingleCSVRecord](docs/SingleCSVRecord.md)
- - [SkilCient::SingleImageRecord](docs/SingleImageRecord.md)
+ - [SkilCient::SingleRecord](docs/SingleRecord.md)
  - [SkilCient::Token](docs/Token.md)
  - [SkilCient::TokenGenerateRequest](docs/TokenGenerateRequest.md)
  - [SkilCient::TransformProcess](docs/TransformProcess.md)

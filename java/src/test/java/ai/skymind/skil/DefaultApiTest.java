@@ -24,6 +24,7 @@ import ai.skymind.skil.model.AuthPolicy;
 import ai.skymind.skil.model.Base64NDArrayBody;
 import ai.skymind.skil.model.Base64NDArrayBodyKNN;
 import ai.skymind.skil.model.BatchCSVRecord;
+import ai.skymind.skil.model.BatchRecord;
 import ai.skymind.skil.model.BestModel;
 import ai.skymind.skil.model.ChangePasswordRequest;
 import ai.skymind.skil.model.ClassificationResult;
@@ -68,6 +69,7 @@ import ai.skymind.skil.model.Role;
 import ai.skymind.skil.model.RollbackStatus;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
+import ai.skymind.skil.model.SingleRecord;
 import ai.skymind.skil.model.Token;
 import ai.skymind.skil.model.TokenGenerateRequest;
 import ai.skymind.skil.model.UpdateBestModel;
@@ -789,8 +791,9 @@ public class DefaultApiTest {
      */
     @Test
     public void getArrayTest() throws ApiException {
+        String accept = null;
         String arrayType = null;
-        api.getArray(arrayType);
+        api.getArray(accept, arrayType);
 
         // TODO: test validations
     }
@@ -805,9 +808,11 @@ public class DefaultApiTest {
      */
     @Test
     public void getArrayIndicesTest() throws ApiException {
+        String contentType = null;
+        String accept = null;
         String arrayType = null;
-        Object input = null;
-        api.getArrayIndices(arrayType, input);
+        String input = null;
+        api.getArrayIndices(contentType, accept, arrayType, input);
 
         // TODO: test validations
     }
@@ -822,10 +827,11 @@ public class DefaultApiTest {
      */
     @Test
     public void getArrayRangeTest() throws ApiException {
+        String accept = null;
         String arrayType = null;
         Integer from = null;
         Integer to = null;
-        api.getArrayRange(arrayType, from, to);
+        api.getArrayRange(accept, arrayType, from, to);
 
         // TODO: test validations
     }
@@ -1381,11 +1387,11 @@ public class DefaultApiTest {
      */
     @Test
     public void logsTest() throws ApiException {
-        LogRequest body = null;
         String deploymentName = null;
         String versionName = null;
         String modelName = null;
-        LogBatch response = api.logs(body, deploymentName, versionName, modelName);
+        LogRequest logRequest = null;
+        LogBatch response = api.logs(deploymentName, versionName, modelName, logRequest);
 
         // TODO: test validations
     }
@@ -1418,11 +1424,12 @@ public class DefaultApiTest {
      */
     @Test
     public void metaPostTest() throws ApiException {
-        MetaData body = null;
+        String contentType = null;
+        String body = null;
         String deploymentName = null;
         String versionName = null;
         String modelName = null;
-        MetaData response = api.metaPost(body, deploymentName, versionName, modelName);
+        MetaData response = api.metaPost(contentType, body, deploymentName, versionName, modelName);
 
         // TODO: test validations
     }
@@ -1602,10 +1609,11 @@ public class DefaultApiTest {
      */
     @Test
     public void predictErrorTest() throws ApiException {
+        String contentType = null;
         String operation = null;
         String inputType = null;
-        Object inputData = null;
-        api.predictError(operation, inputType, inputData);
+        String inputData = null;
+        api.predictError(contentType, operation, inputType, inputData);
 
         // TODO: test validations
     }
@@ -1619,11 +1627,30 @@ public class DefaultApiTest {
      *          if the Api call fails
      */
     @Test
-    public void predictV2Test() throws ApiException {
+    public void predictV2FileTest() throws ApiException {
         String operation = null;
-        String inputType = null;
+        String inputTypeFile = null;
+        File inputData = null;
+        api.predictV2File(operation, inputTypeFile, inputData);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void predictV2JsonTest() throws ApiException {
+        String contentType = null;
+        String operation = null;
+        String inputTypeJson = null;
         String inputData = null;
-        api.predictV2(operation, inputType, inputData);
+        api.predictV2Json(contentType, operation, inputTypeJson, inputData);
 
         // TODO: test validations
     }
@@ -1833,7 +1860,7 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        Object batchRecord = null;
+        BatchRecord batchRecord = null;
         Base64NDArrayBody response = api.transformarray(deploymentName, versionName, transformName, batchRecord);
 
         // TODO: test validations
@@ -1890,7 +1917,7 @@ public class DefaultApiTest {
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        Object singleRecord = null;
+        SingleRecord singleRecord = null;
         Base64NDArrayBody response = api.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
 
         // TODO: test validations
@@ -1943,11 +1970,12 @@ public class DefaultApiTest {
      */
     @Test
     public void transformprocessPostTest() throws ApiException {
+        String contentType = null;
         String deploymentName = null;
         String versionName = null;
         String transformName = null;
-        Object transformProcess = null;
-        Object response = api.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+        String transformProcess = null;
+        Object response = api.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
 
         // TODO: test validations
     }

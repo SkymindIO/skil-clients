@@ -17,9 +17,9 @@ pub struct AddResourceRequest {
   /// Name of the new resource
   #[serde(rename = "resourceName")]
   resource_name: Option<String>,
-  /// One of the resource details object
+  /// One of the resource details object (Specify a JSON string here)
   #[serde(rename = "resourceDetails")]
-  resource_details: Option<Value>,
+  resource_details: Option<String>,
   /// URI of the credentials. If this is present, you can leave out the 'credentialId'
   #[serde(rename = "credentialUri")]
   credential_uri: Option<String>,
@@ -63,16 +63,16 @@ impl AddResourceRequest {
     self.resource_name = None;
   }
 
-  pub fn set_resource_details(&mut self, resource_details: Value) {
+  pub fn set_resource_details(&mut self, resource_details: String) {
     self.resource_details = Some(resource_details);
   }
 
-  pub fn with_resource_details(mut self, resource_details: Value) -> AddResourceRequest {
+  pub fn with_resource_details(mut self, resource_details: String) -> AddResourceRequest {
     self.resource_details = Some(resource_details);
     self
   }
 
-  pub fn resource_details(&self) -> Option<&Value> {
+  pub fn resource_details(&self) -> Option<&String> {
     self.resource_details.as_ref()
   }
 

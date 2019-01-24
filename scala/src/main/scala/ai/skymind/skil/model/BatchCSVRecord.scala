@@ -14,6 +14,6 @@ package ai.skymind.skil.model
 
 
 case class BatchCSVRecord (
-  Records: List[SingleCSVRecord]
+  Records: Option[List[SingleCSVRecord]] = None
 )
 

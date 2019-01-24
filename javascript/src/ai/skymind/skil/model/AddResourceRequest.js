@@ -70,7 +70,7 @@
         obj['resourceName'] = ApiClient.convertToType(data['resourceName'], 'String');
       }
       if (data.hasOwnProperty('resourceDetails')) {
-        obj['resourceDetails'] = ApiClient.convertToType(data['resourceDetails'], Object);
+        obj['resourceDetails'] = ApiClient.convertToType(data['resourceDetails'], 'String');
       }
       if (data.hasOwnProperty('credentialUri')) {
         obj['credentialUri'] = ApiClient.convertToType(data['credentialUri'], 'String');
@@ -94,8 +94,8 @@
    */
   exports.prototype['resourceName'] = undefined;
   /**
-   * One of the resource details object
-   * @member {Object} resourceDetails
+   * One of the resource details object (Specify a JSON string here)
+   * @member {String} resourceDetails
    */
   exports.prototype['resourceDetails'] = undefined;
   /**

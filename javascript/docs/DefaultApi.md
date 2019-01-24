@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**numRevisions**](DefaultApi.md#numRevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**predictError**](DefaultApi.md#predictError) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**predictV2**](DefaultApi.md#predictV2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predictV2File**](DefaultApi.md#predictV2File) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predictV2Json**](DefaultApi.md#predictV2Json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -2307,7 +2308,7 @@ This endpoint does not need any parameter.
 
 <a name="getArray"></a>
 # **getArray**
-> getArray(arrayType)
+> getArray(accept, arrayType)
 
 Get the memory mapped array based on the array type.
 
@@ -2326,6 +2327,8 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var accept = "accept_example"; // String | 
+
 var arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
 
 
@@ -2336,13 +2339,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getArray(arrayType, callback);
+apiInstance.getArray(accept, arrayType, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **String**|  | 
  **arrayType** | **String**| The format in which the memory mapped array is returned. | 
 
 ### Return type
@@ -2360,7 +2364,7 @@ null (empty response body)
 
 <a name="getArrayIndices"></a>
 # **getArrayIndices**
-> getArrayIndices(arrayType, opts)
+> getArrayIndices(contentType, accept, arrayType, opts)
 
 Get the memory mapped array indices based on the array type.
 
@@ -2377,10 +2381,14 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+
+var accept = "accept_example"; // String | 
+
 var arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
 
 var opts = { 
-  'input': null // Object | Input indices array
+  'input': "input_example" // String | Input indices array
 };
 
 var callback = function(error, data, response) {
@@ -2390,15 +2398,17 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getArrayIndices(arrayType, opts, callback);
+apiInstance.getArrayIndices(contentType, accept, arrayType, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **accept** | **String**|  | 
  **arrayType** | **String**| Format in which the memory mapped array is returned in. | 
- **input** | **Object**| Input indices array | [optional] 
+ **input** | **String**| Input indices array | [optional] 
 
 ### Return type
 
@@ -2410,12 +2420,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 <a name="getArrayRange"></a>
 # **getArrayRange**
-> getArrayRange(arrayType, from, to)
+> getArrayRange(accept, arrayType, from, to)
 
 Get the memory mapped array within a range based on the array type.
 
@@ -2432,6 +2442,8 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var accept = "accept_example"; // String | 
+
 var arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
 
 var from = 56; // Number | 
@@ -2446,13 +2458,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.getArrayRange(arrayType, from, to, callback);
+apiInstance.getArrayRange(accept, arrayType, from, to, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **String**|  | 
  **arrayType** | **String**| Format in which the memory mapped array is returned in. | 
  **from** | **Number**|  | 
  **to** | **Number**|  | 
@@ -2467,8 +2480,8 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 <a name="getAuthPolicy"></a>
 # **getAuthPolicy**
@@ -4168,7 +4181,7 @@ No authorization required
 
 <a name="logs"></a>
 # **logs**
-> LogBatch logs(body, deploymentName, versionName, modelName)
+> LogBatch logs(deploymentName, versionName, modelName, logRequest)
 
 Get logs
 
@@ -4185,13 +4198,13 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var body = new SkilClient.LogRequest(); // LogRequest | the the log request
-
 var deploymentName = "deploymentName_example"; // String | Name of the deployment group
 
 var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 
 var modelName = "modelName_example"; // String | ID or name of the deployed model
+
+var logRequest = new SkilClient.LogRequest(); // LogRequest | The log object
 
 
 var callback = function(error, data, response) {
@@ -4201,17 +4214,17 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.logs(body, deploymentName, versionName, modelName, callback);
+apiInstance.logs(deploymentName, versionName, modelName, logRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LogRequest**](LogRequest.md)| the the log request | 
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **String**| ID or name of the deployed model | 
+ **logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -4285,7 +4298,7 @@ Name | Type | Description  | Notes
 
 <a name="metaPost"></a>
 # **metaPost**
-> MetaData metaPost(body, deploymentName, versionName, modelName)
+> MetaData metaPost(contentType, body, deploymentName, versionName, modelName)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -4302,7 +4315,9 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var body = new SkilClient.MetaData(); // MetaData | the meta data object
+var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`
+
+var body = "body_example"; // String | the meta data object
 
 var deploymentName = "deploymentName_example"; // String | Name of the deployment group
 
@@ -4318,14 +4333,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.metaPost(body, deploymentName, versionName, modelName, callback);
+apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MetaData**](MetaData.md)| the meta data object | 
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+ **body** | **String**| the meta data object | 
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **modelName** | **String**| ID or name of the deployed model | 
@@ -4340,7 +4356,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 <a name="modelStateChange"></a>
@@ -4869,7 +4885,7 @@ Name | Type | Description  | Notes
 
 <a name="predictError"></a>
 # **predictError**
-> predictError(operation, inputType, opts)
+> predictError(contentType, operation, inputType, opts)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4888,12 +4904,14 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+
 var operation = "operation_example"; // String | Operation to perform on the input data.
 
 var inputType = "inputType_example"; // String | Type of the input data.
 
 var opts = { 
-  'inputData': null // Object | 
+  'inputData': "inputData_example" // String | 
 };
 
 var callback = function(error, data, response) {
@@ -4903,16 +4921,17 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.predictError(operation, inputType, opts, callback);
+apiInstance.predictError(contentType, operation, inputType, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
  **operation** | **String**| Operation to perform on the input data. | 
  **inputType** | **String**| Type of the input data. | 
- **inputData** | **Object**|  | [optional] 
+ **inputData** | **String**|  | [optional] 
 
 ### Return type
 
@@ -4924,12 +4943,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
-<a name="predictV2"></a>
-# **predictV2**
-> predictV2(operation, inputType, opts)
+<a name="predictV2File"></a>
+# **predictV2File**
+> predictV2File(operation, inputTypeFile, inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4946,13 +4965,12 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
-var operation = "operation_example"; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
+var operation = "operation_example"; // String | The operation to perform on the input data. 
 
-var inputType = "inputType_example"; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
+var inputTypeFile = "inputTypeFile_example"; // String | Type of the input data. 
 
-var opts = { 
-  'inputData': "inputData_example" // String | The input data to run inference on.
-};
+var inputData = "/path/to/file.txt"; // File | The input data to run inference on.
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -4961,16 +4979,16 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-apiInstance.predictV2(operation, inputType, opts, callback);
+apiInstance.predictV2File(operation, inputTypeFile, inputData, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **inputType** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **inputData** | **String**| The input data to run inference on. | [optional] 
+ **operation** | **String**| The operation to perform on the input data.  | 
+ **inputTypeFile** | **String**| Type of the input data.  | 
+ **inputData** | **File**| The input data to run inference on. | 
 
 ### Return type
 
@@ -4982,7 +5000,67 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+<a name="predictV2Json"></a>
+# **predictV2Json**
+> predictV2Json(contentType, operation, inputTypeJson, inputData)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```javascript
+var SkilClient = require('skil-client');
+var defaultClient = SkilClient.ApiClient.instance;
+
+// Configure API key authorization: api_key
+var api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+
+var apiInstance = new SkilClient.DefaultApi();
+
+var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+
+var operation = "operation_example"; // String | The operation to perform on the input data. 
+
+var inputTypeJson = "inputTypeJson_example"; // String | Type of the input data. 
+
+var inputData = "inputData_example"; // String | The input data to run inference on. (Specify a JSON string here)
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **operation** | **String**| The operation to perform on the input data.  | 
+ **inputTypeJson** | **String**| Type of the input data.  | 
+ **inputData** | **String**| The input data to run inference on. (Specify a JSON string here) | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 <a name="predictimage"></a>
@@ -5625,7 +5703,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'batchRecord': null // Object | The input batch of record arrays
+  'batchRecord': new SkilClient.BatchRecord() // BatchRecord | The input batch of record arrays
 };
 
 var callback = function(error, data, response) {
@@ -5645,7 +5723,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **batchRecord** | **Object**| The input batch of record arrays | [optional] 
+ **batchRecord** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -5811,7 +5889,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'singleRecord': null // Object | The input record array
+  'singleRecord': new SkilClient.SingleRecord() // SingleRecord | The input record array
 };
 
 var callback = function(error, data, response) {
@@ -5831,7 +5909,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **singleRecord** | **Object**| The input record array | [optional] 
+ **singleRecord** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -5967,7 +6045,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> Object transformprocessPost(deploymentName, versionName, transformName, opts)
+> Object transformprocessPost(contentType, deploymentName, versionName, transformName, opts)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -5984,6 +6062,8 @@ api_key.apiKey = 'YOUR API KEY';
 
 var apiInstance = new SkilClient.DefaultApi();
 
+var contentType = "contentType_example"; // String | The `Content-Type` should be `application/json`.
+
 var deploymentName = "deploymentName_example"; // String | Name of the deployment group
 
 var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
@@ -5991,7 +6071,7 @@ var versionName = "versionName_example"; // String | Version name of the endpoin
 var transformName = "transformName_example"; // String | ID or name of the deployed transform
 
 var opts = { 
-  'transformProcess': null // Object | The transform process to set
+  'transformProcess': "transformProcess_example" // String | The transform process to set (Specify a JSON string here).
 };
 
 var callback = function(error, data, response) {
@@ -6001,17 +6081,18 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.transformprocessPost(deploymentName, versionName, transformName, opts, callback);
+apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deploymentName** | **String**| Name of the deployment group | 
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transformName** | **String**| ID or name of the deployed transform | 
- **transformProcess** | **Object**| The transform process to set | [optional] 
+ **transformProcess** | **String**| The transform process to set (Specify a JSON string here). | [optional] 
 
 ### Return type
 
@@ -6023,7 +6104,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 <a name="updateAuthPolicy"></a>

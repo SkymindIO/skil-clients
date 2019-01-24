@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Base64NDArrayBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class Base64NDArrayBody {
   @SerializedName("ndarray")
   private String ndarray = null;
@@ -41,7 +41,7 @@ public class Base64NDArrayBody {
    * Get ndarray
    * @return ndarray
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public String getNdarray() {
     return ndarray;
   }

@@ -16,6 +16,7 @@ import ai.skymind.skil.client.model.AuthPolicy;
 import ai.skymind.skil.client.model.Base64NDArrayBody;
 import ai.skymind.skil.client.model.Base64NDArrayBodyKNN;
 import ai.skymind.skil.client.model.BatchCSVRecord;
+import ai.skymind.skil.client.model.BatchRecord;
 import ai.skymind.skil.client.model.BestModel;
 import ai.skymind.skil.client.model.ChangePasswordRequest;
 import ai.skymind.skil.client.model.ClassificationResult;
@@ -61,6 +62,7 @@ import ai.skymind.skil.client.model.Role;
 import ai.skymind.skil.client.model.RollbackStatus;
 import ai.skymind.skil.client.model.SetState;
 import ai.skymind.skil.client.model.SingleCSVRecord;
+import ai.skymind.skil.client.model.SingleRecord;
 import ai.skymind.skil.client.model.Token;
 import ai.skymind.skil.client.model.TokenGenerateRequest;
 import ai.skymind.skil.client.model.UpdateBestModel;
@@ -171,7 +173,8 @@ public class DefaultApi extends SwaggerApi {
         public static const event_num_revisions: String = "num_revisions";
         public static const event_predict: String = "predict";
         public static const event_predict_error: String = "predict_error";
-        public static const event_predict_v2: String = "predict_v2";
+        public static const event_predict_v2_file: String = "predict_v2_file";
+        public static const event_predict_v2_json: String = "predict_v2_json";
         public static const event_predictimage: String = "predictimage";
         public static const event_predictwithpreprocess: String = "predictwithpreprocess";
         public static const event_predictwithpreprocessjson: String = "predictwithpreprocessjson";
@@ -1567,7 +1570,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function get_array (arrayType: String): String {
+    public function get_array (accept: String, arrayType: String): String {
         // create path and map variables
         var path: String = "/array/{arrayType}".replace(/{format}/g,"xml").replace("{" + "arrayType" + "}", getApiInvoker().escapeString(arrayType));
 
@@ -1576,12 +1579,17 @@ public class DefaultApi extends SwaggerApi {
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 
         
-        
+        headerParams["accept"] = toPathValue(accept);
+
         var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
 
         var requestId: String = getUniqueId();
@@ -1597,7 +1605,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function get_array_indices (arrayType: String, input: Object): String {
+    public function get_array_indices (contentType: String, accept: String, arrayType: String, input: String): String {
         // create path and map variables
         var path: String = "/array/indices/{arrayType}".replace(/{format}/g,"xml").replace("{" + "arrayType" + "}", getApiInvoker().escapeString(arrayType));
 
@@ -1607,7 +1615,15 @@ public class DefaultApi extends SwaggerApi {
 
         // verify required params are set
         if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
         if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
             throw new ApiError(400, "missing required params");
         }
 ) {
@@ -1615,7 +1631,9 @@ public class DefaultApi extends SwaggerApi {
         }
 
         
-        
+        headerParams["Content-Type"] = toPathValue(contentType);
+headerParams["accept"] = toPathValue(accept);
+
         var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, input, headerParams);
 
         var requestId: String = getUniqueId();
@@ -1631,7 +1649,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function get_array_range (arrayType: String, from: Number, to: Number): String {
+    public function get_array_range (accept: String, arrayType: String, from: Number, to: Number): String {
         // create path and map variables
         var path: String = "/array/range/{from}/{to}/{arrayType}".replace(/{format}/g,"xml").replace("{" + "arrayType" + "}", getApiInvoker().escapeString(arrayType)).replace("{" + "from" + "}", getApiInvoker().escapeString(from)).replace("{" + "to" + "}", getApiInvoker().escapeString(to));
 
@@ -1640,6 +1658,7 @@ public class DefaultApi extends SwaggerApi {
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
         if() {
@@ -1651,9 +1670,13 @@ public class DefaultApi extends SwaggerApi {
 ) {
             throw new ApiError(400, "missing required params");
         }
+) {
+            throw new ApiError(400, "missing required params");
+        }
 
         
-        
+        headerParams["accept"] = toPathValue(accept);
+
         var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, null, headerParams);
 
         var requestId: String = getUniqueId();
@@ -2713,7 +2736,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns LogBatch 
      */
-    public function logs (body: LogRequest, deploymentName: String, versionName: String, modelName: String): String {
+    public function logs (deploymentName: String, versionName: String, modelName: String, logRequest: LogRequest): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -2740,7 +2763,7 @@ public class DefaultApi extends SwaggerApi {
 
         
         
-        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, body, headerParams);
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, logRequest, headerParams);
 
         var requestId: String = getUniqueId();
 
@@ -2793,7 +2816,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns MetaData 
      */
-    public function meta_post (body: MetaData, deploymentName: String, versionName: String, modelName: String): String {
+    public function meta_post (contentType: String, body: String, deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -2802,6 +2825,7 @@ public class DefaultApi extends SwaggerApi {
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
@@ -2817,9 +2841,13 @@ public class DefaultApi extends SwaggerApi {
 ) {
             throw new ApiError(400, "missing required params");
         }
+) {
+            throw new ApiError(400, "missing required params");
+        }
 
         
-        
+        headerParams["Content-Type"] = toPathValue(contentType);
+
         var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, body, headerParams);
 
         var requestId: String = getUniqueId();
@@ -3189,7 +3217,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function predict_error (operation: String, inputType: String, inputData: Object): String {
+    public function predict_error (contentType: String, operation: String, inputType: String, inputData: String): String {
         // create path and map variables
         var path: String = "/{operation}/{inputType}/error".replace(/{format}/g,"xml").replace("{" + "operation" + "}", getApiInvoker().escapeString(operation)).replace("{" + "inputType" + "}", getApiInvoker().escapeString(inputType));
 
@@ -3198,6 +3226,7 @@ public class DefaultApi extends SwaggerApi {
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
         if() {
@@ -3209,9 +3238,13 @@ public class DefaultApi extends SwaggerApi {
 ) {
             throw new ApiError(400, "missing required params");
         }
+) {
+            throw new ApiError(400, "missing required params");
+        }
 
         
-        
+        headerParams["Content-Type"] = toPathValue(contentType);
+
         var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, inputData, headerParams);
 
         var requestId: String = getUniqueId();
@@ -3227,9 +3260,9 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns void 
      */
-    public function predict_v2 (operation: String, inputType: String, inputData: String): String {
+    public function predict_v2_file (operation: String, inputTypeFile: String, inputData: File): String {
         // create path and map variables
-        var path: String = "/{operation}/{inputType}".replace(/{format}/g,"xml").replace("{" + "operation" + "}", getApiInvoker().escapeString(operation)).replace("{" + "inputType" + "}", getApiInvoker().escapeString(inputType));
+        var path: String = "/{operation}/{inputTypeFile}".replace(/{format}/g,"xml").replace("{" + "operation" + "}", getApiInvoker().escapeString(operation)).replace("{" + "inputTypeFile" + "}", getApiInvoker().escapeString(inputTypeFile));
 
         // query params
         var queryParams: Dictionary = new Dictionary();
@@ -3255,7 +3288,50 @@ public class DefaultApi extends SwaggerApi {
         var requestId: String = getUniqueId();
 
         token.requestId = requestId;
-        token.completionEventType = "predict_v2";
+        token.completionEventType = "predict_v2_file";
+
+        token.returnType = null ;
+        return requestId;
+
+    }
+
+    /*
+     * Returns void 
+     */
+    public function predict_v2_json (contentType: String, operation: String, inputTypeJson: String, inputData: String): String {
+        // create path and map variables
+        var path: String = "/{operation}/{inputTypeJson}".replace(/{format}/g,"xml").replace("{" + "operation" + "}", getApiInvoker().escapeString(operation)).replace("{" + "inputTypeJson" + "}", getApiInvoker().escapeString(inputTypeJson));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        headerParams["Content-Type"] = toPathValue(contentType);
+
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, inputData, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "predict_v2_json";
 
         token.returnType = null ;
         return requestId;
@@ -3659,7 +3735,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformarray (deploymentName: String, versionName: String, transformName: String, batchRecord: Object): String {
+    public function transformarray (deploymentName: String, versionName: String, transformName: String, batchRecord: BatchRecord): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3785,7 +3861,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function transformincrementalarray (deploymentName: String, versionName: String, transformName: String, singleRecord: Object): String {
+    public function transformincrementalarray (deploymentName: String, versionName: String, transformName: String, singleRecord: SingleRecord): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3907,7 +3983,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Object 
      */
-    public function transformprocess_post (deploymentName: String, versionName: String, transformName: String, transformProcess: Object): String {
+    public function transformprocess_post (contentType: String, deploymentName: String, versionName: String, transformName: String, transformProcess: String): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "transformName" + "}", getApiInvoker().escapeString(transformName));
 
@@ -3916,6 +3992,7 @@ public class DefaultApi extends SwaggerApi {
         var headerParams: Dictionary = new Dictionary();
 
         // verify required params are set
+        if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
         if(        // verify required params are set
@@ -3931,9 +4008,13 @@ public class DefaultApi extends SwaggerApi {
 ) {
             throw new ApiError(400, "missing required params");
         }
+) {
+            throw new ApiError(400, "missing required params");
+        }
 
         
-        
+        headerParams["Content-Type"] = toPathValue(contentType);
+
         var token:AsyncToken = getApiInvoker().invokeAPI(path, "POST", queryParams, transformProcess, headerParams);
 
         var requestId: String = getUniqueId();

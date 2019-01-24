@@ -14,7 +14,7 @@ use serde_json::Value;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ModelStatus {
-  /// 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+  /// 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
   #[serde(rename = "status")]
   status: Option<i32>
 }

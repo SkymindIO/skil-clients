@@ -30,10 +30,10 @@ import java.util.List;
 /**
  * BatchCSVRecord
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class BatchCSVRecord {
   @SerializedName("records")
-  private List<SingleCSVRecord> records = new ArrayList<SingleCSVRecord>();
+  private List<SingleCSVRecord> records = null;
 
   public BatchCSVRecord records(List<SingleCSVRecord> records) {
     this.records = records;
@@ -41,6 +41,9 @@ public class BatchCSVRecord {
   }
 
   public BatchCSVRecord addRecordsItem(SingleCSVRecord recordsItem) {
+    if (this.records == null) {
+      this.records = new ArrayList<SingleCSVRecord>();
+    }
     this.records.add(recordsItem);
     return this;
   }
@@ -49,7 +52,7 @@ public class BatchCSVRecord {
    * Get records
    * @return records
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public List<SingleCSVRecord> getRecords() {
     return records;
   }

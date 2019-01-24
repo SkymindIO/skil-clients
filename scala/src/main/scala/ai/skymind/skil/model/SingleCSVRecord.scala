@@ -14,6 +14,6 @@ package ai.skymind.skil.model
 
 
 case class SingleCSVRecord (
-  Values: List[String]
+  Values: Option[List[String]] = None
 )
 

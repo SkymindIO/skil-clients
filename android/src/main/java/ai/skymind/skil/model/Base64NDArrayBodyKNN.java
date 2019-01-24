@@ -29,7 +29,7 @@ public class Base64NDArrayBodyKNN implements Serializable {
   /**
    * the array to run the search on. Note that this must be a row vector
    **/
-  @ApiModelProperty(required = true, value = "the array to run the search on. Note that this must be a row vector")
+  @ApiModelProperty(value = "the array to run the search on. Note that this must be a row vector")
   public String getNdarray() {
     return ndarray;
   }
@@ -40,7 +40,7 @@ public class Base64NDArrayBodyKNN implements Serializable {
   /**
    * the number of results to retrieve
    **/
-  @ApiModelProperty(required = true, value = "the number of results to retrieve")
+  @ApiModelProperty(value = "the number of results to retrieve")
   public Integer getK() {
     return k;
   }

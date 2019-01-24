@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**num_revisions**](DefaultApi.md#num_revisions) | **Get** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**predict_error**](DefaultApi.md#predict_error) | **Post** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**predict_v2**](DefaultApi.md#predict_v2) | **Post** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2_file**](DefaultApi.md#predict_v2_file) | **Post** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2_json**](DefaultApi.md#predict_v2_json) | **Post** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -1237,7 +1238,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_array**
-> get_array(ctx, array_type)
+> get_array(ctx, accept, array_type)
 Get the memory mapped array based on the array type.
 
 The array is specified through a file path, in the configuration object, during model server deployment.
@@ -1247,6 +1248,7 @@ The array is specified through a file path, in the configuration object, during 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **accept** | **String**|  | 
   **array_type** | **String**| The format in which the memory mapped array is returned. | 
 
 ### Return type
@@ -1265,7 +1267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_array_indices**
-> get_array_indices(ctx, array_type, optional)
+> get_array_indices(ctx, content_type, accept, array_type, optional)
 Get the memory mapped array indices based on the array type.
 
 ### Required Parameters
@@ -1273,6 +1275,8 @@ Get the memory mapped array indices based on the array type.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+  **accept** | **String**|  | 
   **array_type** | **String**| Format in which the memory mapped array is returned in. | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
@@ -1281,8 +1285,10 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **accept** | **String**|  | 
  **array_type** | **String**| Format in which the memory mapped array is returned in. | 
- **input** | [**Value**](Value.md)| Input indices array | 
+ **input** | **String**| Input indices array | 
 
 ### Return type
 
@@ -1294,13 +1300,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_array_range**
-> get_array_range(ctx, array_type, from, to)
+> get_array_range(ctx, accept, array_type, from, to)
 Get the memory mapped array within a range based on the array type.
 
 ### Required Parameters
@@ -1308,6 +1314,7 @@ Get the memory mapped array within a range based on the array type.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **accept** | **String**|  | 
   **array_type** | **String**| Format in which the memory mapped array is returned in. | 
   **from** | **i32**|  | 
   **to** | **i32**|  | 
@@ -1322,8 +1329,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2186,7 +2193,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logs**
-> ::models::LogBatch logs(ctx, body, deployment_name, version_name, model_name)
+> ::models::LogBatch logs(ctx, deployment_name, version_name, model_name, log_request)
 Get logs
 
 ### Required Parameters
@@ -2194,10 +2201,10 @@ Get logs
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **body** | [**LogRequest**](LogRequest.md)| the the log request | 
   **deployment_name** | **String**| Name of the deployment group | 
   **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
+  **log_request** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -2243,7 +2250,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_post**
-> ::models::MetaData meta_post(ctx, body, deployment_name, version_name, model_name)
+> ::models::MetaData meta_post(ctx, content_type, body, deployment_name, version_name, model_name)
 This method can be used to set meta data for the current model which is set to the server
 
 ### Required Parameters
@@ -2251,7 +2258,8 @@ This method can be used to set meta data for the current model which is set to t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **body** | [**MetaData**](MetaData.md)| the meta data object | 
+  **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+  **body** | **String**| the meta data object | 
   **deployment_name** | **String**| Name of the deployment group | 
   **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **model_name** | **String**| ID or name of the deployed model | 
@@ -2266,7 +2274,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2538,7 +2546,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict_error**
-> predict_error(ctx, operation, input_type, optional)
+> predict_error(ctx, content_type, operation, input_type, optional)
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
 These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
@@ -2548,6 +2556,7 @@ These \"error\" endpoints are slower for inference, but will also ignore invalid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
   **operation** | **String**| Operation to perform on the input data. | 
   **input_type** | **String**| Type of the input data. | 
  **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
@@ -2557,9 +2566,10 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
  **operation** | **String**| Operation to perform on the input data. | 
  **input_type** | **String**| Type of the input data. | 
- **input_data** | [**Value**](Value.md)|  | 
+ **input_data** | **String**|  | 
 
 ### Return type
 
@@ -2571,13 +2581,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **predict_v2**
-> predict_v2(ctx, operation, input_type, optional)
+# **predict_v2_file**
+> predict_v2_file(ctx, operation, input_type_file, input_data)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Required Parameters
@@ -2585,18 +2595,9 @@ Runs inference based on the input data. Output is defined relative to the output
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
-  **input_type** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_type** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_data** | **String**| The input data to run inference on. | 
+  **operation** | **String**| The operation to perform on the input data.  | 
+  **input_type_file** | **String**| Type of the input data.  | 
+  **input_data** | **File**| The input data to run inference on. | 
 
 ### Return type
 
@@ -2608,7 +2609,36 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **predict_v2_json**
+> predict_v2_json(ctx, content_type, operation, input_type_json, input_data)
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+  **operation** | **String**| The operation to perform on the input data.  | 
+  **input_type_json** | **String**| Type of the input data.  | 
+  **input_data** | **String**| The input data to run inference on. (Specify a JSON string here) | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2968,7 +2998,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **batch_record** | [**Value**](Value.md)| The input batch of record arrays | 
+ **batch_record** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -3079,7 +3109,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **single_record** | [**Value**](Value.md)| The input record array | 
+ **single_record** | [**SingleRecord**](SingleRecord.md)| The input record array | 
 
 ### Return type
 
@@ -3156,7 +3186,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> Value transformprocess_post(ctx, deployment_name, version_name, transform_name, optional)
+> Value transformprocess_post(ctx, content_type, deployment_name, version_name, transform_name, optional)
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
@@ -3164,6 +3194,7 @@ Sets the deployed (CSV or Image) transform process through the provided JSON str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **content_type** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
   **deployment_name** | **String**| Name of the deployment group | 
   **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transform_name** | **String**| ID or name of the deployed transform | 
@@ -3174,10 +3205,11 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **transform_process** | [**Value**](Value.md)| The transform process to set | 
+ **transform_process** | **String**| The transform process to set (Specify a JSON string here). | 
 
 ### Return type
 
@@ -3189,7 +3221,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

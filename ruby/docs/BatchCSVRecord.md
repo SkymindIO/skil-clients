@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**records** | [**Array&lt;SingleCSVRecord&gt;**](SingleCSVRecord.md) |  | 
+**records** | [**Array&lt;SingleCSVRecord&gt;**](SingleCSVRecord.md) |  | [optional] 
 
 

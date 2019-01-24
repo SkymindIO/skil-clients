@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**num_revisions**](DefaultApi.md#num_revisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**predict_error**](DefaultApi.md#predict_error) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**predict_v2**](DefaultApi.md#predict_v2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2_file**](DefaultApi.md#predict_v2_file) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2_json**](DefaultApi.md#predict_v2_json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -2340,7 +2341,7 @@ This endpoint does not need any parameter.
 
 
 # **get_array**
-> get_array(array_type)
+> get_array(accept, array_type)
 
 Get the memory mapped array based on the array type.
 
@@ -2360,12 +2361,14 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+accept = 'accept_example' # String | 
+
 array_type = 'array_type_example' # String | The format in which the memory mapped array is returned.
 
 
 begin
   #Get the memory mapped array based on the array type.
-  api_instance.get_array(array_type)
+  api_instance.get_array(accept, array_type)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->get_array: #{e}"
 end
@@ -2375,6 +2378,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **String**|  | 
  **array_type** | **String**| The format in which the memory mapped array is returned. | 
 
 ### Return type
@@ -2393,7 +2397,7 @@ nil (empty response body)
 
 
 # **get_array_indices**
-> get_array_indices(array_type, opts)
+> get_array_indices(content_type, accept, array_type, opts)
 
 Get the memory mapped array indices based on the array type.
 
@@ -2411,15 +2415,19 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`.
+
+accept = 'accept_example' # String | 
+
 array_type = 'array_type_example' # String | Format in which the memory mapped array is returned in.
 
 opts = { 
-  input: nil # Object | Input indices array
+  input: 'input_example' # String | Input indices array
 }
 
 begin
   #Get the memory mapped array indices based on the array type.
-  api_instance.get_array_indices(array_type, opts)
+  api_instance.get_array_indices(content_type, accept, array_type, opts)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->get_array_indices: #{e}"
 end
@@ -2429,8 +2437,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **accept** | **String**|  | 
  **array_type** | **String**| Format in which the memory mapped array is returned in. | 
- **input** | **Object**| Input indices array | [optional] 
+ **input** | **String**| Input indices array | [optional] 
 
 ### Return type
 
@@ -2442,13 +2452,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 
 
 # **get_array_range**
-> get_array_range(array_type, from, to)
+> get_array_range(accept, array_type, from, to)
 
 Get the memory mapped array within a range based on the array type.
 
@@ -2466,6 +2476,8 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+accept = 'accept_example' # String | 
+
 array_type = 'array_type_example' # String | Format in which the memory mapped array is returned in.
 
 from = 56 # Integer | 
@@ -2475,7 +2487,7 @@ to = 56 # Integer |
 
 begin
   #Get the memory mapped array within a range based on the array type.
-  api_instance.get_array_range(array_type, from, to)
+  api_instance.get_array_range(accept, array_type, from, to)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->get_array_range: #{e}"
 end
@@ -2485,6 +2497,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **String**|  | 
  **array_type** | **String**| Format in which the memory mapped array is returned in. | 
  **from** | **Integer**|  | 
  **to** | **Integer**|  | 
@@ -2499,8 +2512,8 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 
 
@@ -4233,7 +4246,7 @@ No authorization required
 
 
 # **logs**
-> LogBatch logs(body, deployment_name, version_name, model_name)
+> LogBatch logs(deployment_name, version_name, model_name, log_request)
 
 Get logs
 
@@ -4251,18 +4264,18 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-body = SkilCient::LogRequest.new # LogRequest | the the log request
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
 version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
 
 model_name = 'model_name_example' # String | ID or name of the deployed model
 
+log_request = SkilCient::LogRequest.new # LogRequest | The log object
+
 
 begin
   #Get logs
-  result = api_instance.logs(body, deployment_name, version_name, model_name)
+  result = api_instance.logs(deployment_name, version_name, model_name, log_request)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->logs: #{e}"
@@ -4273,10 +4286,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LogRequest**](LogRequest.md)| the the log request | 
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
+ **log_request** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -4352,7 +4365,7 @@ Name | Type | Description  | Notes
 
 
 # **meta_post**
-> MetaData meta_post(body, deployment_name, version_name, model_name)
+> MetaData meta_post(content_type, body, deployment_name, version_name, model_name)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -4370,7 +4383,9 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-body = SkilCient::MetaData.new # MetaData | the meta data object
+content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`
+
+body = 'body_example' # String | the meta data object
 
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
@@ -4381,7 +4396,7 @@ model_name = 'model_name_example' # String | ID or name of the deployed model
 
 begin
   #This method can be used to set meta data for the current model which is set to the server
-  result = api_instance.meta_post(body, deployment_name, version_name, model_name)
+  result = api_instance.meta_post(content_type, body, deployment_name, version_name, model_name)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->meta_post: #{e}"
@@ -4392,7 +4407,8 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MetaData**](MetaData.md)| the meta data object | 
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+ **body** | **String**| the meta data object | 
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **String**| ID or name of the deployed model | 
@@ -4407,7 +4423,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 
@@ -4946,7 +4962,7 @@ Name | Type | Description  | Notes
 
 
 # **predict_error**
-> predict_error(operation, input_type, opts)
+> predict_error(content_type, operation, input_type, opts)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4966,17 +4982,19 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`.
+
 operation = 'operation_example' # String | Operation to perform on the input data.
 
 input_type = 'input_type_example' # String | Type of the input data.
 
 opts = { 
-  input_data: nil # Object | 
+  input_data: 'input_data_example' # String | 
 }
 
 begin
   #Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-  api_instance.predict_error(operation, input_type, opts)
+  api_instance.predict_error(content_type, operation, input_type, opts)
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predict_error: #{e}"
 end
@@ -4986,9 +5004,10 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
  **operation** | **String**| Operation to perform on the input data. | 
  **input_type** | **String**| Type of the input data. | 
- **input_data** | **Object**|  | [optional] 
+ **input_data** | **String**|  | [optional] 
 
 ### Return type
 
@@ -5000,13 +5019,13 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 
 
-# **predict_v2**
-> predict_v2(operation, input_type, opts)
+# **predict_v2_file**
+> predict_v2_file(operation, input_type_file, input_data)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -5024,19 +5043,18 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
-operation = 'operation_example' # String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
+operation = 'operation_example' # String | The operation to perform on the input data. 
 
-input_type = 'input_type_example' # String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
+input_type_file = 'input_type_file_example' # String | Type of the input data. 
 
-opts = { 
-  input_data: 'input_data_example' # String | The input data to run inference on.
-}
+input_data = File.new('/path/to/file.txt') # File | The input data to run inference on.
+
 
 begin
   #Runs inference based on the input data. Output is defined relative to the output adapter specified.
-  api_instance.predict_v2(operation, input_type, opts)
+  api_instance.predict_v2_file(operation, input_type_file, input_data)
 rescue SkilCient::ApiError => e
-  puts "Exception when calling DefaultApi->predict_v2: #{e}"
+  puts "Exception when calling DefaultApi->predict_v2_file: #{e}"
 end
 ```
 
@@ -5044,9 +5062,9 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_type** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_data** | **String**| The input data to run inference on. | [optional] 
+ **operation** | **String**| The operation to perform on the input data.  | 
+ **input_type_file** | **String**| Type of the input data.  | 
+ **input_data** | **File**| The input data to run inference on. | 
 
 ### Return type
 
@@ -5058,7 +5076,67 @@ nil (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+
+# **predict_v2_json**
+> predict_v2_json(content_type, operation, input_type_json, input_data)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`.
+
+operation = 'operation_example' # String | The operation to perform on the input data. 
+
+input_type_json = 'input_type_json_example' # String | Type of the input data. 
+
+input_data = 'input_data_example' # String | The input data to run inference on. (Specify a JSON string here)
+
+
+begin
+  #Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  api_instance.predict_v2_json(content_type, operation, input_type_json, input_data)
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->predict_v2_json: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **operation** | **String**| The operation to perform on the input data.  | 
+ **input_type_json** | **String**| Type of the input data.  | 
+ **input_data** | **String**| The input data to run inference on. (Specify a JSON string here) | 
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 
@@ -5713,7 +5791,7 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  batch_record: nil # Object | The input batch of record arrays
+  batch_record: SkilCient::BatchRecord.new # BatchRecord | The input batch of record arrays
 }
 
 begin
@@ -5732,7 +5810,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **batch_record** | **Object**| The input batch of record arrays | [optional] 
+ **batch_record** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -5902,7 +5980,7 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  single_record: nil # Object | The input record array
+  single_record: SkilCient::SingleRecord.new # SingleRecord | The input record array
 }
 
 begin
@@ -5921,7 +5999,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **single_record** | **Object**| The input record array | [optional] 
+ **single_record** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -6060,7 +6138,7 @@ Name | Type | Description  | Notes
 
 
 # **transformprocess_post**
-> Object transformprocess_post(deployment_name, version_name, transform_name, opts)
+> Object transformprocess_post(content_type, deployment_name, version_name, transform_name, opts)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -6078,6 +6156,8 @@ end
 
 api_instance = SkilCient::DefaultApi.new
 
+content_type = 'content_type_example' # String | The `Content-Type` should be `application/json`.
+
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
 
 version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
@@ -6085,12 +6165,12 @@ version_name = 'version_name_example' # String | Version name of the endpoint. T
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
 
 opts = { 
-  transform_process: nil # Object | The transform process to set
+  transform_process: 'transform_process_example' # String | The transform process to set (Specify a JSON string here).
 }
 
 begin
   #Sets the deployed (CSV or Image) transform process through the provided JSON string
-  result = api_instance.transformprocess_post(deployment_name, version_name, transform_name, opts)
+  result = api_instance.transformprocess_post(content_type, deployment_name, version_name, transform_name, opts)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->transformprocess_post: #{e}"
@@ -6101,10 +6181,11 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deployment_name** | **String**| Name of the deployment group | 
  **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **String**| ID or name of the deployed transform | 
- **transform_process** | **Object**| The transform process to set | [optional] 
+ **transform_process** | **String**| The transform process to set (Specify a JSON string here). | [optional] 
 
 ### Return type
 
@@ -6116,7 +6197,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 

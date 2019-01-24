@@ -10,7 +10,7 @@ import Foundation
 
 open class ModelStatus: JSONEncodable {
 
-    /** 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed  */
+    /** 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed.  */
     public var status: Int32?
 
     public init() {}

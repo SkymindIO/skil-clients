@@ -10,5 +10,5 @@
 package skilclient
 
 type Base64NdArrayBody struct {
-	Ndarray string `json:"ndarray"`
+	Ndarray string `json:"ndarray,omitempty"`
 }

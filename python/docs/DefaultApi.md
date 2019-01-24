@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**num_revisions**](DefaultApi.md#num_revisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**predict_error**](DefaultApi.md#predict_error) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**predict_v2**](DefaultApi.md#predict_v2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2_file**](DefaultApi.md#predict_v2_file) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predict_v2_json**](DefaultApi.md#predict_v2_json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -2307,7 +2308,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_array**
-> get_array(array_type)
+> get_array(accept, array_type)
 
 Get the memory mapped array based on the array type.
 
@@ -2329,11 +2330,12 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+accept = 'accept_example' # str | 
 array_type = 'array_type_example' # str | The format in which the memory mapped array is returned.
 
 try:
     # Get the memory mapped array based on the array type.
-    api_instance.get_array(array_type)
+    api_instance.get_array(accept, array_type)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_array: %s\n" % e)
 ```
@@ -2342,6 +2344,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **str**|  | 
  **array_type** | **str**| The format in which the memory mapped array is returned. | 
 
 ### Return type
@@ -2360,7 +2363,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_array_indices**
-> get_array_indices(array_type, input=input)
+> get_array_indices(content_type, accept, array_type, input=input)
 
 Get the memory mapped array indices based on the array type.
 
@@ -2380,12 +2383,14 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`.
+accept = 'accept_example' # str | 
 array_type = 'array_type_example' # str | Format in which the memory mapped array is returned in.
-input = NULL # object | Input indices array (optional)
+input = 'input_example' # str | Input indices array (optional)
 
 try:
     # Get the memory mapped array indices based on the array type.
-    api_instance.get_array_indices(array_type, input=input)
+    api_instance.get_array_indices(content_type, accept, array_type, input=input)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_array_indices: %s\n" % e)
 ```
@@ -2394,8 +2399,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **str**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **accept** | **str**|  | 
  **array_type** | **str**| Format in which the memory mapped array is returned in. | 
- **input** | **object**| Input indices array | [optional] 
+ **input** | **str**| Input indices array | [optional] 
 
 ### Return type
 
@@ -2407,13 +2414,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_array_range**
-> get_array_range(array_type, _from, to)
+> get_array_range(accept, array_type, _from, to)
 
 Get the memory mapped array within a range based on the array type.
 
@@ -2433,13 +2440,14 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+accept = 'accept_example' # str | 
 array_type = 'array_type_example' # str | Format in which the memory mapped array is returned in.
 _from = 56 # int | 
 to = 56 # int | 
 
 try:
     # Get the memory mapped array within a range based on the array type.
-    api_instance.get_array_range(array_type, _from, to)
+    api_instance.get_array_range(accept, array_type, _from, to)
 except ApiException as e:
     print("Exception when calling DefaultApi->get_array_range: %s\n" % e)
 ```
@@ -2448,6 +2456,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **str**|  | 
  **array_type** | **str**| Format in which the memory mapped array is returned in. | 
  **_from** | **int**|  | 
  **to** | **int**|  | 
@@ -2462,8 +2471,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4191,7 +4200,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **logs**
-> LogBatch logs(body, deployment_name, version_name, model_name)
+> LogBatch logs(deployment_name, version_name, model_name, log_request)
 
 Get logs
 
@@ -4211,14 +4220,14 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.LogRequest() # LogRequest | the the log request
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
+log_request = skil_client.LogRequest() # LogRequest | The log object
 
 try:
     # Get logs
-    api_response = api_instance.logs(body, deployment_name, version_name, model_name)
+    api_response = api_instance.logs(deployment_name, version_name, model_name, log_request)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->logs: %s\n" % e)
@@ -4228,10 +4237,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LogRequest**](LogRequest.md)| the the log request | 
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
+ **log_request** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -4305,7 +4314,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_post**
-> MetaData meta_post(body, deployment_name, version_name, model_name)
+> MetaData meta_post(content_type, body, deployment_name, version_name, model_name)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -4325,14 +4334,15 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.MetaData() # MetaData | the meta data object
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`
+body = 'body_example' # str | the meta data object
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
     # This method can be used to set meta data for the current model which is set to the server
-    api_response = api_instance.meta_post(body, deployment_name, version_name, model_name)
+    api_response = api_instance.meta_post(content_type, body, deployment_name, version_name, model_name)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->meta_post: %s\n" % e)
@@ -4342,7 +4352,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MetaData**](MetaData.md)| the meta data object | 
+ **content_type** | **str**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+ **body** | **str**| the meta data object | 
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **model_name** | **str**| ID or name of the deployed model | 
@@ -4357,7 +4368,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -4875,7 +4886,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict_error**
-> predict_error(operation, input_type, input_data=input_data)
+> predict_error(content_type, operation, input_type, input_data=input_data)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4897,13 +4908,14 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`.
 operation = 'operation_example' # str | Operation to perform on the input data.
 input_type = 'input_type_example' # str | Type of the input data.
-input_data = NULL # object |  (optional)
+input_data = 'input_data_example' # str |  (optional)
 
 try:
     # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-    api_instance.predict_error(operation, input_type, input_data=input_data)
+    api_instance.predict_error(content_type, operation, input_type, input_data=input_data)
 except ApiException as e:
     print("Exception when calling DefaultApi->predict_error: %s\n" % e)
 ```
@@ -4912,9 +4924,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **str**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
  **operation** | **str**| Operation to perform on the input data. | 
  **input_type** | **str**| Type of the input data. | 
- **input_data** | **object**|  | [optional] 
+ **input_data** | **str**|  | [optional] 
 
 ### Return type
 
@@ -4926,13 +4939,13 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **predict_v2**
-> predict_v2(operation, input_type, input_data=input_data)
+# **predict_v2_file**
+> predict_v2_file(operation, input_type_file, input_data)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -4952,24 +4965,24 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-operation = 'operation_example' # str | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
-input_type = 'input_type_example' # str | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
-input_data = 'input_data_example' # str | The input data to run inference on. (optional)
+operation = 'operation_example' # str | The operation to perform on the input data. 
+input_type_file = 'input_type_file_example' # str | Type of the input data. 
+input_data = '/path/to/file.txt' # file | The input data to run inference on.
 
 try:
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
-    api_instance.predict_v2(operation, input_type, input_data=input_data)
+    api_instance.predict_v2_file(operation, input_type_file, input_data)
 except ApiException as e:
-    print("Exception when calling DefaultApi->predict_v2: %s\n" % e)
+    print("Exception when calling DefaultApi->predict_v2_file: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **str**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_type** | **str**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **input_data** | **str**| The input data to run inference on. | [optional] 
+ **operation** | **str**| The operation to perform on the input data.  | 
+ **input_type_file** | **str**| Type of the input data.  | 
+ **input_data** | **file**| The input data to run inference on. | 
 
 ### Return type
 
@@ -4981,7 +4994,64 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **predict_v2_json**
+> predict_v2_json(content_type, operation, input_type_json, input_data)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: api_key
+configuration = skil_client.Configuration()
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`.
+operation = 'operation_example' # str | The operation to perform on the input data. 
+input_type_json = 'input_type_json_example' # str | Type of the input data. 
+input_data = 'input_data_example' # str | The input data to run inference on. (Specify a JSON string here)
+
+try:
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    api_instance.predict_v2_json(content_type, operation, input_type_json, input_data)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predict_v2_json: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **content_type** | **str**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+ **operation** | **str**| The operation to perform on the input data.  | 
+ **input_type_json** | **str**| Type of the input data.  | 
+ **input_data** | **str**| The input data to run inference on. (Specify a JSON string here) | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5615,7 +5685,7 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-batch_record = NULL # object | The input batch of record arrays (optional)
+batch_record = skil_client.BatchRecord() # BatchRecord | The input batch of record arrays (optional)
 
 try:
     # Takes a batch input arrays and transforms it
@@ -5632,7 +5702,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **batch_record** | **object**| The input batch of record arrays | [optional] 
+ **batch_record** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
 ### Return type
 
@@ -5793,7 +5863,7 @@ api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-single_record = NULL # object | The input record array (optional)
+single_record = skil_client.SingleRecord() # SingleRecord | The input record array (optional)
 
 try:
     # Same as /transformincremental but returns Base64NDArrayBody.
@@ -5810,7 +5880,7 @@ Name | Type | Description  | Notes
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **single_record** | **object**| The input record array | [optional] 
+ **single_record** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
 ### Return type
 
@@ -5944,7 +6014,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **transformprocess_post**
-> object transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
+> object transformprocess_post(content_type, deployment_name, version_name, transform_name, transform_process=transform_process)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -5964,14 +6034,15 @@ configuration.api_key['authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should be `application/json`.
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
 version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
-transform_process = NULL # object | The transform process to set (optional)
+transform_process = 'transform_process_example' # str | The transform process to set (Specify a JSON string here). (optional)
 
 try:
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
-    api_response = api_instance.transformprocess_post(deployment_name, version_name, transform_name, transform_process=transform_process)
+    api_response = api_instance.transformprocess_post(content_type, deployment_name, version_name, transform_name, transform_process=transform_process)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->transformprocess_post: %s\n" % e)
@@ -5981,10 +6052,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **content_type** | **str**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deployment_name** | **str**| Name of the deployment group | 
  **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
  **transform_name** | **str**| ID or name of the deployed transform | 
- **transform_process** | **object**| The transform process to set | [optional] 
+ **transform_process** | **str**| The transform process to set (Specify a JSON string here). | [optional] 
 
 ### Return type
 
@@ -5996,7 +6068,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

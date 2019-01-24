@@ -2319,22 +2319,32 @@ module SkilCient
     end
     # Get the memory mapped array based on the array type.
     # The array is specified through a file path, in the configuration object, during model server deployment.
+    # @param accept 
     # @param array_type The format in which the memory mapped array is returned.
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def get_array(array_type, opts = {})
-      get_array_with_http_info(array_type, opts)
+    def get_array(accept, array_type, opts = {})
+      get_array_with_http_info(accept, array_type, opts)
       nil
     end
 
     # Get the memory mapped array based on the array type.
     # The array is specified through a file path, in the configuration object, during model server deployment.
+    # @param accept 
     # @param array_type The format in which the memory mapped array is returned.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def get_array_with_http_info(array_type, opts = {})
+    def get_array_with_http_info(accept, array_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_array ...'
+      end
+      # verify the required parameter 'accept' is set
+      if @api_client.config.client_side_validation && accept.nil?
+        fail ArgumentError, "Missing the required parameter 'accept' when calling DefaultApi.get_array"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json', 'application/octet-stream'].include?(accept)
+        fail ArgumentError, "invalid value for 'accept', must be one of application/json, application/octet-stream"
       end
       # verify the required parameter 'array_type' is set
       if @api_client.config.client_side_validation && array_type.nil?
@@ -2354,6 +2364,7 @@ module SkilCient
       header_params = {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/octet-stream'])
+      header_params[:'accept'] = accept
 
       # form parameters
       form_params = {}
@@ -2373,23 +2384,43 @@ module SkilCient
       return data, status_code, headers
     end
     # Get the memory mapped array indices based on the array type.
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+    # @param accept 
     # @param array_type Format in which the memory mapped array is returned in.
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :input Input indices array
+    # @option opts [String] :input Input indices array
     # @return [nil]
-    def get_array_indices(array_type, opts = {})
-      get_array_indices_with_http_info(array_type, opts)
+    def get_array_indices(content_type, accept, array_type, opts = {})
+      get_array_indices_with_http_info(content_type, accept, array_type, opts)
       nil
     end
 
     # Get the memory mapped array indices based on the array type.
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+    # @param accept 
     # @param array_type Format in which the memory mapped array is returned in.
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :input Input indices array
+    # @option opts [String] :input Input indices array
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def get_array_indices_with_http_info(array_type, opts = {})
+    def get_array_indices_with_http_info(content_type, accept, array_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_array_indices ...'
+      end
+      # verify the required parameter 'content_type' is set
+      if @api_client.config.client_side_validation && content_type.nil?
+        fail ArgumentError, "Missing the required parameter 'content_type' when calling DefaultApi.get_array_indices"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json'].include?(content_type)
+        fail ArgumentError, "invalid value for 'content_type', must be one of application/json"
+      end
+      # verify the required parameter 'accept' is set
+      if @api_client.config.client_side_validation && accept.nil?
+        fail ArgumentError, "Missing the required parameter 'accept' when calling DefaultApi.get_array_indices"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json', 'application/octet-stream'].include?(accept)
+        fail ArgumentError, "invalid value for 'accept', must be one of application/json, application/octet-stream"
       end
       # verify the required parameter 'array_type' is set
       if @api_client.config.client_side_validation && array_type.nil?
@@ -2410,7 +2441,9 @@ module SkilCient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/octet-stream'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['text/plain'])
+      header_params[:'Content-Type'] = content_type
+      header_params[:'accept'] = accept
 
       # form parameters
       form_params = {}
@@ -2430,25 +2463,35 @@ module SkilCient
       return data, status_code, headers
     end
     # Get the memory mapped array within a range based on the array type.
+    # @param accept 
     # @param array_type Format in which the memory mapped array is returned in.
     # @param from 
     # @param to 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def get_array_range(array_type, from, to, opts = {})
-      get_array_range_with_http_info(array_type, from, to, opts)
+    def get_array_range(accept, array_type, from, to, opts = {})
+      get_array_range_with_http_info(accept, array_type, from, to, opts)
       nil
     end
 
     # Get the memory mapped array within a range based on the array type.
+    # @param accept 
     # @param array_type Format in which the memory mapped array is returned in.
     # @param from 
     # @param to 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def get_array_range_with_http_info(array_type, from, to, opts = {})
+    def get_array_range_with_http_info(accept, array_type, from, to, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_array_range ...'
+      end
+      # verify the required parameter 'accept' is set
+      if @api_client.config.client_side_validation && accept.nil?
+        fail ArgumentError, "Missing the required parameter 'accept' when calling DefaultApi.get_array_range"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json', 'application/octet-stream'].include?(accept)
+        fail ArgumentError, "invalid value for 'accept', must be one of application/json, application/octet-stream"
       end
       # verify the required parameter 'array_type' is set
       if @api_client.config.client_side_validation && array_type.nil?
@@ -2475,9 +2518,10 @@ module SkilCient
       # header parameters
       header_params = {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/octet-stream'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'application/octet-stream'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'accept'] = accept
 
       # form parameters
       form_params = {}
@@ -4243,31 +4287,27 @@ module SkilCient
       return data, status_code, headers
     end
     # Get logs
-    # @param body the the log request
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
+    # @param log_request The log object
     # @param [Hash] opts the optional parameters
     # @return [LogBatch]
-    def logs(body, deployment_name, version_name, model_name, opts = {})
-      data, _status_code, _headers = logs_with_http_info(body, deployment_name, version_name, model_name, opts)
+    def logs(deployment_name, version_name, model_name, log_request, opts = {})
+      data, _status_code, _headers = logs_with_http_info(deployment_name, version_name, model_name, log_request, opts)
       data
     end
 
     # Get logs
-    # @param body the the log request
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
+    # @param log_request The log object
     # @param [Hash] opts the optional parameters
     # @return [Array<(LogBatch, Fixnum, Hash)>] LogBatch data, response status code and response headers
-    def logs_with_http_info(body, deployment_name, version_name, model_name, opts = {})
+    def logs_with_http_info(deployment_name, version_name, model_name, log_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.logs ...'
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling DefaultApi.logs"
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
@@ -4280,6 +4320,10 @@ module SkilCient
       # verify the required parameter 'model_name' is set
       if @api_client.config.client_side_validation && model_name.nil?
         fail ArgumentError, "Missing the required parameter 'model_name' when calling DefaultApi.logs"
+      end
+      # verify the required parameter 'log_request' is set
+      if @api_client.config.client_side_validation && log_request.nil?
+        fail ArgumentError, "Missing the required parameter 'log_request' when calling DefaultApi.logs"
       end
       # resource path
       local_var_path = '/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs'.sub('{' + 'deploymentName' + '}', deployment_name.to_s).sub('{' + 'versionName' + '}', version_name.to_s).sub('{' + 'modelName' + '}', model_name.to_s)
@@ -4298,7 +4342,7 @@ module SkilCient
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(body)
+      post_body = @api_client.object_to_http_body(log_request)
       auth_names = ['api_key']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
@@ -4377,27 +4421,37 @@ module SkilCient
       return data, status_code, headers
     end
     # This method can be used to set meta data for the current model which is set to the server
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;
     # @param body the meta data object
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [MetaData]
-    def meta_post(body, deployment_name, version_name, model_name, opts = {})
-      data, _status_code, _headers = meta_post_with_http_info(body, deployment_name, version_name, model_name, opts)
+    def meta_post(content_type, body, deployment_name, version_name, model_name, opts = {})
+      data, _status_code, _headers = meta_post_with_http_info(content_type, body, deployment_name, version_name, model_name, opts)
       data
     end
 
     # This method can be used to set meta data for the current model which is set to the server
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;
     # @param body the meta data object
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param model_name ID or name of the deployed model
     # @param [Hash] opts the optional parameters
     # @return [Array<(MetaData, Fixnum, Hash)>] MetaData data, response status code and response headers
-    def meta_post_with_http_info(body, deployment_name, version_name, model_name, opts = {})
+    def meta_post_with_http_info(content_type, body, deployment_name, version_name, model_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.meta_post ...'
+      end
+      # verify the required parameter 'content_type' is set
+      if @api_client.config.client_side_validation && content_type.nil?
+        fail ArgumentError, "Missing the required parameter 'content_type' when calling DefaultApi.meta_post"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json'].include?(content_type)
+        fail ArgumentError, "invalid value for 'content_type', must be one of application/json"
       end
       # verify the required parameter 'body' is set
       if @api_client.config.client_side_validation && body.nil?
@@ -4426,7 +4480,8 @@ module SkilCient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['text/plain'])
+      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = {}
@@ -5043,26 +5098,36 @@ module SkilCient
     end
     # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
     # These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
     # @param operation Operation to perform on the input data.
     # @param input_type Type of the input data.
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :input_data 
+    # @option opts [String] :input_data 
     # @return [nil]
-    def predict_error(operation, input_type, opts = {})
-      predict_error_with_http_info(operation, input_type, opts)
+    def predict_error(content_type, operation, input_type, opts = {})
+      predict_error_with_http_info(content_type, operation, input_type, opts)
       nil
     end
 
     # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
     # These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
     # @param operation Operation to perform on the input data.
     # @param input_type Type of the input data.
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :input_data 
+    # @option opts [String] :input_data 
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def predict_error_with_http_info(operation, input_type, opts = {})
+    def predict_error_with_http_info(content_type, operation, input_type, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.predict_error ...'
+      end
+      # verify the required parameter 'content_type' is set
+      if @api_client.config.client_side_validation && content_type.nil?
+        fail ArgumentError, "Missing the required parameter 'content_type' when calling DefaultApi.predict_error"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json'].include?(content_type)
+        fail ArgumentError, "invalid value for 'content_type', must be one of application/json"
       end
       # verify the required parameter 'operation' is set
       if @api_client.config.client_side_validation && operation.nil?
@@ -5091,7 +5156,8 @@ module SkilCient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['text/plain'])
+      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = {}
@@ -5111,44 +5177,48 @@ module SkilCient
       return data, status_code, headers
     end
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
-    # @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
-    # @param input_type Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+    # @param operation The operation to perform on the input data. 
+    # @param input_type_file Type of the input data. 
+    # @param input_data The input data to run inference on.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :input_data The input data to run inference on.
     # @return [nil]
-    def predict_v2(operation, input_type, opts = {})
-      predict_v2_with_http_info(operation, input_type, opts)
+    def predict_v2_file(operation, input_type_file, input_data, opts = {})
+      predict_v2_file_with_http_info(operation, input_type_file, input_data, opts)
       nil
     end
 
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
-    # @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
-    # @param input_type Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+    # @param operation The operation to perform on the input data. 
+    # @param input_type_file Type of the input data. 
+    # @param input_data The input data to run inference on.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :input_data The input data to run inference on.
     # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
-    def predict_v2_with_http_info(operation, input_type, opts = {})
+    def predict_v2_file_with_http_info(operation, input_type_file, input_data, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: DefaultApi.predict_v2 ...'
+        @api_client.config.logger.debug 'Calling API: DefaultApi.predict_v2_file ...'
       end
       # verify the required parameter 'operation' is set
       if @api_client.config.client_side_validation && operation.nil?
-        fail ArgumentError, "Missing the required parameter 'operation' when calling DefaultApi.predict_v2"
+        fail ArgumentError, "Missing the required parameter 'operation' when calling DefaultApi.predict_v2_file"
       end
       # verify enum value
       if @api_client.config.client_side_validation && !['REGRESSION', 'CLASSIFICATION', 'RAW', 'YOLO', 'SSD', 'RCNN'].include?(operation)
         fail ArgumentError, "invalid value for 'operation', must be one of REGRESSION, CLASSIFICATION, RAW, YOLO, SSD, RCNN"
       end
-      # verify the required parameter 'input_type' is set
-      if @api_client.config.client_side_validation && input_type.nil?
-        fail ArgumentError, "Missing the required parameter 'input_type' when calling DefaultApi.predict_v2"
+      # verify the required parameter 'input_type_file' is set
+      if @api_client.config.client_side_validation && input_type_file.nil?
+        fail ArgumentError, "Missing the required parameter 'input_type_file' when calling DefaultApi.predict_v2_file"
       end
       # verify enum value
-      if @api_client.config.client_side_validation && !['CSV', 'DICTIONARY', 'CSVPUBSUB', 'DICTIONARYPUBSUB', 'IMAGE', 'NUMPY', 'NDARRAY', 'JSON'].include?(input_type)
-        fail ArgumentError, "invalid value for 'input_type', must be one of CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB, IMAGE, NUMPY, NDARRAY, JSON"
+      if @api_client.config.client_side_validation && !['IMAGE', 'NUMPY', 'NDARRAY', 'JSON'].include?(input_type_file)
+        fail ArgumentError, "invalid value for 'input_type_file', must be one of IMAGE, NUMPY, NDARRAY, JSON"
+      end
+      # verify the required parameter 'input_data' is set
+      if @api_client.config.client_side_validation && input_data.nil?
+        fail ArgumentError, "Missing the required parameter 'input_data' when calling DefaultApi.predict_v2_file"
       end
       # resource path
-      local_var_path = '/{operation}/{inputType}'.sub('{' + 'operation' + '}', operation.to_s).sub('{' + 'inputType' + '}', input_type.to_s)
+      local_var_path = '/{operation}/{inputTypeFile}'.sub('{' + 'operation' + '}', operation.to_s).sub('{' + 'inputTypeFile' + '}', input_type_file.to_s)
 
       # query parameters
       query_params = {}
@@ -5158,11 +5228,11 @@ module SkilCient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json', 'multipart/form-data'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
 
       # form parameters
       form_params = {}
-      form_params['inputData'] = opts[:'input_data'] if !opts[:'input_data'].nil?
+      form_params['inputData'] = input_data
 
       # http body (model)
       post_body = nil
@@ -5174,7 +5244,89 @@ module SkilCient
         :body => post_body,
         :auth_names => auth_names)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DefaultApi#predict_v2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: DefaultApi#predict_v2_file\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+    # @param operation The operation to perform on the input data. 
+    # @param input_type_json Type of the input data. 
+    # @param input_data The input data to run inference on. (Specify a JSON string here)
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def predict_v2_json(content_type, operation, input_type_json, input_data, opts = {})
+      predict_v2_json_with_http_info(content_type, operation, input_type_json, input_data, opts)
+      nil
+    end
+
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    # @param content_type The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+    # @param operation The operation to perform on the input data. 
+    # @param input_type_json Type of the input data. 
+    # @param input_data The input data to run inference on. (Specify a JSON string here)
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+    def predict_v2_json_with_http_info(content_type, operation, input_type_json, input_data, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.predict_v2_json ...'
+      end
+      # verify the required parameter 'content_type' is set
+      if @api_client.config.client_side_validation && content_type.nil?
+        fail ArgumentError, "Missing the required parameter 'content_type' when calling DefaultApi.predict_v2_json"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json'].include?(content_type)
+        fail ArgumentError, "invalid value for 'content_type', must be one of application/json"
+      end
+      # verify the required parameter 'operation' is set
+      if @api_client.config.client_side_validation && operation.nil?
+        fail ArgumentError, "Missing the required parameter 'operation' when calling DefaultApi.predict_v2_json"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['REGRESSION', 'CLASSIFICATION', 'RAW'].include?(operation)
+        fail ArgumentError, "invalid value for 'operation', must be one of REGRESSION, CLASSIFICATION, RAW"
+      end
+      # verify the required parameter 'input_type_json' is set
+      if @api_client.config.client_side_validation && input_type_json.nil?
+        fail ArgumentError, "Missing the required parameter 'input_type_json' when calling DefaultApi.predict_v2_json"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['CSV', 'DICTIONARY', 'CSVPUBSUB', 'DICTIONARYPUBSUB'].include?(input_type_json)
+        fail ArgumentError, "invalid value for 'input_type_json', must be one of CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB"
+      end
+      # verify the required parameter 'input_data' is set
+      if @api_client.config.client_side_validation && input_data.nil?
+        fail ArgumentError, "Missing the required parameter 'input_data' when calling DefaultApi.predict_v2_json"
+      end
+      # resource path
+      local_var_path = '/{operation}/{inputTypeJson}'.sub('{' + 'operation' + '}', operation.to_s).sub('{' + 'inputTypeJson' + '}', input_type_json.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['text/plain'])
+      header_params[:'Content-Type'] = content_type
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(input_data)
+      auth_names = ['api_key']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#predict_v2_json\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -5846,7 +5998,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :batch_record The input batch of record arrays
+    # @option opts [BatchRecord] :batch_record The input batch of record arrays
     # @return [Base64NDArrayBody]
     def transformarray(deployment_name, version_name, transform_name, opts = {})
       data, _status_code, _headers = transformarray_with_http_info(deployment_name, version_name, transform_name, opts)
@@ -5858,7 +6010,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :batch_record The input batch of record arrays
+    # @option opts [BatchRecord] :batch_record The input batch of record arrays
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
     def transformarray_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
@@ -6053,7 +6205,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :single_record The input record array
+    # @option opts [SingleRecord] :single_record The input record array
     # @return [Base64NDArrayBody]
     def transformincrementalarray(deployment_name, version_name, transform_name, opts = {})
       data, _status_code, _headers = transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, opts)
@@ -6065,7 +6217,7 @@ module SkilCient
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :single_record The input record array
+    # @option opts [SingleRecord] :single_record The input record array
     # @return [Array<(Base64NDArrayBody, Fixnum, Hash)>] Base64NDArrayBody data, response status code and response headers
     def transformincrementalarray_with_http_info(deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
@@ -6250,27 +6402,37 @@ module SkilCient
       return data, status_code, headers
     end
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
+    # @param content_type The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :transform_process The transform process to set
+    # @option opts [String] :transform_process The transform process to set (Specify a JSON string here).
     # @return [Object]
-    def transformprocess_post(deployment_name, version_name, transform_name, opts = {})
-      data, _status_code, _headers = transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts)
+    def transformprocess_post(content_type, deployment_name, version_name, transform_name, opts = {})
+      data, _status_code, _headers = transformprocess_post_with_http_info(content_type, deployment_name, version_name, transform_name, opts)
       data
     end
 
     # Sets the deployed (CSV or Image) transform process through the provided JSON string
+    # @param content_type The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.
     # @param deployment_name Name of the deployment group
     # @param version_name Version name of the endpoint. The default value is \&quot;default\&quot;
     # @param transform_name ID or name of the deployed transform
     # @param [Hash] opts the optional parameters
-    # @option opts [Object] :transform_process The transform process to set
+    # @option opts [String] :transform_process The transform process to set (Specify a JSON string here).
     # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
-    def transformprocess_post_with_http_info(deployment_name, version_name, transform_name, opts = {})
+    def transformprocess_post_with_http_info(content_type, deployment_name, version_name, transform_name, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.transformprocess_post ...'
+      end
+      # verify the required parameter 'content_type' is set
+      if @api_client.config.client_side_validation && content_type.nil?
+        fail ArgumentError, "Missing the required parameter 'content_type' when calling DefaultApi.transformprocess_post"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['application/json'].include?(content_type)
+        fail ArgumentError, "invalid value for 'content_type', must be one of application/json"
       end
       # verify the required parameter 'deployment_name' is set
       if @api_client.config.client_side_validation && deployment_name.nil?
@@ -6295,7 +6457,8 @@ module SkilCient
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params['Content-Type'] = @api_client.select_header_content_type(['text/plain'])
+      header_params[:'Content-Type'] = content_type
 
       # form parameters
       form_params = {}

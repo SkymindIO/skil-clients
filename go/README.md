@@ -111,7 +111,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**NumRevisions**](docs/DefaultApi.md#numrevisions) | **Get** /numrevisions | Gets the number of retrained models written with retraining.
 *DefaultApi* | [**Predict**](docs/DefaultApi.md#predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 *DefaultApi* | [**PredictError**](docs/DefaultApi.md#predicterror) | **Post** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-*DefaultApi* | [**PredictV2**](docs/DefaultApi.md#predictv2) | **Post** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+*DefaultApi* | [**PredictV2File**](docs/DefaultApi.md#predictv2file) | **Post** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+*DefaultApi* | [**PredictV2Json**](docs/DefaultApi.md#predictv2json) | **Post** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 *DefaultApi* | [**Predictimage**](docs/DefaultApi.md#predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 *DefaultApi* | [**Predictwithpreprocess**](docs/DefaultApi.md#predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 *DefaultApi* | [**Predictwithpreprocessjson**](docs/DefaultApi.md#predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -151,7 +152,7 @@ Class | Method | HTTP request | Description
  - [Base64NdArrayBody](docs/Base64NdArrayBody.md)
  - [Base64NdArrayBodyKnn](docs/Base64NdArrayBodyKnn.md)
  - [BatchCsvRecord](docs/BatchCsvRecord.md)
- - [BatchImageRecord](docs/BatchImageRecord.md)
+ - [BatchRecord](docs/BatchRecord.md)
  - [BestModel](docs/BestModel.md)
  - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [ClassificationResult](docs/ClassificationResult.md)
@@ -209,7 +210,7 @@ Class | Method | HTTP request | Description
  - [S3ResourceDetails](docs/S3ResourceDetails.md)
  - [SetState](docs/SetState.md)
  - [SingleCsvRecord](docs/SingleCsvRecord.md)
- - [SingleImageRecord](docs/SingleImageRecord.md)
+ - [SingleRecord](docs/SingleRecord.md)
  - [Token](docs/Token.md)
  - [TokenGenerateRequest](docs/TokenGenerateRequest.md)
  - [TransformProcess](docs/TransformProcess.md)

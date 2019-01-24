@@ -33,6 +33,7 @@ import ai.skymind.skil.model.AuthPolicy;
 import ai.skymind.skil.model.Base64NDArrayBody;
 import ai.skymind.skil.model.Base64NDArrayBodyKNN;
 import ai.skymind.skil.model.BatchCSVRecord;
+import ai.skymind.skil.model.BatchRecord;
 import ai.skymind.skil.model.BestModel;
 import ai.skymind.skil.model.ChangePasswordRequest;
 import ai.skymind.skil.model.ClassificationResult;
@@ -78,6 +79,7 @@ import ai.skymind.skil.model.Role;
 import ai.skymind.skil.model.RollbackStatus;
 import ai.skymind.skil.model.SetState;
 import ai.skymind.skil.model.SingleCSVRecord;
+import ai.skymind.skil.model.SingleRecord;
 import ai.skymind.skil.model.Token;
 import ai.skymind.skil.model.TokenGenerateRequest;
 import ai.skymind.skil.model.UpdateBestModel;
@@ -5719,11 +5721,17 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Get the memory mapped array based on the array type.
   * The array is specified through a file path, in the configuration object, during model server deployment.
+   * @param accept 
    * @param arrayType The format in which the memory mapped array is returned.
    * @return void
   */
-  public void getArray (String arrayType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void getArray (String accept, String arrayType) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'accept' is set
+    if (accept == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'accept' when calling getArray",
+        new ApiException(400, "Missing the required parameter 'accept' when calling getArray"));
+    }
     // verify the required parameter 'arrayType' is set
     if (arrayType == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArray",
@@ -5739,6 +5747,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("accept", ApiInvoker.parameterToString(accept));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -5781,11 +5790,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get the memory mapped array based on the array type.
    * The array is specified through a file path, in the configuration object, during model server deployment.
-   * @param arrayType The format in which the memory mapped array is returned.
+   * @param accept    * @param arrayType The format in which the memory mapped array is returned.
   */
-  public void getArray (String arrayType, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void getArray (String accept, String arrayType, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'accept' is set
+    if (accept == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'accept' when calling getArray",
+        new ApiException(400, "Missing the required parameter 'accept' when calling getArray"));
+    }
     // verify the required parameter 'arrayType' is set
     if (arrayType == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArray",
@@ -5803,6 +5817,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> formParams = new HashMap<String, String>();
 
 
+    headerParams.put("accept", ApiInvoker.parameterToString(accept));
 
     String[] contentTypes = {
       
@@ -5842,12 +5857,24 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Get the memory mapped array indices based on the array type.
   * 
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+   * @param accept 
    * @param arrayType Format in which the memory mapped array is returned in.
    * @param input Input indices array
    * @return void
   */
-  public void getArrayIndices (String arrayType, Object input) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void getArrayIndices (String contentType, String accept, String arrayType, String input) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = input;
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling getArrayIndices",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling getArrayIndices"));
+    }
+    // verify the required parameter 'accept' is set
+    if (accept == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'accept' when calling getArrayIndices",
+        new ApiException(400, "Missing the required parameter 'accept' when calling getArrayIndices"));
+    }
     // verify the required parameter 'arrayType' is set
     if (arrayType == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayIndices",
@@ -5863,8 +5890,10 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
+    headerParams.put("accept", ApiInvoker.parameterToString(accept));
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -5906,11 +5935,21 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get the memory mapped array indices based on the array type.
    * 
-   * @param arrayType Format in which the memory mapped array is returned in.   * @param input Input indices array
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.   * @param accept    * @param arrayType Format in which the memory mapped array is returned in.   * @param input Input indices array
   */
-  public void getArrayIndices (String arrayType, Object input, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void getArrayIndices (String contentType, String accept, String arrayType, String input, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = input;
 
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling getArrayIndices",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling getArrayIndices"));
+    }
+    // verify the required parameter 'accept' is set
+    if (accept == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'accept' when calling getArrayIndices",
+        new ApiException(400, "Missing the required parameter 'accept' when calling getArrayIndices"));
+    }
     // verify the required parameter 'arrayType' is set
     if (arrayType == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayIndices",
@@ -5928,9 +5967,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> formParams = new HashMap<String, String>();
 
 
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
+    headerParams.put("accept", ApiInvoker.parameterToString(accept));
 
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -5967,13 +6008,19 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Get the memory mapped array within a range based on the array type.
   * 
+   * @param accept 
    * @param arrayType Format in which the memory mapped array is returned in.
    * @param from 
    * @param to 
    * @return void
   */
-  public void getArrayRange (String arrayType, Integer from, Integer to) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void getArrayRange (String accept, String arrayType, Integer from, Integer to) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
+    // verify the required parameter 'accept' is set
+    if (accept == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'accept' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'accept' when calling getArrayRange"));
+    }
     // verify the required parameter 'arrayType' is set
     if (arrayType == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayRange",
@@ -5999,9 +6046,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("accept", ApiInvoker.parameterToString(accept));
     String[] contentTypes = {
-      "application/json",
-      "application/octet-stream"
+      "application/json"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -6043,11 +6090,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get the memory mapped array within a range based on the array type.
    * 
-   * @param arrayType Format in which the memory mapped array is returned in.   * @param from    * @param to 
+   * @param accept    * @param arrayType Format in which the memory mapped array is returned in.   * @param from    * @param to 
   */
-  public void getArrayRange (String arrayType, Integer from, Integer to, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void getArrayRange (String accept, String arrayType, Integer from, Integer to, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
+    // verify the required parameter 'accept' is set
+    if (accept == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'accept' when calling getArrayRange",
+        new ApiException(400, "Missing the required parameter 'accept' when calling getArrayRange"));
+    }
     // verify the required parameter 'arrayType' is set
     if (arrayType == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'arrayType' when calling getArrayRange",
@@ -6075,9 +6127,10 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> formParams = new HashMap<String, String>();
 
 
+    headerParams.put("accept", ApiInvoker.parameterToString(accept));
 
     String[] contentTypes = {
-      "application/json","application/octet-stream"
+      "application/json"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -10441,19 +10494,14 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * Get logs
   * 
-   * @param body the the log request
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
+   * @param logRequest The log object
    * @return LogBatch
   */
-  public LogBatch logs (LogRequest body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = body;
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling logs",
-        new ApiException(400, "Missing the required parameter 'body' when calling logs"));
-    }
+  public LogBatch logs (String deploymentName, String versionName, String modelName, LogRequest logRequest) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = logRequest;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling logs",
@@ -10468,6 +10516,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling logs",
         new ApiException(400, "Missing the required parameter 'modelName' when calling logs"));
+    }
+    // verify the required parameter 'logRequest' is set
+    if (logRequest == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'logRequest' when calling logs",
+        new ApiException(400, "Missing the required parameter 'logRequest' when calling logs"));
     }
 
     // create path and map variables
@@ -10522,16 +10575,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * Get logs
    * 
-   * @param body the the log request   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
+   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model   * @param logRequest The log object
   */
-  public void logs (LogRequest body, String deploymentName, String versionName, String modelName, final Response.Listener<LogBatch> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = body;
+  public void logs (String deploymentName, String versionName, String modelName, LogRequest logRequest, final Response.Listener<LogBatch> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = logRequest;
 
-    // verify the required parameter 'body' is set
-    if (body == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'body' when calling logs",
-        new ApiException(400, "Missing the required parameter 'body' when calling logs"));
-    }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling logs",
@@ -10546,6 +10594,11 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     if (modelName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'modelName' when calling logs",
         new ApiException(400, "Missing the required parameter 'modelName' when calling logs"));
+    }
+    // verify the required parameter 'logRequest' is set
+    if (logRequest == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'logRequest' when calling logs",
+        new ApiException(400, "Missing the required parameter 'logRequest' when calling logs"));
     }
 
     // create path and map variables
@@ -10752,14 +10805,20 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   /**
   * This method can be used to set meta data for the current model which is set to the server
   * 
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;
    * @param body the meta data object
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param modelName ID or name of the deployed model
    * @return MetaData
   */
-  public MetaData metaPost (MetaData body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public MetaData metaPost (String contentType, String body, String deploymentName, String versionName, String modelName) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = body;
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling metaPost",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling metaPost"));
+    }
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling metaPost",
@@ -10790,8 +10849,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -10833,11 +10893,16 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
       /**
    * This method can be used to set meta data for the current model which is set to the server
    * 
-   * @param body the meta data object   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;   * @param body the meta data object   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param modelName ID or name of the deployed model
   */
-  public void metaPost (MetaData body, String deploymentName, String versionName, String modelName, final Response.Listener<MetaData> responseListener, final Response.ErrorListener errorListener) {
+  public void metaPost (String contentType, String body, String deploymentName, String versionName, String modelName, final Response.Listener<MetaData> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = body;
 
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling metaPost",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling metaPost"));
+    }
     // verify the required parameter 'body' is set
     if (body == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'body' when calling metaPost",
@@ -10870,9 +10935,10 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     Map<String, String> formParams = new HashMap<String, String>();
 
 
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
 
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -12326,13 +12392,19 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
   * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
    * @param operation Operation to perform on the input data.
    * @param inputType Type of the input data.
    * @param inputData 
    * @return void
   */
-  public void predictError (String operation, String inputType, Object inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void predictError (String contentType, String operation, String inputType, String inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = inputData;
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling predictError",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling predictError"));
+    }
     // verify the required parameter 'operation' is set
     if (operation == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictError",
@@ -12353,8 +12425,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -12396,11 +12469,16 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
    * These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
-   * @param operation Operation to perform on the input data.   * @param inputType Type of the input data.   * @param inputData 
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.   * @param operation Operation to perform on the input data.   * @param inputType Type of the input data.   * @param inputData 
   */
-  public void predictError (String operation, String inputType, Object inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void predictError (String contentType, String operation, String inputType, String inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = inputData;
 
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling predictError",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling predictError"));
+    }
     // verify the required parameter 'operation' is set
     if (operation == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictError",
@@ -12423,9 +12501,10 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     Map<String, String> formParams = new HashMap<String, String>();
 
 
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
 
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -12462,26 +12541,31 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
   * 
-   * @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
-   * @param inputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
+   * @param operation The operation to perform on the input data. 
+   * @param inputTypeFile Type of the input data. 
    * @param inputData The input data to run inference on.
    * @return void
   */
-  public void predictV2 (String operation, String inputType, String inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void predictV2File (String operation, String inputTypeFile, File inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'operation' is set
     if (operation == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2",
-        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2"));
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2File",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2File"));
     }
-    // verify the required parameter 'inputType' is set
-    if (inputType == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling predictV2",
-        new ApiException(400, "Missing the required parameter 'inputType' when calling predictV2"));
+    // verify the required parameter 'inputTypeFile' is set
+    if (inputTypeFile == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputTypeFile' when calling predictV2File",
+        new ApiException(400, "Missing the required parameter 'inputTypeFile' when calling predictV2File"));
+    }
+    // verify the required parameter 'inputData' is set
+    if (inputData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputData' when calling predictV2File",
+        new ApiException(400, "Missing the required parameter 'inputData' when calling predictV2File"));
     }
 
     // create path and map variables
-    String path = "/{operation}/{inputType}".replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString()));
+    String path = "/{operation}/{inputTypeFile}".replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputTypeFile" + "\\}", apiInvoker.escapeString(inputTypeFile.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -12490,7 +12574,6 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
     String[] contentTypes = {
-      "application/json",
       "multipart/form-data"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -12499,13 +12582,12 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       // file uploading
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       if (inputData != null) {
-        localVarBuilder.addTextBody("inputData", ApiInvoker.parameterToString(inputData), ApiInvoker.TEXT_PLAIN_UTF8);
+        localVarBuilder.addBinaryBody("inputData", inputData);
       }
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
     } else {
       // normal form params
-      formParams.put("inputData", ApiInvoker.parameterToString(inputData));
     }
 
     String[] authNames = new String[] { "api_key" };
@@ -12537,24 +12619,29 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Runs inference based on the input data. Output is defined relative to the output adapter specified.
    * 
-   * @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.    * @param inputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.    * @param inputData The input data to run inference on.
+   * @param operation The operation to perform on the input data.    * @param inputTypeFile Type of the input data.    * @param inputData The input data to run inference on.
   */
-  public void predictV2 (String operation, String inputType, String inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void predictV2File (String operation, String inputTypeFile, File inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'operation' is set
     if (operation == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2",
-        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2"));
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2File",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2File"));
     }
-    // verify the required parameter 'inputType' is set
-    if (inputType == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'inputType' when calling predictV2",
-        new ApiException(400, "Missing the required parameter 'inputType' when calling predictV2"));
+    // verify the required parameter 'inputTypeFile' is set
+    if (inputTypeFile == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputTypeFile' when calling predictV2File",
+        new ApiException(400, "Missing the required parameter 'inputTypeFile' when calling predictV2File"));
+    }
+    // verify the required parameter 'inputData' is set
+    if (inputData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputData' when calling predictV2File",
+        new ApiException(400, "Missing the required parameter 'inputData' when calling predictV2File"));
     }
 
     // create path and map variables
-    String path = "/{operation}/{inputType}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputType" + "\\}", apiInvoker.escapeString(inputType.toString()));
+    String path = "/{operation}/{inputTypeFile}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputTypeFile" + "\\}", apiInvoker.escapeString(inputTypeFile.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -12566,7 +12653,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
 
 
     String[] contentTypes = {
-      "application/json","multipart/form-data"
+      "multipart/form-data"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -12575,7 +12662,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
       
       if (inputData != null) {
-        localVarBuilder.addTextBody("inputData", ApiInvoker.parameterToString(inputData), ApiInvoker.TEXT_PLAIN_UTF8);
+        localVarBuilder.addBinaryBody("inputData", inputData);
       }
       
 
@@ -12583,8 +12670,167 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       postBody = httpEntity;
     } else {
       // normal form params
-      formParams.put("inputData", ApiInvoker.parameterToString(inputData));
+      
     }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+  * 
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+   * @param operation The operation to perform on the input data. 
+   * @param inputTypeJson Type of the input data. 
+   * @param inputData The input data to run inference on. (Specify a JSON string here)
+   * @return void
+  */
+  public void predictV2Json (String contentType, String operation, String inputTypeJson, String inputData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = inputData;
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling predictV2Json"));
+    }
+    // verify the required parameter 'operation' is set
+    if (operation == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2Json"));
+    }
+    // verify the required parameter 'inputTypeJson' is set
+    if (inputTypeJson == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputTypeJson' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'inputTypeJson' when calling predictV2Json"));
+    }
+    // verify the required parameter 'inputData' is set
+    if (inputData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputData' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'inputData' when calling predictV2Json"));
+    }
+
+    // create path and map variables
+    String path = "/{operation}/{inputTypeJson}".replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputTypeJson" + "\\}", apiInvoker.escapeString(inputTypeJson.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
+    String[] contentTypes = {
+      "text/plain"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Runs inference based on the input data. Output is defined relative to the output adapter specified.
+   * 
+   * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.   * @param operation The operation to perform on the input data.    * @param inputTypeJson Type of the input data.    * @param inputData The input data to run inference on. (Specify a JSON string here)
+  */
+  public void predictV2Json (String contentType, String operation, String inputTypeJson, String inputData, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = inputData;
+
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling predictV2Json"));
+    }
+    // verify the required parameter 'operation' is set
+    if (operation == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'operation' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'operation' when calling predictV2Json"));
+    }
+    // verify the required parameter 'inputTypeJson' is set
+    if (inputTypeJson == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputTypeJson' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'inputTypeJson' when calling predictV2Json"));
+    }
+    // verify the required parameter 'inputData' is set
+    if (inputData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'inputData' when calling predictV2Json",
+        new ApiException(400, "Missing the required parameter 'inputData' when calling predictV2Json"));
+    }
+
+    // create path and map variables
+    String path = "/{operation}/{inputTypeJson}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "operation" + "\\}", apiInvoker.escapeString(operation.toString())).replaceAll("\\{" + "inputTypeJson" + "\\}", apiInvoker.escapeString(inputTypeJson.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
+
+    String[] contentTypes = {
+      "text/plain"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
 
     String[] authNames = new String[] { "api_key" };
 
@@ -14178,7 +14424,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * @param batchRecord The input batch of record arrays
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformarray (String deploymentName, String versionName, String transformName, Object batchRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformarray (String deploymentName, String versionName, String transformName, BatchRecord batchRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = batchRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -14250,7 +14496,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param batchRecord The input batch of record arrays
   */
-  public void transformarray (String deploymentName, String versionName, String transformName, Object batchRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformarray (String deploymentName, String versionName, String transformName, BatchRecord batchRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = batchRecord;
 
     // verify the required parameter 'deploymentName' is set
@@ -14650,7 +14896,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * @param singleRecord The input record array
    * @return Base64NDArrayBody
   */
-  public Base64NDArrayBody transformincrementalarray (String deploymentName, String versionName, String transformName, Object singleRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Base64NDArrayBody transformincrementalarray (String deploymentName, String versionName, String transformName, SingleRecord singleRecord) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = singleRecord;
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
@@ -14722,7 +14968,7 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
    * 
    * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param singleRecord The input record array
   */
-  public void transformincrementalarray (String deploymentName, String versionName, String transformName, Object singleRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
+  public void transformincrementalarray (String deploymentName, String versionName, String transformName, SingleRecord singleRecord, final Response.Listener<Base64NDArrayBody> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = singleRecord;
 
     // verify the required parameter 'deploymentName' is set
@@ -15113,14 +15359,20 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
   /**
   * Sets the deployed (CSV or Image) transform process through the provided JSON string
   * 
+   * @param contentType The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.
    * @param deploymentName Name of the deployment group
    * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
    * @param transformName ID or name of the deployed transform
-   * @param transformProcess The transform process to set
+   * @param transformProcess The transform process to set (Specify a JSON string here).
    * @return Object
   */
-  public Object transformprocessPost (String deploymentName, String versionName, String transformName, Object transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public Object transformprocessPost (String contentType, String deploymentName, String versionName, String transformName, String transformProcess) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = transformProcess;
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling transformprocessPost",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling transformprocessPost"));
+    }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformprocessPost",
@@ -15146,8 +15398,9 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 
@@ -15189,11 +15442,16 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
       /**
    * Sets the deployed (CSV or Image) transform process through the provided JSON string
    * 
-   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param transformProcess The transform process to set
+   * @param contentType The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.   * @param deploymentName Name of the deployment group   * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;   * @param transformName ID or name of the deployed transform   * @param transformProcess The transform process to set (Specify a JSON string here).
   */
-  public void transformprocessPost (String deploymentName, String versionName, String transformName, Object transformProcess, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
+  public void transformprocessPost (String contentType, String deploymentName, String versionName, String transformName, String transformProcess, final Response.Listener<Object> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = transformProcess;
 
+    // verify the required parameter 'contentType' is set
+    if (contentType == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'contentType' when calling transformprocessPost",
+        new ApiException(400, "Missing the required parameter 'contentType' when calling transformprocessPost"));
+    }
     // verify the required parameter 'deploymentName' is set
     if (deploymentName == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'deploymentName' when calling transformprocessPost",
@@ -15221,9 +15479,10 @@ formParams.put("needs_preprocessing", ApiInvoker.parameterToString(needsPreproce
     Map<String, String> formParams = new HashMap<String, String>();
 
 
+    headerParams.put("Content-Type", ApiInvoker.parameterToString(contentType));
 
     String[] contentTypes = {
-      "application/json"
+      "text/plain"
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
 

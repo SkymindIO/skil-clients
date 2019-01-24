@@ -50,8 +50,10 @@ class Base64NDArrayBodyKNN(object):
         self._force_fill_k = None
         self.discriminator = None
 
-        self.ndarray = ndarray
-        self.k = k
+        if ndarray is not None:
+            self.ndarray = ndarray
+        if k is not None:
+            self.k = k
         if force_fill_k is not None:
             self.force_fill_k = force_fill_k
 
@@ -75,8 +77,6 @@ class Base64NDArrayBodyKNN(object):
         :param ndarray: The ndarray of this Base64NDArrayBodyKNN.  # noqa: E501
         :type: str
         """
-        if ndarray is None:
-            raise ValueError("Invalid value for `ndarray`, must not be `None`")  # noqa: E501
 
         self._ndarray = ndarray
 
@@ -100,8 +100,6 @@ class Base64NDArrayBodyKNN(object):
         :param k: The k of this Base64NDArrayBodyKNN.  # noqa: E501
         :type: int
         """
-        if k is None:
-            raise ValueError("Invalid value for `k`, must not be `None`")  # noqa: E501
 
         self._k = k
 

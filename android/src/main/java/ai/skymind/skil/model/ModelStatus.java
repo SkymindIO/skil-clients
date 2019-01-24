@@ -23,9 +23,9 @@ public class ModelStatus implements Serializable {
   private Integer status = null;
 
   /**
-   * 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+   * 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
    **/
-  @ApiModelProperty(value = "100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed ")
+  @ApiModelProperty(value = "100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. ")
   public Integer getStatus() {
     return status;
   }

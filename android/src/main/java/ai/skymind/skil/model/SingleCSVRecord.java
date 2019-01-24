@@ -25,7 +25,7 @@ public class SingleCSVRecord implements Serializable {
 
   /**
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public List<String> getValues() {
     return values;
   }

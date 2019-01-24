@@ -26,8 +26,8 @@ open class AddResourceRequest: JSONEncodable {
     }
     /** Name of the new resource */
     public var resourceName: String?
-    /** One of the resource details object */
-    public var resourceDetails: Any?
+    /** One of the resource details object (Specify a JSON string here) */
+    public var resourceDetails: String?
     /** URI of the credentials. If this is present, you can leave out the &#39;credentialId&#39; */
     public var credentialUri: String?
     /** Resource type (whether COMPUTE or STORAGE) */

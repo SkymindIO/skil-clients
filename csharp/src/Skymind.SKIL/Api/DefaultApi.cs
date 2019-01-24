@@ -960,9 +960,10 @@ namespace Skymind.SKIL.Api
         /// The array is specified through a file path, in the configuration object, during model server deployment.
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns></returns>
-        void GetArray (string arrayType);
+        void GetArray (string accept, string arrayType);
 
         /// <summary>
         /// Get the memory mapped array based on the array type.
@@ -971,9 +972,10 @@ namespace Skymind.SKIL.Api
         /// The array is specified through a file path, in the configuration object, during model server deployment.
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetArrayWithHttpInfo (string arrayType);
+        ApiResponse<Object> GetArrayWithHttpInfo (string accept, string arrayType);
         /// <summary>
         /// Get the memory mapped array indices based on the array type.
         /// </summary>
@@ -981,10 +983,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns></returns>
-        void GetArrayIndices (string arrayType, Object input = null);
+        void GetArrayIndices (string contentType, string accept, string arrayType, string input = null);
 
         /// <summary>
         /// Get the memory mapped array indices based on the array type.
@@ -993,10 +997,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetArrayIndicesWithHttpInfo (string arrayType, Object input = null);
+        ApiResponse<Object> GetArrayIndicesWithHttpInfo (string contentType, string accept, string arrayType, string input = null);
         /// <summary>
         /// Get the memory mapped array within a range based on the array type.
         /// </summary>
@@ -1004,11 +1010,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        void GetArrayRange (string arrayType, int? from, int? to);
+        void GetArrayRange (string accept, string arrayType, int? from, int? to);
 
         /// <summary>
         /// Get the memory mapped array within a range based on the array type.
@@ -1017,11 +1024,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetArrayRangeWithHttpInfo (string arrayType, int? from, int? to);
+        ApiResponse<Object> GetArrayRangeWithHttpInfo (string accept, string arrayType, int? from, int? to);
         /// <summary>
         /// Get auth policy
         /// </summary>
@@ -1748,12 +1756,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>LogBatch</returns>
-        LogBatch Logs (LogRequest body, string deploymentName, string versionName, string modelName);
+        LogBatch Logs (string deploymentName, string versionName, string modelName, LogRequest logRequest);
 
         /// <summary>
         /// Get logs
@@ -1762,12 +1770,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>ApiResponse of LogBatch</returns>
-        ApiResponse<LogBatch> LogsWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName);
+        ApiResponse<LogBatch> LogsWithHttpInfo (string deploymentName, string versionName, string modelName, LogRequest logRequest);
         /// <summary>
         /// this method can be used to get the meta data for the current model which set to the server
         /// </summary>
@@ -1800,12 +1808,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MetaData</returns>
-        MetaData MetaPost (MetaData body, string deploymentName, string versionName, string modelName);
+        MetaData MetaPost (string contentType, string body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// This method can be used to set meta data for the current model which is set to the server
@@ -1814,12 +1823,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MetaData</returns>
-        ApiResponse<MetaData> MetaPostWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName);
+        ApiResponse<MetaData> MetaPostWithHttpInfo (string contentType, string body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Modify the state (start/stop) of a deployed model
         /// </summary>
@@ -2058,11 +2068,12 @@ namespace Skymind.SKIL.Api
         /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns></returns>
-        void PredictError (string operation, string inputType, Object inputData = null);
+        void PredictError (string contentType, string operation, string inputType, string inputData = null);
 
         /// <summary>
         /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
@@ -2071,11 +2082,12 @@ namespace Skymind.SKIL.Api
         /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PredictErrorWithHttpInfo (string operation, string inputType, Object inputData = null);
+        ApiResponse<Object> PredictErrorWithHttpInfo (string contentType, string operation, string inputType, string inputData = null);
         /// <summary>
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
         /// </summary>
@@ -2083,11 +2095,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns></returns>
-        void PredictV2 (string operation, string inputType, string inputData = null);
+        void PredictV2File (string operation, string inputTypeFile, System.IO.Stream inputData);
 
         /// <summary>
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
@@ -2096,11 +2108,38 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PredictV2WithHttpInfo (string operation, string inputType, string inputData = null);
+        ApiResponse<Object> PredictV2FileWithHttpInfo (string operation, string inputTypeFile, System.IO.Stream inputData);
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns></returns>
+        void PredictV2Json (string contentType, string operation, string inputTypeJson, string inputData);
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> PredictV2JsonWithHttpInfo (string contentType, string operation, string inputTypeJson, string inputData);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -2376,7 +2415,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null);
+        Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
@@ -2390,7 +2429,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null);
+        ApiResponse<Base64NDArrayBody> TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -2457,7 +2496,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null);
+        Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null);
 
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody.
@@ -2471,7 +2510,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        ApiResponse<Base64NDArrayBody> TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null);
+        ApiResponse<Base64NDArrayBody> TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -2531,12 +2570,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>Object</returns>
-        Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null);
+        Object TransformprocessPost (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null);
 
         /// <summary>
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -2545,12 +2585,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null);
+        ApiResponse<Object> TransformprocessPostWithHttpInfo (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null);
         /// <summary>
         /// Update auth policy
         /// </summary>
@@ -3625,9 +3666,10 @@ namespace Skymind.SKIL.Api
         /// The array is specified through a file path, in the configuration object, during model server deployment.
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetArrayAsync (string arrayType);
+        System.Threading.Tasks.Task GetArrayAsync (string accept, string arrayType);
 
         /// <summary>
         /// Get the memory mapped array based on the array type.
@@ -3636,9 +3678,10 @@ namespace Skymind.SKIL.Api
         /// The array is specified through a file path, in the configuration object, during model server deployment.
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayAsyncWithHttpInfo (string arrayType);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayAsyncWithHttpInfo (string accept, string arrayType);
         /// <summary>
         /// Get the memory mapped array indices based on the array type.
         /// </summary>
@@ -3646,10 +3689,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetArrayIndicesAsync (string arrayType, Object input = null);
+        System.Threading.Tasks.Task GetArrayIndicesAsync (string contentType, string accept, string arrayType, string input = null);
 
         /// <summary>
         /// Get the memory mapped array indices based on the array type.
@@ -3658,10 +3703,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayIndicesAsyncWithHttpInfo (string arrayType, Object input = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayIndicesAsyncWithHttpInfo (string contentType, string accept, string arrayType, string input = null);
         /// <summary>
         /// Get the memory mapped array within a range based on the array type.
         /// </summary>
@@ -3669,11 +3716,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetArrayRangeAsync (string arrayType, int? from, int? to);
+        System.Threading.Tasks.Task GetArrayRangeAsync (string accept, string arrayType, int? from, int? to);
 
         /// <summary>
         /// Get the memory mapped array within a range based on the array type.
@@ -3682,11 +3730,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayRangeAsyncWithHttpInfo (string arrayType, int? from, int? to);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayRangeAsyncWithHttpInfo (string accept, string arrayType, int? from, int? to);
         /// <summary>
         /// Get auth policy
         /// </summary>
@@ -4413,12 +4462,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>Task of LogBatch</returns>
-        System.Threading.Tasks.Task<LogBatch> LogsAsync (LogRequest body, string deploymentName, string versionName, string modelName);
+        System.Threading.Tasks.Task<LogBatch> LogsAsync (string deploymentName, string versionName, string modelName, LogRequest logRequest);
 
         /// <summary>
         /// Get logs
@@ -4427,12 +4476,12 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>Task of ApiResponse (LogBatch)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, LogRequest logRequest);
         /// <summary>
         /// this method can be used to get the meta data for the current model which set to the server
         /// </summary>
@@ -4465,12 +4514,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MetaData</returns>
-        System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string versionName, string modelName);
+        System.Threading.Tasks.Task<MetaData> MetaPostAsync (string contentType, string body, string deploymentName, string versionName, string modelName);
 
         /// <summary>
         /// This method can be used to set meta data for the current model which is set to the server
@@ -4479,12 +4529,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MetaData)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName);
+        System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (string contentType, string body, string deploymentName, string versionName, string modelName);
         /// <summary>
         /// Modify the state (start/stop) of a deployed model
         /// </summary>
@@ -4723,11 +4774,12 @@ namespace Skymind.SKIL.Api
         /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PredictErrorAsync (string operation, string inputType, Object inputData = null);
+        System.Threading.Tasks.Task PredictErrorAsync (string contentType, string operation, string inputType, string inputData = null);
 
         /// <summary>
         /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
@@ -4736,11 +4788,12 @@ namespace Skymind.SKIL.Api
         /// These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PredictErrorAsyncWithHttpInfo (string operation, string inputType, Object inputData = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PredictErrorAsyncWithHttpInfo (string contentType, string operation, string inputType, string inputData = null);
         /// <summary>
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
         /// </summary>
@@ -4748,11 +4801,11 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PredictV2Async (string operation, string inputType, string inputData = null);
+        System.Threading.Tasks.Task PredictV2FileAsync (string operation, string inputTypeFile, System.IO.Stream inputData);
 
         /// <summary>
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
@@ -4761,11 +4814,38 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2AsyncWithHttpInfo (string operation, string inputType, string inputData = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2FileAsyncWithHttpInfo (string operation, string inputTypeFile, System.IO.Stream inputData);
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task PredictV2JsonAsync (string contentType, string operation, string inputTypeJson, string inputData);
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2JsonAsyncWithHttpInfo (string contentType, string operation, string inputTypeJson, string inputData);
         /// <summary>
         /// Run inference on the input array, using input image file from multipart form data.
         /// </summary>
@@ -5041,7 +5121,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName, Object batchRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null);
 
         /// <summary>
         /// Takes a batch input arrays and transforms it
@@ -5055,7 +5135,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null);
         /// <summary>
         /// Takes multiple multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -5122,7 +5202,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName, Object singleRecord = null);
+        System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null);
 
         /// <summary>
         /// Same as /transformincremental but returns Base64NDArrayBody.
@@ -5136,7 +5216,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null);
+        System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null);
         /// <summary>
         /// Takes a single multipart image file to transform and returns Base64NDArrayBody
         /// </summary>
@@ -5196,12 +5276,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> TransformprocessPostAsync (string deploymentName, string versionName, string transformName, Object transformProcess = null);
+        System.Threading.Tasks.Task<Object> TransformprocessPostAsync (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null);
 
         /// <summary>
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string
@@ -5210,12 +5291,13 @@ namespace Skymind.SKIL.Api
         /// 
         /// </remarks>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null);
         /// <summary>
         /// Update auth policy
         /// </summary>
@@ -12055,21 +12137,26 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns></returns>
-        public void GetArray (string arrayType)
+        public void GetArray (string accept, string arrayType)
         {
-             GetArrayWithHttpInfo(arrayType);
+             GetArrayWithHttpInfo(accept, arrayType);
         }
 
         /// <summary>
         /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetArrayWithHttpInfo (string arrayType)
+        public ApiResponse<Object> GetArrayWithHttpInfo (string accept, string arrayType)
         {
+            // verify the required parameter 'accept' is set
+            if (accept == null)
+                throw new ApiException(400, "Missing required parameter 'accept' when calling DefaultApi->GetArray");
             // verify the required parameter 'arrayType' is set
             if (arrayType == null)
                 throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArray");
@@ -12097,6 +12184,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (accept != null) localVarHeaderParams.Add("accept", this.Configuration.ApiClient.ParameterToString(accept)); // header parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -12126,11 +12214,12 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetArrayAsync (string arrayType)
+        public async System.Threading.Tasks.Task GetArrayAsync (string accept, string arrayType)
         {
-             await GetArrayAsyncWithHttpInfo(arrayType);
+             await GetArrayAsyncWithHttpInfo(accept, arrayType);
 
         }
 
@@ -12138,10 +12227,14 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array based on the array type. The array is specified through a file path, in the configuration object, during model server deployment.
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">The format in which the memory mapped array is returned.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayAsyncWithHttpInfo (string arrayType)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayAsyncWithHttpInfo (string accept, string arrayType)
         {
+            // verify the required parameter 'accept' is set
+            if (accept == null)
+                throw new ApiException(400, "Missing required parameter 'accept' when calling DefaultApi->GetArray");
             // verify the required parameter 'arrayType' is set
             if (arrayType == null)
                 throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArray");
@@ -12169,6 +12262,7 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (accept != null) localVarHeaderParams.Add("accept", this.Configuration.ApiClient.ParameterToString(accept)); // header parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -12198,23 +12292,33 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array indices based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns></returns>
-        public void GetArrayIndices (string arrayType, Object input = null)
+        public void GetArrayIndices (string contentType, string accept, string arrayType, string input = null)
         {
-             GetArrayIndicesWithHttpInfo(arrayType, input);
+             GetArrayIndicesWithHttpInfo(contentType, accept, arrayType, input);
         }
 
         /// <summary>
         /// Get the memory mapped array indices based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetArrayIndicesWithHttpInfo (string arrayType, Object input = null)
+        public ApiResponse<Object> GetArrayIndicesWithHttpInfo (string contentType, string accept, string arrayType, string input = null)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->GetArrayIndices");
+            // verify the required parameter 'accept' is set
+            if (accept == null)
+                throw new ApiException(400, "Missing required parameter 'accept' when calling DefaultApi->GetArrayIndices");
             // verify the required parameter 'arrayType' is set
             if (arrayType == null)
                 throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayIndices");
@@ -12229,7 +12333,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -12243,6 +12347,8 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
+            if (accept != null) localVarHeaderParams.Add("accept", this.Configuration.ApiClient.ParameterToString(accept)); // header parameter
             if (input != null && input.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
@@ -12280,12 +12386,14 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array indices based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetArrayIndicesAsync (string arrayType, Object input = null)
+        public async System.Threading.Tasks.Task GetArrayIndicesAsync (string contentType, string accept, string arrayType, string input = null)
         {
-             await GetArrayIndicesAsyncWithHttpInfo(arrayType, input);
+             await GetArrayIndicesAsyncWithHttpInfo(contentType, accept, arrayType, input);
 
         }
 
@@ -12293,11 +12401,19 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array indices based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="input">Input indices array (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayIndicesAsyncWithHttpInfo (string arrayType, Object input = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayIndicesAsyncWithHttpInfo (string contentType, string accept, string arrayType, string input = null)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->GetArrayIndices");
+            // verify the required parameter 'accept' is set
+            if (accept == null)
+                throw new ApiException(400, "Missing required parameter 'accept' when calling DefaultApi->GetArrayIndices");
             // verify the required parameter 'arrayType' is set
             if (arrayType == null)
                 throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayIndices");
@@ -12312,7 +12428,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -12326,6 +12442,8 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
+            if (accept != null) localVarHeaderParams.Add("accept", this.Configuration.ApiClient.ParameterToString(accept)); // header parameter
             if (input != null && input.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(input); // http body (model) parameter
@@ -12363,25 +12481,30 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array within a range based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        public void GetArrayRange (string arrayType, int? from, int? to)
+        public void GetArrayRange (string accept, string arrayType, int? from, int? to)
         {
-             GetArrayRangeWithHttpInfo(arrayType, from, to);
+             GetArrayRangeWithHttpInfo(accept, arrayType, from, to);
         }
 
         /// <summary>
         /// Get the memory mapped array within a range based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetArrayRangeWithHttpInfo (string arrayType, int? from, int? to)
+        public ApiResponse<Object> GetArrayRangeWithHttpInfo (string accept, string arrayType, int? from, int? to)
         {
+            // verify the required parameter 'accept' is set
+            if (accept == null)
+                throw new ApiException(400, "Missing required parameter 'accept' when calling DefaultApi->GetArrayRange");
             // verify the required parameter 'arrayType' is set
             if (arrayType == null)
                 throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayRange");
@@ -12402,14 +12525,14 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "application/octet-stream"
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
+                "application/json",
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -12418,6 +12541,7 @@ namespace Skymind.SKIL.Api
             if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
             if (from != null) localVarPathParams.Add("from", this.Configuration.ApiClient.ParameterToString(from)); // path parameter
             if (to != null) localVarPathParams.Add("to", this.Configuration.ApiClient.ParameterToString(to)); // path parameter
+            if (accept != null) localVarHeaderParams.Add("accept", this.Configuration.ApiClient.ParameterToString(accept)); // header parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -12447,13 +12571,14 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array within a range based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetArrayRangeAsync (string arrayType, int? from, int? to)
+        public async System.Threading.Tasks.Task GetArrayRangeAsync (string accept, string arrayType, int? from, int? to)
         {
-             await GetArrayRangeAsyncWithHttpInfo(arrayType, from, to);
+             await GetArrayRangeAsyncWithHttpInfo(accept, arrayType, from, to);
 
         }
 
@@ -12461,12 +12586,16 @@ namespace Skymind.SKIL.Api
         /// Get the memory mapped array within a range based on the array type. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="accept"></param>
         /// <param name="arrayType">Format in which the memory mapped array is returned in.</param>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayRangeAsyncWithHttpInfo (string arrayType, int? from, int? to)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetArrayRangeAsyncWithHttpInfo (string accept, string arrayType, int? from, int? to)
         {
+            // verify the required parameter 'accept' is set
+            if (accept == null)
+                throw new ApiException(400, "Missing required parameter 'accept' when calling DefaultApi->GetArrayRange");
             // verify the required parameter 'arrayType' is set
             if (arrayType == null)
                 throw new ApiException(400, "Missing required parameter 'arrayType' when calling DefaultApi->GetArrayRange");
@@ -12487,14 +12616,14 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "application/octet-stream"
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
+                "application/json",
+                "application/octet-stream"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -12503,6 +12632,7 @@ namespace Skymind.SKIL.Api
             if (arrayType != null) localVarPathParams.Add("arrayType", this.Configuration.ApiClient.ParameterToString(arrayType)); // path parameter
             if (from != null) localVarPathParams.Add("from", this.Configuration.ApiClient.ParameterToString(from)); // path parameter
             if (to != null) localVarPathParams.Add("to", this.Configuration.ApiClient.ParameterToString(to)); // path parameter
+            if (accept != null) localVarHeaderParams.Add("accept", this.Configuration.ApiClient.ParameterToString(accept)); // header parameter
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -17469,14 +17599,14 @@ namespace Skymind.SKIL.Api
         /// Get logs 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>LogBatch</returns>
-        public LogBatch Logs (LogRequest body, string deploymentName, string versionName, string modelName)
+        public LogBatch Logs (string deploymentName, string versionName, string modelName, LogRequest logRequest)
         {
-             ApiResponse<LogBatch> localVarResponse = LogsWithHttpInfo(body, deploymentName, versionName, modelName);
+             ApiResponse<LogBatch> localVarResponse = LogsWithHttpInfo(deploymentName, versionName, modelName, logRequest);
              return localVarResponse.Data;
         }
 
@@ -17484,16 +17614,13 @@ namespace Skymind.SKIL.Api
         /// Get logs 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>ApiResponse of LogBatch</returns>
-        public ApiResponse< LogBatch > LogsWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName)
+        public ApiResponse< LogBatch > LogsWithHttpInfo (string deploymentName, string versionName, string modelName, LogRequest logRequest)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Logs");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Logs");
@@ -17503,6 +17630,9 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logs");
+            // verify the required parameter 'logRequest' is set
+            if (logRequest == null)
+                throw new ApiException(400, "Missing required parameter 'logRequest' when calling DefaultApi->Logs");
 
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs";
             var localVarPathParams = new Dictionary<String, String>();
@@ -17529,13 +17659,13 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
+            if (logRequest != null && logRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(logRequest); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = body; // byte array
+                localVarPostBody = logRequest; // byte array
             }
 
             // authentication (api_key) required
@@ -17566,14 +17696,14 @@ namespace Skymind.SKIL.Api
         /// Get logs 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>Task of LogBatch</returns>
-        public async System.Threading.Tasks.Task<LogBatch> LogsAsync (LogRequest body, string deploymentName, string versionName, string modelName)
+        public async System.Threading.Tasks.Task<LogBatch> LogsAsync (string deploymentName, string versionName, string modelName, LogRequest logRequest)
         {
-             ApiResponse<LogBatch> localVarResponse = await LogsAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
+             ApiResponse<LogBatch> localVarResponse = await LogsAsyncWithHttpInfo(deploymentName, versionName, modelName, logRequest);
              return localVarResponse.Data;
 
         }
@@ -17582,16 +17712,13 @@ namespace Skymind.SKIL.Api
         /// Get logs 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">the the log request</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
+        /// <param name="logRequest">The log object</param>
         /// <returns>Task of ApiResponse (LogBatch)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (LogRequest body, string deploymentName, string versionName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<LogBatch>> LogsAsyncWithHttpInfo (string deploymentName, string versionName, string modelName, LogRequest logRequest)
         {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->Logs");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->Logs");
@@ -17601,6 +17728,9 @@ namespace Skymind.SKIL.Api
             // verify the required parameter 'modelName' is set
             if (modelName == null)
                 throw new ApiException(400, "Missing required parameter 'modelName' when calling DefaultApi->Logs");
+            // verify the required parameter 'logRequest' is set
+            if (logRequest == null)
+                throw new ApiException(400, "Missing required parameter 'logRequest' when calling DefaultApi->Logs");
 
             var localVarPath = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/logs";
             var localVarPathParams = new Dictionary<String, String>();
@@ -17627,13 +17757,13 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
-            if (body != null && body.GetType() != typeof(byte[]))
+            if (logRequest != null && logRequest.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(logRequest); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = body; // byte array
+                localVarPostBody = logRequest; // byte array
             }
 
             // authentication (api_key) required
@@ -17833,14 +17963,15 @@ namespace Skymind.SKIL.Api
         /// This method can be used to set meta data for the current model which is set to the server 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>MetaData</returns>
-        public MetaData MetaPost (MetaData body, string deploymentName, string versionName, string modelName)
+        public MetaData MetaPost (string contentType, string body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MetaData> localVarResponse = MetaPostWithHttpInfo(body, deploymentName, versionName, modelName);
+             ApiResponse<MetaData> localVarResponse = MetaPostWithHttpInfo(contentType, body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
         }
 
@@ -17848,13 +17979,17 @@ namespace Skymind.SKIL.Api
         /// This method can be used to set meta data for the current model which is set to the server 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>ApiResponse of MetaData</returns>
-        public ApiResponse< MetaData > MetaPostWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName)
+        public ApiResponse< MetaData > MetaPostWithHttpInfo (string contentType, string body, string deploymentName, string versionName, string modelName)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->MetaPost");
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->MetaPost");
@@ -17878,7 +18013,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -17893,6 +18028,7 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -17930,14 +18066,15 @@ namespace Skymind.SKIL.Api
         /// This method can be used to set meta data for the current model which is set to the server 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of MetaData</returns>
-        public async System.Threading.Tasks.Task<MetaData> MetaPostAsync (MetaData body, string deploymentName, string versionName, string modelName)
+        public async System.Threading.Tasks.Task<MetaData> MetaPostAsync (string contentType, string body, string deploymentName, string versionName, string modelName)
         {
-             ApiResponse<MetaData> localVarResponse = await MetaPostAsyncWithHttpInfo(body, deploymentName, versionName, modelName);
+             ApiResponse<MetaData> localVarResponse = await MetaPostAsyncWithHttpInfo(contentType, body, deploymentName, versionName, modelName);
              return localVarResponse.Data;
 
         }
@@ -17946,13 +18083,17 @@ namespace Skymind.SKIL.Api
         /// This method can be used to set meta data for the current model which is set to the server 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;</param>
         /// <param name="body">the meta data object</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="modelName">ID or name of the deployed model</param>
         /// <returns>Task of ApiResponse (MetaData)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (MetaData body, string deploymentName, string versionName, string modelName)
+        public async System.Threading.Tasks.Task<ApiResponse<MetaData>> MetaPostAsyncWithHttpInfo (string contentType, string body, string deploymentName, string versionName, string modelName)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->MetaPost");
             // verify the required parameter 'body' is set
             if (body == null)
                 throw new ApiException(400, "Missing required parameter 'body' when calling DefaultApi->MetaPost");
@@ -17976,7 +18117,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -17991,6 +18132,7 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (modelName != null) localVarPathParams.Add("modelName", this.Configuration.ApiClient.ParameterToString(modelName)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -19631,25 +19773,30 @@ namespace Skymind.SKIL.Api
         /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns></returns>
-        public void PredictError (string operation, string inputType, Object inputData = null)
+        public void PredictError (string contentType, string operation, string inputType, string inputData = null)
         {
-             PredictErrorWithHttpInfo(operation, inputType, inputData);
+             PredictErrorWithHttpInfo(contentType, operation, inputType, inputData);
         }
 
         /// <summary>
         /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PredictErrorWithHttpInfo (string operation, string inputType, Object inputData = null)
+        public ApiResponse<Object> PredictErrorWithHttpInfo (string contentType, string operation, string inputType, string inputData = null)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->PredictError");
             // verify the required parameter 'operation' is set
             if (operation == null)
                 throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictError");
@@ -19667,7 +19814,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -19681,6 +19828,7 @@ namespace Skymind.SKIL.Api
 
             if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
             if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
             if (inputData != null && inputData.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
@@ -19718,13 +19866,14 @@ namespace Skymind.SKIL.Api
         /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PredictErrorAsync (string operation, string inputType, Object inputData = null)
+        public async System.Threading.Tasks.Task PredictErrorAsync (string contentType, string operation, string inputType, string inputData = null)
         {
-             await PredictErrorAsyncWithHttpInfo(operation, inputType, inputData);
+             await PredictErrorAsyncWithHttpInfo(contentType, operation, inputType, inputData);
 
         }
 
@@ -19732,12 +19881,16 @@ namespace Skymind.SKIL.Api
         /// Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified. These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
         /// <param name="operation">Operation to perform on the input data.</param>
         /// <param name="inputType">Type of the input data.</param>
         /// <param name="inputData"> (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictErrorAsyncWithHttpInfo (string operation, string inputType, Object inputData = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictErrorAsyncWithHttpInfo (string contentType, string operation, string inputType, string inputData = null)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->PredictError");
             // verify the required parameter 'operation' is set
             if (operation == null)
                 throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictError");
@@ -19755,7 +19908,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -19769,6 +19922,7 @@ namespace Skymind.SKIL.Api
 
             if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
             if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
             if (inputData != null && inputData.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
@@ -19806,33 +19960,36 @@ namespace Skymind.SKIL.Api
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns></returns>
-        public void PredictV2 (string operation, string inputType, string inputData = null)
+        public void PredictV2File (string operation, string inputTypeFile, System.IO.Stream inputData)
         {
-             PredictV2WithHttpInfo(operation, inputType, inputData);
+             PredictV2FileWithHttpInfo(operation, inputTypeFile, inputData);
         }
 
         /// <summary>
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PredictV2WithHttpInfo (string operation, string inputType, string inputData = null)
+        public ApiResponse<Object> PredictV2FileWithHttpInfo (string operation, string inputTypeFile, System.IO.Stream inputData)
         {
             // verify the required parameter 'operation' is set
             if (operation == null)
-                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2");
-            // verify the required parameter 'inputType' is set
-            if (inputType == null)
-                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->PredictV2");
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2File");
+            // verify the required parameter 'inputTypeFile' is set
+            if (inputTypeFile == null)
+                throw new ApiException(400, "Missing required parameter 'inputTypeFile' when calling DefaultApi->PredictV2File");
+            // verify the required parameter 'inputData' is set
+            if (inputData == null)
+                throw new ApiException(400, "Missing required parameter 'inputData' when calling DefaultApi->PredictV2File");
 
-            var localVarPath = "/{operation}/{inputType}";
+            var localVarPath = "/{operation}/{inputTypeFile}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -19842,7 +19999,6 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
                 "multipart/form-data"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -19856,8 +20012,8 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
-            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
-            if (inputData != null) localVarFormParams.Add("inputData", this.Configuration.ApiClient.ParameterToString(inputData)); // form parameter
+            if (inputTypeFile != null) localVarPathParams.Add("inputTypeFile", this.Configuration.ApiClient.ParameterToString(inputTypeFile)); // path parameter
+            if (inputData != null) localVarFileParams.Add("inputData", this.Configuration.ApiClient.ParameterToFile("inputData", inputData));
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -19874,7 +20030,7 @@ namespace Skymind.SKIL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PredictV2", localVarResponse);
+                Exception exception = ExceptionFactory("PredictV2File", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -19887,13 +20043,13 @@ namespace Skymind.SKIL.Api
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PredictV2Async (string operation, string inputType, string inputData = null)
+        public async System.Threading.Tasks.Task PredictV2FileAsync (string operation, string inputTypeFile, System.IO.Stream inputData)
         {
-             await PredictV2AsyncWithHttpInfo(operation, inputType, inputData);
+             await PredictV2FileAsyncWithHttpInfo(operation, inputTypeFile, inputData);
 
         }
 
@@ -19901,20 +20057,23 @@ namespace Skymind.SKIL.Api
         /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operation">The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputType">Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. </param>
-        /// <param name="inputData">The input data to run inference on. (optional)</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeFile">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2AsyncWithHttpInfo (string operation, string inputType, string inputData = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2FileAsyncWithHttpInfo (string operation, string inputTypeFile, System.IO.Stream inputData)
         {
             // verify the required parameter 'operation' is set
             if (operation == null)
-                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2");
-            // verify the required parameter 'inputType' is set
-            if (inputType == null)
-                throw new ApiException(400, "Missing required parameter 'inputType' when calling DefaultApi->PredictV2");
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2File");
+            // verify the required parameter 'inputTypeFile' is set
+            if (inputTypeFile == null)
+                throw new ApiException(400, "Missing required parameter 'inputTypeFile' when calling DefaultApi->PredictV2File");
+            // verify the required parameter 'inputData' is set
+            if (inputData == null)
+                throw new ApiException(400, "Missing required parameter 'inputData' when calling DefaultApi->PredictV2File");
 
-            var localVarPath = "/{operation}/{inputType}";
+            var localVarPath = "/{operation}/{inputTypeFile}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -19924,7 +20083,6 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
                 "multipart/form-data"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
@@ -19938,8 +20096,8 @@ namespace Skymind.SKIL.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
-            if (inputType != null) localVarPathParams.Add("inputType", this.Configuration.ApiClient.ParameterToString(inputType)); // path parameter
-            if (inputData != null) localVarFormParams.Add("inputData", this.Configuration.ApiClient.ParameterToString(inputData)); // form parameter
+            if (inputTypeFile != null) localVarPathParams.Add("inputTypeFile", this.Configuration.ApiClient.ParameterToString(inputTypeFile)); // path parameter
+            if (inputData != null) localVarFileParams.Add("inputData", this.Configuration.ApiClient.ParameterToFile("inputData", inputData));
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -19956,7 +20114,200 @@ namespace Skymind.SKIL.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PredictV2", localVarResponse);
+                Exception exception = ExceptionFactory("PredictV2File", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns></returns>
+        public void PredictV2Json (string contentType, string operation, string inputTypeJson, string inputData)
+        {
+             PredictV2JsonWithHttpInfo(contentType, operation, inputTypeJson, inputData);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> PredictV2JsonWithHttpInfo (string contentType, string operation, string inputTypeJson, string inputData)
+        {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->PredictV2Json");
+            // verify the required parameter 'operation' is set
+            if (operation == null)
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2Json");
+            // verify the required parameter 'inputTypeJson' is set
+            if (inputTypeJson == null)
+                throw new ApiException(400, "Missing required parameter 'inputTypeJson' when calling DefaultApi->PredictV2Json");
+            // verify the required parameter 'inputData' is set
+            if (inputData == null)
+                throw new ApiException(400, "Missing required parameter 'inputData' when calling DefaultApi->PredictV2Json");
+
+            var localVarPath = "/{operation}/{inputTypeJson}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "text/plain"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
+            if (inputTypeJson != null) localVarPathParams.Add("inputTypeJson", this.Configuration.ApiClient.ParameterToString(inputTypeJson)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
+            if (inputData != null && inputData.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = inputData; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PredictV2Json", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task PredictV2JsonAsync (string contentType, string operation, string inputTypeJson, string inputData)
+        {
+             await PredictV2JsonAsyncWithHttpInfo(contentType, operation, inputTypeJson, inputData);
+
+        }
+
+        /// <summary>
+        /// Runs inference based on the input data. Output is defined relative to the output adapter specified. 
+        /// </summary>
+        /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.</param>
+        /// <param name="operation">The operation to perform on the input data. </param>
+        /// <param name="inputTypeJson">Type of the input data. </param>
+        /// <param name="inputData">The input data to run inference on. (Specify a JSON string here)</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PredictV2JsonAsyncWithHttpInfo (string contentType, string operation, string inputTypeJson, string inputData)
+        {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->PredictV2Json");
+            // verify the required parameter 'operation' is set
+            if (operation == null)
+                throw new ApiException(400, "Missing required parameter 'operation' when calling DefaultApi->PredictV2Json");
+            // verify the required parameter 'inputTypeJson' is set
+            if (inputTypeJson == null)
+                throw new ApiException(400, "Missing required parameter 'inputTypeJson' when calling DefaultApi->PredictV2Json");
+            // verify the required parameter 'inputData' is set
+            if (inputData == null)
+                throw new ApiException(400, "Missing required parameter 'inputData' when calling DefaultApi->PredictV2Json");
+
+            var localVarPath = "/{operation}/{inputTypeJson}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "text/plain"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (operation != null) localVarPathParams.Add("operation", this.Configuration.ApiClient.ParameterToString(operation)); // path parameter
+            if (inputTypeJson != null) localVarPathParams.Add("inputTypeJson", this.Configuration.ApiClient.ParameterToString(inputTypeJson)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
+            if (inputData != null && inputData.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(inputData); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = inputData; // byte array
+            }
+
+            // authentication (api_key) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
+            {
+                localVarHeaderParams["authorization"] = this.Configuration.GetApiKeyWithPrefix("authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PredictV2Json", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -21807,7 +22158,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, Object batchRecord = null)
+        public Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = TransformarrayWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
              return localVarResponse.Data;
@@ -21822,7 +22173,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformarrayWithHttpInfo (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -21901,7 +22252,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName, Object batchRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformarrayAsync (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = await TransformarrayAsyncWithHttpInfo(deploymentName, versionName, transformName, batchRecord);
              return localVarResponse.Data;
@@ -21917,7 +22268,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="batchRecord">The input batch of record arrays (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object batchRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -22366,7 +22717,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Base64NDArrayBody</returns>
-        public Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, Object singleRecord = null)
+        public Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = TransformincrementalarrayWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
              return localVarResponse.Data;
@@ -22381,7 +22732,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>ApiResponse of Base64NDArrayBody</returns>
-        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null)
+        public ApiResponse< Base64NDArrayBody > TransformincrementalarrayWithHttpInfo (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -22460,7 +22811,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of Base64NDArrayBody</returns>
-        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName, Object singleRecord = null)
+        public async System.Threading.Tasks.Task<Base64NDArrayBody> TransformincrementalarrayAsync (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null)
         {
              ApiResponse<Base64NDArrayBody> localVarResponse = await TransformincrementalarrayAsyncWithHttpInfo(deploymentName, versionName, transformName, singleRecord);
              return localVarResponse.Data;
@@ -22476,7 +22827,7 @@ namespace Skymind.SKIL.Api
         /// <param name="transformName">ID or name of the deployed transform</param>
         /// <param name="singleRecord">The input record array (optional)</param>
         /// <returns>Task of ApiResponse (Base64NDArrayBody)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object singleRecord = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Base64NDArrayBody>> TransformincrementalarrayAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null)
         {
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
@@ -22898,14 +23249,15 @@ namespace Skymind.SKIL.Api
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>Object</returns>
-        public Object TransformprocessPost (string deploymentName, string versionName, string transformName, Object transformProcess = null)
+        public Object TransformprocessPost (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null)
         {
-             ApiResponse<Object> localVarResponse = TransformprocessPostWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+             ApiResponse<Object> localVarResponse = TransformprocessPostWithHttpInfo(contentType, deploymentName, versionName, transformName, transformProcess);
              return localVarResponse.Data;
         }
 
@@ -22913,13 +23265,17 @@ namespace Skymind.SKIL.Api
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > TransformprocessPostWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null)
+        public ApiResponse< Object > TransformprocessPostWithHttpInfo (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->TransformprocessPost");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessPost");
@@ -22940,7 +23296,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -22955,6 +23311,7 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
             if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter
@@ -22992,14 +23349,15 @@ namespace Skymind.SKIL.Api
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> TransformprocessPostAsync (string deploymentName, string versionName, string transformName, Object transformProcess = null)
+        public async System.Threading.Tasks.Task<Object> TransformprocessPostAsync (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null)
         {
-             ApiResponse<Object> localVarResponse = await TransformprocessPostAsyncWithHttpInfo(deploymentName, versionName, transformName, transformProcess);
+             ApiResponse<Object> localVarResponse = await TransformprocessPostAsyncWithHttpInfo(contentType, deploymentName, versionName, transformName, transformProcess);
              return localVarResponse.Data;
 
         }
@@ -23008,13 +23366,17 @@ namespace Skymind.SKIL.Api
         /// Sets the deployed (CSV or Image) transform process through the provided JSON string 
         /// </summary>
         /// <exception cref="Skymind.SKIL.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="contentType">The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.</param>
         /// <param name="deploymentName">Name of the deployment group</param>
         /// <param name="versionName">Version name of the endpoint. The default value is \&quot;default\&quot;</param>
         /// <param name="transformName">ID or name of the deployed transform</param>
-        /// <param name="transformProcess">The transform process to set (optional)</param>
+        /// <param name="transformProcess">The transform process to set (Specify a JSON string here). (optional)</param>
         /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string deploymentName, string versionName, string transformName, Object transformProcess = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TransformprocessPostAsyncWithHttpInfo (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null)
         {
+            // verify the required parameter 'contentType' is set
+            if (contentType == null)
+                throw new ApiException(400, "Missing required parameter 'contentType' when calling DefaultApi->TransformprocessPost");
             // verify the required parameter 'deploymentName' is set
             if (deploymentName == null)
                 throw new ApiException(400, "Missing required parameter 'deploymentName' when calling DefaultApi->TransformprocessPost");
@@ -23035,7 +23397,7 @@ namespace Skymind.SKIL.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
+                "text/plain"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -23050,6 +23412,7 @@ namespace Skymind.SKIL.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (transformName != null) localVarPathParams.Add("transformName", this.Configuration.ApiClient.ParameterToString(transformName)); // path parameter
+            if (contentType != null) localVarHeaderParams.Add("Content-Type", this.Configuration.ApiClient.ParameterToString(contentType)); // header parameter
             if (transformProcess != null && transformProcess.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(transformProcess); // http body (model) parameter

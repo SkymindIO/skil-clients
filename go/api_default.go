@@ -4232,11 +4232,12 @@ func (a *DefaultApiService) GetAllJobs(ctx context.Context) ([]JobEntity, *http.
 DefaultApiService Get the memory mapped array based on the array type.
 The array is specified through a file path, in the configuration object, during model server deployment.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param accept
  * @param arrayType The format in which the memory mapped array is returned.
 
 
 */
-func (a *DefaultApiService) GetArray(ctx context.Context, arrayType string) (*http.Response, error) {
+func (a *DefaultApiService) GetArray(ctx context.Context, accept string, arrayType string) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4270,6 +4271,7 @@ func (a *DefaultApiService) GetArray(ctx context.Context, arrayType string) (*ht
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -4315,18 +4317,20 @@ func (a *DefaultApiService) GetArray(ctx context.Context, arrayType string) (*ht
 /* 
 DefaultApiService Get the memory mapped array indices based on the array type.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+ * @param accept
  * @param arrayType Format in which the memory mapped array is returned in.
  * @param optional nil or *GetArrayIndicesOpts - Optional Parameters:
-     * @param "Input" (optional.Interface of interface{}) -  Input indices array
+     * @param "Input" (optional.String) -  Input indices array
 
 
 */
 
 type GetArrayIndicesOpts struct { 
-	Input optional.Interface
+	Input optional.String
 }
 
-func (a *DefaultApiService) GetArrayIndices(ctx context.Context, arrayType string, localVarOptionals *GetArrayIndicesOpts) (*http.Response, error) {
+func (a *DefaultApiService) GetArrayIndices(ctx context.Context, contentType string, accept string, arrayType string, localVarOptionals *GetArrayIndicesOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4344,7 +4348,7 @@ func (a *DefaultApiService) GetArrayIndices(ctx context.Context, arrayType strin
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
+	localVarHttpContentTypes := []string{"text/plain"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -4360,14 +4364,12 @@ func (a *DefaultApiService) GetArrayIndices(ctx context.Context, arrayType strin
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	localVarHeaderParams["accept"] = parameterToString(accept, "")
 	// body params
 	if localVarOptionals != nil && localVarOptionals.Input.IsSet() {
+		localVarPostBody = &localVarOptionals.Input.Value()
 		
-		localVarOptionalInput, localVarOptionalInputok := localVarOptionals.Input.Value().(interface{})
-		if !localVarOptionalInputok {
-				return nil, reportError("input should be interface{}")
-		}
-		localVarPostBody = &localVarOptionalInput
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -4414,13 +4416,14 @@ func (a *DefaultApiService) GetArrayIndices(ctx context.Context, arrayType strin
 /* 
 DefaultApiService Get the memory mapped array within a range based on the array type.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param accept
  * @param arrayType Format in which the memory mapped array is returned in.
  * @param from
  * @param to
 
 
 */
-func (a *DefaultApiService) GetArrayRange(ctx context.Context, arrayType string, from int32, to int32) (*http.Response, error) {
+func (a *DefaultApiService) GetArrayRange(ctx context.Context, accept string, arrayType string, from int32, to int32) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -4440,7 +4443,7 @@ func (a *DefaultApiService) GetArrayRange(ctx context.Context, arrayType string,
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json", "application/octet-stream"}
+	localVarHttpContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -4449,13 +4452,14 @@ func (a *DefaultApiService) GetArrayRange(ctx context.Context, arrayType string,
 	}
 
 	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
+	localVarHttpHeaderAccepts := []string{"application/json", "application/octet-stream"}
 
 	// set Accept header
 	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["accept"] = parameterToString(accept, "")
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -7844,14 +7848,14 @@ func (a *DefaultApiService) Login(ctx context.Context, loginRequest LoginRequest
 /* 
 DefaultApiService Get logs
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body the the log request
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param modelName ID or name of the deployed model
+ * @param logRequest The log object
 
 @return LogBatch
 */
-func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymentName string, versionName string, modelName string) (LogBatch, *http.Response, error) {
+func (a *DefaultApiService) Logs(ctx context.Context, deploymentName string, versionName string, modelName string, logRequest LogRequest) (LogBatch, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -7888,7 +7892,7 @@ func (a *DefaultApiService) Logs(ctx context.Context, body LogRequest, deploymen
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	localVarPostBody = &body
+	localVarPostBody = &logRequest
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -8057,6 +8061,7 @@ func (a *DefaultApiService) MetaGet(ctx context.Context, deploymentName string, 
 /* 
 DefaultApiService This method can be used to set meta data for the current model which is set to the server
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;
  * @param body the meta data object
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
@@ -8064,7 +8069,7 @@ DefaultApiService This method can be used to set meta data for the current model
 
 @return MetaData
 */
-func (a *DefaultApiService) MetaPost(ctx context.Context, body MetaData, deploymentName string, versionName string, modelName string) (MetaData, *http.Response, error) {
+func (a *DefaultApiService) MetaPost(ctx context.Context, contentType string, body string, deploymentName string, versionName string, modelName string) (MetaData, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -8084,7 +8089,7 @@ func (a *DefaultApiService) MetaPost(ctx context.Context, body MetaData, deploym
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
+	localVarHttpContentTypes := []string{"text/plain"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -8100,6 +8105,7 @@ func (a *DefaultApiService) MetaPost(ctx context.Context, body MetaData, deploym
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
 	// body params
 	localVarPostBody = &body
 	if ctx != nil {
@@ -9152,19 +9158,20 @@ func (a *DefaultApiService) Predict(ctx context.Context, body Prediction, deploy
 DefaultApiService Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
  * @param operation Operation to perform on the input data.
  * @param inputType Type of the input data.
  * @param optional nil or *PredictErrorOpts - Optional Parameters:
-     * @param "InputData" (optional.Interface of interface{}) - 
+     * @param "InputData" (optional.String) - 
 
 
 */
 
 type PredictErrorOpts struct { 
-	InputData optional.Interface
+	InputData optional.String
 }
 
-func (a *DefaultApiService) PredictError(ctx context.Context, operation string, inputType string, localVarOptionals *PredictErrorOpts) (*http.Response, error) {
+func (a *DefaultApiService) PredictError(ctx context.Context, contentType string, operation string, inputType string, localVarOptionals *PredictErrorOpts) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -9183,7 +9190,7 @@ func (a *DefaultApiService) PredictError(ctx context.Context, operation string, 
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
+	localVarHttpContentTypes := []string{"text/plain"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -9199,14 +9206,11 @@ func (a *DefaultApiService) PredictError(ctx context.Context, operation string, 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
 	// body params
 	if localVarOptionals != nil && localVarOptionals.InputData.IsSet() {
+		localVarPostBody = &localVarOptionals.InputData.Value()
 		
-		localVarOptionalInputData, localVarOptionalInputDataok := localVarOptionals.InputData.Value().(interface{})
-		if !localVarOptionalInputDataok {
-				return nil, reportError("inputData should be interface{}")
-		}
-		localVarPostBody = &localVarOptionalInputData
 	}
 	if ctx != nil {
 		// API Key Authentication
@@ -9253,19 +9257,13 @@ func (a *DefaultApiService) PredictError(ctx context.Context, operation string, 
 /* 
 DefaultApiService Runs inference based on the input data. Output is defined relative to the output adapter specified.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param operation The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
- * @param inputType Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type. 
- * @param optional nil or *PredictV2Opts - Optional Parameters:
-     * @param "InputData" (optional.String) -  The input data to run inference on.
+ * @param operation The operation to perform on the input data. 
+ * @param inputTypeFile Type of the input data. 
+ * @param inputData The input data to run inference on.
 
 
 */
-
-type PredictV2Opts struct { 
-	InputData optional.String
-}
-
-func (a *DefaultApiService) PredictV2(ctx context.Context, operation string, inputType string, localVarOptionals *PredictV2Opts) (*http.Response, error) {
+func (a *DefaultApiService) PredictV2File(ctx context.Context, operation string, inputTypeFile string, inputData *os.File) (*http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -9275,16 +9273,16 @@ func (a *DefaultApiService) PredictV2(ctx context.Context, operation string, inp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/{operation}/{inputType}"
+	localVarPath := a.client.cfg.BasePath + "/{operation}/{inputTypeFile}"
 	localVarPath = strings.Replace(localVarPath, "{"+"operation"+"}", fmt.Sprintf("%v", operation), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"inputType"+"}", fmt.Sprintf("%v", inputType), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"inputTypeFile"+"}", fmt.Sprintf("%v", inputTypeFile), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json", "multipart/form-data"}
+	localVarHttpContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -9300,9 +9298,102 @@ func (a *DefaultApiService) PredictV2(ctx context.Context, operation string, inp
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.InputData.IsSet() {
-		localVarFormParams.Add("inputData", parameterToString(localVarOptionals.InputData.Value(), ""))
+	if localVarFile != nil {
+		fbs, _ := ioutil.ReadAll(localVarFile)
+		localVarFileBytes = fbs
+		localVarFileName = localVarFile.Name()
+		localVarFile.Close()
 	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["authorization"] = key
+			
+		}
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarHttpResponse, err
+	}
+
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		
+		return localVarHttpResponse, newErr
+	}
+
+	return localVarHttpResponse, nil
+}
+
+/* 
+DefaultApiService Runs inference based on the input data. Output is defined relative to the output adapter specified.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param contentType The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;.
+ * @param operation The operation to perform on the input data. 
+ * @param inputTypeJson Type of the input data. 
+ * @param inputData The input data to run inference on. (Specify a JSON string here)
+
+
+*/
+func (a *DefaultApiService) PredictV2Json(ctx context.Context, contentType string, operation string, inputTypeJson string, inputData string) (*http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/{operation}/{inputTypeJson}"
+	localVarPath = strings.Replace(localVarPath, "{"+"operation"+"}", fmt.Sprintf("%v", operation), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"inputTypeJson"+"}", fmt.Sprintf("%v", inputTypeJson), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{"text/plain"}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
+	// body params
+	localVarPostBody = &inputData
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -10534,7 +10625,7 @@ DefaultApiService Takes a batch input arrays and transforms it
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformarrayOpts - Optional Parameters:
-     * @param "BatchRecord" (optional.Interface of interface{}) -  The input batch of record arrays
+     * @param "BatchRecord" (optional.Interface of BatchRecord) -  The input batch of record arrays
 
 @return Base64NdArrayBody
 */
@@ -10582,9 +10673,9 @@ func (a *DefaultApiService) Transformarray(ctx context.Context, deploymentName s
 	// body params
 	if localVarOptionals != nil && localVarOptionals.BatchRecord.IsSet() {
 		
-		localVarOptionalBatchRecord, localVarOptionalBatchRecordok := localVarOptionals.BatchRecord.Value().(interface{})
+		localVarOptionalBatchRecord, localVarOptionalBatchRecordok := localVarOptionals.BatchRecord.Value().(BatchRecord)
 		if !localVarOptionalBatchRecordok {
-				return localVarReturnValue, nil, reportError("batchRecord should be interface{}")
+				return localVarReturnValue, nil, reportError("batchRecord should be BatchRecord")
 		}
 		localVarPostBody = &localVarOptionalBatchRecord
 	}
@@ -10885,7 +10976,7 @@ DefaultApiService Same as /transformincremental but returns Base64NDArrayBody.
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformincrementalarrayOpts - Optional Parameters:
-     * @param "SingleRecord" (optional.Interface of interface{}) -  The input record array
+     * @param "SingleRecord" (optional.Interface of SingleRecord) -  The input record array
 
 @return Base64NdArrayBody
 */
@@ -10933,9 +11024,9 @@ func (a *DefaultApiService) Transformincrementalarray(ctx context.Context, deplo
 	// body params
 	if localVarOptionals != nil && localVarOptionals.SingleRecord.IsSet() {
 		
-		localVarOptionalSingleRecord, localVarOptionalSingleRecordok := localVarOptionals.SingleRecord.Value().(interface{})
+		localVarOptionalSingleRecord, localVarOptionalSingleRecordok := localVarOptionals.SingleRecord.Value().(SingleRecord)
 		if !localVarOptionalSingleRecordok {
-				return localVarReturnValue, nil, reportError("singleRecord should be interface{}")
+				return localVarReturnValue, nil, reportError("singleRecord should be SingleRecord")
 		}
 		localVarPostBody = &localVarOptionalSingleRecord
 	}
@@ -11220,20 +11311,21 @@ func (a *DefaultApiService) TransformprocessGet(ctx context.Context, deploymentN
 /* 
 DefaultApiService Sets the deployed (CSV or Image) transform process through the provided JSON string
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param contentType The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;.
  * @param deploymentName Name of the deployment group
  * @param versionName Version name of the endpoint. The default value is \&quot;default\&quot;
  * @param transformName ID or name of the deployed transform
  * @param optional nil or *TransformprocessPostOpts - Optional Parameters:
-     * @param "TransformProcess" (optional.Interface of interface{}) -  The transform process to set
+     * @param "TransformProcess" (optional.String) -  The transform process to set (Specify a JSON string here).
 
 @return interface{}
 */
 
 type TransformprocessPostOpts struct { 
-	TransformProcess optional.Interface
+	TransformProcess optional.String
 }
 
-func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (interface{}, *http.Response, error) {
+func (a *DefaultApiService) TransformprocessPost(ctx context.Context, contentType string, deploymentName string, versionName string, transformName string, localVarOptionals *TransformprocessPostOpts) (interface{}, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -11253,7 +11345,7 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"application/json"}
+	localVarHttpContentTypes := []string{"text/plain"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -11269,14 +11361,11 @@ func (a *DefaultApiService) TransformprocessPost(ctx context.Context, deployment
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	localVarHeaderParams["Content-Type"] = parameterToString(contentType, "")
 	// body params
 	if localVarOptionals != nil && localVarOptionals.TransformProcess.IsSet() {
+		localVarPostBody = &localVarOptionals.TransformProcess.Value()
 		
-		localVarOptionalTransformProcess, localVarOptionalTransformProcessok := localVarOptionals.TransformProcess.Value().(interface{})
-		if !localVarOptionalTransformProcessok {
-				return localVarReturnValue, nil, reportError("transformProcess should be interface{}")
-		}
-		localVarPostBody = &localVarOptionalTransformProcess
 	}
 	if ctx != nil {
 		// API Key Authentication

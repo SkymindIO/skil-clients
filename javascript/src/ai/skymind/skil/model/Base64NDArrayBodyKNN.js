@@ -43,14 +43,12 @@
    * Constructs a new <code>Base64NDArrayBodyKNN</code>.
    * @alias module:ai/skymind/skil/model/Base64NDArrayBodyKNN
    * @class
-   * @param ndarray {String} the array to run the search on. Note that this must be a row vector
-   * @param k {Number} the number of results to retrieve
    */
-  var exports = function(ndarray, k) {
+  var exports = function() {
     var _this = this;
 
-    _this['ndarray'] = ndarray;
-    _this['k'] = k;
+
+
 
   };
 

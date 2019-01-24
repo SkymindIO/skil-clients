@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**numRevisions**](DefaultApi.md#numRevisions) | **GET** /numrevisions | Gets the number of retrained models written with retraining.
 [**predict**](DefaultApi.md#predict) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**predictError**](DefaultApi.md#predictError) | **POST** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**predictV2**](DefaultApi.md#predictV2) | **POST** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predictV2File**](DefaultApi.md#predictV2File) | **POST** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**predictV2Json**](DefaultApi.md#predictV2Json) | **POST** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**predictimage**](DefaultApi.md#predictimage) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**predictwithpreprocess**](DefaultApi.md#predictwithpreprocess) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**predictwithpreprocessjson**](DefaultApi.md#predictwithpreprocessjson) | **POST** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -1858,7 +1859,7 @@ This endpoint does not need any parameter.
 
 <a name="getArray"></a>
 # **getArray**
-> getArray(arrayType)
+> getArray(accept, arrayType)
 
 Get the memory mapped array based on the array type.
 
@@ -1870,9 +1871,10 @@ The array is specified through a file path, in the configuration object, during 
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
+String accept = "accept_example"; // String | 
 String arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
 try {
-    apiInstance.getArray(arrayType);
+    apiInstance.getArray(accept, arrayType);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getArray");
     e.printStackTrace();
@@ -1883,6 +1885,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **String**|  | [enum: application/json, application/octet-stream]
  **arrayType** | **String**| The format in which the memory mapped array is returned. | [enum: json, numpy, nd4j]
 
 ### Return type
@@ -1900,7 +1903,7 @@ null (empty response body)
 
 <a name="getArrayIndices"></a>
 # **getArrayIndices**
-> getArrayIndices(arrayType, input)
+> getArrayIndices(contentType, accept, arrayType, input)
 
 Get the memory mapped array indices based on the array type.
 
@@ -1910,10 +1913,12 @@ Get the memory mapped array indices based on the array type.
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
+String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+String accept = "accept_example"; // String | 
 String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
-Object input = null; // Object | Input indices array
+String input = "input_example"; // String | Input indices array
 try {
-    apiInstance.getArrayIndices(arrayType, input);
+    apiInstance.getArrayIndices(contentType, accept, arrayType, input);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getArrayIndices");
     e.printStackTrace();
@@ -1924,8 +1929,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | [enum: application/json]
+ **accept** | **String**|  | [enum: application/json, application/octet-stream]
  **arrayType** | **String**| Format in which the memory mapped array is returned in. | [enum: json, numpy, nd4j]
- **input** | **Object**| Input indices array | [optional]
+ **input** | **String**| Input indices array | [optional]
 
 ### Return type
 
@@ -1937,12 +1944,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 <a name="getArrayRange"></a>
 # **getArrayRange**
-> getArrayRange(arrayType, from, to)
+> getArrayRange(accept, arrayType, from, to)
 
 Get the memory mapped array within a range based on the array type.
 
@@ -1952,11 +1959,12 @@ Get the memory mapped array within a range based on the array type.
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
+String accept = "accept_example"; // String | 
 String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
 Integer from = 56; // Integer | 
 Integer to = 56; // Integer | 
 try {
-    apiInstance.getArrayRange(arrayType, from, to);
+    apiInstance.getArrayRange(accept, arrayType, from, to);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getArrayRange");
     e.printStackTrace();
@@ -1967,6 +1975,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **accept** | **String**|  | [enum: application/json, application/octet-stream]
  **arrayType** | **String**| Format in which the memory mapped array is returned in. | [enum: json, numpy, nd4j]
  **from** | **Integer**|  |
  **to** | **Integer**|  |
@@ -1981,8 +1990,8 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 <a name="getAuthPolicy"></a>
 # **getAuthPolicy**
@@ -3352,7 +3361,7 @@ No authorization required
 
 <a name="logs"></a>
 # **logs**
-> LogBatch logs(body, deploymentName, versionName, modelName)
+> LogBatch logs(deploymentName, versionName, modelName, logRequest)
 
 Get logs
 
@@ -3362,12 +3371,12 @@ Get logs
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-LogRequest body = new LogRequest(); // LogRequest | the the log request
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String modelName = "modelName_example"; // String | ID or name of the deployed model
+LogRequest logRequest = new LogRequest(); // LogRequest | The log object
 try {
-    LogBatch result = apiInstance.logs(body, deploymentName, versionName, modelName);
+    LogBatch result = apiInstance.logs(deploymentName, versionName, modelName, logRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#logs");
@@ -3379,10 +3388,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**LogRequest**](LogRequest.md)| the the log request |
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **modelName** | **String**| ID or name of the deployed model |
+ **logRequest** | [**LogRequest**](LogRequest.md)| The log object |
 
 ### Return type
 
@@ -3444,7 +3453,7 @@ Name | Type | Description  | Notes
 
 <a name="metaPost"></a>
 # **metaPost**
-> MetaData metaPost(body, deploymentName, versionName, modelName)
+> MetaData metaPost(contentType, body, deploymentName, versionName, modelName)
 
 This method can be used to set meta data for the current model which is set to the server
 
@@ -3454,12 +3463,13 @@ This method can be used to set meta data for the current model which is set to t
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-MetaData body = new MetaData(); // MetaData | the meta data object
+String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`
+String body = "body_example"; // String | the meta data object
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String modelName = "modelName_example"; // String | ID or name of the deployed model
 try {
-    MetaData result = apiInstance.metaPost(body, deploymentName, versionName, modelName);
+    MetaData result = apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#metaPost");
@@ -3471,7 +3481,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MetaData**](MetaData.md)| the meta data object |
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | [enum: application/json]
+ **body** | **String**| the meta data object |
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **modelName** | **String**| ID or name of the deployed model |
@@ -3486,7 +3497,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 <a name="modelStateChange"></a>
@@ -3904,7 +3915,7 @@ Name | Type | Description  | Notes
 
 <a name="predictError"></a>
 # **predictError**
-> predictError(operation, inputType, inputData)
+> predictError(contentType, operation, inputType, inputData)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -3916,11 +3927,12 @@ These \&quot;error\&quot; endpoints are slower for inference, but will also igno
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
+String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
 String operation = "operation_example"; // String | Operation to perform on the input data.
 String inputType = "inputType_example"; // String | Type of the input data.
-Object inputData = null; // Object | 
+String inputData = "inputData_example"; // String | 
 try {
-    apiInstance.predictError(operation, inputType, inputData);
+    apiInstance.predictError(contentType, operation, inputType, inputData);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#predictError");
     e.printStackTrace();
@@ -3931,9 +3943,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | [enum: application/json]
  **operation** | **String**| Operation to perform on the input data. | [enum: REGRESSION, CLASSIFICATION, RAW]
  **inputType** | **String**| Type of the input data. | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]
- **inputData** | **Object**|  | [optional]
+ **inputData** | **String**|  | [optional]
 
 ### Return type
 
@@ -3945,12 +3958,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
-<a name="predictV2"></a>
-# **predictV2**
-> predictV2(operation, inputType, inputData)
+<a name="predictV2File"></a>
+# **predictV2File**
+> predictV2File(operation, inputTypeFile, inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
@@ -3960,13 +3973,13 @@ Runs inference based on the input data. Output is defined relative to the output
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
-String operation = "operation_example"; // String | The operation to perform on the input data. The operations `[REGRESSION, CLASSIFICATION, RAW]` are for `application/json` content-type while `[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]` are for `multipart/form-data` content-type. 
-String inputType = "inputType_example"; // String | Type of the input data. The input data type. `[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]` are for `application/json` content-type while `[IMAGE, NUMPY, NDARRAY, JSON]` are for `multipart/form-data` content-type. 
-String inputData = "inputData_example"; // String | The input data to run inference on.
+String operation = "operation_example"; // String | The operation to perform on the input data. 
+String inputTypeFile = "inputTypeFile_example"; // String | Type of the input data. 
+File inputData = new File("/path/to/file.txt"); // File | The input data to run inference on.
 try {
-    apiInstance.predictV2(operation, inputType, inputData);
+    apiInstance.predictV2File(operation, inputTypeFile, inputData);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictV2");
+    System.err.println("Exception when calling DefaultApi#predictV2File");
     e.printStackTrace();
 }
 ```
@@ -3975,9 +3988,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **operation** | **String**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | [enum: REGRESSION, CLASSIFICATION, RAW, YOLO, SSD, RCNN]
- **inputType** | **String**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB, IMAGE, NUMPY, NDARRAY, JSON]
- **inputData** | **String**| The input data to run inference on. | [optional]
+ **operation** | **String**| The operation to perform on the input data.  | [enum: REGRESSION, CLASSIFICATION, RAW, YOLO, SSD, RCNN]
+ **inputTypeFile** | **String**| Type of the input data.  | [enum: IMAGE, NUMPY, NDARRAY, JSON]
+ **inputData** | **File**| The input data to run inference on. |
 
 ### Return type
 
@@ -3989,7 +4002,53 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+<a name="predictV2Json"></a>
+# **predictV2Json**
+> predictV2Json(contentType, operation, inputTypeJson, inputData)
+
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+String operation = "operation_example"; // String | The operation to perform on the input data. 
+String inputTypeJson = "inputTypeJson_example"; // String | Type of the input data. 
+String inputData = "inputData_example"; // String | The input data to run inference on. (Specify a JSON string here)
+try {
+    apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#predictV2Json");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | [enum: application/json]
+ **operation** | **String**| The operation to perform on the input data.  | [enum: REGRESSION, CLASSIFICATION, RAW]
+ **inputTypeJson** | **String**| Type of the input data.  | [enum: CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]
+ **inputData** | **String**| The input data to run inference on. (Specify a JSON string here) |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 <a name="predictimage"></a>
@@ -4491,7 +4550,7 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-Object batchRecord = null; // Object | The input batch of record arrays
+BatchRecord batchRecord = new BatchRecord(); // BatchRecord | The input batch of record arrays
 try {
     Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
     System.out.println(result);
@@ -4508,7 +4567,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **batchRecord** | **Object**| The input batch of record arrays | [optional]
+ **batchRecord** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional]
 
 ### Return type
 
@@ -4636,7 +4695,7 @@ DefaultApi apiInstance = new DefaultApi();
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-Object singleRecord = null; // Object | The input record array
+SingleRecord singleRecord = new SingleRecord(); // SingleRecord | The input record array
 try {
     Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
     System.out.println(result);
@@ -4653,7 +4712,7 @@ Name | Type | Description  | Notes
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **singleRecord** | **Object**| The input record array | [optional]
+ **singleRecord** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional]
 
 ### Return type
 
@@ -4764,7 +4823,7 @@ Name | Type | Description  | Notes
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
-> Object transformprocessPost(deploymentName, versionName, transformName, transformProcess)
+> Object transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
@@ -4774,12 +4833,13 @@ Sets the deployed (CSV or Image) transform process through the provided JSON str
 //import ai.skymind.skil.DefaultApi;
 
 DefaultApi apiInstance = new DefaultApi();
+String contentType = "contentType_example"; // String | The `Content-Type` should be `application/json`.
 String deploymentName = "deploymentName_example"; // String | Name of the deployment group
 String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
 String transformName = "transformName_example"; // String | ID or name of the deployed transform
-Object transformProcess = null; // Object | The transform process to set
+String transformProcess = "transformProcess_example"; // String | The transform process to set (Specify a JSON string here).
 try {
-    Object result = apiInstance.transformprocessPost(deploymentName, versionName, transformName, transformProcess);
+    Object result = apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#transformprocessPost");
@@ -4791,10 +4851,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **contentType** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | [enum: application/json]
  **deploymentName** | **String**| Name of the deployment group |
  **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
  **transformName** | **String**| ID or name of the deployed transform |
- **transformProcess** | **Object**| The transform process to set | [optional]
+ **transformProcess** | **String**| The transform process to set (Specify a JSON string here). | [optional]
 
 ### Return type
 
@@ -4806,7 +4867,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 <a name="updateAuthPolicy"></a>

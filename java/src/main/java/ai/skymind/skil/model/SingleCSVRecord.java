@@ -29,10 +29,10 @@ import java.util.List;
 /**
  * SingleCSVRecord
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-21T16:19:29.200+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
 public class SingleCSVRecord {
   @SerializedName("values")
-  private List<String> values = new ArrayList<String>();
+  private List<String> values = null;
 
   public SingleCSVRecord values(List<String> values) {
     this.values = values;
@@ -40,6 +40,9 @@ public class SingleCSVRecord {
   }
 
   public SingleCSVRecord addValuesItem(String valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<String>();
+    }
     this.values.add(valuesItem);
     return this;
   }
@@ -48,7 +51,7 @@ public class SingleCSVRecord {
    * Get values
    * @return values
   **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "")
   public List<String> getValues() {
     return values;
   }

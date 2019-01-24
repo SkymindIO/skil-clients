@@ -14,7 +14,7 @@ require 'date'
 
 module SkilCient
   class ModelStatus
-    # 100 - Model set successfully  200 - Model Updated Successfully  201 - Model Update Failed 
+    # 100 - Model set successfully. 200 - Model Updated Successfully. 201 - Model Update Failed. 
     attr_accessor :status
 
     # Attribute mapping from ruby-style variable name to JSON key.

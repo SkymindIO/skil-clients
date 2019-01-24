@@ -33,7 +33,7 @@ from skil_client.models.azure_storage_resource_details import AzureStorageResour
 from skil_client.models.base64_nd_array_body import Base64NDArrayBody
 from skil_client.models.base64_nd_array_body_knn import Base64NDArrayBodyKNN
 from skil_client.models.batch_csv_record import BatchCSVRecord
-from skil_client.models.batch_image_record import BatchImageRecord
+from skil_client.models.batch_record import BatchRecord
 from skil_client.models.best_model import BestModel
 from skil_client.models.change_password_request import ChangePasswordRequest
 from skil_client.models.classification_result import ClassificationResult
@@ -91,7 +91,7 @@ from skil_client.models.rollback_status import RollbackStatus
 from skil_client.models.s3_resource_details import S3ResourceDetails
 from skil_client.models.set_state import SetState
 from skil_client.models.single_csv_record import SingleCSVRecord
-from skil_client.models.single_image_record import SingleImageRecord
+from skil_client.models.single_record import SingleRecord
 from skil_client.models.token import Token
 from skil_client.models.token_generate_request import TokenGenerateRequest
 from skil_client.models.transform_process import TransformProcess

@@ -49,17 +49,12 @@ module SkilCient
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @records.nil?
-        invalid_properties.push('invalid value for "records", records cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @records.nil?
       true
     end
 

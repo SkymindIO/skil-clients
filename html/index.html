@@ -289,7 +289,8 @@ font-style: italic;
   <li><a href="#numRevisions"><code><span class="http-method">get</span> /numrevisions</code></a></li>
   <li><a href="#predict"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict</code></a></li>
   <li><a href="#predictError"><code><span class="http-method">post</span> /{operation}/{inputType}/error</code></a></li>
-  <li><a href="#predictV2"><code><span class="http-method">post</span> /{operation}/{inputType}</code></a></li>
+  <li><a href="#predictV2File"><code><span class="http-method">post</span> /{operation}/{inputTypeFile}</code></a></li>
+  <li><a href="#predictV2Json"><code><span class="http-method">post</span> /{operation}/{inputTypeJson}</code></a></li>
   <li><a href="#predictimage"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage</code></a></li>
   <li><a href="#predictwithpreprocess"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess</code></a></li>
   <li><a href="#predictwithpreprocessjson"><code><span class="http-method">post</span> /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson</code></a></li>
@@ -424,7 +425,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -498,7 +499,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -562,7 +563,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -625,7 +626,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -811,7 +812,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -872,7 +873,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -932,7 +933,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -993,7 +994,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1205,7 +1206,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1651,7 +1652,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1748,9 +1749,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to delete format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to delete </div>
     </div>  <!-- field-items -->
 
 
@@ -1883,9 +1884,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to delete format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to delete </div>
     </div>  <!-- field-items -->
 
 
@@ -1934,7 +1935,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelInstanceID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelInstanceID (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to delete. </div>
     </div>  <!-- field-items -->
@@ -2794,6 +2795,10 @@ font-style: italic;
 
 
 
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
 
 
 
@@ -2832,17 +2837,21 @@ font-style: italic;
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
-      <li><code>application/json</code></li>
+      <li><code>text/plain</code></li>
     </ul>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">input <a href="#object">object</a> (optional)</div>
+      <div class="param">input <a href="#string">string</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Input indices array </div>
 
     </div>  <!-- field-items -->
 
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
 
 
 
@@ -2886,10 +2895,13 @@ font-style: italic;
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
       <li><code>application/json</code></li>
-      <li><code>application/octet-stream</code></li>
     </ul>
 
 
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
 
 
 
@@ -2902,6 +2914,7 @@ font-style: italic;
     the media type will be conveyed by the <span class="header">Content-Type</span> response header.
     <ul>
       <li><code>application/json</code></li>
+      <li><code>application/octet-stream</code></li>
     </ul>
 
     <h3 class="field-label">Responses</h3>
@@ -2961,7 +2974,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -3109,7 +3122,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelInstanceID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelInstanceID (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to get evaluation results for. </div>
     </div>  <!-- field-items -->
@@ -3191,7 +3204,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">minibatchId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">minibatchId (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The GUID of the minibatch </div>
     </div>  <!-- field-items -->
@@ -3251,9 +3264,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to obtain format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to obtain </div>
     </div>  <!-- field-items -->
 
 
@@ -3308,9 +3321,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace </div>
     </div>  <!-- field-items -->
 
 
@@ -3474,7 +3487,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">minibatchId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">minibatchId (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The GUID of the minibatch </div>
     </div>  <!-- field-items -->
@@ -3525,7 +3538,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model history to get information of. </div>
     </div>  <!-- field-items -->
@@ -3576,7 +3589,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelInstanceID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelInstanceID (required)</div>
 
       <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to get information of. </div>
     </div>  <!-- field-items -->
@@ -3635,9 +3648,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment </div>
     </div>  <!-- field-items -->
 
 
@@ -4585,7 +4598,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
 
@@ -4772,9 +4785,9 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#LogRequest">LogRequest</a> (required)</div>
+      <div class="param">LogRequest <a href="#LogRequest">LogRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the the log request </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The log object </div>
 
     </div>  <!-- field-items -->
 
@@ -4806,7 +4819,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    logs obtained successfully
+    Logs obtained successfully
         <a href="#LogBatch">LogBatch</a>
     <h4 class="field-label">500</h4>
     Error retrieving logs
@@ -4887,17 +4900,21 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
-      <li><code>application/json</code></li>
+      <li><code>text/plain</code></li>
     </ul>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#MetaData">MetaData</a> (required)</div>
+      <div class="param">body <a href="#string">string</a> (required)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the meta data object </div>
 
     </div>  <!-- field-items -->
 
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
 
 
 
@@ -5568,17 +5585,21 @@ fix problems with input data pipelines.</div>
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
-      <li><code>application/json</code></li>
+      <li><code>text/plain</code></li>
     </ul>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">inputData <a href="#object">object</a> (optional)</div>
+      <div class="param">inputData <a href="#string">string</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
 
 
 
@@ -5599,30 +5620,25 @@ fix problems with input data pipelines.</div>
         <a href="#"></a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="predictV2"/>
+  <div class="method"><a name="predictV2File"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /{operation}/{inputType}</code></pre></div>
-    <div class="method-summary">Runs inference based on the input data. Output is defined relative to the output adapter specified. (<span class="nickname">predictV2</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /{operation}/{inputTypeFile}</code></pre></div>
+    <div class="method-summary">Runs inference based on the input data. Output is defined relative to the output adapter specified. (<span class="nickname">predictV2File</span>)</div>
     <div class="method-notes"></div>
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
       <div class="param">operation (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. The operations <code>[REGRESSION, CLASSIFICATION, RAW]</code> are for
-<code>application/json</code> content-type while <code>[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]</code> are for
-<code>multipart/form-data</code> content-type. </div><div class="param">inputType (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. </div><div class="param">inputTypeFile (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. The input data type. <code>[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]</code> are for
-<code>application/json</code> content-type while <code>[IMAGE, NUMPY, NDARRAY, JSON]</code> are for
-<code>multipart/form-data</code> content-type. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
-      <li><code>application/json</code></li>
       <li><code>multipart/form-data</code></li>
     </ul>
 
@@ -5631,10 +5647,64 @@ fix problems with input data pipelines.</div>
 
     <h3 class="field-label">Form parameters</h3>
     <div class="field-items">
-      <div class="param">inputData (optional)</div>
+      <div class="param">inputData (required)</div>
 
       <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input data to run inference on. </div>
     </div>  <!-- field-items -->
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Input data returned a prediction.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="predictV2Json"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /{operation}/{inputTypeJson}</code></pre></div>
+    <div class="method-summary">Runs inference based on the input data. Output is defined relative to the output adapter specified. (<span class="nickname">predictV2Json</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">operation (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. </div><div class="param">inputTypeJson (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>text/plain</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inputData <a href="#string">string</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input data to run inference on. (Specify a JSON string here) </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
 
 
     <!--Todo: process Response Object and its headers, schema, examples -->
@@ -6344,7 +6414,7 @@ fix problems with input data pipelines.</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">BatchRecord <a href="#object">object</a> (optional)</div>
+      <div class="param">BatchRecord <a href="#BatchRecord">BatchRecord</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input batch of record arrays </div>
 
@@ -6508,7 +6578,7 @@ fix problems with input data pipelines.</div>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
-    array transformed and returned successfully
+    Array transformed and returned successfully
         <a href="#SingleCSVRecord">SingleCSVRecord</a>
     <h4 class="field-label">500</h4>
     internal server error during transforming the array
@@ -6541,7 +6611,7 @@ fix problems with input data pipelines.</div>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">SingleRecord <a href="#object">object</a> (optional)</div>
+      <div class="param">SingleRecord <a href="#SingleRecord">SingleRecord</a> (optional)</div>
 
       <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input record array </div>
 
@@ -6722,17 +6792,21 @@ fix problems with input data pipelines.</div>
     <h3 class="field-label">Consumes</h3>
     This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
     <ul>
-      <li><code>application/json</code></li>
+      <li><code>text/plain</code></li>
     </ul>
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">TransformProcess <a href="#object">object</a> (optional)</div>
+      <div class="param">TransformProcess <a href="#string">string</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The transform process to set </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The transform process to set (Specify a JSON string here). </div>
 
     </div>  <!-- field-items -->
 
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
 
 
 
@@ -6827,7 +6901,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6894,9 +6968,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to update format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to update </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6963,9 +7037,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. format: guid</div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to update format: guid</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to update </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -7153,7 +7227,7 @@ fix problems with input data pipelines.</div>
     <li><a href="#Base64NDArrayBody"><code>Base64NDArrayBody</code> - </a></li>
     <li><a href="#Base64NDArrayBodyKNN"><code>Base64NDArrayBodyKNN</code> - </a></li>
     <li><a href="#BatchCSVRecord"><code>BatchCSVRecord</code> - </a></li>
-    <li><a href="#BatchImageRecord"><code>BatchImageRecord</code> - </a></li>
+    <li><a href="#BatchRecord"><code>BatchRecord</code> - </a></li>
     <li><a href="#BestModel"><code>BestModel</code> - </a></li>
     <li><a href="#ChangePasswordRequest"><code>ChangePasswordRequest</code> - </a></li>
     <li><a href="#ClassificationResult"><code>ClassificationResult</code> - </a></li>
@@ -7210,7 +7284,7 @@ fix problems with input data pipelines.</div>
     <li><a href="#S3ResourceDetails"><code>S3ResourceDetails</code> - </a></li>
     <li><a href="#SetState"><code>SetState</code> - </a></li>
     <li><a href="#SingleCSVRecord"><code>SingleCSVRecord</code> - </a></li>
-    <li><a href="#SingleImageRecord"><code>SingleImageRecord</code> - </a></li>
+    <li><a href="#SingleRecord"><code>SingleRecord</code> - </a></li>
     <li><a href="#Token"><code>Token</code> - </a></li>
     <li><a href="#TokenGenerateRequest"><code>TokenGenerateRequest</code> - </a></li>
     <li><a href="#TransformProcess"><code>TransformProcess</code> - </a></li>
@@ -7260,7 +7334,7 @@ fix problems with input data pipelines.</div>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">resourceName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the new resource </div>
-<div class="param">resourceDetails (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span> One of the resource details object </div>
+<div class="param">resourceDetails (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> One of the resource details object (Specify a JSON string here) </div>
 <div class="param">credentialUri (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> URI of the credentials. If this is present, you can leave out the 'credentialId' </div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type (whether COMPUTE or STORAGE) </div>
         <div class="param-enum-header">Enum:</div>
@@ -7275,7 +7349,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="AggregatePrediction"><code>AggregatePrediction</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of model instance format: guid</div>
+      <div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of model instance </div>
 <div class="param">evalType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the evaluation type to aggregate </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">ROC_BINARY</div><div class="param-enum">ROC</div><div class="param-enum">EVALUATION_BINARY</div><div class="param-enum">EVALUATION</div><div class="param-enum">REGRESSON_EVALUATION</div><div class="param-enum">ROC_MULTI_CLASS</div>
@@ -7309,15 +7383,15 @@ fix problems with input data pipelines.</div>
     <h3><a name="Base64NDArrayBody"><code>Base64NDArrayBody</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">ndarray </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">ndarray (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="Base64NDArrayBodyKNN"><code>Base64NDArrayBodyKNN</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">ndarray </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the array to run the search on. Note that this must be a row vector </div>
-<div class="param">k </div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> the number of results to retrieve </div>
+      <div class="param">ndarray (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the array to run the search on. Note that this must be a row vector </div>
+<div class="param">k (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> the number of results to retrieve </div>
 <div class="param">forceFillK (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> If 'True' it will brute force search for running search relative to a target but forced to fill the result list until the desired k is matched. </div>
     </div>  <!-- field-items -->
   </div>
@@ -7325,21 +7399,21 @@ fix problems with input data pipelines.</div>
     <h3><a name="BatchCSVRecord"><code>BatchCSVRecord</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">records </div><div class="param-desc"><span class="param-type"><a href="#SingleCSVRecord">array[SingleCSVRecord]</a></span>  </div>
+      <div class="param">records (optional)</div><div class="param-desc"><span class="param-type"><a href="#SingleCSVRecord">array[SingleCSVRecord]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="BatchImageRecord"><code>BatchImageRecord</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="BatchRecord"><code>BatchRecord</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">records </div><div class="param-desc"><span class="param-type"><a href="#SingleImageRecord">array[SingleImageRecord]</a></span>  </div>
+      <div class="param">records (optional)</div><div class="param-desc"><span class="param-type"><a href="#SingleRecord">array[SingleRecord]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="BestModel"><code>BestModel</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">ids (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> the list of GUIDs for the models to get the best model from format: guid</div>
+      <div class="param">ids (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> the list of GUIDs for the models to get the best model from </div>
 <div class="param">columnNameMetric (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the column metric (in an evaluation result) to get the best model from. </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">f1</div><div class="param-enum">precision</div><div class="param-enum">recall</div><div class="param-enum">accuracy</div><div class="param-enum">rmse</div><div class="param-enum">auc</div><div class="param-enum">meanAbsoluteError</div><div class="param-enum">meanRelativeError</div><div class="param-enum">r2</div>
@@ -7467,7 +7541,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">evaluation (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">evalName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">modelInstanceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: guid</div>
+<div class="param">modelInstanceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> When the evaluation result was created format: int64</div>
 <div class="param">f1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
 <div class="param">precision (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
@@ -7478,7 +7552,7 @@ fix problems with input data pipelines.</div>
 <div class="param">meanAbsoluteError (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
 <div class="param">meanRelativeError (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
 <div class="param">r2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
-<div class="param">evalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the evaluation format: guid</div>
+<div class="param">evalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the evaluation </div>
 <div class="param">evalVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">binaryThreshold (optional)</div><div class="param-desc"><span class="param-type"><a href="#double">Double</a></span>  format: double</div>
 <div class="param">binaryThresholds (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -7488,11 +7562,11 @@ fix problems with input data pipelines.</div>
     <h3><a name="ExampleEntity"><code>ExampleEntity</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">exampleId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the GUID of the example format: guid</div>
+      <div class="param">exampleId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the GUID of the example </div>
 <div class="param">exampleVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Example version </div>
 <div class="param">rowNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Row Number </div>
 <div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> when the example was created format: int64</div>
-<div class="param">miniBatchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the minibatch format: guid</div>
+<div class="param">miniBatchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the minibatch </div>
 <div class="param">miniBatchVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> minibatch version </div>
     </div>  <!-- field-items -->
   </div>
@@ -7592,7 +7666,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="INDArray"><code>INDArray</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">array (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: guid</div>
+      <div class="param">array (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">shape (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">array[Integer]</a></span>  </div>
 <div class="param">ordering (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
@@ -7665,8 +7739,8 @@ fix problems with input data pipelines.</div>
     <h3><a name="LogRequest"><code>LogRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">rowCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+      <div class="param">offset (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
+<div class="param">rowCount (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  format: int32</div>
 <div class="param">head (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
@@ -7695,8 +7769,8 @@ fix problems with input data pipelines.</div>
     <h3><a name="MinibatchEntity"><code>MinibatchEntity</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">miniBatchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of mini batch format: guid</div>
-<div class="param">evalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the evaluation format: guid</div>
+      <div class="param">miniBatchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of mini batch </div>
+<div class="param">evalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the evaluation </div>
 <div class="param">evalVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Eval version </div>
 <div class="param">batchVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Batch version </div>
     </div>  <!-- field-items -->
@@ -7732,7 +7806,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="ModelFeedBackRequest"><code>ModelFeedBackRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">batchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the minibatch this feedback corresponds to format: guid</div>
+      <div class="param">batchId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the minibatch this feedback corresponds to </div>
 <div class="param">guesses (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> The guessed label IDs by the model </div>
 <div class="param">correct (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> The actual label IDs </div>
     </div>  <!-- field-items -->
@@ -7742,7 +7816,7 @@ fix problems with input data pipelines.</div>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> When the model history / workspace was created format: int64</div>
-<div class="param">modelHistoryId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the model history / workspace format: guid</div>
+<div class="param">modelHistoryId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The GUID of the model history / workspace </div>
 <div class="param">modelName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the model history / workspace </div>
 <div class="param">modelLabels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Model history / workspace labels </div>
     </div>  <!-- field-items -->
@@ -7753,16 +7827,16 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">uri (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The model URI format: uri</div>
 <div class="param">etlJson (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The json string for the ETL (Extract, Transform and Load) </div>
-<div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the model. format: guid</div>
+<div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the model. </div>
 <div class="param">modelLabels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comma-separated labels string for the model </div>
 <div class="param">inputFormats (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Format for the model input </div>
 <div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> When the model was created format: int64</div>
 <div class="param">notebookJson (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> JSON string of the associated Zeppelin Notebook </div>
-<div class="param">evalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID for the model evaluation format: guid</div>
+<div class="param">evalId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID for the model evaluation </div>
 <div class="param">modelName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Model's name </div>
-<div class="param">originalModelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Original GUID of the model (used for maintaining revisions of a particular model) format: guid</div>
+<div class="param">originalModelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Original GUID of the model (used for maintaining revisions of a particular model) </div>
 <div class="param">modelVersion (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Model version </div>
-<div class="param">experimentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the Experiment which is associated with the model. format: guid</div>
+<div class="param">experimentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the Experiment which is associated with the model. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -7780,9 +7854,9 @@ fix problems with input data pipelines.</div>
     <h3><a name="ModelStatus"><code>ModelStatus</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 100 - Model set successfully
-200 - Model Updated Successfully
-201 - Model Update Failed </div>
+      <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> 100 - Model set successfully.
+200 - Model Updated Successfully.
+201 - Model Update Failed. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -7798,7 +7872,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="MultiPredictRequest"><code>MultiPredictRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: guid</div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">needsPreProcessing (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
 <div class="param">inputs (optional)</div><div class="param-desc"><span class="param-type"><a href="#INDArray">array[INDArray]</a></span>  </div>
 <div class="param">inputMasks (optional)</div><div class="param-desc"><span class="param-type"><a href="#INDArray">array[INDArray]</a></span>  </div>
@@ -7808,7 +7882,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="MultiPredictResponse"><code>MultiPredictResponse</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: guid</div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">needsPreProcessing (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
 <div class="param">outputs (optional)</div><div class="param-desc"><span class="param-type"><a href="#INDArray">array[INDArray]</a></span>  </div>
     </div>  <!-- field-items -->
@@ -7848,7 +7922,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="Prediction"><code>Prediction</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  format: guid</div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">needsPreProcessing (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
 <div class="param">prediction (optional)</div><div class="param-desc"><span class="param-type"><a href="#INDArray">INDArray</a></span>  </div>
 <div class="param">inputMask (optional)</div><div class="param-desc"><span class="param-type"><a href="#INDArray">INDArray</a></span>  </div>
@@ -7866,7 +7940,7 @@ fix problems with input data pipelines.</div>
 <div class="param">subType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource subtype (COMPUTE -&gt; [EMR, DataProc, HDInsight, YARN] | STORAGE -&gt; [S3, GoogleStorage, AzureStorage, HDFS]) </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">EMR</div><div class="param-enum">S3</div><div class="param-enum">GoogleStorage</div><div class="param-enum">DataProc</div><div class="param-enum">HDInsight</div><div class="param-enum">AzureStorage</div><div class="param-enum">HDFS</div><div class="param-enum">YARN</div>
-<div class="param">credentialId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Credentials GUID format: guid</div>
+<div class="param">credentialId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Credentials GUID </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -7949,14 +8023,15 @@ fix problems with input data pipelines.</div>
     <h3><a name="SingleCSVRecord"><code>SingleCSVRecord</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">values </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+      <div class="param">values (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="SingleImageRecord"><code>SingleImageRecord</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="SingleRecord"><code>SingleRecord</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">uri </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">values (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">uri (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -7989,8 +8064,8 @@ fix problems with input data pipelines.</div>
     <h3><a name="UpdateBestModel"><code>UpdateBestModel</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">experimentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the experiment to update. format: guid</div>
-<div class="param">bestModelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the model to set as the best model. format: guid</div>
+      <div class="param">experimentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the experiment to update. </div>
+<div class="param">bestModelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the model to set as the best model. </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

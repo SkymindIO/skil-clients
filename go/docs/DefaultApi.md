@@ -94,7 +94,8 @@ Method | HTTP request | Description
 [**NumRevisions**](DefaultApi.md#NumRevisions) | **Get** /numrevisions | Gets the number of retrained models written with retraining.
 [**Predict**](DefaultApi.md#Predict) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict | Run inference on the input array.
 [**PredictError**](DefaultApi.md#PredictError) | **Post** /{operation}/{inputType}/error | Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
-[**PredictV2**](DefaultApi.md#PredictV2) | **Post** /{operation}/{inputType} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**PredictV2File**](DefaultApi.md#PredictV2File) | **Post** /{operation}/{inputTypeFile} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
+[**PredictV2Json**](DefaultApi.md#PredictV2Json) | **Post** /{operation}/{inputTypeJson} | Runs inference based on the input data. Output is defined relative to the output adapter specified.
 [**Predictimage**](DefaultApi.md#Predictimage) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage | Run inference on the input array, using input image file from multipart form data.
 [**Predictwithpreprocess**](DefaultApi.md#Predictwithpreprocess) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess | Preprocesses the input and run inference on it
 [**Predictwithpreprocessjson**](DefaultApi.md#Predictwithpreprocessjson) | **Post** /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson | Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
@@ -1237,7 +1238,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetArray**
-> GetArray(ctx, arrayType)
+> GetArray(ctx, accept, arrayType)
 Get the memory mapped array based on the array type.
 
 The array is specified through a file path, in the configuration object, during model server deployment.
@@ -1247,6 +1248,7 @@ The array is specified through a file path, in the configuration object, during 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **accept** | **string**|  | 
   **arrayType** | **string**| The format in which the memory mapped array is returned. | 
 
 ### Return type
@@ -1265,7 +1267,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetArrayIndices**
-> GetArrayIndices(ctx, arrayType, optional)
+> GetArrayIndices(ctx, contentType, accept, arrayType, optional)
 Get the memory mapped array indices based on the array type.
 
 ### Required Parameters
@@ -1273,6 +1275,8 @@ Get the memory mapped array indices based on the array type.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+  **accept** | **string**|  | 
   **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
  **optional** | ***GetArrayIndicesOpts** | optional parameters | nil if no parameters
 
@@ -1282,7 +1286,9 @@ Optional parameters are passed through a pointer to a GetArrayIndicesOpts struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **input** | [**optional.Interface of interface{}**](interface{}.md)| Input indices array | 
+
+
+ **input** | **optional.String**| Input indices array | 
 
 ### Return type
 
@@ -1294,13 +1300,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetArrayRange**
-> GetArrayRange(ctx, arrayType, from, to)
+> GetArrayRange(ctx, accept, arrayType, from, to)
 Get the memory mapped array within a range based on the array type.
 
 ### Required Parameters
@@ -1308,6 +1314,7 @@ Get the memory mapped array within a range based on the array type.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **accept** | **string**|  | 
   **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
   **from** | **int32**|  | 
   **to** | **int32**|  | 
@@ -1322,8 +1329,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/octet-stream
- - **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/octet-stream
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2187,7 +2194,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **Logs**
-> LogBatch Logs(ctx, body, deploymentName, versionName, modelName)
+> LogBatch Logs(ctx, deploymentName, versionName, modelName, logRequest)
 Get logs
 
 ### Required Parameters
@@ -2195,10 +2202,10 @@ Get logs
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**LogRequest**](LogRequest.md)| the the log request | 
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
+  **logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -2244,7 +2251,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MetaPost**
-> MetaData MetaPost(ctx, body, deploymentName, versionName, modelName)
+> MetaData MetaPost(ctx, contentType, body, deploymentName, versionName, modelName)
 This method can be used to set meta data for the current model which is set to the server
 
 ### Required Parameters
@@ -2252,7 +2259,8 @@ This method can be used to set meta data for the current model which is set to t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MetaData**](MetaData.md)| the meta data object | 
+  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+  **body** | **string**| the meta data object | 
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **modelName** | **string**| ID or name of the deployed model | 
@@ -2267,7 +2275,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2539,7 +2547,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PredictError**
-> PredictError(ctx, operation, inputType, optional)
+> PredictError(ctx, contentType, operation, inputType, optional)
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
 These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
@@ -2549,6 +2557,7 @@ These \"error\" endpoints are slower for inference, but will also ignore invalid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
   **operation** | **string**| Operation to perform on the input data. | 
   **inputType** | **string**| Type of the input data. | 
  **optional** | ***PredictErrorOpts** | optional parameters | nil if no parameters
@@ -2560,7 +2569,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **inputData** | [**optional.Interface of interface{}**](interface{}.md)|  | 
+
+ **inputData** | **optional.String**|  | 
 
 ### Return type
 
@@ -2572,13 +2582,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **PredictV2**
-> PredictV2(ctx, operation, inputType, optional)
+# **PredictV2File**
+> PredictV2File(ctx, operation, inputTypeFile, inputData)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Required Parameters
@@ -2586,18 +2596,9 @@ Runs inference based on the input data. Output is defined relative to the output
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **operation** | **string**| The operation to perform on the input data. The operations &#x60;[REGRESSION, CLASSIFICATION, RAW]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[CLASSIFICATION, YOLO, SSD, RCNN, RAW, REGRESSION]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
-  **inputType** | **string**| Type of the input data. The input data type. &#x60;[CSV, DICTIONARY, CSVPUBSUB, DICTIONARYPUBSUB]&#x60; are for &#x60;application/json&#x60; content-type while &#x60;[IMAGE, NUMPY, NDARRAY, JSON]&#x60; are for &#x60;multipart/form-data&#x60; content-type.  | 
- **optional** | ***PredictV2Opts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a PredictV2Opts struct
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **inputData** | **optional.String**| The input data to run inference on. | 
+  **operation** | **string**| The operation to perform on the input data.  | 
+  **inputTypeFile** | **string**| Type of the input data.  | 
+  **inputData** | ***os.File**| The input data to run inference on. | 
 
 ### Return type
 
@@ -2609,7 +2610,36 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, multipart/form-data
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **PredictV2Json**
+> PredictV2Json(ctx, contentType, operation, inputTypeJson, inputData)
+Runs inference based on the input data. Output is defined relative to the output adapter specified.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+  **operation** | **string**| The operation to perform on the input data.  | 
+  **inputTypeJson** | **string**| Type of the input data.  | 
+  **inputData** | **string**| The input data to run inference on. (Specify a JSON string here) | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2969,7 +2999,7 @@ Name | Type | Description  | Notes
 
 
 
- **batchRecord** | [**optional.Interface of interface{}**](interface{}.md)| The input batch of record arrays | 
+ **batchRecord** | [**optional.Interface of BatchRecord**](BatchRecord.md)| The input batch of record arrays | 
 
 ### Return type
 
@@ -3080,7 +3110,7 @@ Name | Type | Description  | Notes
 
 
 
- **singleRecord** | [**optional.Interface of interface{}**](interface{}.md)| The input record array | 
+ **singleRecord** | [**optional.Interface of SingleRecord**](SingleRecord.md)| The input record array | 
 
 ### Return type
 
@@ -3157,7 +3187,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **TransformprocessPost**
-> interface{} TransformprocessPost(ctx, deploymentName, versionName, transformName, optional)
+> interface{} TransformprocessPost(ctx, contentType, deploymentName, versionName, transformName, optional)
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
@@ -3165,6 +3195,7 @@ Sets the deployed (CSV or Image) transform process through the provided JSON str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **contentType** | **string**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
   **deploymentName** | **string**| Name of the deployment group | 
   **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
   **transformName** | **string**| ID or name of the deployed transform | 
@@ -3178,7 +3209,8 @@ Name | Type | Description  | Notes
 
 
 
- **transformProcess** | [**optional.Interface of interface{}**](interface{}.md)| The transform process to set | 
+
+ **transformProcess** | **optional.String**| The transform process to set (Specify a JSON string here). | 
 
 ### Return type
 
@@ -3190,7 +3222,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: text/plain
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
