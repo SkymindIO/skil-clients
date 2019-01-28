@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <!-- The identifier that must be unique within the hosting gallery -->
-        <id>Skymind.SKIL</id>
+        <id>Skymind.Skil.Client</id>
         <title>SKIL Client</title>
 
         <!-- The package version number that is used when resolving dependencies -->
