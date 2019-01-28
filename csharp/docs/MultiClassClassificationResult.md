@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.MultiClassClassificationResult
+# Skymind.Skil.Client.Model.MultiClassClassificationResult
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.SingleRecord
+# Skymind.Skil.Client.Model.SingleRecord
 ## Properties
 
 Name | Type | Description | Notes

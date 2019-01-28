@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.S3ResourceDetails
+# Skymind.Skil.Client.Model.S3ResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ImportModelRequest
+# Skymind.Skil.Client.Model.ImportModelRequest
 ## Properties
 
 Name | Type | Description | Notes

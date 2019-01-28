@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.RevisionsWritten
+# Skymind.Skil.Client.Model.RevisionsWritten
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.SingleCSVRecord
+# Skymind.Skil.Client.Model.SingleCSVRecord
 ## Properties
 
 Name | Type | Description | Notes

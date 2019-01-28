@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.LogBatch
+# Skymind.Skil.Client.Model.LogBatch
 ## Properties
 
 Name | Type | Description | Notes

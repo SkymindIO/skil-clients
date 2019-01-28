@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AzureStorageResourceDetails
+# Skymind.Skil.Client.Model.AzureStorageResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

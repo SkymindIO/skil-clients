@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.CreateJobRequest
+# Skymind.Skil.Client.Model.CreateJobRequest
 ## Properties
 
 Name | Type | Description | Notes

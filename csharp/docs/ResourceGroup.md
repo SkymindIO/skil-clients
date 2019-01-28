@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ResourceGroup
+# Skymind.Skil.Client.Model.ResourceGroup
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Api.DefaultApi
+# Skymind.Skil.Client.Api.DefaultApi
 
 All URIs are relative to *http://localhost:9008*
 
@@ -132,9 +132,9 @@ Tells how many retraining examples have labels associated with them.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -192,9 +192,9 @@ Adds credentials
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -256,9 +256,9 @@ Adds an evaluation result
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -322,9 +322,9 @@ Adds a number of examples to a minibatch ID given an AddExampleRequest.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -388,9 +388,9 @@ Adds an example to a minibatch
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -454,9 +454,9 @@ Add an experiment, given an experiment entity
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -520,9 +520,9 @@ Name | Type | Description  | Notes
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -587,9 +587,9 @@ Gets the retraining feedback for the given batch ID.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -653,9 +653,9 @@ Adds a minibatch
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -719,9 +719,9 @@ Adds an evaluation feedback to the model against a given minibatch id.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -785,9 +785,9 @@ Add a model history / workspace
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -851,9 +851,9 @@ Adds a model
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -917,9 +917,9 @@ Adds a resource
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -981,9 +981,9 @@ Adds a resource group
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1045,9 +1045,9 @@ Adds a resource to a resource group
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1110,9 +1110,9 @@ Aggregates the evaluaition results of a model instance, based on the evaluation 
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1176,9 +1176,9 @@ Change user's password
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1242,9 +1242,9 @@ Use the deployed model to classify the input
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1312,9 +1312,9 @@ Same as /classify but returns the output as Base64NDArrayBody
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1382,9 +1382,9 @@ Use the deployed model to classify the input, using input image file from multip
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1452,9 +1452,9 @@ Clears the accumulated data for retraining.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1512,9 +1512,9 @@ Create a job
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1578,9 +1578,9 @@ Creates model History
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1644,9 +1644,9 @@ Delete credentials given an ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1707,9 +1707,9 @@ Deletes an experiment, given an experiment entity
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1773,9 +1773,9 @@ Deletes a job given its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1836,9 +1836,9 @@ Delete a model by deployment and model id
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1902,9 +1902,9 @@ Deletes a model history / workspace, given its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -1968,9 +1968,9 @@ Deletes a model instance, given its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2033,9 +2033,9 @@ Delete the resource with the specified resource ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2097,9 +2097,9 @@ Removes a resource from a resource group
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2162,9 +2162,9 @@ Delete the resource group with the specified resource group ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2226,9 +2226,9 @@ Deploy a model in a deployment group.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2292,9 +2292,9 @@ Create a new deployment group.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2356,9 +2356,9 @@ Delete a deployment by id
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2420,9 +2420,9 @@ Get a deployment details by id
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2484,9 +2484,9 @@ Get a list of deployments
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2544,9 +2544,9 @@ Detect the objects, given a (input) prediction request
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2620,9 +2620,9 @@ Download the output file from the job's execution. This will ONLY work if the jo
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2685,9 +2685,9 @@ Generate new auth token
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2749,9 +2749,9 @@ Get a list of all available jobs
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2811,9 +2811,9 @@ The array is specified through a file path, in the configuration object, during 
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2876,9 +2876,9 @@ Get the memory mapped array indices based on the array type.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -2945,9 +2945,9 @@ Get the memory mapped array within a range based on the array type.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3014,9 +3014,9 @@ Get auth policy
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3074,9 +3074,9 @@ Gets the best model among the given model instance IDs, based on the evaluation 
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3140,9 +3140,9 @@ Get credentials given an ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3204,9 +3204,9 @@ Returns the current model being used for retraining.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3263,9 +3263,9 @@ Gets the list of evaluation results entity, given a model instance ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3329,9 +3329,9 @@ Gets all the examples for a minibatch ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3395,9 +3395,9 @@ Obtain an experiment's details, given its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3461,9 +3461,9 @@ Obtain all experiments for a model history / workspace
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3527,9 +3527,9 @@ Get a job by its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3591,9 +3591,9 @@ Get the last evaluation specifications from the current model.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3651,9 +3651,9 @@ Gets a minibatch for the model
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3717,9 +3717,9 @@ Gets a model history, given its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3783,9 +3783,9 @@ Gets a model instance, given its ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3849,9 +3849,9 @@ Obtain a list of all the models for an experiment
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3915,9 +3915,9 @@ Get the resource with the specified resource ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -3979,9 +3979,9 @@ Get all the resources with the specified resource subtype
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4043,9 +4043,9 @@ Get all the resources with the specified resource type
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4109,9 +4109,9 @@ Get the details for the resource, for the given ID. Note that a 'ResourceDetails
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4173,9 +4173,9 @@ Get the resource group with the specified resource group ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4237,9 +4237,9 @@ Get a list of all the resource groups
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4297,9 +4297,9 @@ A list of all known/registered resources, of all types
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4357,9 +4357,9 @@ Get all resources from a resource group
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4421,9 +4421,9 @@ Get all roles.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4481,9 +4481,9 @@ Get a user by user ID
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4545,9 +4545,9 @@ Get auth tokens for a user.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4611,9 +4611,9 @@ Get all users.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4671,9 +4671,9 @@ Get the retraining status
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4731,9 +4731,9 @@ Run inference on the input and returns it as a JsonArrayResponse
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4803,9 +4803,9 @@ Runs knn on the given index with the given k (note that this is for data already
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4873,9 +4873,9 @@ Run a k nearest neighbors search on a NEW data point
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -4943,9 +4943,9 @@ List all of the experiments in every model history / workspace
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5007,9 +5007,9 @@ Get logs file path
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5075,9 +5075,9 @@ Post JSON credentials and obtain a JWT authorization token.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5134,9 +5134,9 @@ Get logs
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5204,9 +5204,9 @@ this method can be used to get the meta data for the current model which set to 
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5272,9 +5272,9 @@ This method can be used to set meta data for the current model which is set to t
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5344,9 +5344,9 @@ Modify the state (start/stop) of a deployed model
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5412,9 +5412,9 @@ Retrieve a list of all the deployed models given a deployment id
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5476,9 +5476,9 @@ Set the model to be served
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5546,9 +5546,9 @@ Update the model to be served
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5616,9 +5616,9 @@ Represents all of the labels for a given classification
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5688,9 +5688,9 @@ Networks with multiple input/output are supported via this method. A Normalizer 
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5760,9 +5760,9 @@ Networks with multiple input/output are supported via this method. A Normalizer 
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5834,9 +5834,9 @@ Gets the number of retrained models written with retraining.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5894,9 +5894,9 @@ Run inference on the input array.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -5966,9 +5966,9 @@ These \"error\" endpoints are slower for inference, but will also ignore invalid
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6035,9 +6035,9 @@ Runs inference based on the input data. Output is defined relative to the output
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6102,9 +6102,9 @@ Runs inference based on the input data. Output is defined relative to the output
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6171,9 +6171,9 @@ Run inference on the input array, using input image file from multipart form dat
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6241,9 +6241,9 @@ Preprocesses the input and run inference on it
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6311,9 +6311,9 @@ Preprocesses the input and run inference on it and returns it as a JsonArrayResp
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6381,9 +6381,9 @@ Runs inference based on the input data. Output is defined relative to the output
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6448,9 +6448,9 @@ Refresh the remote job status. Can be used for monitoring.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6512,9 +6512,9 @@ Register a new user
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6576,9 +6576,9 @@ Reimport a model to a previous deployed model in a deployment
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6644,9 +6644,9 @@ Revoke a user token.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6708,9 +6708,9 @@ Rollback to a previous revision of the model.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6772,9 +6772,9 @@ Start running an (already created) job on the remote resource
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6838,9 +6838,9 @@ Takes a batch of SingleCSVRecord object and transforms it into the desired forma
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6908,9 +6908,9 @@ Takes a batch input arrays and transforms it
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -6980,9 +6980,9 @@ Takes multiple multipart image file and transforms it into the desired format an
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7052,9 +7052,9 @@ Takes a SingleCSVRecord object and transforms it into the desired format
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7122,9 +7122,9 @@ Same as /transformincremental but returns Base64NDArrayBody.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7194,9 +7194,9 @@ Takes a single multipart image file and transforms it into the desired format an
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7264,9 +7264,9 @@ Gets the JSON string of the deployed transform process (CSV or Image)
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7332,9 +7332,9 @@ Sets the deployed (CSV or Image) transform process through the provided JSON str
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7404,9 +7404,9 @@ Update auth policy
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7468,9 +7468,9 @@ Updates the best model for an experiment
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7534,9 +7534,9 @@ Updates an experiment, given an experiment entity
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7602,9 +7602,9 @@ Update a model history / workspace
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7670,9 +7670,9 @@ Update a user
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {
@@ -7734,9 +7734,9 @@ Upload a model file to SKIL for import.
 ```csharp
 using System;
 using System.Diagnostics;
-using Skymind.SKIL.Api;
-using Skymind.SKIL.Client;
-using Skymind.SKIL.Model;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
 
 namespace Example
 {

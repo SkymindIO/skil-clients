@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.UpdateBestModel
+# Skymind.Skil.Client.Model.UpdateBestModel
 ## Properties
 
 Name | Type | Description | Notes

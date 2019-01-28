@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.CreateDeploymentRequest
+# Skymind.Skil.Client.Model.CreateDeploymentRequest
 ## Properties
 
 Name | Type | Description | Notes

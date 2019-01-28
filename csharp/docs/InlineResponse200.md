@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.InlineResponse200
+# Skymind.Skil.Client.Model.InlineResponse200
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ModelEntity
+# Skymind.Skil.Client.Model.ModelEntity
 ## Properties
 
 Name | Type | Description | Notes

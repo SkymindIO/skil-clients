@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.DeploymentResponse
+# Skymind.Skil.Client.Model.DeploymentResponse
 ## Properties
 
 Name | Type | Description | Notes

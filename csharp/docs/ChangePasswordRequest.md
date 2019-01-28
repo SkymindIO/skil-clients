@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ChangePasswordRequest
+# Skymind.Skil.Client.Model.ChangePasswordRequest
 ## Properties
 
 Name | Type | Description | Notes

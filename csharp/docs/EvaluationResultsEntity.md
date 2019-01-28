@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.EvaluationResultsEntity
+# Skymind.Skil.Client.Model.EvaluationResultsEntity
 ## Properties
 
 Name | Type | Description | Notes

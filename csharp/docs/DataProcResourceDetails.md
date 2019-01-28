@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.DataProcResourceDetails
+# Skymind.Skil.Client.Model.DataProcResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

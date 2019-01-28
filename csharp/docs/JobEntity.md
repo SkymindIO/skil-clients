@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.JobEntity
+# Skymind.Skil.Client.Model.JobEntity
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.JsonArrayResponse
+# Skymind.Skil.Client.Model.JsonArrayResponse
 ## Properties
 
 Name | Type | Description | Notes

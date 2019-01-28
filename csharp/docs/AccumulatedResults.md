@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AccumulatedResults
+# Skymind.Skil.Client.Model.AccumulatedResults
 ## Properties
 
 Name | Type | Description | Notes

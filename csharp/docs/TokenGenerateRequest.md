@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.TokenGenerateRequest
+# Skymind.Skil.Client.Model.TokenGenerateRequest
 ## Properties
 
 Name | Type | Description | Notes

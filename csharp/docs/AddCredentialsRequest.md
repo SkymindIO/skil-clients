@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AddCredentialsRequest
+# Skymind.Skil.Client.Model.AddCredentialsRequest
 ## Properties
 
 Name | Type | Description | Notes

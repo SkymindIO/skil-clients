@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.SetState
+# Skymind.Skil.Client.Model.SetState
 ## Properties
 
 Name | Type | Description | Notes

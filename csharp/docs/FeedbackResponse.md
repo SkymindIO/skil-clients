@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.FeedbackResponse
+# Skymind.Skil.Client.Model.FeedbackResponse
 ## Properties
 
 Name | Type | Description | Notes

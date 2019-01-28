@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.LoginRequest
+# Skymind.Skil.Client.Model.LoginRequest
 ## Properties
 
 Name | Type | Description | Notes

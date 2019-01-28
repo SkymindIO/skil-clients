@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * NearestNeighborsResult
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-24T22:23:48.205+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-28T12:07:08.111+05:00")
 public class NearestNeighborsResult {
   @SerializedName("index")
   private Integer index = null;

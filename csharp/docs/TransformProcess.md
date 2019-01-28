@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.TransformProcess
+# Skymind.Skil.Client.Model.TransformProcess
 ## Properties
 
 Name | Type | Description | Notes

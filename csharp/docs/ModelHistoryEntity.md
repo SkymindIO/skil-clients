@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ModelHistoryEntity
+# Skymind.Skil.Client.Model.ModelHistoryEntity
 ## Properties
 
 Name | Type | Description | Notes

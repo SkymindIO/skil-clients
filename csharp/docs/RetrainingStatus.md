@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.RetrainingStatus
+# Skymind.Skil.Client.Model.RetrainingStatus
 ## Properties
 
 Name | Type | Description | Notes

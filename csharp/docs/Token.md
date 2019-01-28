@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.Token
+# Skymind.Skil.Client.Model.Token
 ## Properties
 
 Name | Type | Description | Notes

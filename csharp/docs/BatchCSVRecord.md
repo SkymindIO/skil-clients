@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.BatchCSVRecord
+# Skymind.Skil.Client.Model.BatchCSVRecord
 ## Properties
 
 Name | Type | Description | Notes

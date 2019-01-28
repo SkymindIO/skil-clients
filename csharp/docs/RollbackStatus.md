@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.RollbackStatus
+# Skymind.Skil.Client.Model.RollbackStatus
 ## Properties
 
 Name | Type | Description | Notes

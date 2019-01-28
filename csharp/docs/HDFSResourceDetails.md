@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.HDFSResourceDetails
+# Skymind.Skil.Client.Model.HDFSResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

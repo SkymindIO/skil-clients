@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AggregatePrediction
+# Skymind.Skil.Client.Model.AggregatePrediction
 ## Properties
 
 Name | Type | Description | Notes

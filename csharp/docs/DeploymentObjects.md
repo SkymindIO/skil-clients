@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.DeploymentObjects
+# Skymind.Skil.Client.Model.DeploymentObjects
 ## Properties
 
 Name | Type | Description | Notes

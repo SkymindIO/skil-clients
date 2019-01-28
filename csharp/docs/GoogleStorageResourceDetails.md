@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.GoogleStorageResourceDetails
+# Skymind.Skil.Client.Model.GoogleStorageResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

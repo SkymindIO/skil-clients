@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AddExampleRequest
+# Skymind.Skil.Client.Model.AddExampleRequest
 ## Properties
 
 Name | Type | Description | Notes

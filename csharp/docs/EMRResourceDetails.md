@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.EMRResourceDetails
+# Skymind.Skil.Client.Model.EMRResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

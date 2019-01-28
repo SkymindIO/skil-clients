@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.Prediction
+# Skymind.Skil.Client.Model.Prediction
 ## Properties
 
 Name | Type | Description | Notes

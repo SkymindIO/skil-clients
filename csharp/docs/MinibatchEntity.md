@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.MinibatchEntity
+# Skymind.Skil.Client.Model.MinibatchEntity
 ## Properties
 
 Name | Type | Description | Notes

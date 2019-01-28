@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.MultiPredictRequest
+# Skymind.Skil.Client.Model.MultiPredictRequest
 ## Properties
 
 Name | Type | Description | Notes

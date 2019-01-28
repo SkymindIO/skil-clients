@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ModelStatus
+# Skymind.Skil.Client.Model.ModelStatus
 ## Properties
 
 Name | Type | Description | Notes

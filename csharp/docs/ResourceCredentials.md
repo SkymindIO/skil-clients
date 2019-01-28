@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ResourceCredentials
+# Skymind.Skil.Client.Model.ResourceCredentials
 ## Properties
 
 Name | Type | Description | Notes

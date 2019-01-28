@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.MetaData
+# Skymind.Skil.Client.Model.MetaData
 ## Properties
 
 Name | Type | Description | Notes

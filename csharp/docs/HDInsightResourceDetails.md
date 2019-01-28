@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.HDInsightResourceDetails
+# Skymind.Skil.Client.Model.HDInsightResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

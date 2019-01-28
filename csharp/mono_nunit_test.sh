@@ -7,16 +7,16 @@ wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 mozroots --import --sync
 
 echo "[INFO] remove bin/Debug/SwaggerClientTest.dll"
-rm src/Skymind.SKIL.Test/bin/Debug/Skymind.SKIL.Test.dll 2> /dev/null
+rm src/Skymind.Skil.Client.Test/bin/Debug/Skymind.Skil.Client.Test.dll 2> /dev/null
 
 echo "[INFO] install NUnit runners via NuGet"
 wget -nc https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 mozroots --import --sync
-mono nuget.exe install src/Skymind.SKIL.Test/packages.config -o packages
+mono nuget.exe install src/Skymind.Skil.Client.Test/packages.config -o packages
 
 echo "[INFO] Install NUnit runners via NuGet"
 mono nuget.exe install NUnit.Runners -Version 2.6.4 -OutputDirectory packages 
 
 echo "[INFO] Build the solution and run the unit test"
-xbuild Skymind.SKIL.sln && \
-    mono ./packages/NUnit.Runners.2.6.4/tools/nunit-console.exe src/Skymind.SKIL.Test/bin/Debug/Skymind.SKIL.Test.dll
+xbuild Skymind.Skil.Client.sln && \
+    mono ./packages/NUnit.Runners.2.6.4/tools/nunit-console.exe src/Skymind.Skil.Client.Test/bin/Debug/Skymind.Skil.Client.Test.dll

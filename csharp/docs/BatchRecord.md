@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.BatchRecord
+# Skymind.Skil.Client.Model.BatchRecord
 ## Properties
 
 Name | Type | Description | Notes

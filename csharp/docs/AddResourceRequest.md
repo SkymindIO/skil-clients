@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AddResourceRequest
+# Skymind.Skil.Client.Model.AddResourceRequest
 ## Properties
 
 Name | Type | Description | Notes

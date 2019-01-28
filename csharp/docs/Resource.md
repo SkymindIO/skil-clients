@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.Resource
+# Skymind.Skil.Client.Model.Resource
 ## Properties
 
 Name | Type | Description | Notes

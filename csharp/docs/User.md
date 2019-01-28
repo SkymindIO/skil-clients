@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.User
+# Skymind.Skil.Client.Model.User
 ## Properties
 
 Name | Type | Description | Notes

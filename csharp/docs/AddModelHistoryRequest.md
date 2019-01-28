@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AddModelHistoryRequest
+# Skymind.Skil.Client.Model.AddModelHistoryRequest
 ## Properties
 
 Name | Type | Description | Notes

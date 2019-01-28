@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.NearestNeighborsResults
+# Skymind.Skil.Client.Model.NearestNeighborsResults
 ## Properties
 
 Name | Type | Description | Notes

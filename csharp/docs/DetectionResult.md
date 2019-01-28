@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.DetectionResult
+# Skymind.Skil.Client.Model.DetectionResult
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.AuthPolicy
+# Skymind.Skil.Client.Model.AuthPolicy
 ## Properties
 
 Name | Type | Description | Notes

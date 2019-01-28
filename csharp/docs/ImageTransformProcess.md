@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.ImageTransformProcess
+# Skymind.Skil.Client.Model.ImageTransformProcess
 ## Properties
 
 Name | Type | Description | Notes

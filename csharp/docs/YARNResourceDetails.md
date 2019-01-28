@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.YARNResourceDetails
+# Skymind.Skil.Client.Model.YARNResourceDetails
 ## Properties
 
 Name | Type | Description | Notes

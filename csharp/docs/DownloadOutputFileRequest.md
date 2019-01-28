@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.DownloadOutputFileRequest
+# Skymind.Skil.Client.Model.DownloadOutputFileRequest
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Skymind.SKIL.Model.FileUpload
+# Skymind.Skil.Client.Model.FileUpload
 ## Properties
 
 Name | Type | Description | Notes
