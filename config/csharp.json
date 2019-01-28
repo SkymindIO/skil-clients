@@ -1,5 +1,5 @@
 {
-  "packageName": "Skymind.SKIL",
-  "packageVersion": "1.2.1.1",
+  "packageName": "Skymind.Skil.Client",
+  "packageVersion": "1.2.1.2",
   "modelPropertyNaming":"PascalCase"
 }
