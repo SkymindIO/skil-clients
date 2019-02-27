@@ -90,6 +90,7 @@ pub trait DefaultApi {
     fn get_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn get_last_evaluation(&self, ) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
     fn get_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
+    fn get_model_details(&self, deployment_id: &str, model_id: &str) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>>;
     fn get_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ModelHistoryEntity, Error = Error<serde_json::Value>>>;
     fn get_model_instance(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = ::models::ModelInstanceEntity, Error = Error<serde_json::Value>>>;
     fn get_models_for_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = Vec<::models::ModelInstanceEntity>, Error = Error<serde_json::Value>>>;
@@ -3859,6 +3860,72 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
             })
             .and_then(|body| {
                 let parsed: Result<::models::MinibatchEntity, _> = serde_json::from_slice(&body);
+                parsed.map_err(|e| Error::from(e))
+            })
+        )
+    }
+
+    fn get_model_details(&self, deployment_id: &str, model_id: &str) -> Box<Future<Item = ::models::ModelEntity, Error = Error<serde_json::Value>>> {
+        let configuration: &configuration::Configuration<C> = self.configuration.borrow();
+
+        let mut auth_headers = HashMap::<String, String>::new();
+        let mut auth_query = HashMap::<String, String>::new();
+        if let Some(ref apikey) = configuration.api_key {
+            let key = apikey.key.clone();
+            let val = match apikey.prefix {
+                Some(ref prefix) => format!("{} {}", prefix, key),
+                None => key,
+            };
+            auth_headers.insert("authorization".to_owned(), val);
+        };
+        let method = hyper::Method::Get;
+
+        let query_string = {
+            let mut query = ::url::form_urlencoded::Serializer::new(String::new());
+            for (key, val) in &auth_query {
+                query.append_pair(key, val);
+            }
+            query.finish()
+        };
+        let uri_str = format!("{}/deployment/{deploymentId}/model/{modelId}?{}", configuration.base_path, query_string, deploymentId=deployment_id, modelId=model_id);
+
+        // TODO(farcaller): handle error
+        // if let Err(e) = uri {
+        //     return Box::new(futures::future::err(e));
+        // }
+        let mut uri: hyper::Uri = uri_str.parse().unwrap();
+
+        let mut req = hyper::Request::new(method, uri);
+
+        if let Some(ref user_agent) = configuration.user_agent {
+            req.headers_mut().set(UserAgent::new(Cow::Owned(user_agent.clone())));
+        }
+
+
+        for (key, val) in auth_headers {
+            req.headers_mut().set_raw(key, val);
+        }
+
+
+        // send request
+        Box::new(
+        configuration.client.request(req)
+            .map_err(|e| Error::from(e))
+            .and_then(|resp| {
+                let status = resp.status();
+                resp.body().concat2()
+                    .and_then(move |body| Ok((status, body)))
+                    .map_err(|e| Error::from(e))
+            })
+            .and_then(|(status, body)| {
+                if status.is_success() {
+                    Ok(body)
+                } else {
+                    Err(Error::from((status, &*body)))
+                }
+            })
+            .and_then(|body| {
+                let parsed: Result<::models::ModelEntity, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

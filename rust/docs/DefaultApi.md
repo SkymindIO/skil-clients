@@ -59,6 +59,7 @@ Method | HTTP request | Description
 [**get_job_by_id**](DefaultApi.md#get_job_by_id) | **Get** /jobs/{jobIdOrType} | Get a job by its ID
 [**get_last_evaluation**](DefaultApi.md#get_last_evaluation) | **Get** /lastevaluation | Get the last evaluation specifications from the current model.
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**get_model_details**](DefaultApi.md#get_model_details) | **Get** /deployment/{deploymentId}/model/{modelId} | Get model details
 [**get_model_history**](DefaultApi.md#get_model_history) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
@@ -1602,6 +1603,33 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**::models::MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_model_details**
+> ::models::ModelEntity get_model_details(ctx, deployment_id, model_id)
+Get model details
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **deployment_id** | **String**| ID deployment group | 
+  **model_id** | **String**| the id of the deployed model | 
+
+### Return type
+
+[**::models::ModelEntity**](ModelEntity.md)
 
 ### Authorization
 

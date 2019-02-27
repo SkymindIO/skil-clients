@@ -36,7 +36,7 @@
   /**
    * The TokenGenerateRequest model module.
    * @module ai/skymind/skil/model/TokenGenerateRequest
-   * @version 1.2.1.1
+   * @version 1.2.1.3
    */
 
   /**

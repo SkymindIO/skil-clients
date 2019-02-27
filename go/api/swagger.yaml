@@ -1798,6 +1798,32 @@ paths:
           schema:
             $ref: "#/definitions/ModelEntity"
   /deployment/{deploymentId}/model/{modelId}:
+    get:
+      tags:
+      - "Deployment"
+      - "Default"
+      summary: "Get model details"
+      operationId: "getModelDetails"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "deploymentId"
+        in: "path"
+        description: "ID deployment group"
+        required: true
+        type: "string"
+        x-exportParamName: "DeploymentId"
+      - name: "modelId"
+        in: "path"
+        description: "the id of the deployed model"
+        required: true
+        type: "string"
+        x-exportParamName: "ModelId"
+      responses:
+        200:
+          description: "A model entity"
+          schema:
+            $ref: "#/definitions/ModelEntity"
     post:
       tags:
       - "Deployment"

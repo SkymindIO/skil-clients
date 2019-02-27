@@ -1658,6 +1658,34 @@ class DefaultApi(
   }
 
   /**
+   * Get model details
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @return ModelEntity
+   */
+  def getModelDetails(DeploymentId: String, ModelId: String): Option[ModelEntity] = {
+    val await = Try(Await.result(getModelDetailsAsync(DeploymentId, ModelId), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get model details asynchronously
+   * 
+   *
+   * @param DeploymentId ID deployment group 
+   * @param ModelId the id of the deployed model 
+   * @return Future(ModelEntity)
+   */
+  def getModelDetailsAsync(DeploymentId: String, ModelId: String): Future[ModelEntity] = {
+      helper.getModelDetails(DeploymentId, ModelId)
+  }
+
+  /**
    * Gets a model history, given its ID
    * 
    *
@@ -4506,6 +4534,28 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (ModelHistoryServerId == null) throw new Exception("Missing required parameter 'ModelHistoryServerId' when calling DefaultApi->getMinibatch")
 
     if (MinibatchId == null) throw new Exception("Missing required parameter 'MinibatchId' when calling DefaultApi->getMinibatch")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def getModelDetails(DeploymentId: String,
+    ModelId: String)(implicit reader: ClientResponseReader[ModelEntity]): Future[ModelEntity] = {
+    // create path and map variables
+    val path = (addFmt("/deployment/{deploymentId}/model/{modelId}")
+      replaceAll("\\{" + "deploymentId" + "\\}", DeploymentId.toString)
+      replaceAll("\\{" + "modelId" + "\\}", ModelId.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (DeploymentId == null) throw new Exception("Missing required parameter 'DeploymentId' when calling DefaultApi->getModelDetails")
+
+    if (ModelId == null) throw new Exception("Missing required parameter 'ModelId' when calling DefaultApi->getModelDetails")
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")

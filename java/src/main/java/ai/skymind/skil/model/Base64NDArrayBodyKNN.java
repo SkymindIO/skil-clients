@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Base64NDArrayBodyKNN
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-28T12:07:08.111+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-28T00:52:55.977+05:00")
 public class Base64NDArrayBodyKNN {
   @SerializedName("ndarray")
   private String ndarray = null;

@@ -254,6 +254,7 @@ font-style: italic;
   <li><a href="#getJobById"><code><span class="http-method">get</span> /jobs/{jobIdOrType}</code></a></li>
   <li><a href="#getLastEvaluation"><code><span class="http-method">get</span> /lastevaluation</code></a></li>
   <li><a href="#getMinibatch"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}</code></a></li>
+  <li><a href="#getModelDetails"><code><span class="http-method">get</span> /deployment/{deploymentId}/model/{modelId}</code></a></li>
   <li><a href="#getModelHistory"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}</code></a></li>
   <li><a href="#getModelInstance"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/model/{modelInstanceID}</code></a></li>
   <li><a href="#getModelsForExperiment"><code><span class="http-method">get</span> /rpc/{modelHistoryServerId}/experiment/{experimentID}/models</code></a></li>
@@ -3525,6 +3526,68 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     The minibatch entity
         <a href="#MinibatchEntity">MinibatchEntity</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getModelDetails"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /deployment/{deploymentId}/model/{modelId}</code></pre></div>
+    <div class="method-summary">Get model details (<span class="nickname">getModelDetails</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">deploymentId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div><div class="param">modelId (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#ModelEntity">ModelEntity</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    A model entity
+        <a href="#ModelEntity">ModelEntity</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getModelHistory"/>

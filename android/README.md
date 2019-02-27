@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>ai.skymind</groupId>
     <artifactId>skil-client</artifactId>
-    <version>1.2.1.1</version>
+    <version>1.2.1.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "ai.skymind:skil-client:1.2.1.1"
+compile "ai.skymind:skil-client:1.2.1.3"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/skil-client-1.2.1.1.jar
+* target/skil-client-1.2.1.3.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -137,6 +137,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getJobById**](docs/DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 *DefaultApi* | [**getLastEvaluation**](docs/DefaultApi.md#getLastEvaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 *DefaultApi* | [**getMinibatch**](docs/DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+*DefaultApi* | [**getModelDetails**](docs/DefaultApi.md#getModelDetails) | **GET** /deployment/{deploymentId}/model/{modelId} | Get model details
 *DefaultApi* | [**getModelHistory**](docs/DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *DefaultApi* | [**getModelInstance**](docs/DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *DefaultApi* | [**getModelsForExperiment**](docs/DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment

@@ -36,7 +36,7 @@
   /**
    * The BatchCSVRecord model module.
    * @module ai/skymind/skil/model/BatchCSVRecord
-   * @version 1.2.1.1
+   * @version 1.2.1.3
    */
 
   /**

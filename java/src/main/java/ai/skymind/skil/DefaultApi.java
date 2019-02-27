@@ -7245,6 +7245,139 @@ public class DefaultApi {
         return call;
     }
     /**
+     * Build call for getModelDetails
+     * @param deploymentId ID deployment group (required)
+     * @param modelId the id of the deployed model (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getModelDetailsCall(String deploymentId, String modelId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/deployment/{deploymentId}/model/{modelId}"
+            .replaceAll("\\{" + "deploymentId" + "\\}", apiClient.escapeString(deploymentId.toString()))
+            .replaceAll("\\{" + "modelId" + "\\}", apiClient.escapeString(modelId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "api_key" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getModelDetailsValidateBeforeCall(String deploymentId, String modelId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'deploymentId' is set
+        if (deploymentId == null) {
+            throw new ApiException("Missing the required parameter 'deploymentId' when calling getModelDetails(Async)");
+        }
+        
+        // verify the required parameter 'modelId' is set
+        if (modelId == null) {
+            throw new ApiException("Missing the required parameter 'modelId' when calling getModelDetails(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getModelDetailsCall(deploymentId, modelId, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get model details
+     * 
+     * @param deploymentId ID deployment group (required)
+     * @param modelId the id of the deployed model (required)
+     * @return ModelEntity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ModelEntity getModelDetails(String deploymentId, String modelId) throws ApiException {
+        ApiResponse<ModelEntity> resp = getModelDetailsWithHttpInfo(deploymentId, modelId);
+        return resp.getData();
+    }
+
+    /**
+     * Get model details
+     * 
+     * @param deploymentId ID deployment group (required)
+     * @param modelId the id of the deployed model (required)
+     * @return ApiResponse&lt;ModelEntity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ModelEntity> getModelDetailsWithHttpInfo(String deploymentId, String modelId) throws ApiException {
+        com.squareup.okhttp.Call call = getModelDetailsValidateBeforeCall(deploymentId, modelId, null, null);
+        Type localVarReturnType = new TypeToken<ModelEntity>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get model details (asynchronously)
+     * 
+     * @param deploymentId ID deployment group (required)
+     * @param modelId the id of the deployed model (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getModelDetailsAsync(String deploymentId, String modelId, final ApiCallback<ModelEntity> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getModelDetailsValidateBeforeCall(deploymentId, modelId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ModelEntity>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getModelHistory
      * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID GUID of the model history to get information of. (required)

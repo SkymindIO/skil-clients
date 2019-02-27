@@ -769,6 +769,19 @@ namespace Skymind.Skil.Client.Test
         }
         
         /// <summary>
+        /// Test GetModelDetails
+        /// </summary>
+        [Test]
+        public void GetModelDetailsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string deploymentId = null;
+            //string modelId = null;
+            //var response = instance.GetModelDetails(deploymentId, modelId);
+            //Assert.IsInstanceOf<ModelEntity> (response, "response is ModelEntity");
+        }
+        
+        /// <summary>
         /// Test GetModelHistory
         /// </summary>
         [Test]

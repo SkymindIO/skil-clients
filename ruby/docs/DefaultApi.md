@@ -59,6 +59,7 @@ Method | HTTP request | Description
 [**get_job_by_id**](DefaultApi.md#get_job_by_id) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**get_last_evaluation**](DefaultApi.md#get_last_evaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 [**get_minibatch**](DefaultApi.md#get_minibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**get_model_details**](DefaultApi.md#get_model_details) | **GET** /deployment/{deploymentId}/model/{modelId} | Get model details
 [**get_model_history**](DefaultApi.md#get_model_history) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**get_model_instance**](DefaultApi.md#get_model_instance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**get_models_for_experiment**](DefaultApi.md#get_models_for_experiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
@@ -3076,6 +3077,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **get_model_details**
+> ModelEntity get_model_details(deployment_id, model_id)
+
+Get model details
+
+### Example
+```ruby
+# load the gem
+require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+end
+
+api_instance = SkilCient::DefaultApi.new
+
+deployment_id = 'deployment_id_example' # String | ID deployment group
+
+model_id = 'model_id_example' # String | the id of the deployed model
+
+
+begin
+  #Get model details
+  result = api_instance.get_model_details(deployment_id, model_id)
+  p result
+rescue SkilCient::ApiError => e
+  puts "Exception when calling DefaultApi->get_model_details: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deployment_id** | **String**| ID deployment group | 
+ **model_id** | **String**| the id of the deployed model | 
+
+### Return type
+
+[**ModelEntity**](ModelEntity.md)
 
 ### Authorization
 

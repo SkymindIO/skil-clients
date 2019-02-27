@@ -36,7 +36,7 @@
   /**
    * The LogBatch model module.
    * @module ai/skymind/skil/model/LogBatch
-   * @version 1.2.1.1
+   * @version 1.2.1.3
    */
 
   /**
