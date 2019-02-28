@@ -138,6 +138,7 @@ public class DefaultApi extends SwaggerApi {
         public static const event_get_job_by_id: String = "get_job_by_id";
         public static const event_get_last_evaluation: String = "get_last_evaluation";
         public static const event_get_minibatch: String = "get_minibatch";
+        public static const event_get_model_details: String = "get_model_details";
         public static const event_get_model_history: String = "get_model_history";
         public static const event_get_model_instance: String = "get_model_instance";
         public static const event_get_models_for_experiment: String = "get_models_for_experiment";
@@ -2027,6 +2028,40 @@ headerParams["accept"] = toPathValue(accept);
         token.completionEventType = "get_minibatch";
 
         token.returnType = MinibatchEntity;
+        return requestId;
+
+    }
+
+    /*
+     * Returns ModelEntity 
+     */
+    public function get_model_details (deploymentId: String, modelId: String): String {
+        // create path and map variables
+        var path: String = "/deployment/{deploymentId}/model/{modelId}".replace(/{format}/g,"xml").replace("{" + "deploymentId" + "}", getApiInvoker().escapeString(deploymentId)).replace("{" + "modelId" + "}", getApiInvoker().escapeString(modelId));
+
+        // query params
+        var queryParams: Dictionary = new Dictionary();
+        var headerParams: Dictionary = new Dictionary();
+
+        // verify required params are set
+        if(        // verify required params are set
+        if() {
+            throw new ApiError(400, "missing required params");
+        }
+) {
+            throw new ApiError(400, "missing required params");
+        }
+
+        
+        
+        var token:AsyncToken = getApiInvoker().invokeAPI(path, "GET", queryParams, null, headerParams);
+
+        var requestId: String = getUniqueId();
+
+        token.requestId = requestId;
+        token.completionEventType = "get_model_details";
+
+        token.returnType = ModelEntity;
         return requestId;
 
     }

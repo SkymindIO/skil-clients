@@ -1,7 +1,7 @@
 {
   "gemName": "skil_client",
   "moduleName": "SkilCient",
-  "gemVersion": "1.2.1.1",
+  "gemVersion": "1.2.1.3",
   "gemLicense": "Apache 2.0",
   "gemHomepage": "http://skymind.ai/",
   "gemSummary": "A ruby wrapper for SKIL HTTP inference",

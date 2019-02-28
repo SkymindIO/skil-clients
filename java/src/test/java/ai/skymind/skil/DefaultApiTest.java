@@ -1016,6 +1016,23 @@ public class DefaultApiTest {
     }
     
     /**
+     * Get model details
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getModelDetailsTest() throws ApiException {
+        String deploymentId = null;
+        String modelId = null;
+        ModelEntity response = api.getModelDetails(deploymentId, modelId);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Gets a model history, given its ID
      *
      * 

@@ -413,6 +413,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_get_model_details(self):
+        """Test case for get_model_details
+
+        Get model details  # noqa: E501
+        """
+        pass
+
     def test_get_model_history(self):
         """Test case for get_model_history
 

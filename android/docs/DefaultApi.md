@@ -59,6 +59,7 @@ Method | HTTP request | Description
 [**getJobById**](DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**getLastEvaluation**](DefaultApi.md#getLastEvaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 [**getMinibatch**](DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**getModelDetails**](DefaultApi.md#getModelDetails) | **GET** /deployment/{deploymentId}/model/{modelId} | Get model details
 [**getModelHistory**](DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**getModelInstance**](DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**getModelsForExperiment**](DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
@@ -2433,6 +2434,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getModelDetails"></a>
+# **getModelDetails**
+> ModelEntity getModelDetails(deploymentId, modelId)
+
+Get model details
+
+### Example
+```java
+// Import classes:
+//import ai.skymind.skil.DefaultApi;
+
+DefaultApi apiInstance = new DefaultApi();
+String deploymentId = "deploymentId_example"; // String | ID deployment group
+String modelId = "modelId_example"; // String | the id of the deployed model
+try {
+    ModelEntity result = apiInstance.getModelDetails(deploymentId, modelId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling DefaultApi#getModelDetails");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deploymentId** | **String**| ID deployment group |
+ **modelId** | **String**| the id of the deployed model |
+
+### Return type
+
+[**ModelEntity**](ModelEntity.md)
 
 ### Authorization
 

@@ -7592,6 +7592,144 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     }
   }
   /**
+  * Get model details
+  * 
+   * @param deploymentId ID deployment group
+   * @param modelId the id of the deployed model
+   * @return ModelEntity
+  */
+  public ModelEntity getModelDetails (String deploymentId, String modelId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'deploymentId' is set
+    if (deploymentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentId' when calling getModelDetails",
+        new ApiException(400, "Missing the required parameter 'deploymentId' when calling getModelDetails"));
+    }
+    // verify the required parameter 'modelId' is set
+    if (modelId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelId' when calling getModelDetails",
+        new ApiException(400, "Missing the required parameter 'modelId' when calling getModelDetails"));
+    }
+
+    // create path and map variables
+    String path = "/deployment/{deploymentId}/model/{modelId}".replaceAll("\\{" + "deploymentId" + "\\}", apiInvoker.escapeString(deploymentId.toString())).replaceAll("\\{" + "modelId" + "\\}", apiInvoker.escapeString(modelId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (ModelEntity) ApiInvoker.deserialize(localVarResponse, "", ModelEntity.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Get model details
+   * 
+   * @param deploymentId ID deployment group   * @param modelId the id of the deployed model
+  */
+  public void getModelDetails (String deploymentId, String modelId, final Response.Listener<ModelEntity> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'deploymentId' is set
+    if (deploymentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'deploymentId' when calling getModelDetails",
+        new ApiException(400, "Missing the required parameter 'deploymentId' when calling getModelDetails"));
+    }
+    // verify the required parameter 'modelId' is set
+    if (modelId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'modelId' when calling getModelDetails",
+        new ApiException(400, "Missing the required parameter 'modelId' when calling getModelDetails"));
+    }
+
+    // create path and map variables
+    String path = "/deployment/{deploymentId}/model/{modelId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "deploymentId" + "\\}", apiInvoker.escapeString(deploymentId.toString())).replaceAll("\\{" + "modelId" + "\\}", apiInvoker.escapeString(modelId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "api_key" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((ModelEntity) ApiInvoker.deserialize(localVarResponse,  "", ModelEntity.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Gets a model history, given its ID
   * 
    * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.

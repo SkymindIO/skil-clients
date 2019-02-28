@@ -59,6 +59,7 @@ Method | HTTP request | Description
 [**GetJobById**](DefaultApi.md#GetJobById) | **Get** /jobs/{jobIdOrType} | Get a job by its ID
 [**GetLastEvaluation**](DefaultApi.md#GetLastEvaluation) | **Get** /lastevaluation | Get the last evaluation specifications from the current model.
 [**GetMinibatch**](DefaultApi.md#GetMinibatch) | **Get** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**GetModelDetails**](DefaultApi.md#GetModelDetails) | **Get** /deployment/{deploymentId}/model/{modelId} | Get model details
 [**GetModelHistory**](DefaultApi.md#GetModelHistory) | **Get** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#GetModelInstance) | **Get** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#GetModelsForExperiment) | **Get** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
@@ -1602,6 +1603,33 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetModelDetails**
+> ModelEntity GetModelDetails(ctx, deploymentId, modelId)
+Get model details
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **deploymentId** | **string**| ID deployment group | 
+  **modelId** | **string**| the id of the deployed model | 
+
+### Return type
+
+[**ModelEntity**](ModelEntity.md)
 
 ### Authorization
 

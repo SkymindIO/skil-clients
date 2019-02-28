@@ -681,6 +681,18 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for get_model_details
+  # Get model details
+  # @param deployment_id ID deployment group
+  # @param model_id the id of the deployed model
+  # @param [Hash] opts the optional parameters
+  # @return [ModelEntity]
+  describe 'get_model_details test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_model_history
   # Gets a model history, given its ID
   # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.

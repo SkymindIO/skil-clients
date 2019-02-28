@@ -600,6 +600,16 @@
         done();
       });
     });
+    describe('getModelDetails', function() {
+      it('should call getModelDetails successfully', function(done) {
+        //uncomment below and update the code to test getModelDetails
+        //instance.getModelDetails(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getModelHistory', function() {
       it('should call getModelHistory successfully', function(done) {
         //uncomment below and update the code to test getModelHistory

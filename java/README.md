@@ -2,7 +2,7 @@
 
 Endpoints
 - API version: 1.2.0-rc1
-  - Build date: 2019-01-28T12:07:08.111+05:00
+  - Build date: 2019-02-28T00:52:55.977+05:00
 
 Endpoints API for different services in SKIL
 
@@ -165,6 +165,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**getJobById**](docs/DefaultApi.md#getJobById) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 *DefaultApi* | [**getLastEvaluation**](docs/DefaultApi.md#getLastEvaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 *DefaultApi* | [**getMinibatch**](docs/DefaultApi.md#getMinibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+*DefaultApi* | [**getModelDetails**](docs/DefaultApi.md#getModelDetails) | **GET** /deployment/{deploymentId}/model/{modelId} | Get model details
 *DefaultApi* | [**getModelHistory**](docs/DefaultApi.md#getModelHistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 *DefaultApi* | [**getModelInstance**](docs/DefaultApi.md#getModelInstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 *DefaultApi* | [**getModelsForExperiment**](docs/DefaultApi.md#getModelsForExperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment

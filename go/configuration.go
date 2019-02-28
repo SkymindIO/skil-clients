@@ -62,7 +62,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		BasePath:      "http://localhost:9008",
 		DefaultHeader: make(map[string]string),
-		UserAgent:     "Swagger-Codegen/1.2.1.1/go",
+		UserAgent:     "Swagger-Codegen/1.2.1.3/go",
 	}
 	return cfg
 }

@@ -59,6 +59,7 @@ Method | HTTP request | Description
 [**GetJobById**](DefaultApi.md#getjobbyid) | **GET** /jobs/{jobIdOrType} | Get a job by its ID
 [**GetLastEvaluation**](DefaultApi.md#getlastevaluation) | **GET** /lastevaluation | Get the last evaluation specifications from the current model.
 [**GetMinibatch**](DefaultApi.md#getminibatch) | **GET** /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId} | Gets a minibatch for the model
+[**GetModelDetails**](DefaultApi.md#getmodeldetails) | **GET** /deployment/{deploymentId}/model/{modelId} | Get model details
 [**GetModelHistory**](DefaultApi.md#getmodelhistory) | **GET** /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID} | Gets a model history, given its ID
 [**GetModelInstance**](DefaultApi.md#getmodelinstance) | **GET** /rpc/{modelHistoryServerId}/model/{modelInstanceID} | Gets a model instance, given its ID
 [**GetModelsForExperiment**](DefaultApi.md#getmodelsforexperiment) | **GET** /rpc/{modelHistoryServerId}/experiment/{experimentID}/models | Obtain a list of all the models for an experiment
@@ -3695,6 +3696,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MinibatchEntity**](MinibatchEntity.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="getmodeldetails"></a>
+# **GetModelDetails**
+> ModelEntity GetModelDetails (string deploymentId, string modelId)
+
+Get model details
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Skymind.Skil.Client.Api;
+using Skymind.Skil.Client.Client;
+using Skymind.Skil.Client.Model;
+
+namespace Example
+{
+    public class GetModelDetailsExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+
+            var apiInstance = new DefaultApi();
+            var deploymentId = deploymentId_example;  // string | ID deployment group
+            var modelId = modelId_example;  // string | the id of the deployed model
+
+            try
+            {
+                // Get model details
+                ModelEntity result = apiInstance.GetModelDetails(deploymentId, modelId);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.GetModelDetails: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deploymentId** | **string**| ID deployment group | 
+ **modelId** | **string**| the id of the deployed model | 
+
+### Return type
+
+[**ModelEntity**](ModelEntity.md)
 
 ### Authorization
 

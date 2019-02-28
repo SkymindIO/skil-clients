@@ -1676,6 +1676,30 @@ paths:
           schema:
             $ref: '#/definitions/ModelEntity'
   /deployment/{deploymentId}/model/{modelId}:
+    get:
+      operationId: getModelDetails
+      summary: Get model details
+      tags:
+      - Deployment
+      - Default
+      produces:
+      - application/json
+      parameters:
+      - name: deploymentId
+        in: path
+        description: ID deployment group
+        required: true
+        type: string
+      - name: modelId
+        in: path
+        description: the id of the deployed model
+        required: true
+        type: string
+      responses:
+        200:
+          description: A model entity
+          schema:
+            $ref: '#/definitions/ModelEntity'
     post:
       operationId: reimportModel
       summary: Reimport a model to a previous deployed model in a deployment

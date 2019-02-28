@@ -36,7 +36,7 @@
   /**
    * The FeedbackResponse model module.
    * @module ai/skymind/skil/model/FeedbackResponse
-   * @version 1.2.1.1
+   * @version 1.2.1.3
    */
 
   /**

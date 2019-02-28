@@ -33,7 +33,7 @@
   /**
    * Default service.
    * @module ai/skymind/skil/DefaultApi
-   * @version 1.2.1.1
+   * @version 1.2.1.3
    */
 
   /**
@@ -2889,6 +2889,60 @@
 
       return this.apiClient.callApi(
         '/rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getModelDetails operation.
+     * @callback module:ai/skymind/skil/DefaultApi~getModelDetailsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:ai/skymind/skil/model/ModelEntity} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get model details
+     * @param {String} deploymentId ID deployment group
+     * @param {String} modelId the id of the deployed model
+     * @param {module:ai/skymind/skil/DefaultApi~getModelDetailsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:ai/skymind/skil/model/ModelEntity}
+     */
+    this.getModelDetails = function(deploymentId, modelId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'deploymentId' is set
+      if (deploymentId === undefined || deploymentId === null) {
+        throw new Error("Missing the required parameter 'deploymentId' when calling getModelDetails");
+      }
+
+      // verify the required parameter 'modelId' is set
+      if (modelId === undefined || modelId === null) {
+        throw new Error("Missing the required parameter 'modelId' when calling getModelDetails");
+      }
+
+
+      var pathParams = {
+        'deploymentId': deploymentId,
+        'modelId': modelId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ModelEntity;
+
+      return this.apiClient.callApi(
+        '/deployment/{deploymentId}/model/{modelId}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

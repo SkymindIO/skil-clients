@@ -2784,6 +2784,64 @@ open class DefaultAPI: APIBase {
     }
 
     /**
+     Get model details
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getModelDetails(deploymentId: String, modelId: String, completion: @escaping ((_ data: ModelEntity?, _ error: ErrorResponse?) -> Void)) {
+        getModelDetailsWithRequestBuilder(deploymentId: deploymentId, modelId: modelId).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get model details
+     - GET /deployment/{deploymentId}/model/{modelId}
+     - API Key:
+       - type: apiKey authorization 
+       - name: api_key
+     - examples: [{contentType=application/json, example={
+  "launchPolicy" : "{}",
+  "created" : 6,
+  "modelState" : "CREATED",
+  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "modelType" : "transform",
+  "fileLocation" : "fileLocation",
+  "jvmArgs" : "jvmArgs",
+  "labelsFileLocation" : "labelsFileLocation",
+  "extraArgs" : "extraArgs",
+  "deploymentId" : 5,
+  "name" : "name",
+  "subType" : "subType",
+  "id" : 0,
+  "state" : "created",
+  "updated" : 1
+}}]
+     - parameter deploymentId: (path) ID deployment group 
+     - parameter modelId: (path) the id of the deployed model 
+     - returns: RequestBuilder<ModelEntity> 
+     */
+    open class func getModelDetailsWithRequestBuilder(deploymentId: String, modelId: String) -> RequestBuilder<ModelEntity> {
+        var path = "/deployment/{deploymentId}/model/{modelId}"
+        let deploymentIdPreEscape = "\(deploymentId)"
+        let deploymentIdPostEscape = deploymentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{deploymentId}", with: deploymentIdPostEscape, options: .literal, range: nil)
+        let modelIdPreEscape = "\(modelId)"
+        let modelIdPostEscape = modelIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{modelId}", with: modelIdPostEscape, options: .literal, range: nil)
+        let URLString = SkilClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ModelEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Gets a model history, given its ID
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) GUID of the model history to get information of. 
