@@ -13,7 +13,7 @@
 
 package ai.skymind;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-28T00:52:55.977+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-07T17:24:59.081+05:00")
 public class Pair {
     private String name = "";
     private String value = "";

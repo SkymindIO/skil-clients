@@ -5345,8 +5345,9 @@ definitions:
         type: "string"
         description: "Name of the new resource"
       resourceDetails:
-        type: "string"
-        description: "One of the resource details object (Specify a JSON string here)"
+        type: "object"
+        description: "One of the resource details objects"
+        properties: {}
       credentialUri:
         type: "string"
         description: "URI of the credentials. If this is present, you can leave out\
@@ -5376,7 +5377,7 @@ definitions:
         description: "ID of the credentials. If this is given then you can leave out\
           \ the 'credentialsUri'"
     example:
-      resourceDetails: "resourceDetails"
+      resourceDetails: "{}"
       credentialId: 0
       resourceName: "resourceName"
       subType: "EMR"

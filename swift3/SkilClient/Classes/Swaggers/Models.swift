@@ -413,7 +413,7 @@ class Decoders {
                 case let .failure(error): break
                 
                 }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["resourceDetails"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["resourceDetails"] as AnyObject?) {
                 
                 case let .success(value): _result.resourceDetails = value
                 case let .failure(error): break

@@ -36,7 +36,7 @@
   /**
    * The MultiPredictRequest model module.
    * @module ai/skymind/skil/model/MultiPredictRequest
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

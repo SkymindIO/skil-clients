@@ -124,12 +124,12 @@ namespace Skymind.Skil.Client.Model
         /// Initializes a new instance of the <see cref="AddResourceRequest" /> class.
         /// </summary>
         /// <param name="resourceName">Name of the new resource.</param>
-        /// <param name="resourceDetails">One of the resource details object (Specify a JSON string here).</param>
+        /// <param name="resourceDetails">One of the resource details objects.</param>
         /// <param name="credentialUri">URI of the credentials. If this is present, you can leave out the &#39;credentialId&#39;.</param>
         /// <param name="type">Resource type (whether COMPUTE or STORAGE).</param>
         /// <param name="subType">Resource subtype (COMPUTE -&gt; [EMR, DataProc, HDInsight, YARN] | STORAGE -&gt; [S3, GoogleStorage, AzureStorage, HDFS]).</param>
         /// <param name="credentialId">ID of the credentials. If this is given then you can leave out the &#39;credentialsUri&#39;.</param>
-        public AddResourceRequest(string resourceName = default(string), string resourceDetails = default(string), string credentialUri = default(string), TypeEnum? type = default(TypeEnum?), SubTypeEnum? subType = default(SubTypeEnum?), long? credentialId = default(long?))
+        public AddResourceRequest(string resourceName = default(string), Object resourceDetails = default(Object), string credentialUri = default(string), TypeEnum? type = default(TypeEnum?), SubTypeEnum? subType = default(SubTypeEnum?), long? credentialId = default(long?))
         {
             this.ResourceName = resourceName;
             this.ResourceDetails = resourceDetails;
@@ -147,11 +147,11 @@ namespace Skymind.Skil.Client.Model
         public string ResourceName { get; set; }
 
         /// <summary>
-        /// One of the resource details object (Specify a JSON string here)
+        /// One of the resource details objects
         /// </summary>
-        /// <value>One of the resource details object (Specify a JSON string here)</value>
+        /// <value>One of the resource details objects</value>
         [DataMember(Name="resourceDetails", EmitDefaultValue=false)]
-        public string ResourceDetails { get; set; }
+        public Object ResourceDetails { get; set; }
 
         /// <summary>
         /// URI of the credentials. If this is present, you can leave out the &#39;credentialId&#39;

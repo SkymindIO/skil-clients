@@ -33,7 +33,7 @@
   /**
    * Default service.
    * @module ai/skymind/skil/DefaultApi
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

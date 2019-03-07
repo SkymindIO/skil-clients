@@ -36,7 +36,7 @@
   /**
    * The NearestNeighborsResult model module.
    * @module ai/skymind/skil/model/NearestNeighborsResult
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**
