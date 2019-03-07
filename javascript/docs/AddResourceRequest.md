@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **resourceName** | **String** | Name of the new resource | [optional] 
-**resourceDetails** | **String** | One of the resource details object (Specify a JSON string here) | [optional] 
+**resourceDetails** | **Object** | One of the resource details objects | [optional] 
 **credentialUri** | **String** | URI of the credentials. If this is present, you can leave out the &#39;credentialId&#39; | [optional] 
 **type** | **String** | Resource type (whether COMPUTE or STORAGE) | [optional] 
 **subType** | **String** | Resource subtype (COMPUTE -&gt; [EMR, DataProc, HDInsight, YARN] | STORAGE -&gt; [S3, GoogleStorage, AzureStorage, HDFS]) | [optional] 

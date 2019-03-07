@@ -36,7 +36,7 @@
   /**
    * The Role model module.
    * @module ai/skymind/skil/model/Role
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

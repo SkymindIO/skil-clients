@@ -36,7 +36,7 @@
   /**
    * The Prediction model module.
    * @module ai/skymind/skil/model/Prediction
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

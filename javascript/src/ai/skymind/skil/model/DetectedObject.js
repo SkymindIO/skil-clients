@@ -36,7 +36,7 @@
   /**
    * The DetectedObject model module.
    * @module ai/skymind/skil/model/DetectedObject
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

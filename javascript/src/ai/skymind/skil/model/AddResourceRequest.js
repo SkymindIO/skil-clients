@@ -36,7 +36,7 @@
   /**
    * The AddResourceRequest model module.
    * @module ai/skymind/skil/model/AddResourceRequest
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**
@@ -70,7 +70,7 @@
         obj['resourceName'] = ApiClient.convertToType(data['resourceName'], 'String');
       }
       if (data.hasOwnProperty('resourceDetails')) {
-        obj['resourceDetails'] = ApiClient.convertToType(data['resourceDetails'], 'String');
+        obj['resourceDetails'] = ApiClient.convertToType(data['resourceDetails'], Object);
       }
       if (data.hasOwnProperty('credentialUri')) {
         obj['credentialUri'] = ApiClient.convertToType(data['credentialUri'], 'String');
@@ -94,8 +94,8 @@
    */
   exports.prototype['resourceName'] = undefined;
   /**
-   * One of the resource details object (Specify a JSON string here)
-   * @member {String} resourceDetails
+   * One of the resource details objects
+   * @member {Object} resourceDetails
    */
   exports.prototype['resourceDetails'] = undefined;
   /**

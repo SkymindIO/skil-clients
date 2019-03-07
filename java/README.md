@@ -2,7 +2,7 @@
 
 Endpoints
 - API version: 1.2.0-rc1
-  - Build date: 2019-02-28T00:52:55.977+05:00
+  - Build date: 2019-03-07T17:24:59.081+05:00
 
 Endpoints API for different services in SKIL
 

@@ -22,7 +22,7 @@ public class AddResourceRequest implements Serializable {
   @SerializedName("resourceName")
   private String resourceName = null;
   @SerializedName("resourceDetails")
-  private String resourceDetails = null;
+  private Object resourceDetails = null;
   @SerializedName("credentialUri")
   private String credentialUri = null;
   public enum TypeEnum {
@@ -50,13 +50,13 @@ public class AddResourceRequest implements Serializable {
   }
 
   /**
-   * One of the resource details object (Specify a JSON string here)
+   * One of the resource details objects
    **/
-  @ApiModelProperty(value = "One of the resource details object (Specify a JSON string here)")
-  public String getResourceDetails() {
+  @ApiModelProperty(value = "One of the resource details objects")
+  public Object getResourceDetails() {
     return resourceDetails;
   }
-  public void setResourceDetails(String resourceDetails) {
+  public void setResourceDetails(Object resourceDetails) {
     this.resourceDetails = resourceDetails;
   }
 

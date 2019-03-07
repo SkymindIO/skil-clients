@@ -36,7 +36,7 @@
   /**
    * The Base64NDArrayBody model module.
    * @module ai/skymind/skil/model/Base64NDArrayBody
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

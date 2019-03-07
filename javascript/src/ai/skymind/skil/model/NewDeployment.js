@@ -36,7 +36,7 @@
   /**
    * The NewDeployment model module.
    * @module ai/skymind/skil/model/NewDeployment
-   * @version 1.2.1.3
+   * @version 1.2.1.4
    */
 
   /**

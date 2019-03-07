@@ -1,6 +1,7 @@
 package ai.skymind.skil.client.model {
 
 import io.swagger.common.ListWrapper;
+import ai.skymind.skil.client.model.Object;
 
     public class AddResourceRequestList implements ListWrapper {
         // This declaration below of _AddResourceRequest_obj_class is to force flash compiler to include this class

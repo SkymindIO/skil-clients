@@ -32,7 +32,7 @@ class AddResourceRequest(object):
     """
     swagger_types = {
         'resource_name': 'str',
-        'resource_details': 'str',
+        'resource_details': 'object',
         'credential_uri': 'str',
         'type': 'str',
         'sub_type': 'str',
@@ -99,10 +99,10 @@ class AddResourceRequest(object):
     def resource_details(self):
         """Gets the resource_details of this AddResourceRequest.  # noqa: E501
 
-        One of the resource details object (Specify a JSON string here)  # noqa: E501
+        One of the resource details objects  # noqa: E501
 
         :return: The resource_details of this AddResourceRequest.  # noqa: E501
-        :rtype: str
+        :rtype: object
         """
         return self._resource_details
 
@@ -110,10 +110,10 @@ class AddResourceRequest(object):
     def resource_details(self, resource_details):
         """Sets the resource_details of this AddResourceRequest.
 
-        One of the resource details object (Specify a JSON string here)  # noqa: E501
+        One of the resource details objects  # noqa: E501
 
         :param resource_details: The resource_details of this AddResourceRequest.  # noqa: E501
-        :type: str
+        :type: object
         """
 
         self._resource_details = resource_details
