@@ -1960,6 +1960,7 @@ paths:
       responses:
         200:
           description: List of all the experiment entities in a model history
+          type: array
           schema:
             $ref: '#/definitions/ExperimentEntity'
   /rpc/{modelHistoryServerId}/experiment/{experimentID}:
