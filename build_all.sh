@@ -10,6 +10,9 @@ java -jar swagger-codegen-cli.jar generate -Dapis=Default -Dmodels -DsupportingF
 # python
 java -jar swagger-codegen-cli.jar  generate -Dapis=Default -Dmodels -DsupportingFiles -i swagger.yaml -l python -o python -c config/python.json
 
+# R
+java -jar swagger-codegen-cli.jar  generate -Dapis=Default -Dmodels -DsupportingFiles -i swagger.yaml -l r -o r -c config/r.json
+
 # javascript
 java -jar swagger-codegen-cli.jar generate -Dapis=Default -Dmodels -DsupportingFiles -i swagger.yaml -l javascript -o javascript -c config/javascript.json
 

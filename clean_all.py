@@ -14,7 +14,8 @@ directories_to_remove = [
     'flash',
     'swift3',
     'html',
-    'html2'
+    'html2',
+    'r'
 ]
 
 for directory_to_remove in directories_to_remove:
