@@ -3707,6 +3707,7 @@ definitions:
         - transform
         - model
         - knn
+        - modelv2
       deploymentId:
         type: integer
         format: int64
