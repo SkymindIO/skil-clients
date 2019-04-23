@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * EvaluationResultsEntity
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-07T17:24:59.081+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-23T14:57:38.954+02:00")
 public class EvaluationResultsEntity {
   @SerializedName("evaluation")
   private String evaluation = null;

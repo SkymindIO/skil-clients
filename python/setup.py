@@ -28,13 +28,13 @@ setup(
     name=NAME,
     version=VERSION,
     description="Endpoints",
-    author_email="shams@skymind.io",
-    url="https://docs.skymind.ai",
-    keywords=["Swagger", "Endpoints", "SKIL", "Client"],
+    author_email="",
+    url="",
+    keywords=["Swagger", "Endpoints"],
     install_requires=REQUIRES,
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    Python endpoints API for different services in SKIL  # noqa: E501
+    Endpoints API for different services in SKIL  # noqa: E501
     """
 )

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ResourceCredentials
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-07T17:24:59.081+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-23T14:57:38.954+02:00")
 public class ResourceCredentials {
   @SerializedName("credentialId")
   private Long credentialId = null;
