@@ -1962,7 +1962,8 @@ paths:
           description: List of all the experiment entities in a model history
           schema:
             type: array
-            $ref: '#/definitions/ExperimentEntity'
+            items:
+              $ref: '#/definitions/ExperimentEntity'
   /rpc/{modelHistoryServerId}/experiment/{experimentID}:
     get:
       operationId: getExperiment
