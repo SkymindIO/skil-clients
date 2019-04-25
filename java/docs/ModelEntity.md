@@ -28,6 +28,7 @@ Name | Value
 TRANSFORM | &quot;transform&quot;
 MODEL | &quot;model&quot;
 KNN | &quot;knn&quot;
+MODELV2 | &quot;modelv2&quot;
 
 
 <a name="StateEnum"></a>

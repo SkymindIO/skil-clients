@@ -36,7 +36,7 @@
   /**
    * The AuthPolicy model module.
    * @module ai/skymind/skil/model/AuthPolicy
-   * @version 1.2.1.4
+   * @version 1.2.1.5
    */
 
   /**

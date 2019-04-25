@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "skil-client"
-VERSION = "1.2.1.4"
+VERSION = "1.2.1.5"
 # To install the library, run the following
 #
 # python setup.py install

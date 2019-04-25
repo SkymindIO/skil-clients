@@ -2843,7 +2843,7 @@ Name | Type | Description  | Notes
 
 <a name="getExperimentsForModelHistory"></a>
 # **getExperimentsForModelHistory**
-> ExperimentEntity getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID)
+> [ExperimentEntity] getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID)
 
 Obtain all experiments for a model history / workspace
 
@@ -2884,7 +2884,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExperimentEntity**](ExperimentEntity.md)
+[**[ExperimentEntity]**](ExperimentEntity.md)
 
 ### Authorization
 

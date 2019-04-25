@@ -1514,7 +1514,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetExperimentsForModelHistory**
-> ExperimentEntity GetExperimentsForModelHistory(ctx, modelHistoryServerId, modelHistoryID)
+> []ExperimentEntity GetExperimentsForModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Obtain all experiments for a model history / workspace
 
 ### Required Parameters
@@ -1527,7 +1527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExperimentEntity**](ExperimentEntity.md)
+[**[]ExperimentEntity**](ExperimentEntity.md)
 
 ### Authorization
 

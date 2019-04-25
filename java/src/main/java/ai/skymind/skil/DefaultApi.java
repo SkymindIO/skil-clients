@@ -6818,11 +6818,11 @@ public class DefaultApi {
      * 
      * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace (required)
-     * @return ExperimentEntity
+     * @return List&lt;ExperimentEntity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ExperimentEntity getExperimentsForModelHistory(String modelHistoryServerId, String modelHistoryID) throws ApiException {
-        ApiResponse<ExperimentEntity> resp = getExperimentsForModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
+    public List<ExperimentEntity> getExperimentsForModelHistory(String modelHistoryServerId, String modelHistoryID) throws ApiException {
+        ApiResponse<List<ExperimentEntity>> resp = getExperimentsForModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
         return resp.getData();
     }
 
@@ -6831,12 +6831,12 @@ public class DefaultApi {
      * 
      * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. (required)
      * @param modelHistoryID the GUID of the model history / workspace (required)
-     * @return ApiResponse&lt;ExperimentEntity&gt;
+     * @return ApiResponse&lt;List&lt;ExperimentEntity&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ExperimentEntity> getExperimentsForModelHistoryWithHttpInfo(String modelHistoryServerId, String modelHistoryID) throws ApiException {
+    public ApiResponse<List<ExperimentEntity>> getExperimentsForModelHistoryWithHttpInfo(String modelHistoryServerId, String modelHistoryID) throws ApiException {
         com.squareup.okhttp.Call call = getExperimentsForModelHistoryValidateBeforeCall(modelHistoryServerId, modelHistoryID, null, null);
-        Type localVarReturnType = new TypeToken<ExperimentEntity>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ExperimentEntity>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -6849,7 +6849,7 @@ public class DefaultApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getExperimentsForModelHistoryAsync(String modelHistoryServerId, String modelHistoryID, final ApiCallback<ExperimentEntity> callback) throws ApiException {
+    public com.squareup.okhttp.Call getExperimentsForModelHistoryAsync(String modelHistoryServerId, String modelHistoryID, final ApiCallback<List<ExperimentEntity>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6871,7 +6871,7 @@ public class DefaultApi {
         }
 
         com.squareup.okhttp.Call call = getExperimentsForModelHistoryValidateBeforeCall(modelHistoryServerId, modelHistoryID, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ExperimentEntity>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ExperimentEntity>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

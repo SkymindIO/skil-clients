@@ -1909,7 +1909,7 @@ headerParams["accept"] = toPathValue(accept);
     }
 
     /*
-     * Returns ExperimentEntity 
+     * Returns Array 
      */
     public function get_experiments_for_model_history (modelHistoryServerId: String, modelHistoryID: String): String {
         // create path and map variables
@@ -1937,7 +1937,7 @@ headerParams["accept"] = toPathValue(accept);
         token.requestId = requestId;
         token.completionEventType = "get_experiments_for_model_history";
 
-        token.returnType = ExperimentEntity;
+        token.returnType = Array;
         return requestId;
 
     }

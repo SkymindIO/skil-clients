@@ -198,7 +198,7 @@ class ModelEntity(object):
         :param model_type: The model_type of this ModelEntity.  # noqa: E501
         :type: str
         """
-        allowed_values = ["transform", "model", "knn"]  # noqa: E501
+        allowed_values = ["transform", "model", "knn", "modelv2"]  # noqa: E501
         if model_type not in allowed_values:
             raise ValueError(
                 "Invalid value for `model_type` ({0}), must be one of {1}"  # noqa: E501

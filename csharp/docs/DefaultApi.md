@@ -3454,7 +3454,7 @@ Name | Type | Description  | Notes
 
 <a name="getexperimentsformodelhistory"></a>
 # **GetExperimentsForModelHistory**
-> ExperimentEntity GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
+> List<ExperimentEntity> GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Obtain all experiments for a model history / workspace
 
@@ -3484,7 +3484,7 @@ namespace Example
             try
             {
                 // Obtain all experiments for a model history / workspace
-                ExperimentEntity result = apiInstance.GetExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+                List&lt;ExperimentEntity&gt; result = apiInstance.GetExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -3505,7 +3505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExperimentEntity**](ExperimentEntity.md)
+[**List<ExperimentEntity>**](ExperimentEntity.md)
 
 ### Authorization
 

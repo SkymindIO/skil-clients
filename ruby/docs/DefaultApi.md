@@ -2882,7 +2882,7 @@ Name | Type | Description  | Notes
 
 
 # **get_experiments_for_model_history**
-> ExperimentEntity get_experiments_for_model_history(model_history_server_id, model_history_id)
+> Array&lt;ExperimentEntity&gt; get_experiments_for_model_history(model_history_server_id, model_history_id)
 
 Obtain all experiments for a model history / workspace
 
@@ -2923,7 +2923,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExperimentEntity**](ExperimentEntity.md)
+[**Array&lt;ExperimentEntity&gt;**](ExperimentEntity.md)
 
 ### Authorization
 

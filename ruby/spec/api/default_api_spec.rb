@@ -641,7 +641,7 @@ describe 'DefaultApi' do
   # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
   # @param model_history_id the GUID of the model history / workspace
   # @param [Hash] opts the optional parameters
-  # @return [ExperimentEntity]
+  # @return [Array<ExperimentEntity>]
   describe 'get_experiments_for_model_history test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

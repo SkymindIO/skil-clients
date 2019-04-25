@@ -36,7 +36,7 @@
   /**
    * The ModelEntity model module.
    * @module ai/skymind/skil/model/ModelEntity
-   * @version 1.2.1.4
+   * @version 1.2.1.5
    */
 
   /**
@@ -206,7 +206,12 @@
      * value: "knn"
      * @const
      */
-    "knn": "knn"  };
+    "knn": "knn",
+    /**
+     * value: "modelv2"
+     * @const
+     */
+    "modelv2": "modelv2"  };
 
   /**
    * Allowed values for the <code>state</code> property.

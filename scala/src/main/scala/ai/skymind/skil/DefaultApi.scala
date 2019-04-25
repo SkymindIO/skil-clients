@@ -1557,9 +1557,9 @@ class DefaultApi(
    *
    * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace 
-   * @return ExperimentEntity
+   * @return List[ExperimentEntity]
    */
-  def getExperimentsForModelHistory(ModelHistoryServerId: String, ModelHistoryID: String): Option[ExperimentEntity] = {
+  def getExperimentsForModelHistory(ModelHistoryServerId: String, ModelHistoryID: String): Option[List[ExperimentEntity]] = {
     val await = Try(Await.result(getExperimentsForModelHistoryAsync(ModelHistoryServerId, ModelHistoryID), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -1573,9 +1573,9 @@ class DefaultApi(
    *
    * @param ModelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
    * @param ModelHistoryID the GUID of the model history / workspace 
-   * @return Future(ExperimentEntity)
+   * @return Future(List[ExperimentEntity])
    */
-  def getExperimentsForModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryID: String): Future[ExperimentEntity] = {
+  def getExperimentsForModelHistoryAsync(ModelHistoryServerId: String, ModelHistoryID: String): Future[List[ExperimentEntity]] = {
       helper.getExperimentsForModelHistory(ModelHistoryServerId, ModelHistoryID)
   }
 
@@ -4468,7 +4468,7 @@ class DefaultApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def getExperimentsForModelHistory(ModelHistoryServerId: String,
-    ModelHistoryID: String)(implicit reader: ClientResponseReader[ExperimentEntity]): Future[ExperimentEntity] = {
+    ModelHistoryID: String)(implicit reader: ClientResponseReader[List[ExperimentEntity]]): Future[List[ExperimentEntity]] = {
     // create path and map variables
     val path = (addFmt("/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}")
       replaceAll("\\{" + "modelHistoryServerId" + "\\}", ModelHistoryServerId.toString)

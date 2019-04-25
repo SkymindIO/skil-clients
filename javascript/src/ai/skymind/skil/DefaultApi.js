@@ -33,7 +33,7 @@
   /**
    * Default service.
    * @module ai/skymind/skil/DefaultApi
-   * @version 1.2.1.4
+   * @version 1.2.1.5
    */
 
   /**
@@ -2703,7 +2703,7 @@
      * Callback function to receive the result of the getExperimentsForModelHistory operation.
      * @callback module:ai/skymind/skil/DefaultApi~getExperimentsForModelHistoryCallback
      * @param {String} error Error message, if any.
-     * @param {module:ai/skymind/skil/model/ExperimentEntity} data The data returned by the service call.
+     * @param {Array.<module:ai/skymind/skil/model/ExperimentEntity>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -2712,7 +2712,7 @@
      * @param {String} modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
      * @param {String} modelHistoryID the GUID of the model history / workspace
      * @param {module:ai/skymind/skil/DefaultApi~getExperimentsForModelHistoryCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:ai/skymind/skil/model/ExperimentEntity}
+     * data is of type: {@link Array.<module:ai/skymind/skil/model/ExperimentEntity>}
      */
     this.getExperimentsForModelHistory = function(modelHistoryServerId, modelHistoryID, callback) {
       var postBody = null;
@@ -2744,7 +2744,7 @@
       var authNames = ['api_key'];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = ExperimentEntity;
+      var returnType = [ExperimentEntity];
 
       return this.apiClient.callApi(
         '/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}', 'GET',

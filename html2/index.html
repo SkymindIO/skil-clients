@@ -1695,7 +1695,7 @@ margin-bottom: 20px;
     },
     "modelType" : {
       "type" : "string",
-      "enum" : [ "transform", "model", "knn" ]
+      "enum" : [ "transform", "model", "knn", "modelv2" ]
     },
     "deploymentId" : {
       "type" : "integer",
@@ -21341,7 +21341,7 @@ public class DefaultApiExample {
         String modelHistoryServerId = modelHistoryServerId_example; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         String modelHistoryID = modelHistoryID_example; // String | the GUID of the model history / workspace
         try {
-            ExperimentEntity result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+            array[ExperimentEntity] result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getExperimentsForModelHistory");
@@ -21361,7 +21361,7 @@ public class DefaultApiExample {
         String modelHistoryServerId = modelHistoryServerId_example; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
         String modelHistoryID = modelHistoryID_example; // String | the GUID of the model history / workspace
         try {
-            ExperimentEntity result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+            array[ExperimentEntity] result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#getExperimentsForModelHistory");
@@ -21390,7 +21390,7 @@ DefaultApi *apiInstance = [[DefaultApi alloc] init];
 // Obtain all experiments for a model history / workspace
 [apiInstance getExperimentsForModelHistoryWith:modelHistoryServerId
     modelHistoryID:modelHistoryID
-              completionHandler: ^(ExperimentEntity output, NSError* error) {
+              completionHandler: ^(array[ExperimentEntity] output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -21458,7 +21458,7 @@ namespace Example
             try
             {
                 // Obtain all experiments for a model history / workspace
-                ExperimentEntity result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+                array[ExperimentEntity] result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -21620,7 +21620,10 @@ except ApiException as e:
                                         var schemaWrapper = {
   "description" : "List of all the experiment entities in a model history",
   "schema" : {
-    "$ref" : "#/definitions/ExperimentEntity"
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/ExperimentEntity"
+    }
   }
 };
                                         var schema = schemaWrapper.schema;

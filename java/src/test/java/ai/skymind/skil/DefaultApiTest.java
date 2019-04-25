@@ -962,7 +962,7 @@ public class DefaultApiTest {
     public void getExperimentsForModelHistoryTest() throws ApiException {
         String modelHistoryServerId = null;
         String modelHistoryID = null;
-        ExperimentEntity response = api.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+        List<ExperimentEntity> response = api.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
 
         // TODO: test validations
     }

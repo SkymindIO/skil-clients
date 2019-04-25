@@ -5202,15 +5202,15 @@ DefaultApiService Obtain all experiments for a model history / workspace
  * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
  * @param modelHistoryID the GUID of the model history / workspace
 
-@return ExperimentEntity
+@return []ExperimentEntity
 */
-func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryID string) (ExperimentEntity, *http.Response, error) {
+func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, modelHistoryServerId string, modelHistoryID string) ([]ExperimentEntity, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ExperimentEntity
+		localVarReturnValue []ExperimentEntity
 	)
 
 	// create path and map variables
@@ -5283,7 +5283,7 @@ func (a *DefaultApiService) GetExperimentsForModelHistory(ctx context.Context, m
 		}
 		
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ExperimentEntity
+			var v []ExperimentEntity
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

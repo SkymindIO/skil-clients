@@ -28,7 +28,7 @@ import java.math.BigDecimal;
 /**
  * ModelEntity
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-07T17:24:59.081+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-25T13:08:42.514+05:00")
 public class ModelEntity {
   @SerializedName("id")
   private Long id = null;
@@ -48,7 +48,9 @@ public class ModelEntity {
     
     MODEL("model"),
     
-    KNN("knn");
+    KNN("knn"),
+    
+    MODELV2("modelv2");
 
     private String value;
 

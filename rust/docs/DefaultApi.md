@@ -1514,7 +1514,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiments_for_model_history**
-> ::models::ExperimentEntity get_experiments_for_model_history(ctx, model_history_server_id, model_history_id)
+> Vec<::models::ExperimentEntity> get_experiments_for_model_history(ctx, model_history_server_id, model_history_id)
 Obtain all experiments for a model history / workspace
 
 ### Required Parameters
@@ -1527,7 +1527,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**::models::ExperimentEntity**](ExperimentEntity.md)
+[**Vec<::models::ExperimentEntity>**](ExperimentEntity.md)
 
 ### Authorization
 

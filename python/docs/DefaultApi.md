@@ -2841,7 +2841,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_experiments_for_model_history**
-> ExperimentEntity get_experiments_for_model_history(model_history_server_id, model_history_id)
+> list[ExperimentEntity] get_experiments_for_model_history(model_history_server_id, model_history_id)
 
 Obtain all experiments for a model history / workspace
 
@@ -2881,7 +2881,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExperimentEntity**](ExperimentEntity.md)
+[**list[ExperimentEntity]**](ExperimentEntity.md)
 
 ### Authorization
 

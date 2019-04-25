@@ -2099,7 +2099,9 @@ paths:
         200:
           description: "List of all the experiment entities in a model history"
           schema:
-            $ref: "#/definitions/ExperimentEntity"
+            type: "array"
+            items:
+              $ref: "#/definitions/ExperimentEntity"
   /rpc/{modelHistoryServerId}/experiment/{experimentID}:
     get:
       tags:
@@ -4126,6 +4128,7 @@ definitions:
         - "transform"
         - "model"
         - "knn"
+        - "modelv2"
       deploymentId:
         type: "integer"
         format: "int64"
@@ -5552,3 +5555,4 @@ x-samples-languages:
 - "ruby"
 - "swift"
 - "go"
+x-proxy-enabled: false

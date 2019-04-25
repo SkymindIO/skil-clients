@@ -729,7 +729,7 @@ namespace Skymind.Skil.Client.Test
             //string modelHistoryServerId = null;
             //string modelHistoryID = null;
             //var response = instance.GetExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
-            //Assert.IsInstanceOf<ExperimentEntity> (response, "response is ExperimentEntity");
+            //Assert.IsInstanceOf<List<ExperimentEntity>> (response, "response is List<ExperimentEntity>");
         }
         
         /// <summary>

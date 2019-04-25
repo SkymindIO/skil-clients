@@ -1,6 +1,6 @@
 Package: skil_client
 Title: R Package Client for Endpoints
-Version: 1.2.1.4
+Version: 1.2.1.5
 Authors@R: person("Swagger Codegen community", email = "apiteam@swagger.io", role = c("aut", "cre"))
 Description: Endpoints API for different services in SKIL
 Depends: R (>= 3.3.3)

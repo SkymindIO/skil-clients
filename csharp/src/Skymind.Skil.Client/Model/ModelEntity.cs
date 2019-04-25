@@ -53,7 +53,13 @@ namespace Skymind.Skil.Client.Model
             /// Enum Knn for value: knn
             /// </summary>
             [EnumMember(Value = "knn")]
-            Knn = 3
+            Knn = 3,
+            
+            /// <summary>
+            /// Enum Modelv2 for value: modelv2
+            /// </summary>
+            [EnumMember(Value = "modelv2")]
+            Modelv2 = 4
         }
 
         /// <summary>

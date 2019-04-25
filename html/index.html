@@ -3334,7 +3334,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#ExperimentEntity">ExperimentEntity</a>
+      array[<a href="#ExperimentEntity">ExperimentEntity</a>]
       
     </div>
 
@@ -3342,7 +3342,7 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
+    <pre class="example"><code>[ {
   "experimentDescription" : "experimentDescription",
   "lastUpdated" : 0,
   "modelHistoryId" : "modelHistoryId",
@@ -3353,7 +3353,18 @@ font-style: italic;
   "experimentId" : "experimentId",
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
-}</code></pre>
+}, {
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+} ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3365,7 +3376,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     List of all the experiment entities in a model history
-        <a href="#ExperimentEntity">ExperimentEntity</a>
+        
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="getJobById"/>
@@ -7847,7 +7858,7 @@ fix problems with input data pipelines.</div>
 <div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
 <div class="param">modelType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
-        <div class="param-enum">transform</div><div class="param-enum">model</div><div class="param-enum">knn</div>
+        <div class="param-enum">transform</div><div class="param-enum">model</div><div class="param-enum">knn</div><div class="param-enum">modelv2</div>
 <div class="param">deploymentId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span>  format: int64</div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">scale (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span>  </div>

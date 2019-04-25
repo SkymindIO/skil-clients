@@ -86,7 +86,7 @@ pub trait DefaultApi {
     fn get_evaluation_for_model_id(&self, model_history_server_id: &str, model_instance_id: &str) -> Box<Future<Item = Vec<::models::EvaluationResultsEntity>, Error = Error<serde_json::Value>>>;
     fn get_examples_for_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = Vec<::models::ExampleEntity>, Error = Error<serde_json::Value>>>;
     fn get_experiment(&self, model_history_server_id: &str, experiment_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
-    fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>>;
+    fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>>;
     fn get_job_by_id(&self, job_id_or_type: i64) -> Box<Future<Item = ::models::JobEntity, Error = Error<serde_json::Value>>>;
     fn get_last_evaluation(&self, ) -> Box<Future<Item = ::models::EvaluationResultsEntity, Error = Error<serde_json::Value>>>;
     fn get_minibatch(&self, model_history_server_id: &str, minibatch_id: &str) -> Box<Future<Item = ::models::MinibatchEntity, Error = Error<serde_json::Value>>>;
@@ -3601,7 +3601,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
         )
     }
 
-    fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = ::models::ExperimentEntity, Error = Error<serde_json::Value>>> {
+    fn get_experiments_for_model_history(&self, model_history_server_id: &str, model_history_id: &str) -> Box<Future<Item = Vec<::models::ExperimentEntity>, Error = Error<serde_json::Value>>> {
         let configuration: &configuration::Configuration<C> = self.configuration.borrow();
 
         let mut auth_headers = HashMap::<String, String>::new();
@@ -3661,7 +3661,7 @@ impl<C: hyper::client::Connect>DefaultApi for DefaultApiClient<C> {
                 }
             })
             .and_then(|body| {
-                let parsed: Result<::models::ExperimentEntity, _> = serde_json::from_slice(&body);
+                let parsed: Result<Vec<::models::ExperimentEntity>, _> = serde_json::from_slice(&body);
                 parsed.map_err(|e| Error::from(e))
             })
         )

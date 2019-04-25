@@ -7077,9 +7077,9 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
   * 
    * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
    * @param modelHistoryID the GUID of the model history / workspace
-   * @return ExperimentEntity
+   * @return List<ExperimentEntity>
   */
-  public ExperimentEntity getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public List<ExperimentEntity> getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'modelHistoryServerId' is set
     if (modelHistoryServerId == null) {
@@ -7119,7 +7119,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
     try {
       String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
       if (localVarResponse != null) {
-         return (ExperimentEntity) ApiInvoker.deserialize(localVarResponse, "", ExperimentEntity.class);
+         return (List<ExperimentEntity>) ApiInvoker.deserialize(localVarResponse, "array", ExperimentEntity.class);
       } else {
          return null;
       }
@@ -7145,7 +7145,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
    * 
    * @param modelHistoryServerId Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.   * @param modelHistoryID the GUID of the model history / workspace
   */
-  public void getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<ExperimentEntity> responseListener, final Response.ErrorListener errorListener) {
+  public void getExperimentsForModelHistory (String modelHistoryServerId, String modelHistoryID, final Response.Listener<List<ExperimentEntity>> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'modelHistoryServerId' is set
@@ -7195,7 +7195,7 @@ formParams.put("threshold", ApiInvoker.parameterToString(threshold));
           @Override
           public void onResponse(String localVarResponse) {
             try {
-              responseListener.onResponse((ExperimentEntity) ApiInvoker.deserialize(localVarResponse,  "", ExperimentEntity.class));
+              responseListener.onResponse((List<ExperimentEntity>) ApiInvoker.deserialize(localVarResponse,  "array", ExperimentEntity.class));
             } catch (ApiException exception) {
                errorListener.onErrorResponse(new VolleyError(exception));
             }

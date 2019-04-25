@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * FeedbackResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-07T17:24:59.081+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-25T13:08:42.514+05:00")
 public class FeedbackResponse {
   @SerializedName("retrainThreshold")
   private Integer retrainThreshold = null;
