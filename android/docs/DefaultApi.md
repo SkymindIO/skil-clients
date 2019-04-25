@@ -2282,7 +2282,7 @@ Name | Type | Description  | Notes
 
 <a name="getExperimentsForModelHistory"></a>
 # **getExperimentsForModelHistory**
-> ExperimentEntity getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID)
+> List&lt;ExperimentEntity&gt; getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID)
 
 Obtain all experiments for a model history / workspace
 
@@ -2295,7 +2295,7 @@ DefaultApi apiInstance = new DefaultApi();
 String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace
 try {
-    ExperimentEntity result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+    List<ExperimentEntity> result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DefaultApi#getExperimentsForModelHistory");
@@ -2312,7 +2312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ExperimentEntity**](ExperimentEntity.md)
+[**List&lt;ExperimentEntity&gt;**](ExperimentEntity.md)
 
 ### Authorization
 

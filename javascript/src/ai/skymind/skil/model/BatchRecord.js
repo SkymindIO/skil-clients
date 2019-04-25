@@ -36,7 +36,7 @@
   /**
    * The BatchRecord model module.
    * @module ai/skymind/skil/model/BatchRecord
-   * @version 1.2.1.4
+   * @version 1.2.1.5
    */
 
   /**

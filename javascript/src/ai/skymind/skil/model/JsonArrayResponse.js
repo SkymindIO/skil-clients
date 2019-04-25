@@ -36,7 +36,7 @@
   /**
    * The JsonArrayResponse model module.
    * @module ai/skymind/skil/model/JsonArrayResponse
-   * @version 1.2.1.4
+   * @version 1.2.1.5
    */
 
   /**

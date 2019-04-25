@@ -2,24 +2,24 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <!-- The identifier that must be unique within the hosting gallery -->
-        <id>Skymind.Skil.Client</id>
-        <title>SKIL Client</title>
+        <id>$id$</id>
+        <title>Swagger Library</title>
 
         <!-- The package version number that is used when resolving dependencies -->
-        <version>1.2.1.4</version>
+        <version>$version$</version>
 
         <!-- Authors contain text that appears directly on the gallery -->
-        <authors>Shams Ul Azeem, Justin Long</authors>
+        <authors>$author$</authors>
 
         <!-- Owners are typically nuget.org identities that allow gallery
              users to earily find other packages by the same owners.  -->
-        <owners>Skymind</owners>
+        <owners>$author$</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <developmentDependency>false</developmentDependency>
 
         <!-- The description can be used in package manager UI. Note that the
              nuget.org gallery uses information you add in the portal. -->
-        <description>SKIL endpoints client for C#</description>
+        <description>A library generated from a Swagger doc</description>
 
         <!-- Dependencies are automatically installed when the package is installed -->
         <dependencies>
@@ -29,8 +29,6 @@
             <dependency id="RestSharp" version="105.1.0" />
 
         </dependencies>
-
-        <license type="expression">Apache-2.0</license>
     </metadata>
     <files>
 

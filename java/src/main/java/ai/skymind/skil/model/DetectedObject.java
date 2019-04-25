@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * DetectedObject
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-07T17:24:59.081+05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-25T13:08:42.514+05:00")
 public class DetectedObject {
   @SerializedName("centerX")
   private Float centerX = null;

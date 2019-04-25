@@ -27,7 +27,7 @@ public class ModelEntity implements Serializable {
   @SerializedName("updated")
   private Long updated = null;
   public enum ModelTypeEnum {
-     transform,  model,  knn, 
+     transform,  model,  knn,  modelv2, 
   };
   @SerializedName("modelType")
   private ModelTypeEnum modelType = null;

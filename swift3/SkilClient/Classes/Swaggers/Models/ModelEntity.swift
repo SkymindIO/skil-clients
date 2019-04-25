@@ -14,6 +14,7 @@ open class ModelEntity: JSONEncodable {
         case transform = "transform"
         case model = "model"
         case knn = "knn"
+        case modelv2 = "modelv2"
     }
     public enum State: String { 
         case created = "created"

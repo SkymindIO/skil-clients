@@ -2907,7 +2907,7 @@ module SkilCient
     # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace
     # @param [Hash] opts the optional parameters
-    # @return [ExperimentEntity]
+    # @return [Array<ExperimentEntity>]
     def get_experiments_for_model_history(model_history_server_id, model_history_id, opts = {})
       data, _status_code, _headers = get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, opts)
       data
@@ -2917,7 +2917,7 @@ module SkilCient
     # @param model_history_server_id Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.
     # @param model_history_id the GUID of the model history / workspace
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ExperimentEntity, Fixnum, Hash)>] ExperimentEntity data, response status code and response headers
+    # @return [Array<(Array<ExperimentEntity>, Fixnum, Hash)>] Array<ExperimentEntity> data, response status code and response headers
     def get_experiments_for_model_history_with_http_info(model_history_server_id, model_history_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_experiments_for_model_history ...'
@@ -2953,7 +2953,7 @@ module SkilCient
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ExperimentEntity')
+        :return_type => 'Array<ExperimentEntity>')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#get_experiments_for_model_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

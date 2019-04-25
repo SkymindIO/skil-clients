@@ -2593,7 +2593,7 @@ open class DefaultAPI: APIBase {
      - parameter modelHistoryID: (path) the GUID of the model history / workspace 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getExperimentsForModelHistory(modelHistoryServerId: String, modelHistoryID: String, completion: @escaping ((_ data: ExperimentEntity?, _ error: ErrorResponse?) -> Void)) {
+    open class func getExperimentsForModelHistory(modelHistoryServerId: String, modelHistoryID: String, completion: @escaping ((_ data: [ExperimentEntity]?, _ error: ErrorResponse?) -> Void)) {
         getExperimentsForModelHistoryWithRequestBuilder(modelHistoryServerId: modelHistoryServerId, modelHistoryID: modelHistoryID).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -2606,7 +2606,7 @@ open class DefaultAPI: APIBase {
      - API Key:
        - type: apiKey authorization 
        - name: api_key
-     - examples: [{contentType=application/json, example={
+     - examples: [{contentType=application/json, example=[ {
   "experimentDescription" : "experimentDescription",
   "lastUpdated" : 0,
   "modelHistoryId" : "modelHistoryId",
@@ -2617,12 +2617,23 @@ open class DefaultAPI: APIBase {
   "experimentId" : "experimentId",
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
-}}]
+}, {
+  "experimentDescription" : "experimentDescription",
+  "lastUpdated" : 0,
+  "modelHistoryId" : "modelHistoryId",
+  "notebookUrl" : "notebookUrl",
+  "bestModelId" : "bestModelId",
+  "inputDataUri" : "inputDataUri",
+  "zeppelinId" : "zeppelinId",
+  "experimentId" : "experimentId",
+  "experimentName" : "experimentName",
+  "notebookJson" : "notebookJson"
+} ]}]
      - parameter modelHistoryServerId: (path) Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. 
      - parameter modelHistoryID: (path) the GUID of the model history / workspace 
-     - returns: RequestBuilder<ExperimentEntity> 
+     - returns: RequestBuilder<[ExperimentEntity]> 
      */
-    open class func getExperimentsForModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryID: String) -> RequestBuilder<ExperimentEntity> {
+    open class func getExperimentsForModelHistoryWithRequestBuilder(modelHistoryServerId: String, modelHistoryID: String) -> RequestBuilder<[ExperimentEntity]> {
         var path = "/rpc/{modelHistoryServerId}/experiments/{modelHistoryID}"
         let modelHistoryServerIdPreEscape = "\(modelHistoryServerId)"
         let modelHistoryServerIdPostEscape = modelHistoryServerIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2635,7 +2646,7 @@ open class DefaultAPI: APIBase {
         
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ExperimentEntity>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ExperimentEntity]>.Type = SkilClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

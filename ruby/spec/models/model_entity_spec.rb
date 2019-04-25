@@ -53,7 +53,7 @@ describe 'ModelEntity' do
   describe 'test attribute "model_type"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["transform", "model", "knn"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["transform", "model", "knn", "modelv2"])
       # validator.allowable_values.each do |value|
       #   expect { @instance.model_type = value }.not_to raise_error
       # end

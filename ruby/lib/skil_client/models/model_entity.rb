@@ -187,7 +187,7 @@ module SkilCient
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      model_type_validator = EnumAttributeValidator.new('String', ['transform', 'model', 'knn'])
+      model_type_validator = EnumAttributeValidator.new('String', ['transform', 'model', 'knn', 'modelv2'])
       return false unless model_type_validator.valid?(@model_type)
       state_validator = EnumAttributeValidator.new('String', ['created', 'starting', 'started', 'stopping', 'stopped', 'unhealthy', 'failed'])
       return false unless state_validator.valid?(@state)
@@ -199,7 +199,7 @@ module SkilCient
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] model_type Object to be assigned
     def model_type=(model_type)
-      validator = EnumAttributeValidator.new('String', ['transform', 'model', 'knn'])
+      validator = EnumAttributeValidator.new('String', ['transform', 'model', 'knn', 'modelv2'])
       unless validator.valid?(model_type)
         fail ArgumentError, 'invalid value for "model_type", must be one of #{validator.allowable_values}.'
       end

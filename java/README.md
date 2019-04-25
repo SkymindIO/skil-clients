@@ -2,7 +2,7 @@
 
 Endpoints
 - API version: 1.2.0-rc1
-  - Build date: 2019-03-07T17:24:59.081+05:00
+  - Build date: 2019-04-25T13:08:42.514+05:00
 
 Endpoints API for different services in SKIL
 
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>ai.skymind</groupId>
   <artifactId>skil-client</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>1.2.1-SNAPSHOT</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "ai.skymind:skil-client:1.2.0-SNAPSHOT"
+compile "ai.skymind:skil-client:1.2.1-SNAPSHOT"
 ```
 
 ### Others
@@ -63,7 +63,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/skil-client-1.2.0-SNAPSHOT.jar`
+* `target/skil-client-1.2.1-SNAPSHOT.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

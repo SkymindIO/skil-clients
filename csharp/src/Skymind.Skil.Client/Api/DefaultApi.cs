@@ -1190,8 +1190,8 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>ExperimentEntity</returns>
-        ExperimentEntity GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID);
+        /// <returns>List&lt;ExperimentEntity&gt;</returns>
+        List<ExperimentEntity> GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Obtain all experiments for a model history / workspace
@@ -1202,8 +1202,8 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>ApiResponse of ExperimentEntity</returns>
-        ApiResponse<ExperimentEntity> GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
+        /// <returns>ApiResponse of List&lt;ExperimentEntity&gt;</returns>
+        ApiResponse<List<ExperimentEntity>> GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Get a job by its ID
         /// </summary>
@@ -3919,8 +3919,8 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>Task of ExperimentEntity</returns>
-        System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryServerId, string modelHistoryID);
+        /// <returns>Task of List&lt;ExperimentEntity&gt;</returns>
+        System.Threading.Tasks.Task<List<ExperimentEntity>> GetExperimentsForModelHistoryAsync (string modelHistoryServerId, string modelHistoryID);
 
         /// <summary>
         /// Obtain all experiments for a model history / workspace
@@ -3931,8 +3931,8 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
+        /// <returns>Task of ApiResponse (List&lt;ExperimentEntity&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID);
         /// <summary>
         /// Get a job by its ID
         /// </summary>
@@ -13749,10 +13749,10 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>ExperimentEntity</returns>
-        public ExperimentEntity GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
+        /// <returns>List&lt;ExperimentEntity&gt;</returns>
+        public List<ExperimentEntity> GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = GetExperimentsForModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
+             ApiResponse<List<ExperimentEntity>> localVarResponse = GetExperimentsForModelHistoryWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
         }
 
@@ -13762,8 +13762,8 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>ApiResponse of ExperimentEntity</returns>
-        public ApiResponse< ExperimentEntity > GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
+        /// <returns>ApiResponse of List&lt;ExperimentEntity&gt;</returns>
+        public ApiResponse< List<ExperimentEntity> > GetExperimentsForModelHistoryWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
             // verify the required parameter 'modelHistoryServerId' is set
             if (modelHistoryServerId == null)
@@ -13815,9 +13815,9 @@ namespace Skymind.Skil.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+            return new ApiResponse<List<ExperimentEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (List<ExperimentEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
         }
 
         /// <summary>
@@ -13826,10 +13826,10 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>Task of ExperimentEntity</returns>
-        public async System.Threading.Tasks.Task<ExperimentEntity> GetExperimentsForModelHistoryAsync (string modelHistoryServerId, string modelHistoryID)
+        /// <returns>Task of List&lt;ExperimentEntity&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ExperimentEntity>> GetExperimentsForModelHistoryAsync (string modelHistoryServerId, string modelHistoryID)
         {
-             ApiResponse<ExperimentEntity> localVarResponse = await GetExperimentsForModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryID);
+             ApiResponse<List<ExperimentEntity>> localVarResponse = await GetExperimentsForModelHistoryAsyncWithHttpInfo(modelHistoryServerId, modelHistoryID);
              return localVarResponse.Data;
 
         }
@@ -13840,8 +13840,8 @@ namespace Skymind.Skil.Client.Api
         /// <exception cref="Skymind.Skil.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="modelHistoryServerId">Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID.</param>
         /// <param name="modelHistoryID">the GUID of the model history / workspace</param>
-        /// <returns>Task of ApiResponse (ExperimentEntity)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ExperimentEntity>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
+        /// <returns>Task of ApiResponse (List&lt;ExperimentEntity&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ExperimentEntity>>> GetExperimentsForModelHistoryAsyncWithHttpInfo (string modelHistoryServerId, string modelHistoryID)
         {
             // verify the required parameter 'modelHistoryServerId' is set
             if (modelHistoryServerId == null)
@@ -13893,9 +13893,9 @@ namespace Skymind.Skil.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ExperimentEntity>(localVarStatusCode,
+            return new ApiResponse<List<ExperimentEntity>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ExperimentEntity) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ExperimentEntity)));
+                (List<ExperimentEntity>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ExperimentEntity>)));
         }
 
         /// <summary>

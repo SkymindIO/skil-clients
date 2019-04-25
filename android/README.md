@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>ai.skymind</groupId>
     <artifactId>skil-client</artifactId>
-    <version>1.2.1.4</version>
+    <version>1.2.1.5</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "ai.skymind:skil-client:1.2.1.4"
+compile "ai.skymind:skil-client:1.2.1.5"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/skil-client-1.2.1.4.jar
+* target/skil-client-1.2.1.5.jar
 * target/lib/*.jar
 
 ## Getting Started

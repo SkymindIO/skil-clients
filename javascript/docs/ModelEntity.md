@@ -30,6 +30,8 @@ Name | Type | Description | Notes
 
 * `knn` (value: `"knn"`)
 
+* `modelv2` (value: `"modelv2"`)
+
 
 
 
