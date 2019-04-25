@@ -65,6 +65,7 @@ x-samples-languages:
 - ruby
 - swift
 - go
+x-proxy-enabled: false
 paths:
   # ---------------------------------------------------------------------------------------
   # User endpoints
