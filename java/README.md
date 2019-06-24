@@ -37,12 +37,20 @@ Refer to the [OSSRH Guide](http://central.sonatype.org/pages/ossrh-guide.html) f
 Add this dependency to your project's POM:
 
 ```xml
-<dependency>
-  <groupId>ai.skymind</groupId>
-  <artifactId>skil-client</artifactId>
-  <version>1.2.2-SNAPSHOT</version>
-  <scope>compile</scope>
-</dependency>
+<repositories>
+    <repository>
+        <id>snapshots</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+      <groupId>ai.skymind</groupId>
+      <artifactId>skil-client</artifactId>
+      <version>1.2.2-SNAPSHOT</version>
+  </dependency>
+</dependencies>
 ```
 
 ### Gradle users
