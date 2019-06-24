@@ -1,6 +1,7 @@
 # SkilClient.HDInsightResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  | [optional] [default to &#39;io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails&#39;]
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 **clusterName** | **String** | Cluster name | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
 
 

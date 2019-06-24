@@ -1,6 +1,7 @@
 # SkilCient::JobEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **job_id** | **Integer** | Job ID | [optional] 
@@ -11,5 +12,20 @@ Name | Type | Description | Notes
 **run_id** | **String** | Job run ID | [optional] 
 **status** | **String** | Job&#39;s status | [optional] 
 **output_file_name** | **String** | Output file name | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::JobEntity.new(job_id: null,
+                                 job_type: null,
+                                 compute_resource_id: null,
+                                 storage_resource_id: null,
+                                 job_args: null,
+                                 run_id: null,
+                                 status: null,
+                                 output_file_name: null)
+```
 
 

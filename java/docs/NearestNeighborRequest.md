@@ -1,7 +1,9 @@
 
+
 # NearestNeighborRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **k** | **Integer** | the number of results |  [optional]

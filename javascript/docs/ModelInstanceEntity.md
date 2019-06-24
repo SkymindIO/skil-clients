@@ -1,6 +1,7 @@
 # SkilClient.ModelInstanceEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uri** | **String** | The model URI | [optional] 

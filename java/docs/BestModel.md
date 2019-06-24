@@ -1,7 +1,9 @@
 
+
 # BestModel
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ids** | **List&lt;String&gt;** | the list of GUIDs for the models to get the best model from |  [optional]
@@ -9,8 +11,9 @@ Name | Type | Description | Notes
 **evalType** | [**EvalTypeEnum**](#EvalTypeEnum) | the evaluation type to aggregate for each model&#39;s revisions |  [optional]
 
 
-<a name="ColumnNameMetricEnum"></a>
+
 ## Enum: ColumnNameMetricEnum
+
 Name | Value
 ---- | -----
 F1 | &quot;f1&quot;
@@ -24,8 +27,9 @@ MEANRELATIVEERROR | &quot;meanRelativeError&quot;
 R2 | &quot;r2&quot;
 
 
-<a name="EvalTypeEnum"></a>
+
 ## Enum: EvalTypeEnum
+
 Name | Value
 ---- | -----
 ROC_BINARY | &quot;ROC_BINARY&quot;

@@ -1,6 +1,7 @@
 # SkilClient.HDFSResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  | [optional] [default to &#39;io.skymind.resource.model.subtypes.storage.HDFSResourceDetails&#39;]
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **nameNodePort** | **String** | Port of the node running the NameNode | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
 
 

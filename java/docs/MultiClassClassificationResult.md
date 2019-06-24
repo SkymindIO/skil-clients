@@ -1,7 +1,9 @@
 
+
 # MultiClassClassificationResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **rankedOutcomes** | [**List&lt;List&lt;String&gt;&gt;**](List.md) |  |  [optional]

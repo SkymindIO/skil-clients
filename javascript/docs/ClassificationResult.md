@@ -1,6 +1,7 @@
 # SkilClient.ClassificationResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | **[Number]** | index classification results for the minibatch | [optional] 

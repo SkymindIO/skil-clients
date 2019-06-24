@@ -1,4 +1,4 @@
-package io.swagger.exception
+package org.openapitools.exception
 {
 	public class ApiErrorCodes
 	{

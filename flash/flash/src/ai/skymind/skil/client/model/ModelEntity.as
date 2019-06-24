@@ -17,7 +17,7 @@ import ai.skymind.skil.client.model.Object;
                 [XmlElement(name="name")]
         public var name: String = null;
                 [XmlElement(name="scale")]
-        public var scale: Number = NaN;
+        public var scale: Number = 0.0;
                 [XmlElement(name="fileLocation")]
         public var fileLocation: String = null;
                 [XmlElement(name="state")]

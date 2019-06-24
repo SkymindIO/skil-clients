@@ -1,6 +1,7 @@
 # SkilClient.EvaluationResultsEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **evaluation** | **String** |  | [optional] 

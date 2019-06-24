@@ -1,6 +1,7 @@
 # SkilCient::ExperimentEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **best_model_id** | **String** | GUID of the best selected model in an experiment | [optional] 
@@ -13,5 +14,22 @@ Name | Type | Description | Notes
 **zeppelin_id** | **String** | Zeppelin ID | [optional] 
 **model_history_id** | **String** | Id of the model history / workspace | [optional] 
 **last_updated** | **Integer** | Indicates the time when experiment was last updated | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::ExperimentEntity.new(best_model_id: null,
+                                 input_data_uri: null,
+                                 experiment_id: null,
+                                 experiment_name: null,
+                                 experiment_description: null,
+                                 notebook_json: null,
+                                 notebook_url: null,
+                                 zeppelin_id: null,
+                                 model_history_id: null,
+                                 last_updated: null)
+```
 
 

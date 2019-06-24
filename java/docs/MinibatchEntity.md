@@ -1,7 +1,9 @@
 
+
 # MinibatchEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **miniBatchId** | **String** | GUID of mini batch |  [optional]

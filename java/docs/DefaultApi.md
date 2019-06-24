@@ -132,27 +132,42 @@ Tells how many retraining examples have labels associated with them.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    AccumulatedResults result = apiInstance.accumulatedResults();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#accumulatedResults");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      AccumulatedResults result = apiInstance.accumulatedResults();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#accumulatedResults");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -165,12 +180,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the accumulated results currently in ememory. |  -  |
 
 <a name="addCredentials"></a>
 # **addCredentials**
@@ -181,28 +201,43 @@ Adds credentials
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-AddCredentialsRequest addCredentialsRequest = new AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
-try {
-    ResourceCredentials result = apiInstance.addCredentials(addCredentialsRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addCredentials");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    AddCredentialsRequest addCredentialsRequest = new AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
+    try {
+      ResourceCredentials result = apiInstance.addCredentials(addCredentialsRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addCredentials");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -218,12 +253,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created credentials object |  -  |
 
 <a name="addEvaluationResult"></a>
 # **addEvaluationResult**
@@ -234,29 +274,44 @@ Adds an evaluation result
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-EvaluationResultsEntity evaluationResultsEntity = new EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
-try {
-    EvaluationResultsEntity result = apiInstance.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addEvaluationResult");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    EvaluationResultsEntity evaluationResultsEntity = new EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
+    try {
+      EvaluationResultsEntity result = apiInstance.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addEvaluationResult");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -273,12 +328,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added evaluation result entity |  -  |
 
 <a name="addExampleForBatch"></a>
 # **addExampleForBatch**
@@ -289,29 +349,44 @@ Adds a number of examples to a minibatch ID given an AddExampleRequest.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-AddExampleRequest addExampleRequest = new AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
-try {
-    AddExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addExampleForBatch");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    AddExampleRequest addExampleRequest = new AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
+    try {
+      AddExampleRequest result = apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addExampleForBatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -328,12 +403,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The add example request |  -  |
 
 <a name="addExampleToMinibatch"></a>
 # **addExampleToMinibatch**
@@ -344,29 +424,44 @@ Adds an example to a minibatch
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-ExampleEntity exampleEntity = new ExampleEntity(); // ExampleEntity | The example to add to the minibatch
-try {
-    ExampleEntity result = apiInstance.addExampleToMinibatch(modelHistoryServerId, exampleEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addExampleToMinibatch");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    ExampleEntity exampleEntity = new ExampleEntity(); // ExampleEntity | The example to add to the minibatch
+    try {
+      ExampleEntity result = apiInstance.addExampleToMinibatch(modelHistoryServerId, exampleEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addExampleToMinibatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -383,12 +478,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added example entity |  -  |
 
 <a name="addExperiment"></a>
 # **addExperiment**
@@ -399,29 +499,44 @@ Add an experiment, given an experiment entity
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-ExperimentEntity experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to add
-try {
-    ExperimentEntity result = apiInstance.addExperiment(modelHistoryServerId, experimentEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addExperiment");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    ExperimentEntity experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to add
+    try {
+      ExperimentEntity result = apiInstance.addExperiment(modelHistoryServerId, experimentEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addExperiment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -438,12 +553,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added experiment entity. |  -  |
 
 <a name="addFeedbackBinary"></a>
 # **addFeedbackBinary**
@@ -454,30 +574,45 @@ Name | Type | Description  | Notes
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
-String type = "type_example"; // String | The type of the labels array.
-File file = new File("/path/to/file.txt"); // File | The labels file to upload.
-try {
-    FeedbackResponse result = apiInstance.addFeedbackBinary(id, type, file);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addFeedbackBinary");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
+    String type = "type_example"; // String | The type of the labels array.
+    File file = new File("/path/to/file"); // File | The labels file to upload.
+    try {
+      FeedbackResponse result = apiInstance.addFeedbackBinary(id, type, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addFeedbackBinary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -495,12 +630,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The feedback response object |  -  |
 
 <a name="addFeedbackJson"></a>
 # **addFeedbackJson**
@@ -511,29 +651,44 @@ Gets the retraining feedback for the given batch ID.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
-List<List<Double>> labels = Arrays.asList(new List()); // List<List<Double>> | The associated labels (one-hot vectors) with the batch for retraining.
-try {
-    FeedbackResponse result = apiInstance.addFeedbackJson(id, labels);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addFeedbackJson");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
+    List<List<Double>> labels = Arrays.asList(new ArrayList<Double>()); // List<List<Double>> | The associated labels (one-hot vectors) with the batch for retraining.
+    try {
+      FeedbackResponse result = apiInstance.addFeedbackJson(id, labels);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addFeedbackJson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -550,12 +705,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The feedback response object |  -  |
 
 <a name="addMinibatch"></a>
 # **addMinibatch**
@@ -566,29 +726,44 @@ Adds a minibatch
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-MinibatchEntity minibatchEntity = new MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
-try {
-    MinibatchEntity result = apiInstance.addMinibatch(modelHistoryServerId, minibatchEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addMinibatch");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    MinibatchEntity minibatchEntity = new MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
+    try {
+      MinibatchEntity result = apiInstance.addMinibatch(modelHistoryServerId, minibatchEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addMinibatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -605,12 +780,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added minibatch entity |  -  |
 
 <a name="addModelFeedback"></a>
 # **addModelFeedback**
@@ -621,29 +801,44 @@ Adds an evaluation feedback to the model against a given minibatch id.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-ModelFeedBackRequest modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
-try {
-    ModelFeedBackRequest result = apiInstance.addModelFeedback(modelHistoryServerId, modelFeedBackRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addModelFeedback");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    ModelFeedBackRequest modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
+    try {
+      ModelFeedBackRequest result = apiInstance.addModelFeedback(modelHistoryServerId, modelFeedBackRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addModelFeedback");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -660,12 +855,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The model feedback request object |  -  |
 
 <a name="addModelHistory"></a>
 # **addModelHistory**
@@ -676,29 +876,44 @@ Add a model history / workspace
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-AddModelHistoryRequest addModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
-try {
-    ModelHistoryEntity result = apiInstance.addModelHistory(modelHistoryServerId, addModelHistoryRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addModelHistory");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    AddModelHistoryRequest addModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
+    try {
+      ModelHistoryEntity result = apiInstance.addModelHistory(modelHistoryServerId, addModelHistoryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addModelHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -715,12 +930,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added model history entity |  -  |
 
 <a name="addModelInstance"></a>
 # **addModelInstance**
@@ -731,29 +951,44 @@ Adds a model
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-ModelInstanceEntity modelInstanceEntity = new ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
-try {
-    ModelInstanceEntity result = apiInstance.addModelInstance(modelHistoryServerId, modelInstanceEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addModelInstance");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    ModelInstanceEntity modelInstanceEntity = new ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
+    try {
+      ModelInstanceEntity result = apiInstance.addModelInstance(modelHistoryServerId, modelInstanceEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addModelInstance");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -770,12 +1005,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added model instance entity |  -  |
 
 <a name="addResource"></a>
 # **addResource**
@@ -786,28 +1026,43 @@ Adds a resource
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-AddResourceRequest addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
-try {
-    Object result = apiInstance.addResource(addResourceRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addResource");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    AddResourceRequest addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
+    try {
+      Object result = apiInstance.addResource(addResourceRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addResource");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -823,12 +1078,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | One of the resource details object |  -  |
 
 <a name="addResourceGroup"></a>
 # **addResourceGroup**
@@ -839,28 +1099,43 @@ Adds a resource group
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String groupName = "groupName_example"; // String | Name of the resource group
-try {
-    ResourceGroup result = apiInstance.addResourceGroup(groupName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addResourceGroup");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String groupName = "groupName_example"; // String | Name of the resource group
+    try {
+      ResourceGroup result = apiInstance.addResourceGroup(groupName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addResourceGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -876,12 +1151,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain; charset=utf-8
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created resource group object |  -  |
 
 <a name="addResourceToGroup"></a>
 # **addResourceToGroup**
@@ -892,28 +1172,43 @@ Adds a resource to a resource group
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceGroupId = 789L; // Long | ID of the resource group
-Long resourceId = 789L; // Long | ID of the resource
-try {
-    apiInstance.addResourceToGroup(resourceGroupId, resourceId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#addResourceToGroup");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceGroupId = 56L; // Long | ID of the resource group
+    Long resourceId = 56L; // Long | ID of the resource
+    try {
+      apiInstance.addResourceToGroup(resourceGroupId, resourceId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#addResourceToGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -930,12 +1225,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully added resource to the resource group |  -  |
 
 <a name="aggregateModelResults"></a>
 # **aggregateModelResults**
@@ -946,29 +1246,44 @@ Aggregates the evaluaition results of a model instance, based on the evaluation 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-AggregatePrediction aggregatePrediction = new AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
-try {
-    EvaluationResultsEntity result = apiInstance.aggregateModelResults(modelHistoryServerId, aggregatePrediction);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#aggregateModelResults");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    AggregatePrediction aggregatePrediction = new AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
+    try {
+      EvaluationResultsEntity result = apiInstance.aggregateModelResults(modelHistoryServerId, aggregatePrediction);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#aggregateModelResults");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -985,12 +1300,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Evaluation result entity contained the aggregated/merged results |  -  |
 
 <a name="changeUserPassword"></a>
 # **changeUserPassword**
@@ -1001,29 +1321,44 @@ Change user&#39;s password
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String userId = "userId_example"; // String | User's ID
-ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest(); // ChangePasswordRequest | Password details.
-try {
-    User result = apiInstance.changeUserPassword(userId, changePasswordRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#changeUserPassword");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String userId = "userId_example"; // String | User's ID
+    ChangePasswordRequest changePasswordRequest = new ChangePasswordRequest(); // ChangePasswordRequest | Password details.
+    try {
+      User result = apiInstance.changeUserPassword(userId, changePasswordRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#changeUserPassword");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1040,47 +1375,67 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated user. |  -  |
+
 <a name="classify"></a>
 # **classify**
-> ClassificationResult classify(body, deploymentName, versionName, modelName)
+> ClassificationResult classify(deploymentName, versionName, modelName, body)
 
 Use the deployed model to classify the input
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Prediction body = new Prediction(); // Prediction | The input NDArray
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    ClassificationResult result = apiInstance.classify(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#classify");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    Prediction body = new Prediction(); // Prediction | The input NDArray
+    try {
+      ClassificationResult result = apiInstance.classify(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#classify");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1088,10 +1443,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**Prediction**](Prediction.md)| The input NDArray |
 
 ### Return type
 
@@ -1099,47 +1454,69 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
+
 <a name="classifyarray"></a>
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, deploymentName, versionName, modelName)
+> Base64NDArrayBody classifyarray(deploymentName, versionName, modelName, body)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Prediction body = new Prediction(); // Prediction | The input NDArray
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    Base64NDArrayBody result = apiInstance.classifyarray(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#classifyarray");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    Prediction body = new Prediction(); // Prediction | The input NDArray
+    try {
+      Base64NDArrayBody result = apiInstance.classifyarray(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#classifyarray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1147,10 +1524,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**Prediction**](Prediction.md)| The input NDArray |
 
 ### Return type
 
@@ -1158,12 +1535,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
 
 <a name="classifyimage"></a>
 # **classifyimage**
@@ -1174,31 +1558,46 @@ Use the deployed model to classify the input, using input image file from multip
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-File image = new File("/path/to/file.txt"); // File | The file to upload.
-try {
-    ClassificationResult result = apiInstance.classifyimage(deploymentName, versionName, modelName, image);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#classifyimage");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    File image = new File("/path/to/file"); // File | The file to upload.
+    try {
+      ClassificationResult result = apiInstance.classifyimage(deploymentName, versionName, modelName, image);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#classifyimage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1207,7 +1606,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
  **image** | **File**| The file to upload. | [optional]
 
@@ -1217,12 +1616,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating classification |  -  |
 
 <a name="clearState"></a>
 # **clearState**
@@ -1233,27 +1638,42 @@ Clears the accumulated data for retraining.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    FeedbackResponse result = apiInstance.clearState();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#clearState");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      FeedbackResponse result = apiInstance.clearState();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#clearState");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1266,12 +1686,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The feedback response object |  -  |
 
 <a name="createJob"></a>
 # **createJob**
@@ -1282,29 +1707,44 @@ Create a job
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String jobIdOrType = "jobIdOrType_example"; // String | Job Type
-CreateJobRequest createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
-try {
-    JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#createJob");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String jobIdOrType = "jobIdOrType_example"; // String | Job Type
+    CreateJobRequest createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
+    try {
+      JobEntity result = apiInstance.createJob(jobIdOrType, createJobRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#createJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1321,12 +1761,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created job entity object |  -  |
 
 <a name="createModelHistory"></a>
 # **createModelHistory**
@@ -1337,29 +1782,44 @@ Creates model History
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-ModelHistoryEntity modelHistoryEntity = new ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
-try {
-    ModelHistoryEntity result = apiInstance.createModelHistory(modelHistoryServerId, modelHistoryEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#createModelHistory");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    ModelHistoryEntity modelHistoryEntity = new ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
+    try {
+      ModelHistoryEntity result = apiInstance.createModelHistory(modelHistoryServerId, modelHistoryEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#createModelHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1376,12 +1836,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created model history |  -  |
 
 <a name="deleteCredentialsById"></a>
 # **deleteCredentialsById**
@@ -1392,27 +1857,42 @@ Delete credentials given an ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long credentialId = 789L; // Long | Credentials ID
-try {
-    apiInstance.deleteCredentialsById(credentialId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteCredentialsById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long credentialId = 56L; // Long | Credentials ID
+    try {
+      apiInstance.deleteCredentialsById(credentialId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteCredentialsById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1428,12 +1908,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Credentials successfully deteled |  -  |
 
 <a name="deleteExperiment"></a>
 # **deleteExperiment**
@@ -1444,29 +1929,44 @@ Deletes an experiment, given an experiment entity
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String experimentID = "experimentID_example"; // String | the GUID of the experiment to delete
-try {
-    InlineResponse200 result = apiInstance.deleteExperiment(modelHistoryServerId, experimentID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteExperiment");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String experimentID = "experimentID_example"; // String | the GUID of the experiment to delete
+    try {
+      InlineResponse200 result = apiInstance.deleteExperiment(modelHistoryServerId, experimentID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteExperiment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1483,12 +1983,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment deleted successfully |  -  |
+**400** | Experiment no longer exists |  -  |
 
 <a name="deleteJobById"></a>
 # **deleteJobById**
@@ -1499,27 +2005,42 @@ Deletes a job given its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long jobIdOrType = 789L; // Long | Job ID
-try {
-    apiInstance.deleteJobById(jobIdOrType);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteJobById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long jobIdOrType = 56L; // Long | Job ID
+    try {
+      apiInstance.deleteJobById(jobIdOrType);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteJobById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1535,12 +2056,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully deleted a job |  -  |
 
 <a name="deleteModel"></a>
 # **deleteModel**
@@ -1551,29 +2077,44 @@ Delete a model by deployment and model id
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | ID deployment group
-String modelId = "modelId_example"; // String | the id of the deployed model
-try {
-    InlineResponse200 result = apiInstance.deleteModel(deploymentId, modelId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteModel");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | ID deployment group
+    String modelId = "modelId_example"; // String | the id of the deployed model
+    try {
+      InlineResponse200 result = apiInstance.deleteModel(deploymentId, modelId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteModel");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1590,12 +2131,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the deleted model status |  -  |
 
 <a name="deleteModelHistory"></a>
 # **deleteModelHistory**
@@ -1606,29 +2152,44 @@ Deletes a model history / workspace, given its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to delete
-try {
-    InlineResponse200 result = apiInstance.deleteModelHistory(modelHistoryServerId, modelHistoryID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteModelHistory");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to delete
+    try {
+      InlineResponse200 result = apiInstance.deleteModelHistory(modelHistoryServerId, modelHistoryID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteModelHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1645,12 +2206,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Workspace deleted |  -  |
+**400** | The specified Workspace no longer exists |  -  |
 
 <a name="deleteModelInstance"></a>
 # **deleteModelInstance**
@@ -1661,28 +2228,43 @@ Deletes a model instance, given its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to delete.
-try {
-    apiInstance.deleteModelInstance(modelHistoryServerId, modelInstanceID);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteModelInstance");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to delete.
+    try {
+      apiInstance.deleteModelInstance(modelHistoryServerId, modelInstanceID);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteModelInstance");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1699,12 +2281,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Empty content |  -  |
 
 <a name="deleteResourceById"></a>
 # **deleteResourceById**
@@ -1715,28 +2302,43 @@ Delete the resource with the specified resource ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceId = 789L; // Long | ID of the resource
-try {
-    Resource result = apiInstance.deleteResourceById(resourceId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteResourceById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceId = 56L; // Long | ID of the resource
+    try {
+      Resource result = apiInstance.deleteResourceById(resourceId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteResourceById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1752,12 +2354,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Object |  -  |
 
 <a name="deleteResourceFromGroup"></a>
 # **deleteResourceFromGroup**
@@ -1768,28 +2375,43 @@ Removes a resource from a resource group
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceGroupId = 789L; // Long | ID of the resource group
-Long resourceId = 789L; // Long | ID of the resource
-try {
-    apiInstance.deleteResourceFromGroup(resourceGroupId, resourceId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteResourceFromGroup");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceGroupId = 56L; // Long | ID of the resource group
+    Long resourceId = 56L; // Long | ID of the resource
+    try {
+      apiInstance.deleteResourceFromGroup(resourceGroupId, resourceId);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteResourceFromGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1806,12 +2428,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully removed resource from the resource group |  -  |
 
 <a name="deleteResourceGroupById"></a>
 # **deleteResourceGroupById**
@@ -1822,28 +2449,43 @@ Delete the resource group with the specified resource group ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceGroupId = 789L; // Long | ID of the resource group
-try {
-    ResourceGroup result = apiInstance.deleteResourceGroupById(resourceGroupId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deleteResourceGroupById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceGroupId = 56L; // Long | ID of the resource group
+    try {
+      ResourceGroup result = apiInstance.deleteResourceGroupById(resourceGroupId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deleteResourceGroupById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1859,12 +2501,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Group Object |  -  |
 
 <a name="deployModel"></a>
 # **deployModel**
@@ -1875,29 +2522,44 @@ Deploy a model in a deployment group.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | ID deployment group
-ImportModelRequest body = new ImportModelRequest(); // ImportModelRequest | the model import request
-try {
-    ModelEntity result = apiInstance.deployModel(deploymentId, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deployModel");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | ID deployment group
+    ImportModelRequest body = new ImportModelRequest(); // ImportModelRequest | the model import request
+    try {
+      ModelEntity result = apiInstance.deployModel(deploymentId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deployModel");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1914,12 +2576,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the deployed model |  -  |
 
 <a name="deploymentCreate"></a>
 # **deploymentCreate**
@@ -1930,28 +2597,43 @@ Create a new deployment group.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-CreateDeploymentRequest body = new CreateDeploymentRequest(); // CreateDeploymentRequest | the deployment request
-try {
-    DeploymentResponse result = apiInstance.deploymentCreate(body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deploymentCreate");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    CreateDeploymentRequest body = new CreateDeploymentRequest(); // CreateDeploymentRequest | the deployment request
+    try {
+      DeploymentResponse result = apiInstance.deploymentCreate(body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deploymentCreate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -1967,12 +2649,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the added deployment |  -  |
+**500** | Error creating deployment |  -  |
 
 <a name="deploymentDelete"></a>
 # **deploymentDelete**
@@ -1983,28 +2671,43 @@ Delete a deployment by id
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | Id of the deployment group
-try {
-    InlineResponse200 result = apiInstance.deploymentDelete(deploymentId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deploymentDelete");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | Id of the deployment group
+    try {
+      InlineResponse200 result = apiInstance.deploymentDelete(deploymentId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deploymentDelete");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2020,12 +2723,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The status of the removed deployment |  -  |
 
 <a name="deploymentGet"></a>
 # **deploymentGet**
@@ -2036,28 +2744,43 @@ Get a deployment details by id
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | Id of the deployment group
-try {
-    DeploymentResponse result = apiInstance.deploymentGet(deploymentId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deploymentGet");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | Id of the deployment group
+    try {
+      DeploymentResponse result = apiInstance.deploymentGet(deploymentId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deploymentGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2073,12 +2796,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The deployment details |  -  |
 
 <a name="deployments"></a>
 # **deployments**
@@ -2089,27 +2817,42 @@ Get a list of deployments
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    List<DeploymentResponse> result = apiInstance.deployments();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#deployments");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      List<DeploymentResponse> result = apiInstance.deployments();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#deployments");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2122,50 +2865,70 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of the deployments retrieved successfully |  -  |
+
 <a name="detectobjects"></a>
 # **detectobjects**
-> DetectionResult detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName)
+> DetectionResult detectobjects(deploymentName, versionName, modelName, id, needsPreprocessing, threshold, file)
 
 Detect the objects, given a (input) prediction request
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String id = "id_example"; // String | the GUID for mapping the results in the detections
-Boolean needsPreprocessing = true; // Boolean | (true) if the image needs preprocessing
-Float threshold = 3.4F; // Float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-File file = new File("/path/to/file.txt"); // File | the image file to detect objects from
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    DetectionResult result = apiInstance.detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#detectobjects");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    String id = "id_example"; // String | the GUID for mapping the results in the detections
+    Boolean needsPreprocessing = true; // Boolean | (true) if the image needs preprocessing
+    Float threshold = 3.4F; // Float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+    File file = new File("/path/to/file"); // File | the image file to detect objects from
+    try {
+      DetectionResult result = apiInstance.detectobjects(deploymentName, versionName, modelName, id, needsPreprocessing, threshold, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#detectobjects");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2173,13 +2936,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deploymentName** | **String**| Name of the deployment group |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
+ **modelName** | **String**| ID or name of the deployed model |
  **id** | **String**| the GUID for mapping the results in the detections |
  **needsPreprocessing** | **Boolean**| (true) if the image needs preprocessing |
  **threshold** | **Float**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. |
  **file** | **File**| the image file to detect objects from |
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **modelName** | **String**| ID or name of the deployed model |
 
 ### Return type
 
@@ -2187,12 +2950,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the detected objects in the given input |  -  |
 
 <a name="downloadJobOutputFile"></a>
 # **downloadJobOutputFile**
@@ -2203,28 +2971,43 @@ Download the output file from the job&#39;s execution. This will ONLY work if th
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long jobId = 789L; // Long | Job ID
-DownloadOutputFileRequest downloadOutputFileRequest = new DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
-try {
-    apiInstance.downloadJobOutputFile(jobId, downloadOutputFileRequest);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#downloadJobOutputFile");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long jobId = 56L; // Long | Job ID
+    DownloadOutputFileRequest downloadOutputFileRequest = new DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
+    try {
+      apiInstance.downloadJobOutputFile(jobId, downloadOutputFileRequest);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#downloadJobOutputFile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2241,12 +3024,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The file download has started |  -  |
 
 <a name="generateAuthToken"></a>
 # **generateAuthToken**
@@ -2257,28 +3045,43 @@ Generate new auth token
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-TokenGenerateRequest tokenGenerateRequest = new TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
-try {
-    Token result = apiInstance.generateAuthToken(tokenGenerateRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#generateAuthToken");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    TokenGenerateRequest tokenGenerateRequest = new TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
+    try {
+      Token result = apiInstance.generateAuthToken(tokenGenerateRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#generateAuthToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2294,12 +3097,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Generated auth token. |  -  |
 
 <a name="getAllJobs"></a>
 # **getAllJobs**
@@ -2310,27 +3118,42 @@ Get a list of all available jobs
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    List<JobEntity> result = apiInstance.getAllJobs();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getAllJobs");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      List<JobEntity> result = apiInstance.getAllJobs();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getAllJobs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2343,12 +3166,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of job entity objects |  -  |
 
 <a name="getArray"></a>
 # **getArray**
@@ -2361,28 +3189,43 @@ The array is specified through a file path, in the configuration object, during 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String accept = "accept_example"; // String | 
-String arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
-try {
-    apiInstance.getArray(accept, arrayType);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getArray");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String accept = "accept_example"; // String | 
+    String arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
+    try {
+      apiInstance.getArray(accept, arrayType);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getArray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2399,12 +3242,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Get the whole memory mapped array in the specified format. |  -  |
 
 <a name="getArrayIndices"></a>
 # **getArrayIndices**
@@ -2415,30 +3263,45 @@ Get the memory mapped array indices based on the array type.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
-String accept = "accept_example"; // String | 
-String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
-String input = "input_example"; // String | Input indices array
-try {
-    apiInstance.getArrayIndices(contentType, accept, arrayType, input);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getArrayIndices");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+    String accept = "accept_example"; // String | 
+    String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
+    String input = "input_example"; // String | Input indices array
+    try {
+      apiInstance.getArrayIndices(contentType, accept, arrayType, input);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getArrayIndices");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2457,12 +3320,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
- - **Accept**: application/json, application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the arrays given the indices. |  -  |
 
 <a name="getArrayRange"></a>
 # **getArrayRange**
@@ -2473,30 +3341,45 @@ Get the memory mapped array within a range based on the array type.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String accept = "accept_example"; // String | 
-String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
-Integer from = 56; // Integer | 
-Integer to = 56; // Integer | 
-try {
-    apiInstance.getArrayRange(accept, arrayType, from, to);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getArrayRange");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String accept = "accept_example"; // String | 
+    String arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
+    Integer from = 56; // Integer | 
+    Integer to = 56; // Integer | 
+    try {
+      apiInstance.getArrayRange(accept, arrayType, from, to);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getArrayRange");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2515,12 +3398,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json, application/octet-stream
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the arrays given the from/to indices |  -  |
 
 <a name="getAuthPolicy"></a>
 # **getAuthPolicy**
@@ -2531,27 +3419,42 @@ Get auth policy
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    AuthPolicy result = apiInstance.getAuthPolicy();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getAuthPolicy");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      AuthPolicy result = apiInstance.getAuthPolicy();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getAuthPolicy");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2564,12 +3467,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | AuthPolicy object |  -  |
 
 <a name="getBestModelAmongModelIds"></a>
 # **getBestModelAmongModelIds**
@@ -2580,29 +3488,44 @@ Gets the best model among the given model instance IDs, based on the evaluation 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-BestModel bestModel = new BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
-try {
-    ModelInstanceEntity result = apiInstance.getBestModelAmongModelIds(modelHistoryServerId, bestModel);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getBestModelAmongModelIds");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    BestModel bestModel = new BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
+    try {
+      ModelInstanceEntity result = apiInstance.getBestModelAmongModelIds(modelHistoryServerId, bestModel);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getBestModelAmongModelIds");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2619,12 +3542,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The best model instance entity |  -  |
 
 <a name="getCredentialsById"></a>
 # **getCredentialsById**
@@ -2635,28 +3563,43 @@ Get credentials given an ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long credentialId = 789L; // Long | Credentials ID
-try {
-    ResourceCredentials result = apiInstance.getCredentialsById(credentialId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getCredentialsById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long credentialId = 56L; // Long | Credentials ID
+    try {
+      ResourceCredentials result = apiInstance.getCredentialsById(credentialId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getCredentialsById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2672,12 +3615,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Credentials Object |  -  |
 
 <a name="getCurrentModel"></a>
 # **getCurrentModel**
@@ -2688,26 +3636,41 @@ Returns the current model being used for retraining.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    apiInstance.getCurrentModel();
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getCurrentModel");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      apiInstance.getCurrentModel();
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getCurrentModel");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2720,12 +3683,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the current model being used for retraining in the form of a downloadable file. |  -  |
 
 <a name="getEvaluationForModelID"></a>
 # **getEvaluationForModelID**
@@ -2736,29 +3704,44 @@ Gets the list of evaluation results entity, given a model instance ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get evaluation results for.
-try {
-    List<EvaluationResultsEntity> result = apiInstance.getEvaluationForModelID(modelHistoryServerId, modelInstanceID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getEvaluationForModelID");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get evaluation results for.
+    try {
+      List<EvaluationResultsEntity> result = apiInstance.getEvaluationForModelID(modelHistoryServerId, modelInstanceID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getEvaluationForModelID");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2775,12 +3758,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of evaluation result entities |  -  |
 
 <a name="getExamplesForMinibatch"></a>
 # **getExamplesForMinibatch**
@@ -2791,29 +3779,44 @@ Gets all the examples for a minibatch ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
-try {
-    List<ExampleEntity> result = apiInstance.getExamplesForMinibatch(modelHistoryServerId, minibatchId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getExamplesForMinibatch");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
+    try {
+      List<ExampleEntity> result = apiInstance.getExamplesForMinibatch(modelHistoryServerId, minibatchId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getExamplesForMinibatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2830,12 +3833,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of the associated examples with the minibatch |  -  |
 
 <a name="getExperiment"></a>
 # **getExperiment**
@@ -2846,29 +3854,44 @@ Obtain an experiment&#39;s details, given its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String experimentID = "experimentID_example"; // String | the GUID of the experiment to obtain
-try {
-    ExperimentEntity result = apiInstance.getExperiment(modelHistoryServerId, experimentID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getExperiment");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String experimentID = "experimentID_example"; // String | the GUID of the experiment to obtain
+    try {
+      ExperimentEntity result = apiInstance.getExperiment(modelHistoryServerId, experimentID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getExperiment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2885,12 +3908,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment Entity |  -  |
 
 <a name="getExperimentsForModelHistory"></a>
 # **getExperimentsForModelHistory**
@@ -2901,29 +3929,44 @@ Obtain all experiments for a model history / workspace
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace
-try {
-    List<ExperimentEntity> result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getExperimentsForModelHistory");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace
+    try {
+      List<ExperimentEntity> result = apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getExperimentsForModelHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2940,12 +3983,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of all the experiment entities in a model history |  -  |
 
 <a name="getJobById"></a>
 # **getJobById**
@@ -2956,28 +4004,43 @@ Get a job by its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long jobIdOrType = 789L; // Long | Job ID
-try {
-    JobEntity result = apiInstance.getJobById(jobIdOrType);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getJobById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long jobIdOrType = 56L; // Long | Job ID
+    try {
+      JobEntity result = apiInstance.getJobById(jobIdOrType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getJobById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -2993,12 +4056,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job entity Object |  -  |
 
 <a name="getLastEvaluation"></a>
 # **getLastEvaluation**
@@ -3009,27 +4077,42 @@ Get the last evaluation specifications from the current model.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    EvaluationResultsEntity result = apiInstance.getLastEvaluation();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getLastEvaluation");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      EvaluationResultsEntity result = apiInstance.getLastEvaluation();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getLastEvaluation");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3042,12 +4125,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the last evaluation ran by the model. |  -  |
 
 <a name="getMinibatch"></a>
 # **getMinibatch**
@@ -3058,29 +4146,44 @@ Gets a minibatch for the model
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
-try {
-    MinibatchEntity result = apiInstance.getMinibatch(modelHistoryServerId, minibatchId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getMinibatch");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
+    try {
+      MinibatchEntity result = apiInstance.getMinibatch(modelHistoryServerId, minibatchId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getMinibatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3097,12 +4200,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The minibatch entity |  -  |
 
 <a name="getModelDetails"></a>
 # **getModelDetails**
@@ -3113,29 +4221,44 @@ Get model details
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | ID deployment group
-String modelId = "modelId_example"; // String | the id of the deployed model
-try {
-    ModelEntity result = apiInstance.getModelDetails(deploymentId, modelId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getModelDetails");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | ID deployment group
+    String modelId = "modelId_example"; // String | the id of the deployed model
+    try {
+      ModelEntity result = apiInstance.getModelDetails(deploymentId, modelId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getModelDetails");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3152,12 +4275,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A model entity |  -  |
 
 <a name="getModelHistory"></a>
 # **getModelHistory**
@@ -3168,29 +4296,44 @@ Gets a model history, given its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelHistoryID = "modelHistoryID_example"; // String | GUID of the model history to get information of.
-try {
-    ModelHistoryEntity result = apiInstance.getModelHistory(modelHistoryServerId, modelHistoryID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getModelHistory");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelHistoryID = "modelHistoryID_example"; // String | GUID of the model history to get information of.
+    try {
+      ModelHistoryEntity result = apiInstance.getModelHistory(modelHistoryServerId, modelHistoryID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getModelHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3207,12 +4350,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model history entity |  -  |
 
 <a name="getModelInstance"></a>
 # **getModelInstance**
@@ -3223,29 +4371,44 @@ Gets a model instance, given its ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get information of.
-try {
-    ModelInstanceEntity result = apiInstance.getModelInstance(modelHistoryServerId, modelInstanceID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getModelInstance");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get information of.
+    try {
+      ModelInstanceEntity result = apiInstance.getModelInstance(modelHistoryServerId, modelInstanceID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getModelInstance");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3262,12 +4425,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model instance entity |  -  |
 
 <a name="getModelsForExperiment"></a>
 # **getModelsForExperiment**
@@ -3278,29 +4446,44 @@ Obtain a list of all the models for an experiment
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String experimentID = "experimentID_example"; // String | the GUID of the experiment
-try {
-    List<ModelInstanceEntity> result = apiInstance.getModelsForExperiment(modelHistoryServerId, experimentID);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getModelsForExperiment");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String experimentID = "experimentID_example"; // String | the GUID of the experiment
+    try {
+      List<ModelInstanceEntity> result = apiInstance.getModelsForExperiment(modelHistoryServerId, experimentID);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getModelsForExperiment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3317,12 +4500,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of all the models for the specified experiment |  -  |
 
 <a name="getResourceById"></a>
 # **getResourceById**
@@ -3333,28 +4521,43 @@ Get the resource with the specified resource ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceId = 789L; // Long | ID of the resource
-try {
-    Resource result = apiInstance.getResourceById(resourceId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourceById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceId = 56L; // Long | ID of the resource
+    try {
+      Resource result = apiInstance.getResourceById(resourceId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourceById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3370,12 +4573,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Object |  -  |
 
 <a name="getResourceBySubType"></a>
 # **getResourceBySubType**
@@ -3386,28 +4594,43 @@ Get all the resources with the specified resource subtype
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
-try {
-    List<Resource> result = apiInstance.getResourceBySubType(resourceSubType);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourceBySubType");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
+    try {
+      List<Resource> result = apiInstance.getResourceBySubType(resourceSubType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourceBySubType");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3423,12 +4646,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Resource Objects by specified subtype |  -  |
 
 <a name="getResourceByType"></a>
 # **getResourceByType**
@@ -3439,28 +4667,43 @@ Get all the resources with the specified resource type
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String resourceType = "resourceType_example"; // String | Type of the resource
-try {
-    List<Resource> result = apiInstance.getResourceByType(resourceType);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourceByType");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String resourceType = "resourceType_example"; // String | Type of the resource
+    try {
+      List<Resource> result = apiInstance.getResourceByType(resourceType);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourceByType");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3476,12 +4719,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Resource Objects by specified type |  -  |
 
 <a name="getResourceDetailsById"></a>
 # **getResourceDetailsById**
@@ -3494,28 +4742,43 @@ Get the details for the resource, for the given ID. Note that a &#39;ResourceDet
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceId = 789L; // Long | ID of the resource
-try {
-    Object result = apiInstance.getResourceDetailsById(resourceId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceId = 56L; // Long | ID of the resource
+    try {
+      Object result = apiInstance.getResourceDetailsById(resourceId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourceDetailsById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3531,12 +4794,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | One of the resource details object |  -  |
 
 <a name="getResourceGroupById"></a>
 # **getResourceGroupById**
@@ -3547,28 +4815,43 @@ Get the resource group with the specified resource group ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceGroupId = 789L; // Long | ID of the resource group
-try {
-    ResourceGroup result = apiInstance.getResourceGroupById(resourceGroupId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourceGroupById");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceGroupId = 56L; // Long | ID of the resource group
+    try {
+      ResourceGroup result = apiInstance.getResourceGroupById(resourceGroupId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourceGroupById");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3584,12 +4867,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Group Object |  -  |
 
 <a name="getResourceGroups"></a>
 # **getResourceGroups**
@@ -3600,27 +4888,42 @@ Get a list of all the resource groups
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    List<ResourceGroup> result = apiInstance.getResourceGroups();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourceGroups");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      List<ResourceGroup> result = apiInstance.getResourceGroups();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourceGroups");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3633,12 +4936,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Group Object |  -  |
 
 <a name="getResources"></a>
 # **getResources**
@@ -3649,27 +4957,42 @@ A list of all known/registered resources, of all types
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    List<Resource> result = apiInstance.getResources();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResources");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      List<Resource> result = apiInstance.getResources();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResources");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3682,12 +5005,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Resource Objects |  -  |
 
 <a name="getResourcesFromGroup"></a>
 # **getResourcesFromGroup**
@@ -3698,28 +5026,43 @@ Get all resources from a resource group
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long resourceGroupId = 789L; // Long | ID of the resource group
-try {
-    List<Resource> result = apiInstance.getResourcesFromGroup(resourceGroupId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getResourcesFromGroup");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long resourceGroupId = 56L; // Long | ID of the resource group
+    try {
+      List<Resource> result = apiInstance.getResourcesFromGroup(resourceGroupId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getResourcesFromGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3735,12 +5078,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of resources from a resource group |  -  |
 
 <a name="getRoles"></a>
 # **getRoles**
@@ -3751,27 +5099,42 @@ Get all roles.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    List<Role> result = apiInstance.getRoles();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getRoles");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      List<Role> result = apiInstance.getRoles();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getRoles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3784,12 +5147,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received all roles. |  -  |
 
 <a name="getUser"></a>
 # **getUser**
@@ -3800,28 +5168,43 @@ Get a user by user ID
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String userId = "userId_example"; // String | User's ID
-try {
-    User result = apiInstance.getUser(userId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getUser");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String userId = "userId_example"; // String | User's ID
+    try {
+      User result = apiInstance.getUser(userId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3837,12 +5220,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received the user details |  -  |
 
 <a name="getUserAuthTokens"></a>
 # **getUserAuthTokens**
@@ -3853,29 +5241,44 @@ Get auth tokens for a user.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String userId = "userId_example"; // String | User's ID
-Boolean onlyValid = true; // Boolean | True if you only want the valid tokens.
-try {
-    List<Token> result = apiInstance.getUserAuthTokens(userId, onlyValid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getUserAuthTokens");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String userId = "userId_example"; // String | User's ID
+    Boolean onlyValid = true; // Boolean | True if you only want the valid tokens.
+    try {
+      List<Token> result = apiInstance.getUserAuthTokens(userId, onlyValid);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getUserAuthTokens");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3892,12 +5295,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received the user auth tokens. |  -  |
 
 <a name="getUsers"></a>
 # **getUsers**
@@ -3908,27 +5316,42 @@ Get all users.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    List<User> result = apiInstance.getUsers();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#getUsers");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      List<User> result = apiInstance.getUsers();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#getUsers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3941,12 +5364,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received all users. |  -  |
 
 <a name="isTraining"></a>
 # **isTraining**
@@ -3957,27 +5385,42 @@ Get the retraining status
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    RetrainingStatus result = apiInstance.isTraining();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#isTraining");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      RetrainingStatus result = apiInstance.isTraining();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#isTraining");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -3990,47 +5433,67 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns whether the model is currently being trained or not. |  -  |
+
 <a name="jsonarray"></a>
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, deploymentName, versionName, modelName)
+> JsonArrayResponse jsonarray(deploymentName, versionName, modelName, body)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Prediction body = new Prediction(); // Prediction | The input NDArray
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    JsonArrayResponse result = apiInstance.jsonarray(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#jsonarray");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    Prediction body = new Prediction(); // Prediction | The input NDArray
+    try {
+      JsonArrayResponse result = apiInstance.jsonarray(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#jsonarray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4038,10 +5501,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**Prediction**](Prediction.md)| The input NDArray |
 
 ### Return type
 
@@ -4049,12 +5512,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating array prediction |  -  |
 
 <a name="knn"></a>
 # **knn**
@@ -4067,31 +5536,46 @@ Runs knn on the given index with the given k (note that this is for data already
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String knnName = "knnName_example"; // String | ID or name of the deployed knn
-NearestNeighborRequest body = new NearestNeighborRequest(); // NearestNeighborRequest | 
-try {
-    NearestNeighborsResults result = apiInstance.knn(deploymentName, versionName, knnName, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#knn");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String knnName = "knnName_example"; // String | ID or name of the deployed knn
+    NearestNeighborRequest body = new NearestNeighborRequest(); // NearestNeighborRequest | 
+    try {
+      NearestNeighborsResults result = apiInstance.knn(deploymentName, versionName, knnName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#knn");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4100,7 +5584,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **knnName** | **String**| ID or name of the deployed knn |
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  |
 
@@ -4110,12 +5594,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Internal server error |  -  |
 
 <a name="knnnew"></a>
 # **knnnew**
@@ -4126,31 +5617,46 @@ Run a k nearest neighbors search on a NEW data point
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String knnName = "knnName_example"; // String | ID or name of the deployed knn
-Base64NDArrayBodyKNN body = new Base64NDArrayBodyKNN(); // Base64NDArrayBodyKNN | The input NDArray
-try {
-    NearestNeighborsResults result = apiInstance.knnnew(deploymentName, versionName, knnName, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#knnnew");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String knnName = "knnName_example"; // String | ID or name of the deployed knn
+    Base64NDArrayBodyKNN body = new Base64NDArrayBodyKNN(); // Base64NDArrayBodyKNN | The input NDArray
+    try {
+      NearestNeighborsResults result = apiInstance.knnnew(deploymentName, versionName, knnName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#knnnew");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4159,7 +5665,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **knnName** | **String**| ID or name of the deployed knn |
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray |
 
@@ -4169,12 +5675,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Internal server error |  -  |
 
 <a name="listAllExperiments"></a>
 # **listAllExperiments**
@@ -4185,28 +5698,43 @@ List all of the experiments in every model history / workspace
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-try {
-    List<ExperimentEntity> result = apiInstance.listAllExperiments(modelHistoryServerId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#listAllExperiments");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    try {
+      List<ExperimentEntity> result = apiInstance.listAllExperiments(modelHistoryServerId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#listAllExperiments");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4222,12 +5750,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of all the experiment entities. |  -  |
 
 <a name="logfilepath"></a>
 # **logfilepath**
@@ -4238,30 +5771,45 @@ Get logs file path
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    String result = apiInstance.logfilepath(deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#logfilepath");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    try {
+      String result = apiInstance.logfilepath(deploymentName, versionName, modelName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#logfilepath");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4270,7 +5818,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
 
 ### Return type
@@ -4279,12 +5827,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: text
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the retrieved log file path |  -  |
+**500** | Error retrieving log file path |  -  |
 
 <a name="login"></a>
 # **login**
@@ -4295,18 +5849,43 @@ Post JSON credentials and obtain a JWT authorization token.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiException;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login credentials.
-try {
-    LoginResponse result = apiInstance.login(loginRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#login");
-    e.printStackTrace();
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
+
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    LoginRequest loginRequest = new LoginRequest(); // LoginRequest | Login credentials.
+    try {
+      LoginResponse result = apiInstance.login(loginRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#login");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4322,12 +5901,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**401** | Invalid credentials |  -  |
 
 <a name="logs"></a>
 # **logs**
@@ -4338,31 +5923,46 @@ Get logs
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-LogRequest logRequest = new LogRequest(); // LogRequest | The log object
-try {
-    LogBatch result = apiInstance.logs(deploymentName, versionName, modelName, logRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#logs");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    LogRequest logRequest = new LogRequest(); // LogRequest | The log object
+    try {
+      LogBatch result = apiInstance.logs(deploymentName, versionName, modelName, logRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#logs");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4371,7 +5971,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
  **logRequest** | [**LogRequest**](LogRequest.md)| The log object |
 
@@ -4381,46 +5981,67 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Logs obtained successfully |  -  |
+**500** | Error retrieving logs |  -  |
+
 <a name="metaGet"></a>
 # **metaGet**
-> MetaData metaGet(deploymentName, versionName, modelName)
+> Object metaGet(deploymentName, versionName, modelName)
 
 this method can be used to get the meta data for the current model which set to the server
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    MetaData result = apiInstance.metaGet(deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#metaGet");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    try {
+      Object result = apiInstance.metaGet(deploymentName, versionName, modelName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#metaGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4429,57 +6050,77 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The meta data details |  -  |
 
 <a name="metaPost"></a>
 # **metaPost**
-> MetaData metaPost(contentType, body, deploymentName, versionName, modelName)
+> Object metaPost(contentType, deploymentName, versionName, modelName, body)
 
 This method can be used to set meta data for the current model which is set to the server
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`
-String body = "body_example"; // String | the meta data object
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    MetaData result = apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#metaPost");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    String body = "body_example"; // String | the meta data object
+    try {
+      Object result = apiInstance.metaPost(contentType, deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#metaPost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4488,23 +6129,28 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | [enum: application/json]
- **body** | **String**| the meta data object |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | **String**| the meta data object |
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the meta data object that was set |  -  |
 
 <a name="modelStateChange"></a>
 # **modelStateChange**
@@ -4515,30 +6161,45 @@ Modify the state (start/stop) of a deployed model
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | ID deployment group
-String modelId = "modelId_example"; // String | the id of the deployed model
-SetState body = new SetState(); // SetState | the model state object
-try {
-    ModelEntity result = apiInstance.modelStateChange(deploymentId, modelId, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#modelStateChange");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | ID deployment group
+    String modelId = "modelId_example"; // String | the id of the deployed model
+    SetState body = new SetState(); // SetState | the model state object
+    try {
+      ModelEntity result = apiInstance.modelStateChange(deploymentId, modelId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#modelStateChange");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4556,12 +6217,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the model entity with its state changed |  -  |
 
 <a name="models"></a>
 # **models**
@@ -4572,28 +6238,43 @@ Retrieve a list of all the deployed models given a deployment id
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | ID deployment group
-try {
-    List<ModelEntity> result = apiInstance.models(deploymentId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#models");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | ID deployment group
+    try {
+      List<ModelEntity> result = apiInstance.models(deploymentId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#models");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4609,12 +6290,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Retrieved model list |  -  |
 
 <a name="modelset"></a>
 # **modelset**
@@ -4625,31 +6311,46 @@ Set the model to be served
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-File file = new File("/path/to/file.txt"); // File | The model file to upload (.pb file)
-try {
-    ModelStatus result = apiInstance.modelset(deploymentName, versionName, modelName, file);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#modelset");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    File file = new File("/path/to/file"); // File | The model file to upload (.pb file)
+    try {
+      ModelStatus result = apiInstance.modelset(deploymentName, versionName, modelName, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#modelset");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4658,7 +6359,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
  **file** | **File**| The model file to upload (.pb file) | [optional]
 
@@ -4668,47 +6369,68 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model set successfully |  -  |
+**500** | Error setting model |  -  |
+
 <a name="modelupdate"></a>
 # **modelupdate**
-> ModelStatus modelupdate(file, deploymentName, versionName, modelName)
+> ModelStatus modelupdate(deploymentName, versionName, modelName, file)
 
 Update the model to be served
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-File file = new File("/path/to/file.txt"); // File | The model file to update with (.pb file)
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    ModelStatus result = apiInstance.modelupdate(file, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#modelupdate");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    File file = new File("/path/to/file"); // File | The model file to update with (.pb file)
+    try {
+      ModelStatus result = apiInstance.modelupdate(deploymentName, versionName, modelName, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#modelupdate");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4716,10 +6438,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| The model file to update with (.pb file) |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **file** | **File**| The model file to update with (.pb file) |
 
 ### Return type
 
@@ -4727,47 +6449,68 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model updated successfully or model update failed |  -  |
+**500** | Error updating model |  -  |
+
 <a name="multiclassify"></a>
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, deploymentName, versionName, modelName)
+> MultiClassClassificationResult multiclassify(deploymentName, versionName, modelName, body)
 
 Represents all of the labels for a given classification
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Prediction body = new Prediction(); // Prediction | The input NDArray
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    MultiClassClassificationResult result = apiInstance.multiclassify(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#multiclassify");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    Prediction body = new Prediction(); // Prediction | The input NDArray
+    try {
+      MultiClassClassificationResult result = apiInstance.multiclassify(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#multiclassify");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4775,10 +6518,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**Prediction**](Prediction.md)| The input NDArray |
 
 ### Return type
 
@@ -4786,16 +6529,23 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
+
 <a name="multipredict"></a>
 # **multipredict**
-> MultiPredictResponse multipredict(body, deploymentName, versionName, modelName)
+> MultiPredictResponse multipredict(deploymentName, versionName, modelName, body)
 
 Get the output from the network, based on the given INDArray[] input
 
@@ -4804,31 +6554,46 @@ Networks with multiple input/output are supported via this method. A Normalizer 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-MultiPredictRequest body = new MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    MultiPredictResponse result = apiInstance.multipredict(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#multipredict");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    MultiPredictRequest body = new MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
+    try {
+      MultiPredictResponse result = apiInstance.multipredict(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#multipredict");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4836,10 +6601,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on |
 
 ### Return type
 
@@ -4847,16 +6612,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating prediction |  -  |
+
 <a name="multipredictimage"></a>
 # **multipredictimage**
-> MultiPredictResponse multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName)
+> MultiPredictResponse multipredictimage(deploymentName, versionName, modelName, file, id, needsPreprocessing)
 
 Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 
@@ -4865,33 +6636,48 @@ Networks with multiple input/output are supported via this method. A Normalizer 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-File file = new File("/path/to/file.txt"); // File | The image file to run the prediction on
-String id = "id_example"; // String | The id of the request (could be self generated)
-Boolean needsPreprocessing = true; // Boolean | Whether or not the preprocessing is required (either 'true' or 'false')
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    MultiPredictResponse result = apiInstance.multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#multipredictimage");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    File file = new File("/path/to/file"); // File | The image file to run the prediction on
+    String id = "id_example"; // String | The id of the request (could be self generated)
+    Boolean needsPreprocessing = true; // Boolean | Whether or not the preprocessing is required (either 'true' or 'false')
+    try {
+      MultiPredictResponse result = apiInstance.multipredictimage(deploymentName, versionName, modelName, file, id, needsPreprocessing);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#multipredictimage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4899,12 +6685,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deploymentName** | **String**| Name of the deployment group |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
+ **modelName** | **String**| ID or name of the deployed model |
  **file** | **File**| The image file to run the prediction on |
  **id** | **String**| The id of the request (could be self generated) |
  **needsPreprocessing** | **Boolean**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) |
- **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
- **modelName** | **String**| ID or name of the deployed model |
 
 ### Return type
 
@@ -4912,12 +6698,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating prediction |  -  |
 
 <a name="numRevisions"></a>
 # **numRevisions**
@@ -4928,27 +6720,42 @@ Gets the number of retrained models written with retraining.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-try {
-    RevisionsWritten result = apiInstance.numRevisions();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#numRevisions");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    try {
+      RevisionsWritten result = apiInstance.numRevisions();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#numRevisions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -4961,47 +6768,67 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the number of revisions for retraining of the model. |  -  |
+
 <a name="predict"></a>
 # **predict**
-> Prediction predict(body, deploymentName, versionName, modelName)
+> Prediction predict(deploymentName, versionName, modelName, body)
 
 Run inference on the input array.
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Prediction body = new Prediction(); // Prediction | The input NDArray
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    Prediction result = apiInstance.predict(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predict");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    Prediction body = new Prediction(); // Prediction | The input NDArray
+    try {
+      Prediction result = apiInstance.predict(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predict");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5009,10 +6836,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**Prediction**](Prediction.md)| The input NDArray |
 
 ### Return type
 
@@ -5020,12 +6847,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
 
 <a name="predictError"></a>
 # **predictError**
@@ -5038,30 +6872,45 @@ These \&quot;error\&quot; endpoints are slower for inference, but will also igno
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
-String operation = "operation_example"; // String | Operation to perform on the input data.
-String inputType = "inputType_example"; // String | Type of the input data.
-String inputData = "inputData_example"; // String | 
-try {
-    apiInstance.predictError(contentType, operation, inputType, inputData);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictError");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+    String operation = "operation_example"; // String | Operation to perform on the input data.
+    String inputType = "inputType_example"; // String | Type of the input data.
+    String inputData = "inputData_example"; // String | 
+    try {
+      apiInstance.predictError(contentType, operation, inputType, inputData);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predictError");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5080,12 +6929,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction along with the skipped, invalid data rows |  -  |
 
 <a name="predictV2File"></a>
 # **predictV2File**
@@ -5096,29 +6950,44 @@ Runs inference based on the input data. Output is defined relative to the output
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String operation = "operation_example"; // String | The operation to perform on the input data. 
-String inputTypeFile = "inputTypeFile_example"; // String | Type of the input data. 
-File inputData = new File("/path/to/file.txt"); // File | The input data to run inference on.
-try {
-    apiInstance.predictV2File(operation, inputTypeFile, inputData);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictV2File");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String operation = "operation_example"; // String | The operation to perform on the input data. 
+    String inputTypeFile = "inputTypeFile_example"; // String | Type of the input data. 
+    File inputData = new File("/path/to/file"); // File | The input data to run inference on.
+    try {
+      apiInstance.predictV2File(operation, inputTypeFile, inputData);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predictV2File");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5136,12 +7005,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction. |  -  |
 
 <a name="predictV2Json"></a>
 # **predictV2Json**
@@ -5152,30 +7026,45 @@ Runs inference based on the input data. Output is defined relative to the output
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
-String operation = "operation_example"; // String | The operation to perform on the input data. 
-String inputTypeJson = "inputTypeJson_example"; // String | Type of the input data. 
-String inputData = "inputData_example"; // String | The input data to run inference on. (Specify a JSON string here)
-try {
-    apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictV2Json");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+    String operation = "operation_example"; // String | The operation to perform on the input data. 
+    String inputTypeJson = "inputTypeJson_example"; // String | Type of the input data. 
+    String inputData = "inputData_example"; // String | The input data to run inference on. (Specify a JSON string here)
+    try {
+      apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predictV2Json");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5194,12 +7083,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction. |  -  |
 
 <a name="predictimage"></a>
 # **predictimage**
@@ -5210,31 +7104,46 @@ Run inference on the input array, using input image file from multipart form dat
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-File image = new File("/path/to/file.txt"); // File | The file to upload.
-try {
-    Prediction result = apiInstance.predictimage(deploymentName, versionName, modelName, image);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictimage");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    File image = new File("/path/to/file"); // File | The file to upload.
+    try {
+      Prediction result = apiInstance.predictimage(deploymentName, versionName, modelName, image);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predictimage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5243,7 +7152,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
  **image** | **File**| The file to upload. | [optional]
 
@@ -5253,47 +7162,68 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating prediction |  -  |
+
 <a name="predictwithpreprocess"></a>
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, deploymentName, versionName, modelName)
+> Prediction predictwithpreprocess(deploymentName, versionName, modelName, body)
 
 Preprocesses the input and run inference on it
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-List<String> body = Arrays.asList(new List<String>()); // List<String> | The input array
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    Prediction result = apiInstance.predictwithpreprocess(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictwithpreprocess");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    List<String> body = Arrays.asList(); // List<String> | The input array
+    try {
+      Prediction result = apiInstance.predictwithpreprocess(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predictwithpreprocess");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5301,10 +7231,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| The input array |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**List&lt;String&gt;**](String.md)| The input array |
 
 ### Return type
 
@@ -5312,47 +7242,68 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error executing predictPreProcess |  -  |
+
 <a name="predictwithpreprocessjson"></a>
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, deploymentName, versionName, modelName)
+> JsonArrayResponse predictwithpreprocessjson(deploymentName, versionName, modelName, body)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-List<String> body = Arrays.asList(new List<String>()); // List<String> | The input array
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String modelName = "modelName_example"; // String | ID or name of the deployed model
-try {
-    JsonArrayResponse result = apiInstance.predictwithpreprocessjson(body, deploymentName, versionName, modelName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#predictwithpreprocessjson");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String modelName = "modelName_example"; // String | ID or name of the deployed model
+    List<String> body = Arrays.asList(); // List<String> | The input array
+    try {
+      JsonArrayResponse result = apiInstance.predictwithpreprocessjson(deploymentName, versionName, modelName, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#predictwithpreprocessjson");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5360,10 +7311,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;String&gt;**| The input array |
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **String**| ID or name of the deployed model |
+ **body** | [**List&lt;String&gt;**](String.md)| The input array |
 
 ### Return type
 
@@ -5371,12 +7322,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error executing predictPreProcessJson |  -  |
 
 <a name="rawPredictBinary"></a>
 # **rawPredictBinary**
@@ -5387,29 +7344,44 @@ Runs inference based on the input data. Output is defined relative to the output
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String inputType = "inputType_example"; // String | Input data type.
-String outputType = "outputType_example"; // String | Binary output data type.
-File inputData = new File("/path/to/file.txt"); // File | The input file to upload.
-try {
-    apiInstance.rawPredictBinary(inputType, outputType, inputData);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#rawPredictBinary");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String inputType = "inputType_example"; // String | Input data type.
+    String outputType = "outputType_example"; // String | Binary output data type.
+    File inputData = new File("/path/to/file"); // File | The input file to upload.
+    try {
+      apiInstance.rawPredictBinary(inputType, outputType, inputData);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#rawPredictBinary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5427,12 +7399,17 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction in raw binary file format. |  -  |
 
 <a name="refreshJobStatus"></a>
 # **refreshJobStatus**
@@ -5443,28 +7420,43 @@ Refresh the remote job status. Can be used for monitoring.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long jobId = 789L; // Long | Job ID
-try {
-    JobEntity result = apiInstance.refreshJobStatus(jobId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#refreshJobStatus");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long jobId = 56L; // Long | Job ID
+    try {
+      JobEntity result = apiInstance.refreshJobStatus(jobId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#refreshJobStatus");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5480,12 +7472,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The associated job entity object |  -  |
 
 <a name="registerUser"></a>
 # **registerUser**
@@ -5496,28 +7493,43 @@ Register a new user
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-User user = new User(); // User | User details
-try {
-    User result = apiInstance.registerUser(user);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#registerUser");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    User user = new User(); // User | User details
+    try {
+      User result = apiInstance.registerUser(user);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#registerUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5533,12 +7545,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | User added successfully. |  -  |
 
 <a name="reimportModel"></a>
 # **reimportModel**
@@ -5549,30 +7566,45 @@ Reimport a model to a previous deployed model in a deployment
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentId = "deploymentId_example"; // String | ID deployment group
-String modelId = "modelId_example"; // String | the id of the deployed model
-ImportModelRequest body = new ImportModelRequest(); // ImportModelRequest | the deployment request
-try {
-    ModelEntity result = apiInstance.reimportModel(deploymentId, modelId, body);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#reimportModel");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentId = "deploymentId_example"; // String | ID deployment group
+    String modelId = "modelId_example"; // String | the id of the deployed model
+    ImportModelRequest body = new ImportModelRequest(); // ImportModelRequest | the deployment request
+    try {
+      ModelEntity result = apiInstance.reimportModel(deploymentId, modelId, body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#reimportModel");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5590,12 +7622,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the reimported model entity |  -  |
 
 <a name="revokeUserToken"></a>
 # **revokeUserToken**
@@ -5606,28 +7643,43 @@ Revoke a user token.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long tokenId = 789L; // Long | Token ID
-try {
-    Token result = apiInstance.revokeUserToken(tokenId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#revokeUserToken");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long tokenId = 56L; // Long | Token ID
+    try {
+      Token result = apiInstance.revokeUserToken(tokenId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#revokeUserToken");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5643,12 +7695,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The revoked token object. |  -  |
 
 <a name="rollback"></a>
 # **rollback**
@@ -5659,28 +7716,43 @@ Rollback to a previous revision of the model.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Integer index = 56; // Integer | Model revision index.
-try {
-    RollbackStatus result = apiInstance.rollback(index);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#rollback");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Integer index = 56; // Integer | Model revision index.
+    try {
+      RollbackStatus result = apiInstance.rollback(index);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#rollback");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5696,12 +7768,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the status of the rollback. |  -  |
 
 <a name="runAJob"></a>
 # **runAJob**
@@ -5712,28 +7789,43 @@ Start running an (already created) job on the remote resource
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-Long jobId = 789L; // Long | Job ID
-try {
-    JobEntity result = apiInstance.runAJob(jobId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#runAJob");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    Long jobId = 56L; // Long | Job ID
+    try {
+      JobEntity result = apiInstance.runAJob(jobId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#runAJob");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5749,12 +7841,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The associated job entity object |  -  |
 
 <a name="transformCsv"></a>
 # **transformCsv**
@@ -5767,31 +7864,46 @@ Takes a batch of SingleCSVRecord object and transforms it into the desired forma
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String transformName = "transformName_example"; // String | ID or name of the deployed transform
-BatchCSVRecord batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays
-try {
-    BatchCSVRecord result = apiInstance.transformCsv(deploymentName, versionName, transformName, batchCSVRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformCsv");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String transformName = "transformName_example"; // String | ID or name of the deployed transform
+    BatchCSVRecord batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays
+    try {
+      BatchCSVRecord result = apiInstance.transformCsv(deploymentName, versionName, transformName, batchCSVRecord);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformCsv");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5800,7 +7912,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **String**| ID or name of the deployed transform |
  **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional]
 
@@ -5810,12 +7922,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 <a name="transformarray"></a>
 # **transformarray**
@@ -5826,31 +7944,46 @@ Takes a batch input arrays and transforms it
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String transformName = "transformName_example"; // String | ID or name of the deployed transform
-BatchRecord batchRecord = new BatchRecord(); // BatchRecord | The input batch of record arrays
-try {
-    Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformarray");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String transformName = "transformName_example"; // String | ID or name of the deployed transform
+    BatchRecord batchRecord = new BatchRecord(); // BatchRecord | The input batch of record arrays
+    try {
+      Base64NDArrayBody result = apiInstance.transformarray(deploymentName, versionName, transformName, batchRecord);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformarray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5859,7 +7992,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **String**| ID or name of the deployed transform |
  **batchRecord** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional]
 
@@ -5869,12 +8002,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 <a name="transformimage"></a>
 # **transformimage**
@@ -5887,31 +8026,46 @@ Takes multiple multipart image file and transforms it into the desired format an
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-List<byte[]> files = null; // List<byte[]> | The image files to upload
-try {
-    Base64NDArrayBody result = apiInstance.transformimage(deploymentName, versionName, imageTransformName, files);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformimage");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
+    List<File> files = new File("/path/to/file"); // List<File> | The image files to upload
+    try {
+      Base64NDArrayBody result = apiInstance.transformimage(deploymentName, versionName, imageTransformName, files);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformimage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5920,9 +8074,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **imageTransformName** | **String**| ID or name of the deployed image transform |
- **files** | [**List&lt;byte[]&gt;**](byte[].md)| The image files to upload |
+ **files** | **List&lt;File&gt;**| The image files to upload |
 
 ### Return type
 
@@ -5930,12 +8084,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**400** | No uploaded files found |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 <a name="transformincrementalCsv"></a>
 # **transformincrementalCsv**
@@ -5948,31 +8109,46 @@ Takes a SingleCSVRecord object and transforms it into the desired format
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String transformName = "transformName_example"; // String | ID or name of the deployed transform
-SingleCSVRecord singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array
-try {
-    SingleCSVRecord result = apiInstance.transformincrementalCsv(deploymentName, versionName, transformName, singleCSVRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalCsv");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String transformName = "transformName_example"; // String | ID or name of the deployed transform
+    SingleCSVRecord singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array
+    try {
+      SingleCSVRecord result = apiInstance.transformincrementalCsv(deploymentName, versionName, transformName, singleCSVRecord);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformincrementalCsv");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -5981,7 +8157,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **String**| ID or name of the deployed transform |
  **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional]
 
@@ -5991,12 +8167,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 <a name="transformincrementalarray"></a>
 # **transformincrementalarray**
@@ -6007,31 +8189,46 @@ Same as /transformincremental but returns Base64NDArrayBody.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String transformName = "transformName_example"; // String | ID or name of the deployed transform
-SingleRecord singleRecord = new SingleRecord(); // SingleRecord | The input record array
-try {
-    Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalarray");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String transformName = "transformName_example"; // String | ID or name of the deployed transform
+    SingleRecord singleRecord = new SingleRecord(); // SingleRecord | The input record array
+    try {
+      Base64NDArrayBody result = apiInstance.transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformincrementalarray");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6040,7 +8237,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **String**| ID or name of the deployed transform |
  **singleRecord** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional]
 
@@ -6050,12 +8247,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 <a name="transformincrementalimage"></a>
 # **transformincrementalimage**
@@ -6068,31 +8271,46 @@ Takes a single multipart image file and transforms it into the desired format an
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-File file = new File("/path/to/file.txt"); // File | The image file to upload
-try {
-    Base64NDArrayBody result = apiInstance.transformincrementalimage(deploymentName, versionName, imageTransformName, file);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformincrementalimage");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
+    File file = new File("/path/to/file"); // File | The image file to upload
+    try {
+      Base64NDArrayBody result = apiInstance.transformincrementalimage(deploymentName, versionName, imageTransformName, file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformincrementalimage");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6101,7 +8319,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **imageTransformName** | **String**| ID or name of the deployed image transform |
  **file** | **File**| The image file to upload |
 
@@ -6111,12 +8329,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**400** | No uploaded file found or the file couldn&#39;t be loaded |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 <a name="transformprocessGet"></a>
 # **transformprocessGet**
@@ -6127,30 +8352,45 @@ Gets the JSON string of the deployed transform process (CSV or Image)
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String transformName = "transformName_example"; // String | ID or name of the deployed transform
-try {
-    Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformprocessGet");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String transformName = "transformName_example"; // String | ID or name of the deployed transform
+    try {
+      Object result = apiInstance.transformprocessGet(deploymentName, versionName, transformName);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformprocessGet");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6159,7 +8399,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **String**| ID or name of the deployed transform |
 
 ### Return type
@@ -6168,12 +8408,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the deployed transform process |  -  |
+**400** | the transform process is probably null |  -  |
+**500** | internal server error |  -  |
 
 <a name="transformprocessPost"></a>
 # **transformprocessPost**
@@ -6184,32 +8431,47 @@ Sets the deployed (CSV or Image) transform process through the provided JSON str
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String contentType = "contentType_example"; // String | The `Content-Type` should be `application/json`.
-String deploymentName = "deploymentName_example"; // String | Name of the deployment group
-String versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-String transformName = "transformName_example"; // String | ID or name of the deployed transform
-String transformProcess = "transformProcess_example"; // String | The transform process to set (Specify a JSON string here).
-try {
-    Object result = apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#transformprocessPost");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String contentType = "contentType_example"; // String | The `Content-Type` should be `application/json`.
+    String deploymentName = "deploymentName_example"; // String | Name of the deployment group
+    String versionName = "\"default\""; // String | Version name of the endpoint. The default value is \"default\"
+    String transformName = "transformName_example"; // String | ID or name of the deployed transform
+    String transformProcess = "transformProcess_example"; // String | The transform process to set (Specify a JSON string here).
+    try {
+      Object result = apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#transformprocessPost");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6219,7 +8481,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | [enum: application/json]
  **deploymentName** | **String**| Name of the deployment group |
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; |
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **String**| ID or name of the deployed transform |
  **transformProcess** | **String**| The transform process to set (Specify a JSON string here). | [optional]
 
@@ -6229,12 +8491,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | transform process set successfully |  -  |
+**500** | internal server error |  -  |
 
 <a name="updateAuthPolicy"></a>
 # **updateAuthPolicy**
@@ -6245,28 +8513,43 @@ Update auth policy
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-AuthPolicy authPolicy = new AuthPolicy(); // AuthPolicy | Auth policy object
-try {
-    AuthPolicy result = apiInstance.updateAuthPolicy(authPolicy);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#updateAuthPolicy");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    AuthPolicy authPolicy = new AuthPolicy(); // AuthPolicy | Auth policy object
+    try {
+      AuthPolicy result = apiInstance.updateAuthPolicy(authPolicy);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#updateAuthPolicy");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6282,12 +8565,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Update AuthPolicy object |  -  |
 
 <a name="updateBestModelForExperiment"></a>
 # **updateBestModelForExperiment**
@@ -6298,29 +8586,44 @@ Updates the best model for an experiment
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-UpdateBestModel updateBestModel = new UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
-try {
-    ExperimentEntity result = apiInstance.updateBestModelForExperiment(modelHistoryServerId, updateBestModel);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#updateBestModelForExperiment");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    UpdateBestModel updateBestModel = new UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
+    try {
+      ExperimentEntity result = apiInstance.updateBestModelForExperiment(modelHistoryServerId, updateBestModel);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#updateBestModelForExperiment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6337,12 +8640,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated experiment entity. |  -  |
 
 <a name="updateExperiment"></a>
 # **updateExperiment**
@@ -6353,30 +8661,45 @@ Updates an experiment, given an experiment entity
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String experimentID = "experimentID_example"; // String | the GUID of the experiment to update
-ExperimentEntity experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to update with
-try {
-    ExperimentEntity result = apiInstance.updateExperiment(modelHistoryServerId, experimentID, experimentEntity);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#updateExperiment");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String experimentID = "experimentID_example"; // String | the GUID of the experiment to update
+    ExperimentEntity experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to update with
+    try {
+      ExperimentEntity result = apiInstance.updateExperiment(modelHistoryServerId, experimentID, experimentEntity);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#updateExperiment");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6394,12 +8717,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated experiment entity. |  -  |
 
 <a name="updateModelHistory"></a>
 # **updateModelHistory**
@@ -6410,30 +8738,45 @@ Update a model history / workspace
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to update
-AddModelHistoryRequest updateModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
-try {
-    ModelHistoryEntity result = apiInstance.updateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#updateModelHistory");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    String modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+    String modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to update
+    AddModelHistoryRequest updateModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
+    try {
+      ModelHistoryEntity result = apiInstance.updateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#updateModelHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6451,12 +8794,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated model history entity |  -  |
 
 <a name="updateUser"></a>
 # **updateUser**
@@ -6467,28 +8815,43 @@ Update a user
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-User user = new User(); // User | User details
-try {
-    User result = apiInstance.updateUser(user);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#updateUser");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    User user = new User(); // User | User details
+    try {
+      User result = apiInstance.updateUser(user);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#updateUser");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6504,12 +8867,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | User updated successfully. |  -  |
 
 <a name="upload"></a>
 # **upload**
@@ -6520,28 +8888,43 @@ Upload a model file to SKIL for import.
 ### Example
 ```java
 // Import classes:
-//import ai.skymind.ApiClient;
-//import ai.skymind.ApiException;
-//import ai.skymind.Configuration;
-//import ai.skymind.auth.*;
-//import ai.skymind.skil.DefaultApi;
+import ai.skymind.ApiClient;
+import ai.skymind.ApiException;
+import ai.skymind.Configuration;
+import ai.skymind.auth.*;
+import ai.skymind.models.*;
+import ai.skymind.skil.DefaultApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost:9008");
+    
+    // Configure API key authorization: api_key
+    ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
+    api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //api_key.setApiKeyPrefix("Token");
 
-// Configure API key authorization: api_key
-ApiKeyAuth api_key = (ApiKeyAuth) defaultClient.getAuthentication("api_key");
-api_key.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.setApiKeyPrefix("Token");
+    // Configure API key authorization: x_api_key
+    ApiKeyAuth x_api_key = (ApiKeyAuth) defaultClient.getAuthentication("x_api_key");
+    x_api_key.setApiKey("YOUR API KEY");
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //x_api_key.setApiKeyPrefix("Token");
 
-DefaultApi apiInstance = new DefaultApi();
-File file = new File("/path/to/file.txt"); // File | The file to upload.
-try {
-    FileUploadList result = apiInstance.upload(file);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DefaultApi#upload");
-    e.printStackTrace();
+    DefaultApi apiInstance = new DefaultApi(defaultClient);
+    File file = new File("/path/to/file"); // File | The file to upload.
+    try {
+      FileUploadList result = apiInstance.upload(file);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling DefaultApi#upload");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -6557,10 +8940,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
 

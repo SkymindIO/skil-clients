@@ -123,11 +123,14 @@ Method | HTTP request | Description
 [**Upload**](DefaultApi.md#Upload) | **Post** /api/upload/model | Upload a model file to SKIL for import.
 
 
-# **AccumulatedResults**
+
+## AccumulatedResults
+
 > AccumulatedResults AccumulatedResults(ctx, )
 Tells how many retraining examples have labels associated with them.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -136,25 +139,30 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddCredentials**
+
+## AddCredentials
+
 > ResourceCredentials AddCredentials(ctx, addCredentialsRequest)
 Adds credentials
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **addCredentialsRequest** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**addCredentialsRequest** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
 
 ### Return type
 
@@ -162,26 +170,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddEvaluationResult**
+
+## AddEvaluationResult
+
 > EvaluationResultsEntity AddEvaluationResult(ctx, modelHistoryServerId, evaluationResultsEntity)
 Adds an evaluation result
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **evaluationResultsEntity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**evaluationResultsEntity** | [**EvaluationResultsEntity**](EvaluationResultsEntity.md)| The evaluation result entity | 
 
 ### Return type
 
@@ -189,26 +202,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddExampleForBatch**
+
+## AddExampleForBatch
+
 > AddExampleRequest AddExampleForBatch(ctx, modelHistoryServerId, addExampleRequest)
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **addExampleRequest** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**addExampleRequest** | [**AddExampleRequest**](AddExampleRequest.md)| The add example request, encapsulating minibatch details and examples batch size | 
 
 ### Return type
 
@@ -216,26 +234,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddExampleToMinibatch**
+
+## AddExampleToMinibatch
+
 > ExampleEntity AddExampleToMinibatch(ctx, modelHistoryServerId, exampleEntity)
 Adds an example to a minibatch
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**exampleEntity** | [**ExampleEntity**](ExampleEntity.md)| The example to add to the minibatch | 
 
 ### Return type
 
@@ -243,26 +266,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddExperiment**
+
+## AddExperiment
+
 > ExperimentEntity AddExperiment(ctx, modelHistoryServerId, experimentEntity)
 Add an experiment, given an experiment entity
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to add | 
 
 ### Return type
 
@@ -270,36 +298,43 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddFeedbackBinary**
+
+## AddFeedbackBinary
+
 > FeedbackResponse AddFeedbackBinary(ctx, id, type_, optional)
 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | **string**| Batch ID to retrain the model with and get feedback for. | 
-  **type_** | **string**| The type of the labels array. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**| Batch ID to retrain the model with and get feedback for. | 
+**type_** | **string**| The type of the labels array. | 
  **optional** | ***AddFeedbackBinaryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a AddFeedbackBinaryOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **file** | **optional.Interface of *os.File**| The labels file to upload. | 
+ **file** | **optional.Interface of *os.File****optional.*os.File**| The labels file to upload. | 
 
 ### Return type
 
@@ -307,29 +342,36 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddFeedbackJson**
+
+## AddFeedbackJson
+
 > FeedbackResponse AddFeedbackJson(ctx, id, optional)
 Gets the retraining feedback for the given batch ID.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | **string**| Batch ID to retrain the model with and get feedback for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **string**| Batch ID to retrain the model with and get feedback for. | 
  **optional** | ***AddFeedbackJsonOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a AddFeedbackJsonOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -342,26 +384,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddMinibatch**
+
+## AddMinibatch
+
 > MinibatchEntity AddMinibatch(ctx, modelHistoryServerId, minibatchEntity)
 Adds a minibatch
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **minibatchEntity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**minibatchEntity** | [**MinibatchEntity**](MinibatchEntity.md)| The minibatch entity to add | 
 
 ### Return type
 
@@ -369,26 +416,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddModelFeedback**
+
+## AddModelFeedback
+
 > ModelFeedBackRequest AddModelFeedback(ctx, modelHistoryServerId, modelFeedBackRequest)
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelFeedBackRequest** | [**ModelFeedBackRequest**](ModelFeedBackRequest.md)| The model feedback request object | 
 
 ### Return type
 
@@ -396,26 +448,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddModelHistory**
+
+## AddModelHistory
+
 > ModelHistoryEntity AddModelHistory(ctx, modelHistoryServerId, addModelHistoryRequest)
 Add a model history / workspace
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **addModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**addModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
 
@@ -423,26 +480,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddModelInstance**
+
+## AddModelInstance
+
 > ModelInstanceEntity AddModelInstance(ctx, modelHistoryServerId, modelInstanceEntity)
 Adds a model
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelInstanceEntity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelInstanceEntity** | [**ModelInstanceEntity**](ModelInstanceEntity.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
 
@@ -450,51 +512,61 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddResource**
-> interface{} AddResource(ctx, addResourceRequest)
+
+## AddResource
+
+> map[string]interface{} AddResource(ctx, addResourceRequest)
 Adds a resource
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**addResourceRequest** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
 
 ### Return type
 
-[**interface{}**](interface{}.md)
+[**map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddResourceGroup**
+
+## AddResourceGroup
+
 > ResourceGroup AddResourceGroup(ctx, groupName)
 Adds a resource group
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **groupName** | **string**| Name of the resource group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupName** | **string**| Name of the resource group | 
 
 ### Return type
 
@@ -502,26 +574,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain; charset=utf-8
- - **Accept**: application/json
+- **Content-Type**: text/plain; charset=utf-8
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AddResourceToGroup**
+
+## AddResourceToGroup
+
 > AddResourceToGroup(ctx, resourceGroupId, resourceId)
 Adds a resource to a resource group
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceGroupId** | **int64**| ID of the resource group | 
-  **resourceId** | **int64**| ID of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceGroupId** | **int64**| ID of the resource group | 
+**resourceId** | **int64**| ID of the resource | 
 
 ### Return type
 
@@ -529,26 +606,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **AggregateModelResults**
+
+## AggregateModelResults
+
 > EvaluationResultsEntity AggregateModelResults(ctx, modelHistoryServerId, aggregatePrediction)
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **aggregatePrediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**aggregatePrediction** | [**AggregatePrediction**](AggregatePrediction.md)| The object encapsulating the model instance id and evaluation type to aggregate | 
 
 ### Return type
 
@@ -556,26 +638,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ChangeUserPassword**
+
+## ChangeUserPassword
+
 > User ChangeUserPassword(ctx, userId, changePasswordRequest)
 Change user's password
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **string**| User&#39;s ID | 
-  **changePasswordRequest** | [**ChangePasswordRequest**](ChangePasswordRequest.md)| Password details. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userId** | **string**| User&#39;s ID | 
+**changePasswordRequest** | [**ChangePasswordRequest**](ChangePasswordRequest.md)| Password details. | 
 
 ### Return type
 
@@ -583,28 +670,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Classify**
-> ClassificationResult Classify(ctx, body, deploymentName, versionName, modelName)
+
+## Classify
+
+> ClassificationResult Classify(ctx, deploymentName, versionName, modelName, body)
 Use the deployed model to classify the input
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -612,28 +704,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Classifyarray**
-> Base64NdArrayBody Classifyarray(ctx, body, deploymentName, versionName, modelName)
+
+## Classifyarray
+
+> Base64NdArrayBody Classifyarray(ctx, deploymentName, versionName, modelName, body)
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -641,38 +738,45 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Classifyimage**
+
+## Classifyimage
+
 > ClassificationResult Classifyimage(ctx, deploymentName, versionName, modelName, optional)
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***ClassifyimageOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a ClassifyimageOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **image** | **optional.Interface of *os.File**| The file to upload. | 
+ **image** | **optional.Interface of *os.File****optional.*os.File**| The file to upload. | 
 
 ### Return type
 
@@ -680,20 +784,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ClearState**
+
+## ClearState
+
 > FeedbackResponse ClearState(ctx, )
 Clears the accumulated data for retraining.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -702,26 +811,31 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateJob**
+
+## CreateJob
+
 > JobEntity CreateJob(ctx, jobIdOrType, createJobRequest)
 Create a job
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobIdOrType** | **string**| Job Type | 
-  **createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobIdOrType** | **string**| Job Type | 
+**createJobRequest** | [**CreateJobRequest**](CreateJobRequest.md)| Create job request object | 
 
 ### Return type
 
@@ -729,26 +843,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **CreateModelHistory**
+
+## CreateModelHistory
+
 > ModelHistoryEntity CreateModelHistory(ctx, modelHistoryServerId, modelHistoryEntity)
 Creates model History
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelHistoryEntity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelHistoryEntity** | [**ModelHistoryEntity**](ModelHistoryEntity.md)| The model history entity | 
 
 ### Return type
 
@@ -756,25 +875,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteCredentialsById**
+
+## DeleteCredentialsById
+
 > DeleteCredentialsById(ctx, credentialId)
 Delete credentials given an ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **credentialId** | **int64**| Credentials ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**credentialId** | **int64**| Credentials ID | 
 
 ### Return type
 
@@ -782,26 +906,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteExperiment**
+
+## DeleteExperiment
+
 > InlineResponse200 DeleteExperiment(ctx, modelHistoryServerId, experimentID)
 Deletes an experiment, given an experiment entity
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **experimentID** | **string**| the GUID of the experiment to delete | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**experimentID** | **string**| the GUID of the experiment to delete | 
 
 ### Return type
 
@@ -809,25 +938,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteJobById**
+
+## DeleteJobById
+
 > DeleteJobById(ctx, jobIdOrType)
 Deletes a job given its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobIdOrType** | **int64**| Job ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobIdOrType** | **int64**| Job ID | 
 
 ### Return type
 
@@ -835,26 +969,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteModel**
+
+## DeleteModel
+
 > InlineResponse200 DeleteModel(ctx, deploymentId, modelId)
 Delete a model by deployment and model id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| ID deployment group | 
-  **modelId** | **string**| the id of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| ID deployment group | 
+**modelId** | **string**| the id of the deployed model | 
 
 ### Return type
 
@@ -862,26 +1001,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteModelHistory**
+
+## DeleteModelHistory
+
 > InlineResponse200 DeleteModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Deletes a model history / workspace, given its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelHistoryID** | **string**| the GUID of the model history / workspace to delete | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelHistoryID** | **string**| the GUID of the model history / workspace to delete | 
 
 ### Return type
 
@@ -889,26 +1033,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteModelInstance**
+
+## DeleteModelInstance
+
 > DeleteModelInstance(ctx, modelHistoryServerId, modelInstanceID)
 Deletes a model instance, given its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelInstanceID** | **string**| GUID of the model instance to delete. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelInstanceID** | **string**| GUID of the model instance to delete. | 
 
 ### Return type
 
@@ -916,25 +1065,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteResourceById**
+
+## DeleteResourceById
+
 > Resource DeleteResourceById(ctx, resourceId)
 Delete the resource with the specified resource ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceId** | **int64**| ID of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceId** | **int64**| ID of the resource | 
 
 ### Return type
 
@@ -942,26 +1096,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteResourceFromGroup**
+
+## DeleteResourceFromGroup
+
 > DeleteResourceFromGroup(ctx, resourceGroupId, resourceId)
 Removes a resource from a resource group
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceGroupId** | **int64**| ID of the resource group | 
-  **resourceId** | **int64**| ID of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceGroupId** | **int64**| ID of the resource group | 
+**resourceId** | **int64**| ID of the resource | 
 
 ### Return type
 
@@ -969,25 +1128,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteResourceGroupById**
+
+## DeleteResourceGroupById
+
 > ResourceGroup DeleteResourceGroupById(ctx, resourceGroupId)
 Delete the resource group with the specified resource group ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceGroupId** | **int64**| ID of the resource group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceGroupId** | **int64**| ID of the resource group | 
 
 ### Return type
 
@@ -995,26 +1159,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeployModel**
+
+## DeployModel
+
 > ModelEntity DeployModel(ctx, deploymentId, body)
 Deploy a model in a deployment group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| ID deployment group | 
-  **body** | [**ImportModelRequest**](ImportModelRequest.md)| the model import request | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| ID deployment group | 
+**body** | [**ImportModelRequest**](ImportModelRequest.md)| the model import request | 
 
 ### Return type
 
@@ -1022,25 +1191,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeploymentCreate**
+
+## DeploymentCreate
+
 > DeploymentResponse DeploymentCreate(ctx, body)
 Create a new deployment group.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**CreateDeploymentRequest**](CreateDeploymentRequest.md)| the deployment request | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**body** | [**CreateDeploymentRequest**](CreateDeploymentRequest.md)| the deployment request | 
 
 ### Return type
 
@@ -1048,25 +1222,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeploymentDelete**
+
+## DeploymentDelete
+
 > InlineResponse200 DeploymentDelete(ctx, deploymentId)
 Delete a deployment by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| Id of the deployment group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| Id of the deployment group | 
 
 ### Return type
 
@@ -1074,25 +1253,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeploymentGet**
+
+## DeploymentGet
+
 > DeploymentResponse DeploymentGet(ctx, deploymentId)
 Get a deployment details by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| Id of the deployment group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| Id of the deployment group | 
 
 ### Return type
 
@@ -1100,20 +1284,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Deployments**
+
+## Deployments
+
 > []DeploymentResponse Deployments(ctx, )
 Get a list of deployments
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1122,31 +1311,36 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Detectobjects**
-> DetectionResult Detectobjects(ctx, id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName)
+
+## Detectobjects
+
+> DetectionResult Detectobjects(ctx, deploymentName, versionName, modelName, id, needsPreprocessing, threshold, file)
 Detect the objects, given a (input) prediction request
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **id** | **string**| the GUID for mapping the results in the detections | 
-  **needsPreprocessing** | **bool**| (true) if the image needs preprocessing | 
-  **threshold** | **float32**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
-  **file** | ***os.File**| the image file to detect objects from | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**id** | **string**| the GUID for mapping the results in the detections | 
+**needsPreprocessing** | **bool**| (true) if the image needs preprocessing | 
+**threshold** | **float32**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
+**file** | ***os.File*****os.File**| the image file to detect objects from | 
 
 ### Return type
 
@@ -1154,26 +1348,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DownloadJobOutputFile**
+
+## DownloadJobOutputFile
+
 > DownloadJobOutputFile(ctx, jobId, downloadOutputFileRequest)
 Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobId** | **int64**| Job ID | 
-  **downloadOutputFileRequest** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **int64**| Job ID | 
+**downloadOutputFileRequest** | [**DownloadOutputFileRequest**](DownloadOutputFileRequest.md)| Download output file request object | 
 
 ### Return type
 
@@ -1181,25 +1380,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GenerateAuthToken**
+
+## GenerateAuthToken
+
 > Token GenerateAuthToken(ctx, tokenGenerateRequest)
 Generate new auth token
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **tokenGenerateRequest** | [**TokenGenerateRequest**](TokenGenerateRequest.md)| Auth token details. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tokenGenerateRequest** | [**TokenGenerateRequest**](TokenGenerateRequest.md)| Auth token details. | 
 
 ### Return type
 
@@ -1207,20 +1411,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetAllJobs**
+
+## GetAllJobs
+
 > []JobEntity GetAllJobs(ctx, )
 Get a list of all available jobs
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1229,16 +1438,20 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetArray**
+
+## GetArray
+
 > GetArray(ctx, accept, arrayType)
 Get the memory mapped array based on the array type.
 
@@ -1246,11 +1459,12 @@ The array is specified through a file path, in the configuration object, during 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **accept** | **string**|  | 
-  **arrayType** | **string**| The format in which the memory mapped array is returned. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accept** | **string**|  | 
+**arrayType** | **string**| The format in which the memory mapped array is returned. | 
 
 ### Return type
 
@@ -1258,31 +1472,38 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetArrayIndices**
+
+## GetArrayIndices
+
 > GetArrayIndices(ctx, contentType, accept, arrayType, optional)
 Get the memory mapped array indices based on the array type.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
-  **accept** | **string**|  | 
-  **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+**accept** | **string**|  | 
+**arrayType** | **string**| Format in which the memory mapped array is returned in. | 
  **optional** | ***GetArrayIndicesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetArrayIndicesOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1297,28 +1518,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetArrayRange**
+
+## GetArrayRange
+
 > GetArrayRange(ctx, accept, arrayType, from, to)
 Get the memory mapped array within a range based on the array type.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **accept** | **string**|  | 
-  **arrayType** | **string**| Format in which the memory mapped array is returned in. | 
-  **from** | **int32**|  | 
-  **to** | **int32**|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**accept** | **string**|  | 
+**arrayType** | **string**| Format in which the memory mapped array is returned in. | 
+**from** | **int32**|  | 
+**to** | **int32**|  | 
 
 ### Return type
 
@@ -1326,20 +1552,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetAuthPolicy**
+
+## GetAuthPolicy
+
 > AuthPolicy GetAuthPolicy(ctx, )
 Get auth policy
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1348,26 +1579,31 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetBestModelAmongModelIds**
+
+## GetBestModelAmongModelIds
+
 > ModelInstanceEntity GetBestModelAmongModelIds(ctx, modelHistoryServerId, bestModel)
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **bestModel** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**bestModel** | [**BestModel**](BestModel.md)| Object encapsulating the model ids, eval type and column metric name | 
 
 ### Return type
 
@@ -1375,25 +1611,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetCredentialsById**
+
+## GetCredentialsById
+
 > ResourceCredentials GetCredentialsById(ctx, credentialId)
 Get credentials given an ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **credentialId** | **int64**| Credentials ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**credentialId** | **int64**| Credentials ID | 
 
 ### Return type
 
@@ -1401,20 +1642,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetCurrentModel**
+
+## GetCurrentModel
+
 > GetCurrentModel(ctx, )
 Returns the current model being used for retraining.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1423,26 +1669,31 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetEvaluationForModelID**
+
+## GetEvaluationForModelID
+
 > []EvaluationResultsEntity GetEvaluationForModelID(ctx, modelHistoryServerId, modelInstanceID)
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelInstanceID** | **string**| GUID of the model instance to get evaluation results for. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelInstanceID** | **string**| GUID of the model instance to get evaluation results for. | 
 
 ### Return type
 
@@ -1450,26 +1701,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetExamplesForMinibatch**
+
+## GetExamplesForMinibatch
+
 > []ExampleEntity GetExamplesForMinibatch(ctx, modelHistoryServerId, minibatchId)
 Gets all the examples for a minibatch ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **minibatchId** | **string**| The GUID of the minibatch | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
 
@@ -1477,26 +1733,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetExperiment**
+
+## GetExperiment
+
 > ExperimentEntity GetExperiment(ctx, modelHistoryServerId, experimentID)
 Obtain an experiment's details, given its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **experimentID** | **string**| the GUID of the experiment to obtain | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**experimentID** | **string**| the GUID of the experiment to obtain | 
 
 ### Return type
 
@@ -1504,26 +1765,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetExperimentsForModelHistory**
+
+## GetExperimentsForModelHistory
+
 > []ExperimentEntity GetExperimentsForModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Obtain all experiments for a model history / workspace
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelHistoryID** | **string**| the GUID of the model history / workspace | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelHistoryID** | **string**| the GUID of the model history / workspace | 
 
 ### Return type
 
@@ -1531,25 +1797,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetJobById**
+
+## GetJobById
+
 > JobEntity GetJobById(ctx, jobIdOrType)
 Get a job by its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobIdOrType** | **int64**| Job ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobIdOrType** | **int64**| Job ID | 
 
 ### Return type
 
@@ -1557,20 +1828,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetLastEvaluation**
+
+## GetLastEvaluation
+
 > EvaluationResultsEntity GetLastEvaluation(ctx, )
 Get the last evaluation specifications from the current model.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1579,26 +1855,31 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetMinibatch**
+
+## GetMinibatch
+
 > MinibatchEntity GetMinibatch(ctx, modelHistoryServerId, minibatchId)
 Gets a minibatch for the model
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **minibatchId** | **string**| The GUID of the minibatch | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**minibatchId** | **string**| The GUID of the minibatch | 
 
 ### Return type
 
@@ -1606,26 +1887,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetModelDetails**
+
+## GetModelDetails
+
 > ModelEntity GetModelDetails(ctx, deploymentId, modelId)
 Get model details
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| ID deployment group | 
-  **modelId** | **string**| the id of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| ID deployment group | 
+**modelId** | **string**| the id of the deployed model | 
 
 ### Return type
 
@@ -1633,26 +1919,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetModelHistory**
+
+## GetModelHistory
+
 > ModelHistoryEntity GetModelHistory(ctx, modelHistoryServerId, modelHistoryID)
 Gets a model history, given its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelHistoryID** | **string**| GUID of the model history to get information of. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelHistoryID** | **string**| GUID of the model history to get information of. | 
 
 ### Return type
 
@@ -1660,26 +1951,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetModelInstance**
+
+## GetModelInstance
+
 > ModelInstanceEntity GetModelInstance(ctx, modelHistoryServerId, modelInstanceID)
 Gets a model instance, given its ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelInstanceID** | **string**| GUID of the model instance to get information of. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelInstanceID** | **string**| GUID of the model instance to get information of. | 
 
 ### Return type
 
@@ -1687,26 +1983,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetModelsForExperiment**
+
+## GetModelsForExperiment
+
 > []ModelInstanceEntity GetModelsForExperiment(ctx, modelHistoryServerId, experimentID)
 Obtain a list of all the models for an experiment
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **experimentID** | **string**| the GUID of the experiment | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**experimentID** | **string**| the GUID of the experiment | 
 
 ### Return type
 
@@ -1714,25 +2015,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceById**
+
+## GetResourceById
+
 > Resource GetResourceById(ctx, resourceId)
 Get the resource with the specified resource ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceId** | **int64**| ID of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceId** | **int64**| ID of the resource | 
 
 ### Return type
 
@@ -1740,25 +2046,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceBySubType**
+
+## GetResourceBySubType
+
 > []Resource GetResourceBySubType(ctx, resourceSubType)
 Get all the resources with the specified resource subtype
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceSubType** | **string**| Subtype of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceSubType** | **string**| Subtype of the resource | 
 
 ### Return type
 
@@ -1766,25 +2077,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceByType**
+
+## GetResourceByType
+
 > []Resource GetResourceByType(ctx, resourceType)
 Get all the resources with the specified resource type
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceType** | **string**| Type of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceType** | **string**| Type of the resource | 
 
 ### Return type
 
@@ -1792,53 +2108,63 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceDetailsById**
-> interface{} GetResourceDetailsById(ctx, resourceId)
+
+## GetResourceDetailsById
+
+> map[string]interface{} GetResourceDetailsById(ctx, resourceId)
 Get the resource details with the specified resource ID
 
 Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceId** | **int64**| ID of the resource | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceId** | **int64**| ID of the resource | 
 
 ### Return type
 
-[**interface{}**](interface{}.md)
+[**map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceGroupById**
+
+## GetResourceGroupById
+
 > ResourceGroup GetResourceGroupById(ctx, resourceGroupId)
 Get the resource group with the specified resource group ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceGroupId** | **int64**| ID of the resource group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceGroupId** | **int64**| ID of the resource group | 
 
 ### Return type
 
@@ -1846,20 +2172,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourceGroups**
+
+## GetResourceGroups
+
 > []ResourceGroup GetResourceGroups(ctx, )
 Get a list of all the resource groups
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1868,20 +2199,25 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResources**
+
+## GetResources
+
 > []Resource GetResources(ctx, )
 A list of all known/registered resources, of all types
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1890,25 +2226,30 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetResourcesFromGroup**
+
+## GetResourcesFromGroup
+
 > []Resource GetResourcesFromGroup(ctx, resourceGroupId)
 Get all resources from a resource group
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **resourceGroupId** | **int64**| ID of the resource group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**resourceGroupId** | **int64**| ID of the resource group | 
 
 ### Return type
 
@@ -1916,20 +2257,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetRoles**
+
+## GetRoles
+
 > []Role GetRoles(ctx, )
 Get all roles.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1938,25 +2284,30 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUser**
+
+## GetUser
+
 > User GetUser(ctx, userId)
 Get a user by user ID
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **string**| User&#39;s ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userId** | **string**| User&#39;s ID | 
 
 ### Return type
 
@@ -1964,29 +2315,36 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUserAuthTokens**
+
+## GetUserAuthTokens
+
 > []Token GetUserAuthTokens(ctx, userId, optional)
 Get auth tokens for a user.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **userId** | **string**| User&#39;s ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**userId** | **string**| User&#39;s ID | 
  **optional** | ***GetUserAuthTokensOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a GetUserAuthTokensOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1999,20 +2357,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetUsers**
+
+## GetUsers
+
 > []User GetUsers(ctx, )
 Get all users.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2021,20 +2384,25 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **IsTraining**
+
+## IsTraining
+
 > RetrainingStatus IsTraining(ctx, )
 Get the retraining status
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2043,28 +2411,33 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Jsonarray**
-> JsonArrayResponse Jsonarray(ctx, body, deploymentName, versionName, modelName)
+
+## Jsonarray
+
+> JsonArrayResponse Jsonarray(ctx, deploymentName, versionName, modelName, body)
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -2072,16 +2445,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Knn**
+
+## Knn
+
 > NearestNeighborsResults Knn(ctx, deploymentName, versionName, knnName, body)
 Runs knn on the given index with the given k
 
@@ -2089,13 +2466,14 @@ Runs knn on the given index with the given k (note that this is for data already
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **knnName** | **string**| ID or name of the deployed knn | 
-  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**knnName** | **string**| ID or name of the deployed knn | 
+**body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
 ### Return type
 
@@ -2103,28 +2481,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Knnnew**
+
+## Knnnew
+
 > NearestNeighborsResults Knnnew(ctx, deploymentName, versionName, knnName, body)
 Run a k nearest neighbors search on a NEW data point
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **knnName** | **string**| ID or name of the deployed knn | 
-  **body** | [**Base64NdArrayBodyKnn**](Base64NdArrayBodyKnn.md)| The input NDArray | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**knnName** | **string**| ID or name of the deployed knn | 
+**body** | [**Base64NdArrayBodyKnn**](Base64NdArrayBodyKnn.md)| The input NDArray | 
 
 ### Return type
 
@@ -2132,25 +2515,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ListAllExperiments**
+
+## ListAllExperiments
+
 > []ExperimentEntity ListAllExperiments(ctx, modelHistoryServerId)
 List all of the experiments in every model history / workspace
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
 
 ### Return type
 
@@ -2158,27 +2546,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Logfilepath**
+
+## Logfilepath
+
 > string Logfilepath(ctx, deploymentName, versionName, modelName)
 Get logs file path
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -2186,25 +2579,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text
+- **Content-Type**: Not defined
+- **Accept**: text
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Login**
+
+## Login
+
 > LoginResponse Login(ctx, loginRequest)
 Post JSON credentials and obtain a JWT authorization token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **loginRequest** | [**LoginRequest**](LoginRequest.md)| Login credentials. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**loginRequest** | [**LoginRequest**](LoginRequest.md)| Login credentials. | 
 
 ### Return type
 
@@ -2212,28 +2610,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Logs**
+
+## Logs
+
 > LogBatch Logs(ctx, deploymentName, versionName, modelName, logRequest)
 Get logs
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
-  **logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
 
 ### Return type
 
@@ -2241,85 +2644,100 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **MetaGet**
-> MetaData MetaGet(ctx, deploymentName, versionName, modelName)
+
+## MetaGet
+
+> map[string]interface{} MetaGet(ctx, deploymentName, versionName, modelName)
 this method can be used to get the meta data for the current model which set to the server
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+[**map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **MetaPost**
-> MetaData MetaPost(ctx, contentType, body, deploymentName, versionName, modelName)
+
+## MetaPost
+
+> map[string]interface{} MetaPost(ctx, contentType, deploymentName, versionName, modelName, body)
 This method can be used to set meta data for the current model which is set to the server
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
-  **body** | **string**| the meta data object | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | **string**| the meta data object | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+[**map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ModelStateChange**
+
+## ModelStateChange
+
 > ModelEntity ModelStateChange(ctx, deploymentId, modelId, body)
 Modify the state (start/stop) of a deployed model
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| ID deployment group | 
-  **modelId** | **string**| the id of the deployed model | 
-  **body** | [**SetState**](SetState.md)| the model state object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| ID deployment group | 
+**modelId** | **string**| the id of the deployed model | 
+**body** | [**SetState**](SetState.md)| the model state object | 
 
 ### Return type
 
@@ -2327,25 +2745,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Models**
+
+## Models
+
 > []ModelEntity Models(ctx, deploymentId)
 Retrieve a list of all the deployed models given a deployment id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| ID deployment group | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| ID deployment group | 
 
 ### Return type
 
@@ -2353,38 +2776,45 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Modelset**
+
+## Modelset
+
 > ModelStatus Modelset(ctx, deploymentName, versionName, modelName, optional)
 Set the model to be served
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***ModelsetOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a ModelsetOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **file** | **optional.Interface of *os.File**| The model file to upload (.pb file) | 
+ **file** | **optional.Interface of *os.File****optional.*os.File**| The model file to upload (.pb file) | 
 
 ### Return type
 
@@ -2392,28 +2822,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Modelupdate**
-> ModelStatus Modelupdate(ctx, file, deploymentName, versionName, modelName)
+
+## Modelupdate
+
+> ModelStatus Modelupdate(ctx, deploymentName, versionName, modelName, file)
 Update the model to be served
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **file** | ***os.File**| The model file to update with (.pb file) | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**file** | ***os.File*****os.File**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -2421,28 +2856,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Multiclassify**
-> MultiClassClassificationResult Multiclassify(ctx, body, deploymentName, versionName, modelName)
+
+## Multiclassify
+
+> MultiClassClassificationResult Multiclassify(ctx, deploymentName, versionName, modelName, body)
 Represents all of the labels for a given classification
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -2450,30 +2890,35 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Multipredict**
-> MultiPredictResponse Multipredict(ctx, body, deploymentName, versionName, modelName)
+
+## Multipredict
+
+> MultiPredictResponse Multipredict(ctx, deploymentName, versionName, modelName, body)
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
 
 ### Return type
 
@@ -2481,32 +2926,37 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Multipredictimage**
-> MultiPredictResponse Multipredictimage(ctx, file, id, needsPreprocessing, deploymentName, versionName, modelName)
+
+## Multipredictimage
+
+> MultiPredictResponse Multipredictimage(ctx, deploymentName, versionName, modelName, file, id, needsPreprocessing)
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **file** | ***os.File**| The image file to run the prediction on | 
-  **id** | **string**| The id of the request (could be self generated) | 
-  **needsPreprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**file** | ***os.File*****os.File**| The image file to run the prediction on | 
+**id** | **string**| The id of the request (could be self generated) | 
+**needsPreprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
 
 ### Return type
 
@@ -2514,20 +2964,25 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **NumRevisions**
+
+## NumRevisions
+
 > RevisionsWritten NumRevisions(ctx, )
 Gets the number of retrained models written with retraining.
 
 ### Required Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2536,28 +2991,33 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Predict**
-> Prediction Predict(ctx, body, deploymentName, versionName, modelName)
+
+## Predict
+
+> Prediction Predict(ctx, deploymentName, versionName, modelName, body)
 Run inference on the input array.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**Prediction**](Prediction.md)| The input NDArray | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -2565,16 +3025,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PredictError**
+
+## PredictError
+
 > PredictError(ctx, contentType, operation, inputType, optional)
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
 
@@ -2582,16 +3046,19 @@ These \"error\" endpoints are slower for inference, but will also ignore invalid
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
-  **operation** | **string**| Operation to perform on the input data. | 
-  **inputType** | **string**| Type of the input data. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+**operation** | **string**| Operation to perform on the input data. | 
+**inputType** | **string**| Type of the input data. | 
  **optional** | ***PredictErrorOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PredictErrorOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2606,27 +3073,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PredictV2File**
+
+## PredictV2File
+
 > PredictV2File(ctx, operation, inputTypeFile, inputData)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **operation** | **string**| The operation to perform on the input data.  | 
-  **inputTypeFile** | **string**| Type of the input data.  | 
-  **inputData** | ***os.File**| The input data to run inference on. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**operation** | **string**| The operation to perform on the input data.  | 
+**inputTypeFile** | **string**| Type of the input data.  | 
+**inputData** | ***os.File*****os.File**| The input data to run inference on. | 
 
 ### Return type
 
@@ -2634,28 +3106,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PredictV2Json**
+
+## PredictV2Json
+
 > PredictV2Json(ctx, contentType, operation, inputTypeJson, inputData)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
-  **operation** | **string**| The operation to perform on the input data.  | 
-  **inputTypeJson** | **string**| Type of the input data.  | 
-  **inputData** | **string**| The input data to run inference on. (Specify a JSON string here) | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60;. | 
+**operation** | **string**| The operation to perform on the input data.  | 
+**inputTypeJson** | **string**| Type of the input data.  | 
+**inputData** | **string**| The input data to run inference on. (Specify a JSON string here) | 
 
 ### Return type
 
@@ -2663,38 +3140,45 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Predictimage**
+
+## Predictimage
+
 > Prediction Predictimage(ctx, deploymentName, versionName, modelName, optional)
 Run inference on the input array, using input image file from multipart form data.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
  **optional** | ***PredictimageOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a PredictimageOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
 
- **image** | **optional.Interface of *os.File**| The file to upload. | 
+ **image** | **optional.Interface of *os.File****optional.*os.File**| The file to upload. | 
 
 ### Return type
 
@@ -2702,28 +3186,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Predictwithpreprocess**
-> Prediction Predictwithpreprocess(ctx, body, deploymentName, versionName, modelName)
+
+## Predictwithpreprocess
+
+> Prediction Predictwithpreprocess(ctx, deploymentName, versionName, modelName, body)
 Preprocesses the input and run inference on it
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | **[]string**| The input array | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**[]string**](string.md)| The input array | 
 
 ### Return type
 
@@ -2731,28 +3220,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Predictwithpreprocessjson**
-> JsonArrayResponse Predictwithpreprocessjson(ctx, body, deploymentName, versionName, modelName)
+
+## Predictwithpreprocessjson
+
+> JsonArrayResponse Predictwithpreprocessjson(ctx, deploymentName, versionName, modelName, body)
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | **[]string**| The input array | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **modelName** | **string**| ID or name of the deployed model | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**modelName** | **string**| ID or name of the deployed model | 
+**body** | [**[]string**](string.md)| The input array | 
 
 ### Return type
 
@@ -2760,36 +3254,43 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RawPredictBinary**
+
+## RawPredictBinary
+
 > RawPredictBinary(ctx, inputType, outputType, optional)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **inputType** | **string**| Input data type. | 
-  **outputType** | **string**| Binary output data type. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**inputType** | **string**| Input data type. | 
+**outputType** | **string**| Binary output data type. | 
  **optional** | ***RawPredictBinaryOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a RawPredictBinaryOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **inputData** | **optional.Interface of *os.File**| The input file to upload. | 
+ **inputData** | **optional.Interface of *os.File****optional.*os.File**| The input file to upload. | 
 
 ### Return type
 
@@ -2797,25 +3298,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/octet-stream
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RefreshJobStatus**
+
+## RefreshJobStatus
+
 > JobEntity RefreshJobStatus(ctx, jobId)
 Refresh the remote job status. Can be used for monitoring.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobId** | **int64**| Job ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **int64**| Job ID | 
 
 ### Return type
 
@@ -2823,25 +3329,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RegisterUser**
+
+## RegisterUser
+
 > User RegisterUser(ctx, user)
 Register a new user
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **user** | [**User**](User.md)| User details | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**user** | [**User**](User.md)| User details | 
 
 ### Return type
 
@@ -2849,27 +3360,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ReimportModel**
+
+## ReimportModel
+
 > ModelEntity ReimportModel(ctx, deploymentId, modelId, body)
 Reimport a model to a previous deployed model in a deployment
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentId** | **string**| ID deployment group | 
-  **modelId** | **string**| the id of the deployed model | 
-  **body** | [**ImportModelRequest**](ImportModelRequest.md)| the deployment request | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentId** | **string**| ID deployment group | 
+**modelId** | **string**| the id of the deployed model | 
+**body** | [**ImportModelRequest**](ImportModelRequest.md)| the deployment request | 
 
 ### Return type
 
@@ -2877,25 +3393,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RevokeUserToken**
+
+## RevokeUserToken
+
 > Token RevokeUserToken(ctx, tokenId)
 Revoke a user token.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **tokenId** | **int64**| Token ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tokenId** | **int64**| Token ID | 
 
 ### Return type
 
@@ -2903,25 +3424,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Rollback**
+
+## Rollback
+
 > RollbackStatus Rollback(ctx, index)
 Rollback to a previous revision of the model.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **index** | **int32**| Model revision index. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**index** | **int32**| Model revision index. | 
 
 ### Return type
 
@@ -2929,25 +3455,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **RunAJob**
+
+## RunAJob
+
 > JobEntity RunAJob(ctx, jobId)
 Start running an (already created) job on the remote resource
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **jobId** | **int64**| Job ID | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **int64**| Job ID | 
 
 ### Return type
 
@@ -2955,16 +3486,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TransformCsv**
+
+## TransformCsv
+
 > BatchCsvRecord TransformCsv(ctx, deploymentName, versionName, transformName, optional)
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 
@@ -2972,16 +3507,19 @@ Takes a batch of SingleCSVRecord object and transforms it into the desired forma
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **transformName** | **string**| ID or name of the deployed transform | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformCsvOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a TransformCsvOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2996,31 +3534,38 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Transformarray**
+
+## Transformarray
+
 > Base64NdArrayBody Transformarray(ctx, deploymentName, versionName, transformName, optional)
 Takes a batch input arrays and transforms it
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **transformName** | **string**| ID or name of the deployed transform | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformarrayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a TransformarrayOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3035,16 +3580,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Transformimage**
+
+## Transformimage
+
 > Base64NdArrayBody Transformimage(ctx, deploymentName, versionName, imageTransformName, files)
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
 
@@ -3052,13 +3601,14 @@ Takes multiple multipart image file and transforms it into the desired format an
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **files** | [**[]string**](string.md)| The image files to upload | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**imageTransformName** | **string**| ID or name of the deployed image transform | 
+**files** | **[]*os.File**| The image files to upload | 
 
 ### Return type
 
@@ -3066,16 +3616,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TransformincrementalCsv**
+
+## TransformincrementalCsv
+
 > SingleCsvRecord TransformincrementalCsv(ctx, deploymentName, versionName, transformName, optional)
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
 
@@ -3083,16 +3637,19 @@ Takes a SingleCSVRecord object and transforms it into the desired format
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **transformName** | **string**| ID or name of the deployed transform | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformincrementalCsvOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a TransformincrementalCsvOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3107,31 +3664,38 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Transformincrementalarray**
+
+## Transformincrementalarray
+
 > Base64NdArrayBody Transformincrementalarray(ctx, deploymentName, versionName, transformName, optional)
 Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **transformName** | **string**| ID or name of the deployed transform | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformincrementalarrayOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a TransformincrementalarrayOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3146,16 +3710,20 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Transformincrementalimage**
+
+## Transformincrementalimage
+
 > Base64NdArrayBody Transformincrementalimage(ctx, deploymentName, versionName, imageTransformName, file)
 Takes a single multipart image file to transform and returns Base64NDArrayBody
 
@@ -3163,13 +3731,14 @@ Takes a single multipart image file and transforms it into the desired format an
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **imageTransformName** | **string**| ID or name of the deployed image transform | 
-  **file** | ***os.File**| The image file to upload | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**imageTransformName** | **string**| ID or name of the deployed image transform | 
+**file** | ***os.File*****os.File**| The image file to upload | 
 
 ### Return type
 
@@ -3177,60 +3746,72 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TransformprocessGet**
-> interface{} TransformprocessGet(ctx, deploymentName, versionName, transformName)
+
+## TransformprocessGet
+
+> map[string]interface{} TransformprocessGet(ctx, deploymentName, versionName, transformName)
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **transformName** | **string**| ID or name of the deployed transform | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**transformName** | **string**| ID or name of the deployed transform | 
 
 ### Return type
 
-[**interface{}**](interface{}.md)
+[**map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **TransformprocessPost**
-> interface{} TransformprocessPost(ctx, contentType, deploymentName, versionName, transformName, optional)
+
+## TransformprocessPost
+
+> map[string]interface{} TransformprocessPost(ctx, contentType, deploymentName, versionName, transformName, optional)
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **contentType** | **string**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
-  **deploymentName** | **string**| Name of the deployment group | 
-  **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
-  **transformName** | **string**| ID or name of the deployed transform | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**contentType** | **string**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
+**deploymentName** | **string**| Name of the deployment group | 
+**versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to default]
+**transformName** | **string**| ID or name of the deployed transform | 
  **optional** | ***TransformprocessPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a TransformprocessPostOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3242,29 +3823,34 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**interface{}**](interface{}.md)
+[**map[string]interface{}**](map[string]interface{}.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateAuthPolicy**
+
+## UpdateAuthPolicy
+
 > AuthPolicy UpdateAuthPolicy(ctx, authPolicy)
 Update auth policy
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **authPolicy** | [**AuthPolicy**](AuthPolicy.md)| Auth policy object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**authPolicy** | [**AuthPolicy**](AuthPolicy.md)| Auth policy object | 
 
 ### Return type
 
@@ -3272,26 +3858,31 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateBestModelForExperiment**
+
+## UpdateBestModelForExperiment
+
 > ExperimentEntity UpdateBestModelForExperiment(ctx, modelHistoryServerId, updateBestModel)
 Updates the best model for an experiment
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **updateBestModel** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**updateBestModel** | [**UpdateBestModel**](UpdateBestModel.md)| Model encapsulating the experiment id to update and the best model id. | 
 
 ### Return type
 
@@ -3299,27 +3890,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateExperiment**
+
+## UpdateExperiment
+
 > ExperimentEntity UpdateExperiment(ctx, modelHistoryServerId, experimentID, experimentEntity)
 Updates an experiment, given an experiment entity
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **experimentID** | **string**| the GUID of the experiment to update | 
-  **experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**experimentID** | **string**| the GUID of the experiment to update | 
+**experimentEntity** | [**ExperimentEntity**](ExperimentEntity.md)| The experiment entity to update with | 
 
 ### Return type
 
@@ -3327,27 +3923,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateModelHistory**
+
+## UpdateModelHistory
+
 > ModelHistoryEntity UpdateModelHistory(ctx, modelHistoryServerId, modelHistoryID, updateModelHistoryRequest)
 Update a model history / workspace
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
-  **modelHistoryID** | **string**| the GUID of the model history / workspace to update | 
-  **updateModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**modelHistoryServerId** | **string**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
+**modelHistoryID** | **string**| the GUID of the model history / workspace to update | 
+**updateModelHistoryRequest** | [**AddModelHistoryRequest**](AddModelHistoryRequest.md)| The model history request object | 
 
 ### Return type
 
@@ -3355,25 +3956,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateUser**
+
+## UpdateUser
+
 > User UpdateUser(ctx, user)
 Update a user
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **user** | [**User**](User.md)| User details | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**user** | [**User**](User.md)| User details | 
 
 ### Return type
 
@@ -3381,32 +3987,39 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **Upload**
+
+## Upload
+
 > FileUploadList Upload(ctx, optional)
 Upload a model file to SKIL for import.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
  **optional** | ***UploadOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
+
 Optional parameters are passed through a pointer to a UploadOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **optional.Interface of *os.File**| The file to upload. | 
+ **file** | **optional.Interface of *os.File****optional.*os.File**| The file to upload. | 
 
 ### Return type
 
@@ -3414,12 +4027,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

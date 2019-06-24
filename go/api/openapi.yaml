@@ -1,0 +1,5538 @@
+openapi: 3.0.1
+info:
+  description: Endpoints API for different services in SKIL
+  title: Endpoints
+  version: 1.2.2
+servers:
+- url: http://localhost:9008/
+security:
+- api_key: []
+- x_api_key: []
+tags:
+- description: Users endpoints.
+  name: User
+- description: Utilities endpoints.
+  name: Utilities
+- description: Model History endpoints.
+  name: ModelHistory
+- description: Deployment endpoints.
+  name: Deployment
+- description: Transform endpoints.
+  name: Transform
+- description: Inference endpoints.
+  name: Inference
+- description: Inference endpoints for model server V2.
+  name: InferenceV2
+- description: Retrain endpoints for model server V2.
+  name: RetrainV2
+- description: Memory mapped endpoints for model server V2.
+  name: MemMapV2
+- description: KNN endpoints.
+  name: KNN
+- description: Resource Endpoints.
+  name: Resource
+- description: Job endpoints.
+  name: Job
+- description: Default tag containing all of the endpoints.
+  name: Default
+paths:
+  /login:
+    post:
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        description: Login credentials.
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+          description: successful operation
+        401:
+          content: {}
+          description: Invalid credentials
+      summary: Post JSON credentials and obtain a JWT authorization token.
+      tags:
+      - User
+      - Default
+      x-codegen-request-body-name: LoginRequest
+  /user/register:
+    post:
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: User details
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: User added successfully.
+      summary: Register a new user
+      tags:
+      - User
+      - Default
+      x-codegen-request-body-name: User
+  /user/{userId}:
+    get:
+      operationId: getUser
+      parameters:
+      - description: User's ID
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Successfully received the user details
+      summary: Get a user by user ID
+      tags:
+      - User
+      - Default
+  /user:
+    put:
+      operationId: updateUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: User details
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: User updated successfully.
+      summary: Update a user
+      tags:
+      - User
+      - Default
+      x-codegen-request-body-name: User
+  /user/{userId}/password:
+    post:
+      operationId: changeUserPassword
+      parameters:
+      - description: User's ID
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePasswordRequest'
+        description: Password details.
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: Updated user.
+      summary: Change user's password
+      tags:
+      - User
+      - Default
+      x-codegen-request-body-name: ChangePasswordRequest
+  /auth/policy:
+    get:
+      operationId: getAuthPolicy
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthPolicy'
+          description: AuthPolicy object
+      summary: Get auth policy
+      tags:
+      - User
+      - Default
+    put:
+      operationId: updateAuthPolicy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthPolicy'
+        description: Auth policy object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthPolicy'
+          description: Update AuthPolicy object
+      summary: Update auth policy
+      tags:
+      - User
+      - Default
+      x-codegen-request-body-name: AuthPolicy
+  /auth/token:
+    post:
+      operationId: generateAuthToken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenGenerateRequest'
+        description: Auth token details.
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: Generated auth token.
+      summary: Generate new auth token
+      tags:
+      - User
+      - Default
+      x-codegen-request-body-name: TokenGenerateRequest
+  /auth/{userId}/tokens:
+    get:
+      operationId: getUserAuthTokens
+      parameters:
+      - description: User's ID
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+      - description: True if you only want the valid tokens.
+        in: query
+        name: onlyValid
+        schema:
+          type: boolean
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Token'
+                type: array
+          description: Successfully received the user auth tokens.
+      summary: Get auth tokens for a user.
+      tags:
+      - User
+      - Default
+  /auth/token/{tokenId}:
+    delete:
+      operationId: revokeUserToken
+      parameters:
+      - description: Token ID
+        in: path
+        name: tokenId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: The revoked token object.
+      summary: Revoke a user token.
+      tags:
+      - User
+      - Default
+  /security/users:
+    get:
+      operationId: getUsers
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User'
+                type: array
+          description: Successfully received all users.
+      summary: Get all users.
+      tags:
+      - User
+      - Default
+  /security/roles:
+    get:
+      operationId: getRoles
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Role'
+                type: array
+          description: Successfully received all roles.
+      summary: Get all roles.
+      tags:
+      - User
+      - Default
+  /api/upload/model:
+    post:
+      operationId: upload
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The file to upload.
+                  format: binary
+                  type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileUploadList'
+          description: successful operation
+      summary: Upload a model file to SKIL for import.
+      tags:
+      - Utilities
+      - Default
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformprocess:
+    get:
+      operationId: transformprocess_get
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed transform
+        in: path
+        name: transformName
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+          description: the deployed transform process
+        400:
+          content: {}
+          description: the transform process is probably null
+        500:
+          content: {}
+          description: internal server error
+      summary: Gets the JSON string of the deployed transform process (CSV or Image)
+      tags:
+      - Transform
+      - Default
+    post:
+      operationId: transformprocess_post
+      parameters:
+      - description: The `Content-Type` should be `application/json`.
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          type: string
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed transform
+        in: path
+        name: transformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        description: The transform process to set (Specify a JSON string here).
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+          description: transform process set successfully
+        500:
+          content: {}
+          description: internal server error
+      summary: Sets the deployed (CSV or Image) transform process through the provided
+        JSON string
+      tags:
+      - Transform
+      - Default
+      x-codegen-request-body-name: TransformProcess
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincremental:
+    post:
+      description: Takes a SingleCSVRecord object and transforms it into the desired
+        format
+      operationId: transformincremental_csv
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed transform
+        in: path
+        name: transformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SingleCSVRecord'
+        description: The input record array
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SingleCSVRecord'
+          description: Array transformed and returned successfully
+        500:
+          content: {}
+          description: internal server error during transforming the array
+      summary: Takes SingleCSVRecord as input and returns the transformed array as
+        SingleCSVRecord
+      tags:
+      - Transform
+      - Default
+      x-codegen-request-body-name: SingleCSVRecord
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transform:
+    post:
+      description: Takes a batch of SingleCSVRecord object and transforms it into
+        the desired format
+      operationId: transform_csv
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed transform
+        in: path
+        name: transformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchCSVRecord'
+        description: The input batch of record arrays
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchCSVRecord'
+          description: array transformed and returned successfully
+        500:
+          content: {}
+          description: internal server error during transforming the array
+      summary: Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+      tags:
+      - Transform
+      - Default
+      x-codegen-request-body-name: BatchCSVRecord
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformincrementalarray:
+    post:
+      operationId: transformincrementalarray
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed transform
+        in: path
+        name: transformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SingleRecord'
+        description: The input record array
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base64NDArrayBody'
+          description: array transformed and returned successfully
+        500:
+          content: {}
+          description: internal server error during transforming the array
+      summary: Same as /transformincremental but returns Base64NDArrayBody.
+      tags:
+      - Transform
+      - Default
+      x-codegen-request-body-name: SingleRecord
+  /endpoints/{deploymentName}/datavec/{transformName}/{versionName}/transformarray:
+    post:
+      operationId: transformarray
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed transform
+        in: path
+        name: transformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchRecord'
+        description: The input batch of record arrays
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base64NDArrayBody'
+          description: array transformed and returned successfully
+        500:
+          content: {}
+          description: internal server error during transforming the array
+      summary: Takes a batch input arrays and transforms it
+      tags:
+      - Transform
+      - Default
+      x-codegen-request-body-name: BatchRecord
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformincrementalimage:
+    post:
+      description: Takes a single multipart image file and transforms it into the
+        desired format and returns it in the form of Base64NDArrayBody
+      operationId: transformincrementalimage
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed image transform
+        in: path
+        name: imageTransformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The image file to upload
+                  format: binary
+                  type: string
+              required:
+              - file
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base64NDArrayBody'
+          description: array transformed and returned successfully
+        400:
+          content: {}
+          description: No uploaded file found or the file couldn't be loaded
+        500:
+          content: {}
+          description: internal server error during transforming the array
+      summary: Takes a single multipart image file to transform and returns Base64NDArrayBody
+      tags:
+      - Transform
+      - Default
+  /endpoints/{deploymentName}/datavec/{imageTransformName}/{versionName}/transformimage:
+    post:
+      description: Takes multiple multipart image file and transforms it into the
+        desired format and returns it in the form of Base64NDArrayBody
+      operationId: transformimage
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed image transform
+        in: path
+        name: imageTransformName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                files:
+                  description: The image files to upload
+                  items:
+                    format: binary
+                    type: string
+                  type: array
+              required:
+              - files
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base64NDArrayBody'
+          description: array transformed and returned successfully
+        400:
+          content: {}
+          description: No uploaded files found
+        500:
+          content: {}
+          description: internal server error during transforming the array
+      summary: Takes multiple multipart image file to transform and returns Base64NDArrayBody
+      tags:
+      - Transform
+      - Default
+  /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knn:
+    post:
+      description: Runs knn on the given index with the given k (note that this is
+        for data already within the existing dataset not new data)
+      operationId: knn
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed knn
+        in: path
+        name: knnName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NearestNeighborRequest'
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearestNeighborsResults'
+          description: successful operation
+        400:
+          content: {}
+          description: Invalid input
+        500:
+          content: {}
+          description: Internal server error
+      summary: Runs knn on the given index with the given k
+      tags:
+      - KNN
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/knn/{knnName}/{versionName}/knnnew:
+    post:
+      operationId: knnnew
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed knn
+        in: path
+        name: knnName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Base64NDArrayBodyKNN'
+        description: The input NDArray
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NearestNeighborsResults'
+          description: successful operation
+        400:
+          content: {}
+          description: Invalid input
+        500:
+          content: {}
+          description: Internal server error
+      summary: Run a k nearest neighbors search on a NEW data point
+      tags:
+      - KNN
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predict:
+    post:
+      operationId: predict
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prediction'
+        description: The input NDArray
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prediction'
+          description: successful operation
+        400:
+          content: {}
+          description: Invalid input
+        500:
+          content: {}
+          description: Invalid deployment or model name
+      summary: Run inference on the input array.
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictimage:
+    post:
+      operationId: predictimage
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                image:
+                  description: The file to upload.
+                  format: binary
+                  type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prediction'
+          description: successful operation
+        500:
+          content: {}
+          description: Error generating prediction
+      summary: Run inference on the input array, using input image file from multipart
+        form data.
+      tags:
+      - Inference
+      - Default
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict:
+    post:
+      description: Networks with multiple input/output are supported via this method.
+        A Normalizer will be used if needsPreProcessing is set to true. The output/returned
+        array of INDArray will be the raw predictions, and consequently this method
+        can be used for classification or regression networks, with any type of output
+        layer (standard, time series / RnnOutputLayer, etc).
+      operationId: multipredict
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MultiPredictRequest'
+        description: The multiple input arrays with mask inputs to run inferences
+          on
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiPredictResponse'
+          description: successful operation
+        500:
+          content: {}
+          description: Error generating prediction
+      summary: Get the output from the network, based on the given INDArray[] input
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage:
+    post:
+      description: Networks with multiple input/output are supported via this method.
+        A Normalizer will be used if needsPreProcessing is set to true. The output/returned
+        array of INDArray will be the raw predictions, and consequently this method
+        can be used for classification or regression networks, with any type of output
+        layer (standard, time series / RnnOutputLayer, etc).
+      operationId: multipredictimage
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The image file to run the prediction on
+                  format: binary
+                  type: string
+                id:
+                  description: The id of the request (could be self generated)
+                  type: string
+                needs_preprocessing:
+                  description: Whether or not the preprocessing is required (either
+                    'true' or 'false')
+                  type: boolean
+              required:
+              - file
+              - id
+              - needs_preprocessing
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiPredictResponse'
+          description: successful operation
+        500:
+          content: {}
+          description: Error generating prediction
+      summary: Get the output from the network using the given image file using the
+        /multipredict endpoint's method
+      tags:
+      - Inference
+      - Default
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classify:
+    post:
+      operationId: classify
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prediction'
+        description: The input NDArray
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassificationResult'
+          description: successful operation
+        400:
+          content: {}
+          description: Invalid input
+        500:
+          content: {}
+          description: Invalid deployment or model name
+      summary: Use the deployed model to classify the input
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyimage:
+    post:
+      operationId: classifyimage
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                image:
+                  description: The file to upload.
+                  format: binary
+                  type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassificationResult'
+          description: successful operation
+        500:
+          content: {}
+          description: Error generating classification
+      summary: Use the deployed model to classify the input, using input image file
+        from multipart form data.
+      tags:
+      - Inference
+      - Default
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray:
+    post:
+      operationId: classifyarray
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prediction'
+        description: The input NDArray
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base64NDArrayBody'
+          description: successful operation
+        400:
+          content: {}
+          description: Invalid input
+        500:
+          content: {}
+          description: Invalid deployment or model name
+      summary: Same as /classify but returns the output as Base64NDArrayBody
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify:
+    post:
+      operationId: multiclassify
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prediction'
+        description: The input NDArray
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultiClassClassificationResult'
+          description: successful operation
+        400:
+          content: {}
+          description: Invalid input
+        500:
+          content: {}
+          description: Invalid deployment or model name
+      summary: Represents all of the labels for a given classification
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelset:
+    post:
+      operationId: modelset
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The model file to upload (.pb file)
+                  format: binary
+                  type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelStatus'
+          description: Model set successfully
+        500:
+          content: {}
+          description: Error setting model
+      summary: Set the model to be served
+      tags:
+      - Inference
+      - Default
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate:
+    post:
+      operationId: modelupdate
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The model file to update with (.pb file)
+                  format: binary
+                  type: string
+              required:
+              - file
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelStatus'
+          description: Model updated successfully or model update failed
+        500:
+          content: {}
+          description: Error updating model
+      summary: Update the model to be served
+      tags:
+      - Inference
+      - Default
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray:
+    post:
+      operationId: jsonarray
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Prediction'
+        description: The input NDArray
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonArrayResponse'
+          description: successful operation
+        500:
+          content: {}
+          description: Error generating array prediction
+      summary: Run inference on the input and returns it as a JsonArrayResponse
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess:
+    post:
+      operationId: predictwithpreprocess
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+        description: The input array
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prediction'
+          description: successful operation
+        500:
+          content: {}
+          description: Error executing predictPreProcess
+      summary: Preprocesses the input and run inference on it
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson:
+    post:
+      operationId: predictwithpreprocessjson
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+        description: The input array
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonArrayResponse'
+          description: successful operation
+        500:
+          content: {}
+          description: Error executing predictPreProcessJson
+      summary: Preprocesses the input and run inference on it and returns it as a
+        JsonArrayResponse
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/logs:
+    post:
+      operationId: logs
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogRequest'
+        description: The log object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogBatch'
+          description: Logs obtained successfully
+        500:
+          content: {}
+          description: Error retrieving logs
+      summary: Get logs
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: LogRequest
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/logfilepath:
+    get:
+      operationId: logfilepath
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            text:
+              schema:
+                example: log_file_path
+                type: string
+          description: the retrieved log file path
+        500:
+          content: {}
+          description: Error retrieving log file path
+      summary: Get logs file path
+      tags:
+      - Inference
+      - Default
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/meta:
+    get:
+      operationId: meta_get
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaData'
+          description: The meta data details
+      summary: this method can be used to get the meta data for the current model
+        which set to the server
+      tags:
+      - Inference
+      - Default
+    post:
+      operationId: meta_post
+      parameters:
+      - description: The `Content-Type` should always be `application/json`
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          type: string
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        description: the meta data object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaData'
+          description: the meta data object that was set
+      summary: This method can be used to set meta data for the current model which
+        is set to the server
+      tags:
+      - Inference
+      - Default
+      x-codegen-request-body-name: body
+  /endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects:
+    post:
+      operationId: detectobjects
+      parameters:
+      - description: Name of the deployment group
+        in: path
+        name: deploymentName
+        required: true
+        schema:
+          type: string
+      - description: Version name of the endpoint. The default value is "default"
+        in: path
+        name: versionName
+        required: true
+        schema:
+          default: default
+          type: string
+      - description: ID or name of the deployed model
+        in: path
+        name: modelName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                id:
+                  description: the GUID for mapping the results in the detections
+                  type: string
+                needsPreprocessing:
+                  description: (true) if the image needs preprocessing
+                  type: boolean
+                threshold:
+                  description: A threshold, indicating the required surety for detecting
+                    a bounding box. For example, a threshold of 0.1 might give thousand
+                    bounding boxes for an image and a threshold of 0.99 might give
+                    none.
+                  format: float
+                  type: number
+                file:
+                  description: the image file to detect objects from
+                  format: binary
+                  type: string
+              required:
+              - file
+              - id
+              - needsPreprocessing
+              - threshold
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetectionResult'
+          description: the detected objects in the given input
+      summary: Detect the objects, given a (input) prediction request
+      tags:
+      - Inference
+      - Default
+  /deployments:
+    get:
+      operationId: deployments
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DeploymentResponse'
+                type: array
+          description: List of the deployments retrieved successfully
+      summary: Get a list of deployments
+      tags:
+      - Deployment
+      - Default
+  /deployment/{deploymentId}:
+    delete:
+      operationId: deployment_delete
+      parameters:
+      - description: Id of the deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: The status of the removed deployment
+      summary: Delete a deployment by id
+      tags:
+      - Deployment
+      - Default
+    get:
+      operationId: deployment_get
+      parameters:
+      - description: Id of the deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentResponse'
+          description: The deployment details
+      summary: Get a deployment details by id
+      tags:
+      - Deployment
+      - Default
+  /deployment:
+    post:
+      operationId: deploymentCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeploymentRequest'
+        description: the deployment request
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentResponse'
+          description: the added deployment
+        500:
+          content: {}
+          description: Error creating deployment
+      summary: Create a new deployment group.
+      tags:
+      - Deployment
+      - Default
+      x-codegen-request-body-name: body
+  /deployment/{deploymentId}/models:
+    get:
+      operationId: models
+      parameters:
+      - description: ID deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelEntity'
+                type: array
+          description: Retrieved model list
+      summary: Retrieve a list of all the deployed models given a deployment id
+      tags:
+      - Deployment
+      - Default
+  /deployment/{deploymentId}/model:
+    post:
+      operationId: deployModel
+      parameters:
+      - description: ID deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportModelRequest'
+        description: the model import request
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelEntity'
+          description: the deployed model
+      summary: Deploy a model in a deployment group.
+      tags:
+      - Deployment
+      - Default
+      x-codegen-request-body-name: body
+  /deployment/{deploymentId}/model/{modelId}:
+    delete:
+      operationId: delete_model
+      parameters:
+      - description: ID deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      - description: the id of the deployed model
+        in: path
+        name: modelId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: the deleted model status
+      summary: Delete a model by deployment and model id
+      tags:
+      - Deployment
+      - Default
+    get:
+      operationId: getModelDetails
+      parameters:
+      - description: ID deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      - description: the id of the deployed model
+        in: path
+        name: modelId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelEntity'
+          description: A model entity
+      summary: Get model details
+      tags:
+      - Deployment
+      - Default
+    post:
+      operationId: reimportModel
+      parameters:
+      - description: ID deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      - description: the id of the deployed model
+        in: path
+        name: modelId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportModelRequest'
+        description: the deployment request
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelEntity'
+          description: the reimported model entity
+      summary: Reimport a model to a previous deployed model in a deployment
+      tags:
+      - Deployment
+      - Default
+      x-codegen-request-body-name: body
+  /deployment/{deploymentId}/model/{modelId}/state:
+    post:
+      operationId: modelStateChange
+      parameters:
+      - description: ID deployment group
+        in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+      - description: the id of the deployed model
+        in: path
+        name: modelId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetState'
+        description: the model state object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelEntity'
+          description: the model entity with its state changed
+      summary: Modify the state (start/stop) of a deployed model
+      tags:
+      - Deployment
+      - Default
+      x-codegen-request-body-name: body
+  /rpc/{modelHistoryServerId}/model/revision/{modelHistoryID}:
+    get:
+      operationId: getModelHistory
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: GUID of the model history to get information of.
+        in: path
+        name: modelHistoryID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelHistoryEntity'
+          description: Model history entity
+      summary: Gets a model history, given its ID
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/modelhistory:
+    post:
+      operationId: addModelHistory
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddModelHistoryRequest'
+        description: The model history request object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelHistoryEntity'
+          description: The added model history entity
+      summary: Add a model history / workspace
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: addModelHistoryRequest
+  /rpc/{modelHistoryServerId}/modelhistory/{modelHistoryID}:
+    delete:
+      operationId: deleteModelHistory
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the model history / workspace to delete
+        in: path
+        name: modelHistoryID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Workspace deleted
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: The specified Workspace no longer exists
+      summary: Deletes a model history / workspace, given its ID
+      tags:
+      - ModelHistory
+      - Default
+    post:
+      operationId: updateModelHistory
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the model history / workspace to update
+        in: path
+        name: modelHistoryID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddModelHistoryRequest'
+        description: The model history request object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelHistoryEntity'
+          description: The updated model history entity
+      summary: Update a model history / workspace
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: updateModelHistoryRequest
+  /rpc/{modelHistoryServerId}/experiments:
+    get:
+      operationId: listAllExperiments
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExperimentEntity'
+                type: array
+          description: List of all the experiment entities.
+      summary: List all of the experiments in every model history / workspace
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/experiments/{modelHistoryID}:
+    get:
+      operationId: getExperimentsForModelHistory
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the model history / workspace
+        in: path
+        name: modelHistoryID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExperimentEntity'
+                type: array
+          description: List of all the experiment entities in a model history
+      summary: Obtain all experiments for a model history / workspace
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}:
+    delete:
+      operationId: deleteExperiment
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the experiment to delete
+        in: path
+        name: experimentID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Experiment deleted successfully
+        400:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: Experiment no longer exists
+      summary: Deletes an experiment, given an experiment entity
+      tags:
+      - ModelHistory
+      - Default
+    get:
+      operationId: getExperiment
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the experiment to obtain
+        in: path
+        name: experimentID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentEntity'
+          description: Experiment Entity
+      summary: Obtain an experiment's details, given its ID
+      tags:
+      - ModelHistory
+      - Default
+    put:
+      operationId: updateExperiment
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the experiment to update
+        in: path
+        name: experimentID
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExperimentEntity'
+        description: The experiment entity to update with
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentEntity'
+          description: The updated experiment entity.
+      summary: Updates an experiment, given an experiment entity
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: experimentEntity
+  /rpc/{modelHistoryServerId}/experiment:
+    post:
+      operationId: addExperiment
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExperimentEntity'
+        description: The experiment entity to add
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentEntity'
+          description: The added experiment entity.
+      summary: Add an experiment, given an experiment entity
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: experimentEntity
+  /rpc/{modelHistoryServerId}/experiment/best:
+    post:
+      operationId: updateBestModelForExperiment
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBestModel'
+        description: Model encapsulating the experiment id to update and the best
+          model id.
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExperimentEntity'
+          description: The updated experiment entity.
+      summary: Updates the best model for an experiment
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: updateBestModel
+  /rpc/{modelHistoryServerId}/experiment/{experimentID}/models:
+    get:
+      operationId: getModelsForExperiment
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: the GUID of the experiment
+        in: path
+        name: experimentID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ModelInstanceEntity'
+                type: array
+          description: List of all the models for the specified experiment
+      summary: Obtain a list of all the models for an experiment
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/model/{modelInstanceID}:
+    delete:
+      operationId: deleteModelInstance
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: GUID of the model instance to delete.
+        in: path
+        name: modelInstanceID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Empty content
+      summary: Deletes a model instance, given its ID
+      tags:
+      - ModelHistory
+      - Default
+    get:
+      operationId: getModelInstance
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: GUID of the model instance to get information of.
+        in: path
+        name: modelInstanceID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelInstanceEntity'
+          description: Model instance entity
+      summary: Gets a model instance, given its ID
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/model:
+    post:
+      operationId: addModelInstance
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelInstanceEntity'
+        description: The object encapsulating the model instance id and evaluation
+          type to aggregate
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelInstanceEntity'
+          description: The added model instance entity
+      summary: Adds a model
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: modelInstanceEntity
+  /rpc/{modelHistoryServerId}/model/best:
+    post:
+      operationId: getBestModelAmongModelIds
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BestModel'
+        description: Object encapsulating the model ids, eval type and column metric
+          name
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelInstanceEntity'
+          description: The best model instance entity
+      summary: Gets the best model among the given model instance IDs, based on the
+        evaluation type and column metric
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: bestModel
+  /rpc/{modelHistoryServerId}/model/revisions:
+    post:
+      operationId: createModelHistory
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelHistoryEntity'
+        description: The model history entity
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelHistoryEntity'
+          description: The created model history
+      summary: Creates model History
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: modelHistoryEntity
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/:
+    post:
+      operationId: addEvaluationResult
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationResultsEntity'
+        description: The evaluation result entity
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationResultsEntity'
+          description: The added evaluation result entity
+      summary: Adds an evaluation result
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: evaluationResultsEntity
+  /rpc/{modelHistoryServerId}/model/revisions/evaluations/{modelInstanceID}:
+    get:
+      operationId: getEvaluationForModelID
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: GUID of the model instance to get evaluation results for.
+        in: path
+        name: modelInstanceID
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EvaluationResultsEntity'
+                type: array
+          description: List of evaluation result entities
+      summary: Gets the list of evaluation results entity, given a model instance
+        ID
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/model/aggregateresults:
+    post:
+      operationId: aggregateModelResults
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AggregatePrediction'
+        description: The object encapsulating the model instance id and evaluation
+          type to aggregate
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationResultsEntity'
+          description: Evaluation result entity contained the aggregated/merged results
+      summary: Aggregates the evaluaition results of a model instance, based on the
+        evaluation type
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: aggregatePrediction
+  /rpc/{modelHistoryServerId}/model/minibatch/{minibatchId}:
+    get:
+      operationId: getMinibatch
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: The GUID of the minibatch
+        in: path
+        name: minibatchId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MinibatchEntity'
+          description: The minibatch entity
+      summary: Gets a minibatch for the model
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/model/minibatch:
+    post:
+      operationId: addMinibatch
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MinibatchEntity'
+        description: The minibatch entity to add
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MinibatchEntity'
+          description: The added minibatch entity
+      summary: Adds a minibatch
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: minibatchEntity
+  /rpc/{modelHistoryServerId}/model/example/{minibatchId}:
+    get:
+      operationId: getExamplesForMinibatch
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      - description: The GUID of the minibatch
+        in: path
+        name: minibatchId
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ExampleEntity'
+                type: array
+          description: List of the associated examples with the minibatch
+      summary: Gets all the examples for a minibatch ID
+      tags:
+      - ModelHistory
+      - Default
+  /rpc/{modelHistoryServerId}/model/example:
+    post:
+      operationId: addExampleToMinibatch
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExampleEntity'
+        description: The example to add to the minibatch
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExampleEntity'
+          description: The added example entity
+      summary: Adds an example to a minibatch
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: exampleEntity
+  /rpc/{modelHistoryServerId}/model/exampleForBatch:
+    post:
+      operationId: addExampleForBatch
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddExampleRequest'
+        description: The add example request, encapsulating minibatch details and
+          examples batch size
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddExampleRequest'
+          description: The add example request
+      summary: Adds a number of examples to a minibatch ID given an AddExampleRequest.
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: AddExampleRequest
+  /rpc/{modelHistoryServerId}/model/feedback:
+    post:
+      operationId: addModelFeedback
+      parameters:
+      - description: Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil
+          services` in a console to find out the model history server GUID.
+        in: path
+        name: modelHistoryServerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelFeedBackRequest'
+        description: The model feedback request object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelFeedBackRequest'
+          description: The model feedback request object
+      summary: Adds an evaluation feedback to the model against a given minibatch
+        id.
+      tags:
+      - ModelHistory
+      - Default
+      x-codegen-request-body-name: ModelFeedBackRequest
+  /resources/resource/{resourceId}:
+    get:
+      operationId: getResourceById
+      parameters:
+      - description: ID of the resource
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+          description: Resource Object
+      summary: Get the resource with the specified resource ID
+      tags:
+      - Resource
+      - Default
+  /resources/details/{resourceId}:
+    get:
+      description: |
+        Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information
+        about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource'
+        object contains only general information (name, id, type, subtype).
+      operationId: getResourceDetailsById
+      parameters:
+      - description: ID of the resource
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+          description: One of the resource details object
+      summary: Get the resource details with the specified resource ID
+      tags:
+      - Resource
+      - Default
+  /resources/resources:
+    get:
+      operationId: getResources
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Resource'
+                type: array
+          description: List of Resource Objects
+      summary: A list of all known/registered resources, of all types
+      tags:
+      - Resource
+      - Default
+  /resources/resources/type/{resourceType}:
+    get:
+      operationId: getResourceByType
+      parameters:
+      - description: Type of the resource
+        in: path
+        name: resourceType
+        required: true
+        schema:
+          enum:
+          - COMPUTE
+          - STORAGE
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Resource'
+                type: array
+          description: List of Resource Objects by specified type
+      summary: Get all the resources with the specified resource type
+      tags:
+      - Resource
+      - Default
+  /resources/resources/subtype/{resourceSubType}:
+    get:
+      operationId: getResourceBySubType
+      parameters:
+      - description: Subtype of the resource
+        in: path
+        name: resourceSubType
+        required: true
+        schema:
+          enum:
+          - EMR
+          - S3
+          - GoogleStorage
+          - DataProc
+          - HDInsight
+          - AzureStorage
+          - HDFS
+          - YARN
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Resource'
+                type: array
+          description: List of Resource Objects by specified subtype
+      summary: Get all the resources with the specified resource subtype
+      tags:
+      - Resource
+      - Default
+  /resources/add/resource:
+    post:
+      operationId: addResource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddResourceRequest'
+        description: The Add resource request object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+          description: One of the resource details object
+      summary: Adds a resource
+      tags:
+      - Resource
+      - Default
+      x-codegen-request-body-name: AddResourceRequest
+  /resources/remove/resource/{resourceId}:
+    delete:
+      operationId: deleteResourceById
+      parameters:
+      - description: ID of the resource
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+          description: Resource Object
+      summary: Delete the resource with the specified resource ID
+      tags:
+      - Resource
+      - Default
+  /resources/group/{resourceGroupId}:
+    get:
+      operationId: getResourceGroupById
+      parameters:
+      - description: ID of the resource group
+        in: path
+        name: resourceGroupId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceGroup'
+          description: Resource Group Object
+      summary: Get the resource group with the specified resource group ID
+      tags:
+      - Resource
+      - Default
+  /resources/groups:
+    get:
+      operationId: getResourceGroups
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ResourceGroup'
+                type: array
+          description: Resource Group Object
+      summary: Get a list of all the resource groups
+      tags:
+      - Resource
+      - Default
+  /resources/add/group:
+    post:
+      operationId: addResourceGroup
+      requestBody:
+        content:
+          text/plain; charset=utf-8:
+            schema:
+              type: string
+        description: Name of the resource group
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceGroup'
+          description: The created resource group object
+      summary: Adds a resource group
+      tags:
+      - Resource
+      - Default
+      x-codegen-request-body-name: groupName
+  /resources/remove/group/{resourceGroupId}:
+    delete:
+      operationId: deleteResourceGroupById
+      parameters:
+      - description: ID of the resource group
+        in: path
+        name: resourceGroupId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceGroup'
+          description: Resource Group Object
+      summary: Delete the resource group with the specified resource group ID
+      tags:
+      - Resource
+      - Default
+  /resources/add/resourcetogroup/{resourceGroupId}/{resourceId}:
+    get:
+      operationId: addResourceToGroup
+      parameters:
+      - description: ID of the resource group
+        in: path
+        name: resourceGroupId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: ID of the resource
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content: {}
+          description: Successfully added resource to the resource group
+      summary: Adds a resource to a resource group
+      tags:
+      - Resource
+      - Default
+  /resources/remove/resourcefromgroup/{resourceGroupId}/{resourceId}:
+    get:
+      operationId: deleteResourceFromGroup
+      parameters:
+      - description: ID of the resource group
+        in: path
+        name: resourceGroupId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      - description: ID of the resource
+        in: path
+        name: resourceId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content: {}
+          description: Successfully removed resource from the resource group
+      summary: Removes a resource from a resource group
+      tags:
+      - Resource
+      - Default
+  /resources/group/{resourceGroupId}/resources:
+    get:
+      operationId: getResourcesFromGroup
+      parameters:
+      - description: ID of the resource group
+        in: path
+        name: resourceGroupId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Resource'
+                type: array
+          description: List of resources from a resource group
+      summary: Get all resources from a resource group
+      tags:
+      - Resource
+      - Default
+  /resources/credentials/{credentialId}:
+    delete:
+      operationId: deleteCredentialsById
+      parameters:
+      - description: Credentials ID
+        in: path
+        name: credentialId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content: {}
+          description: Credentials successfully deteled
+      summary: Delete credentials given an ID
+      tags:
+      - Resource
+      - Default
+    get:
+      operationId: getCredentialsById
+      parameters:
+      - description: Credentials ID
+        in: path
+        name: credentialId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCredentials'
+          description: Credentials Object
+      summary: Get credentials given an ID
+      tags:
+      - Resource
+      - Default
+  /resources/credentials:
+    post:
+      operationId: addCredentials
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddCredentialsRequest'
+        description: Add credentials request object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceCredentials'
+          description: The created credentials object
+      summary: Adds credentials
+      tags:
+      - Resource
+      - Default
+      x-codegen-request-body-name: AddCredentialsRequest
+  /jobs/{jobIdOrType}:
+    delete:
+      operationId: deleteJobById
+      parameters:
+      - description: Job ID
+        in: path
+        name: jobIdOrType
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content: {}
+          description: Successfully deleted a job
+      summary: Deletes a job given its ID
+      tags:
+      - Job
+      - Default
+    get:
+      operationId: getJobById
+      parameters:
+      - description: Job ID
+        in: path
+        name: jobIdOrType
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobEntity'
+          description: Job entity Object
+      summary: Get a job by its ID
+      tags:
+      - Job
+      - Default
+    post:
+      operationId: createJob
+      parameters:
+      - description: Job Type
+        in: path
+        name: jobIdOrType
+        required: true
+        schema:
+          enum:
+          - TRAINING
+          - INFERENCE
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateJobRequest'
+        description: Create job request object
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobEntity'
+          description: The created job entity object
+      summary: Create a job
+      tags:
+      - Job
+      - Default
+      x-codegen-request-body-name: CreateJobRequest
+  /jobs:
+    get:
+      operationId: getAllJobs
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/JobEntity'
+                type: array
+          description: List of job entity objects
+      summary: Get a list of all available jobs
+      tags:
+      - Job
+      - Default
+  /jobs/{jobId}/run:
+    post:
+      operationId: runAJob
+      parameters:
+      - description: Job ID
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobEntity'
+          description: The associated job entity object
+      summary: Start running an (already created) job on the remote resource
+      tags:
+      - Job
+      - Default
+  /jobs/{jobId}/refresh:
+    get:
+      operationId: refreshJobStatus
+      parameters:
+      - description: Job ID
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobEntity'
+          description: The associated job entity object
+      summary: Refresh the remote job status. Can be used for monitoring.
+      tags:
+      - Job
+      - Default
+  /jobs/{jobId}/outputfile:
+    post:
+      operationId: downloadJobOutputFile
+      parameters:
+      - description: Job ID
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: int64
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadOutputFileRequest'
+        description: Download output file request object
+        required: true
+      responses:
+        200:
+          content: {}
+          description: The file download has started
+      summary: Download the output file from the job's execution. This will ONLY work
+        if the job's run status is 'COMPLETE'.
+      tags:
+      - Job
+      - Default
+      x-codegen-request-body-name: DownloadOutputFileRequest
+  /{operation}/{inputTypeFile}:
+    post:
+      operationId: predictV2File
+      parameters:
+      - description: |
+          The operation to perform on the input data.
+        in: path
+        name: operation
+        required: true
+        schema:
+          enum:
+          - REGRESSION
+          - CLASSIFICATION
+          - RAW
+          - YOLO
+          - SSD
+          - RCNN
+          type: string
+      - description: |
+          Type of the input data.
+        in: path
+        name: inputTypeFile
+        required: true
+        schema:
+          enum:
+          - IMAGE
+          - NUMPY
+          - NDARRAY
+          - JSON
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                inputData:
+                  description: The input data to run inference on.
+                  format: binary
+                  type: string
+              required:
+              - inputData
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Input data returned a prediction.
+      summary: Runs inference based on the input data. Output is defined relative
+        to the output adapter specified.
+      tags:
+      - InferenceV2
+      - Default
+  /{operation}/{inputTypeJson}:
+    post:
+      operationId: predictV2Json
+      parameters:
+      - description: The `Content-Type` should always be `application/json`.
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          type: string
+      - description: |
+          The operation to perform on the input data.
+        in: path
+        name: operation
+        required: true
+        schema:
+          enum:
+          - REGRESSION
+          - CLASSIFICATION
+          - RAW
+          type: string
+      - description: |
+          Type of the input data.
+        in: path
+        name: inputTypeJson
+        required: true
+        schema:
+          enum:
+          - CSV
+          - DICTIONARY
+          - CSVPUBSUB
+          - DICTIONARYPUBSUB
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        description: The input data to run inference on. (Specify a JSON string here)
+        required: true
+      responses:
+        200:
+          content: {}
+          description: Input data returned a prediction.
+      summary: Runs inference based on the input data. Output is defined relative
+        to the output adapter specified.
+      tags:
+      - InferenceV2
+      - Default
+      x-codegen-request-body-name: inputData
+  /{operation}/{inputType}/error:
+    post:
+      description: |
+        These "error" endpoints are slower for inference, but will also ignore invalid rows
+        that are found. They will output skipped rows where errors were encountered so users can
+        fix problems with input data pipelines.
+      operationId: predictError
+      parameters:
+      - description: The `Content-Type` should always be `application/json`.
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          type: string
+      - description: Operation to perform on the input data.
+        in: path
+        name: operation
+        required: true
+        schema:
+          enum:
+          - REGRESSION
+          - CLASSIFICATION
+          - RAW
+          type: string
+      - description: Type of the input data.
+        in: path
+        name: inputType
+        required: true
+        schema:
+          enum:
+          - CSV
+          - DICTIONARY
+          - CSVPUBSUB
+          - DICTIONARYPUBSUB
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Input data returned a prediction along with the skipped, invalid
+            data rows
+      summary: Runs inference and find invalid rows based on the input data. Output
+        is defined relative to the output adapter specified.
+      tags:
+      - InferenceV2
+      - Default
+      x-codegen-request-body-name: inputData
+  /raw/{inputType}/{outputType}:
+    post:
+      operationId: rawPredictBinary
+      parameters:
+      - description: Input data type.
+        in: path
+        name: inputType
+        required: true
+        schema:
+          enum:
+          - IMAGE
+          - NUMPY
+          - NDARRAY
+          - JSON
+          type: string
+      - description: Binary output data type.
+        in: path
+        name: outputType
+        required: true
+        schema:
+          enum:
+          - ND4J
+          - NUMPY
+          - ARROW
+          - JSON
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                inputData:
+                  description: The input file to upload.
+                  format: binary
+                  type: string
+      responses:
+        200:
+          content: {}
+          description: Input data returned a prediction in raw binary file format.
+      summary: Runs inference based on the input data. Output is defined relative
+        to the output adapter specified.
+      tags:
+      - InferenceV2
+      - Default
+  /model:
+    get:
+      operationId: getCurrentModel
+      responses:
+        200:
+          content: {}
+          description: Returns the current model being used for retraining in the
+            form of a downloadable file.
+      summary: Returns the current model being used for retraining.
+      tags:
+      - RetrainV2
+      - Default
+  /feedback/{id}/json:
+    post:
+      operationId: addFeedbackJson
+      parameters:
+      - description: Batch ID to retrain the model with and get feedback for.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                items:
+                  format: double
+                  type: number
+                type: array
+              type: array
+        description: The associated labels (one-hot vectors) with the batch for retraining.
+        required: false
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponse'
+          description: The feedback response object
+      summary: Gets the retraining feedback for the given batch ID.
+      tags:
+      - RetrainV2
+      - Default
+      x-codegen-request-body-name: labels
+  /clear:
+    post:
+      operationId: clearState
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponse'
+          description: The feedback response object
+      summary: Clears the accumulated data for retraining.
+      tags:
+      - RetrainV2
+      - Default
+  /istraining:
+    get:
+      operationId: isTraining
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrainingStatus'
+          description: Returns whether the model is currently being trained or not.
+      summary: Get the retraining status
+      tags:
+      - RetrainV2
+      - Default
+  /lastevaluation:
+    get:
+      operationId: getLastEvaluation
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationResultsEntity'
+          description: Returns the last evaluation ran by the model.
+      summary: Get the last evaluation specifications from the current model.
+      tags:
+      - RetrainV2
+      - Default
+  /numrevisions:
+    get:
+      operationId: numRevisions
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevisionsWritten'
+          description: Returns the number of revisions for retraining of the model.
+      summary: Gets the number of retrained models written with retraining.
+      tags:
+      - RetrainV2
+      - Default
+  /accumulatedresults:
+    get:
+      operationId: accumulatedResults
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccumulatedResults'
+          description: Returns the accumulated results currently in ememory.
+      summary: Tells how many retraining examples have labels associated with them.
+      tags:
+      - RetrainV2
+      - Default
+  /rollback/{index}:
+    post:
+      operationId: rollback
+      parameters:
+      - description: Model revision index.
+        in: path
+        name: index
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollbackStatus'
+          description: Returns the status of the rollback.
+      summary: Rollback to a previous revision of the model.
+      tags:
+      - RetrainV2
+      - Default
+  /feedback/{id}/{type}:
+    post:
+      operationId: addFeedbackBinary
+      parameters:
+      - description: Batch ID to retrain the model with and get feedback for.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - description: The type of the labels array.
+        in: path
+        name: type
+        required: true
+        schema:
+          enum:
+          - numpy
+          - nd4j
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                file:
+                  description: The labels file to upload.
+                  format: binary
+                  type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponse'
+          description: The feedback response object
+      tags:
+      - RetrainV2
+      - Default
+  /array/{arrayType}:
+    post:
+      description: The array is specified through a file path, in the configuration
+        object, during model server deployment.
+      operationId: getArray
+      parameters:
+      - in: header
+        name: accept
+        required: true
+        schema:
+          enum:
+          - application/json
+          - application/octet-stream
+          type: string
+      - description: The format in which the memory mapped array is returned.
+        in: path
+        name: arrayType
+        required: true
+        schema:
+          enum:
+          - json
+          - numpy
+          - nd4j
+          type: string
+      responses:
+        200:
+          content: {}
+          description: Get the whole memory mapped array in the specified format.
+      summary: Get the memory mapped array based on the array type.
+      tags:
+      - MemMapV2
+      - Default
+  /array/indices/{arrayType}:
+    post:
+      operationId: getArrayIndices
+      parameters:
+      - description: The `Content-Type` should always be `application/json`.
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          type: string
+      - in: header
+        name: accept
+        required: true
+        schema:
+          enum:
+          - application/json
+          - application/octet-stream
+          type: string
+      - description: Format in which the memory mapped array is returned in.
+        in: path
+        name: arrayType
+        required: true
+        schema:
+          enum:
+          - json
+          - numpy
+          - nd4j
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        description: Input indices array
+        required: false
+      responses:
+        200:
+          content: {}
+          description: Returns the arrays given the indices.
+      summary: Get the memory mapped array indices based on the array type.
+      tags:
+      - MemMapV2
+      - Default
+      x-codegen-request-body-name: input
+  /array/range/{from}/{to}/{arrayType}:
+    post:
+      operationId: getArrayRange
+      parameters:
+      - in: header
+        name: accept
+        required: true
+        schema:
+          enum:
+          - application/json
+          - application/octet-stream
+          type: string
+      - description: Format in which the memory mapped array is returned in.
+        in: path
+        name: arrayType
+        required: true
+        schema:
+          enum:
+          - json
+          - numpy
+          - nd4j
+          type: string
+      - in: path
+        name: from
+        required: true
+        schema:
+          format: int32
+          type: integer
+      - in: path
+        name: to
+        required: true
+        schema:
+          format: int32
+          type: integer
+      responses:
+        200:
+          content: {}
+          description: Returns the arrays given the from/to indices
+      summary: Get the memory mapped array within a range based on the array type.
+      tags:
+      - MemMapV2
+      - Default
+components:
+  schemas:
+    TransformProcess:
+      type: object
+    SingleCSVRecord:
+      example:
+        values:
+        - values
+        - values
+      properties:
+        values:
+          items:
+            type: string
+          type: array
+      type: object
+    BatchCSVRecord:
+      example:
+        records:
+        - values:
+          - values
+          - values
+        - values:
+          - values
+          - values
+      properties:
+        records:
+          items:
+            $ref: '#/components/schemas/SingleCSVRecord'
+          type: array
+      type: object
+    ImageTransformProcess:
+      type: object
+    SingleRecord:
+      example:
+        values:
+        - values
+        - values
+        uri: file:///E:/Image/image.jpg
+      properties:
+        values:
+          items:
+            type: string
+          type: array
+        uri:
+          example: file:///E:/Image/image.jpg
+          type: string
+      type: object
+    BatchRecord:
+      example:
+        records:
+        - values:
+          - values
+          - values
+          uri: file:///E:/Image/image.jpg
+        - values:
+          - values
+          - values
+          uri: file:///E:/Image/image.jpg
+      properties:
+        records:
+          items:
+            $ref: '#/components/schemas/SingleRecord'
+          type: array
+      type: object
+    Base64NDArrayBody:
+      example:
+        ndarray: ndarray
+      properties:
+        ndarray:
+          type: string
+      type: object
+    Base64NDArrayBodyKNN:
+      properties:
+        ndarray:
+          description: the array to run the search on. Note that this must be a row
+            vector
+          type: string
+        k:
+          description: the number of results to retrieve
+          example: 2
+          type: integer
+        forceFillK:
+          description: If 'True' it will brute force search for running search relative
+            to a target but forced to fill the result list until the desired k is
+            matched.
+          example: false
+          type: boolean
+      type: object
+    NearestNeighborRequest:
+      example:
+        inputIndex: 3
+        k: 2
+      properties:
+        k:
+          description: the number of results
+          example: 2
+          type: integer
+        inputIndex:
+          description: the index of the EXISTING ndarray to run a search on
+          example: 3
+          type: integer
+      type: object
+    NearestNeighborsResult:
+      example:
+        distance: 1.0
+        index: 0
+        label: label
+      properties:
+        index:
+          example: 0
+          type: integer
+        distance:
+          example: 1.0
+          type: number
+        label:
+          type: string
+      type: object
+    NearestNeighborsResults:
+      example:
+        results:
+        - distance: 1.0
+          index: 0
+          label: label
+        - distance: 1.0
+          index: 0
+          label: label
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/NearestNeighborsResult'
+          type: array
+      type: object
+    ImportModelRequest:
+      example:
+        name: new_model
+        scale: 1
+        uri: my_deployment/model/new_model/v1
+        modelType: model
+        fileLocation: file:///var/skil/storage/models/d8...eb28.zip
+      properties:
+        name:
+          type: string
+        scale:
+          type: integer
+        uri:
+          items:
+            type: string
+          type: array
+        modelType:
+          type: string
+        fileLocation:
+          type: string
+        jvmArgs:
+          type: string
+        subType:
+          type: string
+        labelsFileLocation:
+          type: string
+        extraArgs:
+          type: string
+        etlJson:
+          type: string
+        inputNames:
+          items:
+            type: string
+          type: array
+        outputNames:
+          items:
+            type: string
+          type: array
+      type: object
+    DeploymentResponse:
+      example:
+        name: name
+        id: id
+        body:
+          models:
+          - name: name
+            scale: 0
+            id: id
+            uri:
+            - uri
+            - uri
+            status: status
+          - name: name
+            scale: 0
+            id: id
+            uri:
+            - uri
+            - uri
+            status: status
+          transforms:
+          - name: name
+            scale: 0
+            id: id
+            uri:
+            - uri
+            - uri
+            status: status
+          - name: name
+            scale: 0
+            id: id
+            uri:
+            - uri
+            - uri
+            status: status
+          knn:
+          - name: name
+            scale: 0
+            id: id
+            uri:
+            - uri
+            - uri
+            status: status
+          - name: name
+            scale: 0
+            id: id
+            uri:
+            - uri
+            - uri
+            status: status
+        deploymentSlug: deploymentSlug
+        status: status
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        deploymentSlug:
+          type: string
+        status:
+          type: string
+        body:
+          $ref: '#/components/schemas/DeploymentObjects'
+      type: object
+    DeploymentObjects:
+      example:
+        models:
+        - name: name
+          scale: 0
+          id: id
+          uri:
+          - uri
+          - uri
+          status: status
+        - name: name
+          scale: 0
+          id: id
+          uri:
+          - uri
+          - uri
+          status: status
+        transforms:
+        - name: name
+          scale: 0
+          id: id
+          uri:
+          - uri
+          - uri
+          status: status
+        - name: name
+          scale: 0
+          id: id
+          uri:
+          - uri
+          - uri
+          status: status
+        knn:
+        - name: name
+          scale: 0
+          id: id
+          uri:
+          - uri
+          - uri
+          status: status
+        - name: name
+          scale: 0
+          id: id
+          uri:
+          - uri
+          - uri
+          status: status
+      properties:
+        models:
+          items:
+            $ref: '#/components/schemas/ModelResponse'
+          type: array
+        transforms:
+          items:
+            $ref: '#/components/schemas/ModelResponse'
+          type: array
+        knn:
+          items:
+            $ref: '#/components/schemas/ModelResponse'
+          type: array
+      type: object
+    CreateDeploymentRequest:
+      example:
+        name: name
+      properties:
+        name:
+          description: name of the deployment
+          type: string
+      type: object
+    ModelEntity:
+      example:
+        launchPolicy: '{}'
+        created: 6
+        modelState: CREATED
+        scale: 5.637376656633329
+        modelType: transform
+        fileLocation: fileLocation
+        jvmArgs: jvmArgs
+        labelsFileLocation: labelsFileLocation
+        extraArgs: extraArgs
+        deploymentId: 5
+        name: name
+        subType: subType
+        id: 0
+        state: created
+        updated: 1
+      properties:
+        id:
+          format: int64
+          type: integer
+        created:
+          format: int64
+          type: integer
+        updated:
+          format: int64
+          type: integer
+        modelType:
+          enum:
+          - transform
+          - model
+          - knn
+          - modelv2
+          type: string
+        deploymentId:
+          format: int64
+          type: integer
+        name:
+          type: string
+        scale:
+          type: number
+        fileLocation:
+          type: string
+        state:
+          enum:
+          - created
+          - starting
+          - started
+          - stopping
+          - stopped
+          - unhealthy
+          - failed
+          type: string
+        jvmArgs:
+          type: string
+        subType:
+          type: string
+        labelsFileLocation:
+          type: string
+        extraArgs:
+          type: string
+        launchPolicy:
+          properties: {}
+          type: object
+        modelState:
+          enum:
+          - CREATED
+          - STARTING
+          - STARTED
+          - STOPPING
+          - STOPPED
+          - UNHEALTHY
+          - FAILED
+          type: string
+      type: object
+    SetState:
+      example:
+        state: start
+      properties:
+        state:
+          enum:
+          - start
+          - stop
+          type: string
+      type: object
+    ModelResponse:
+      example:
+        name: name
+        scale: 0
+        id: id
+        uri:
+        - uri
+        - uri
+        status: status
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        scale:
+          type: integer
+        uri:
+          items:
+            type: string
+          type: array
+      type: object
+    NewDeployment:
+      example:
+        name: productiongroup
+      properties:
+        name:
+          type: string
+      type: object
+    LoginRequest:
+      example:
+        userId: admin
+        password: admin
+      properties:
+        userId:
+          type: string
+        password:
+          type: string
+      type: object
+    LoginResponse:
+      example:
+        token: xxxxxxx.yyyyyyy.zzzzzz
+      properties:
+        token:
+          description: Token received from the authentication server.
+          type: string
+      type: object
+    User:
+      example:
+        password: password
+        role: role
+        scope: scope
+        userName: userName
+        userId: userId
+      properties:
+        userId:
+          type: string
+        userName:
+          type: string
+        password:
+          type: string
+        role:
+          description: User's role such as [user, admin, trial]
+          type: string
+        scope:
+          description: User's scope such as [all, skil, zeppelin]
+          type: string
+      type: object
+    ChangePasswordRequest:
+      example:
+        password: password
+      properties:
+        password:
+          type: string
+      type: object
+    AuthPolicy:
+      example:
+        '@class': SimpleAuthPolicy
+      properties:
+        '@class':
+          enum:
+          - SimpleAuthPolicy
+          - RoleAuthPolicy
+          type: string
+      type: object
+    TokenGenerateRequest:
+      example:
+        expiry: 0
+        userId: userId
+      properties:
+        userId:
+          type: string
+        expiry:
+          format: int64
+          type: integer
+      type: object
+    Token:
+      example:
+        isRevoked: 5
+        tokenId: 0
+        expire: 1
+        issued: 6
+        userId: userId
+        token: token
+      properties:
+        tokenId:
+          format: int64
+          type: integer
+        issued:
+          format: int64
+          type: integer
+        expire:
+          format: int64
+          type: integer
+        token:
+          type: string
+        userId:
+          type: string
+        isRevoked:
+          format: int32
+          type: integer
+      type: object
+    Role:
+      example:
+        roleId: roleId
+        roleName: roleName
+      properties:
+        roleId:
+          type: string
+        roleName:
+          type: string
+      type: object
+    FileUploadList:
+      example:
+        fileUploadResponseList:
+        - path: path
+          fileName: fileName
+          type: type
+          key: key
+          fileContent: fileContent
+          status: status
+        - path: path
+          fileName: fileName
+          type: type
+          key: key
+          fileContent: fileContent
+          status: status
+      properties:
+        fileUploadResponseList:
+          items:
+            $ref: '#/components/schemas/FileUpload'
+          type: array
+      type: object
+    FileUpload:
+      example:
+        path: path
+        fileName: fileName
+        type: type
+        key: key
+        fileContent: fileContent
+        status: status
+      properties:
+        key:
+          type: string
+        fileName:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        path:
+          type: string
+        fileContent:
+          type: string
+      type: object
+    INDArray:
+      example:
+        shape:
+        - 0
+        - 0
+        data:
+        - 6.0274563
+        - 6.0274563
+        array: array
+        ordering: f
+        dataType: INT8
+      properties:
+        array:
+          type: string
+        shape:
+          items:
+            type: integer
+          type: array
+        ordering:
+          enum:
+          - f
+          - c
+          type: string
+        data:
+          items:
+            format: float
+            type: number
+          type: array
+        dataType:
+          enum:
+          - INT8
+          - UINT8
+          - INT16
+          - FLOAT16
+          type: string
+      type: object
+    Prediction:
+      example:
+        needsPreProcessing: true
+        prediction:
+          array: array
+        id: id
+      properties:
+        id:
+          type: string
+        needsPreProcessing:
+          type: boolean
+        prediction:
+          $ref: '#/components/schemas/INDArray'
+        inputMask:
+          $ref: '#/components/schemas/INDArray'
+      type: object
+    MultiPredictRequest:
+      example:
+        needsPreProcessing: true
+        inputs:
+        - shape:
+          - 0
+          - 0
+          data:
+          - 6.0274563
+          - 6.0274563
+          array: array
+          ordering: f
+          dataType: INT8
+        - shape:
+          - 0
+          - 0
+          data:
+          - 6.0274563
+          - 6.0274563
+          array: array
+          ordering: f
+          dataType: INT8
+        id: id
+        inputMasks:
+        - shape:
+          - 0
+          - 0
+          data:
+          - 6.0274563
+          - 6.0274563
+          array: array
+          ordering: f
+          dataType: INT8
+        - shape:
+          - 0
+          - 0
+          data:
+          - 6.0274563
+          - 6.0274563
+          array: array
+          ordering: f
+          dataType: INT8
+      properties:
+        id:
+          type: string
+        needsPreProcessing:
+          type: boolean
+        inputs:
+          items:
+            $ref: '#/components/schemas/INDArray'
+          type: array
+        inputMasks:
+          items:
+            $ref: '#/components/schemas/INDArray'
+          type: array
+      type: object
+    MultiPredictResponse:
+      example:
+        outputs:
+        - shape:
+          - 0
+          - 0
+          data:
+          - 6.0274563
+          - 6.0274563
+          array: array
+          ordering: f
+          dataType: INT8
+        - shape:
+          - 0
+          - 0
+          data:
+          - 6.0274563
+          - 6.0274563
+          array: array
+          ordering: f
+          dataType: INT8
+        needsPreProcessing: true
+        id: id
+      properties:
+        id:
+          type: string
+        needsPreProcessing:
+          type: boolean
+        outputs:
+          items:
+            $ref: '#/components/schemas/INDArray'
+          type: array
+      type: object
+    ClassificationResult:
+      example:
+        minibatchId: minibatchId
+        results:
+        - 0
+        - 0
+        probabilities:
+        - 0.452
+        - 0.452
+      properties:
+        results:
+          description: index classification results for the minibatch
+          items:
+            type: integer
+          type: array
+        probabilities:
+          description: max probabilities for the batch items
+          items:
+            example: 0.452
+            type: number
+          type: array
+        minibatchId:
+          description: minibatch ID
+          type: string
+      type: object
+    MultiClassClassificationResult:
+      description: Represents all of the labels for a given classification
+      example:
+        maxOutcomes:
+        - maxOutcomes
+        - maxOutcomes
+        rankedOutcomes:
+        - - rankedOutcomes
+          - rankedOutcomes
+        - - rankedOutcomes
+          - rankedOutcomes
+        probabilities:
+        - - 0.4
+          - 0.4
+        - - 0.4
+          - 0.4
+      properties:
+        rankedOutcomes:
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        maxOutcomes:
+          items:
+            type: string
+          type: array
+        probabilities:
+          items:
+            items:
+              example: 0.4
+              type: number
+            type: array
+          type: array
+      type: object
+    ModelStatus:
+      example:
+        status: 100
+      properties:
+        status:
+          description: |
+            100 - Model set successfully.
+            200 - Model Updated Successfully.
+            201 - Model Update Failed.
+          example: 100
+          type: integer
+      type: object
+    JsonArrayResponse:
+      example:
+        array:
+          array: array
+      properties:
+        array:
+          $ref: '#/components/schemas/INDArray'
+      type: object
+    LogRequest:
+      example:
+        head: true
+        offset: 0
+        rowCount: 6
+      properties:
+        offset:
+          format: int32
+          type: integer
+        rowCount:
+          format: int32
+          type: integer
+        head:
+          type: boolean
+      type: object
+    LogBatch:
+      example:
+        offset: 0
+        rowCount: 2
+        logs: logs
+      properties:
+        offset:
+          example: 0
+          type: integer
+        rowCount:
+          example: 2
+          type: integer
+        logs:
+          type: string
+      type: object
+    MetaData:
+      type: object
+    DetectedObject:
+      example:
+        centerY: 6.0274563
+        centerX: 0.8008282
+        predictedClasses:
+        - predictedClasses
+        - predictedClasses
+        confidences:
+        - 5.637377
+        - 5.637377
+        width: 1.4658129
+        height: 5.962134
+      properties:
+        centerX:
+          format: float
+          type: number
+        centerY:
+          format: float
+          type: number
+        width:
+          format: float
+          type: number
+        height:
+          format: float
+          type: number
+        predictedClasses:
+          items:
+            type: string
+          type: array
+        confidences:
+          items:
+            format: float
+            type: number
+          type: array
+      type: object
+    DetectionResult:
+      example:
+        objects:
+        - centerY: 6.0274563
+          centerX: 0.8008282
+          predictedClasses:
+          - predictedClasses
+          - predictedClasses
+          confidences:
+          - 5.637377
+          - 5.637377
+          width: 1.4658129
+          height: 5.962134
+        - centerY: 6.0274563
+          centerX: 0.8008282
+          predictedClasses:
+          - predictedClasses
+          - predictedClasses
+          confidences:
+          - 5.637377
+          - 5.637377
+          width: 1.4658129
+          height: 5.962134
+        id: id
+      properties:
+        id:
+          type: string
+        objects:
+          items:
+            $ref: '#/components/schemas/DetectedObject'
+          type: array
+      type: object
+    ModelHistoryEntity:
+      example:
+        modelName: modelName
+        modelHistoryId: modelHistoryId
+        created: 0
+        modelLabels: modelLabels
+      properties:
+        created:
+          description: When the model history / workspace was created
+          format: int64
+          type: integer
+        modelHistoryId:
+          description: The GUID of the model history / workspace
+          type: string
+        modelName:
+          description: Name of the model history / workspace
+          type: string
+        modelLabels:
+          description: Model history / workspace labels
+          type: string
+      type: object
+    AddModelHistoryRequest:
+      example:
+        modelName: modelName
+        modelLabels: modelLabels
+      properties:
+        modelName:
+          description: Name of the model history / workspace
+          type: string
+        modelLabels:
+          description: Model history / workspace labels
+          type: string
+      type: object
+    ExperimentEntity:
+      example:
+        experimentDescription: experimentDescription
+        lastUpdated: 0
+        modelHistoryId: modelHistoryId
+        notebookUrl: notebookUrl
+        bestModelId: bestModelId
+        inputDataUri: inputDataUri
+        zeppelinId: zeppelinId
+        experimentId: experimentId
+        experimentName: experimentName
+        notebookJson: notebookJson
+      properties:
+        bestModelId:
+          description: GUID of the best selected model in an experiment
+          type: string
+        inputDataUri:
+          description: Input data URI
+          type: string
+        experimentId:
+          description: GUID of the experiment
+          type: string
+        experimentName:
+          description: Experiment's name
+          type: string
+        experimentDescription:
+          description: Experiment's description
+          type: string
+        notebookJson:
+          description: The associated Zeppelin notebook JSON string
+          type: string
+        notebookUrl:
+          description: URL of the associated Zeppelin notebook
+          type: string
+        zeppelinId:
+          description: Zeppelin ID
+          type: string
+        modelHistoryId:
+          description: Id of the model history / workspace
+          type: string
+        lastUpdated:
+          description: Indicates the time when experiment was last updated
+          format: int64
+          type: integer
+      type: object
+    UpdateBestModel:
+      example:
+        bestModelId: bestModelId
+        experimentId: experimentId
+      properties:
+        experimentId:
+          description: GUID of the experiment to update.
+          type: string
+        bestModelId:
+          description: GUID of the model to set as the best model.
+          type: string
+      type: object
+    ModelInstanceEntity:
+      example:
+        evalId: evalId
+        modelName: modelName
+        originalModelId: originalModelId
+        modelId: modelId
+        created: 0
+        modelVersion: modelVersion
+        modelLabels: modelLabels
+        etlJson: etlJson
+        experimentId: experimentId
+        inputFormats: inputFormats
+        uri: https://openapi-generator.tech
+        notebookJson: notebookJson
+      properties:
+        uri:
+          description: The model URI
+          format: uri
+          type: string
+        etlJson:
+          description: The json string for the ETL (Extract, Transform and Load)
+          type: string
+        modelId:
+          description: GUID of the model.
+          type: string
+        modelLabels:
+          description: Comma-separated labels string for the model
+          type: string
+        inputFormats:
+          description: Format for the model input
+          type: string
+        created:
+          description: When the model was created
+          format: int64
+          type: integer
+        notebookJson:
+          description: JSON string of the associated Zeppelin Notebook
+          type: string
+        evalId:
+          description: GUID for the model evaluation
+          type: string
+        modelName:
+          description: Model's name
+          type: string
+        originalModelId:
+          description: Original GUID of the model (used for maintaining revisions
+            of a particular model)
+          type: string
+        modelVersion:
+          description: Model version
+          type: string
+        experimentId:
+          description: GUID of the Experiment which is associated with the model.
+          type: string
+      type: object
+    EvaluationResultsEntity:
+      example:
+        r2: 2.027123023002322
+        binaryThresholds: binaryThresholds
+        created: 0
+        precision: 1.4658129805029452
+        accuracy: 5.637376656633329
+        f1: 6.027456183070403
+        meanAbsoluteError: 9.301444243932576
+        auc: 7.061401241503109
+        evaluation: evaluation
+        evalId: evalId
+        meanRelativeError: 3.616076749251911
+        evalVersion: 4
+        evalName: evalName
+        modelInstanceId: modelInstanceId
+        recall: 5.962133916683182
+        rmse: 2.3021358869347655
+        binaryThreshold: 7.386281948385884
+      properties:
+        evaluation:
+          type: string
+        evalName:
+          type: string
+        modelInstanceId:
+          type: string
+        created:
+          description: When the evaluation result was created
+          format: int64
+          type: integer
+        f1:
+          format: double
+          type: number
+        precision:
+          format: double
+          type: number
+        recall:
+          format: double
+          type: number
+        accuracy:
+          format: double
+          type: number
+        rmse:
+          format: double
+          type: number
+        auc:
+          format: double
+          type: number
+        meanAbsoluteError:
+          format: double
+          type: number
+        meanRelativeError:
+          format: double
+          type: number
+        r2:
+          format: double
+          type: number
+        evalId:
+          description: GUID of the evaluation
+          type: string
+        evalVersion:
+          type: integer
+        binaryThreshold:
+          format: double
+          type: number
+        binaryThresholds:
+          type: string
+      type: object
+    AggregatePrediction:
+      example:
+        evalType: ROC_BINARY
+        modelId: modelId
+      properties:
+        modelId:
+          description: GUID of model instance
+          type: string
+        evalType:
+          description: the evaluation type to aggregate
+          enum:
+          - ROC_BINARY
+          - ROC
+          - EVALUATION_BINARY
+          - EVALUATION
+          - REGRESSON_EVALUATION
+          - ROC_MULTI_CLASS
+          type: string
+      type: object
+    MinibatchEntity:
+      example:
+        evalId: evalId
+        batchVersion: 6
+        evalVersion: 0
+        miniBatchId: miniBatchId
+      properties:
+        miniBatchId:
+          description: GUID of mini batch
+          type: string
+        evalId:
+          description: GUID of the evaluation
+          type: string
+        evalVersion:
+          description: Eval version
+          type: integer
+        batchVersion:
+          description: Batch version
+          type: integer
+      type: object
+    ExampleEntity:
+      example:
+        exampleId: exampleId
+        created: 1
+        miniBatchId: miniBatchId
+        miniBatchVersion: 5
+        rowNumber: 6
+        exampleVersion: 0
+      properties:
+        exampleId:
+          description: the GUID of the example
+          type: string
+        exampleVersion:
+          description: Example version
+          type: integer
+        rowNumber:
+          description: Row Number
+          type: integer
+        created:
+          description: when the example was created
+          format: int64
+          type: integer
+        miniBatchId:
+          description: The GUID of the minibatch
+          type: string
+        miniBatchVersion:
+          description: minibatch version
+          type: integer
+      type: object
+    AddExampleRequest:
+      example:
+        minibatch:
+          evalId: evalId
+          batchVersion: 6
+          evalVersion: 0
+          miniBatchId: miniBatchId
+        batchSize: 0
+      properties:
+        minibatch:
+          $ref: '#/components/schemas/MinibatchEntity'
+        batchSize:
+          description: the size of the batch to create
+          type: integer
+      type: object
+    BestModel:
+      example:
+        evalType: ROC_BINARY
+        columnNameMetric: f1
+        ids:
+        - ids
+        - ids
+      properties:
+        ids:
+          description: the list of GUIDs for the models to get the best model from
+          items:
+            type: string
+          type: array
+        columnNameMetric:
+          description: Name of the column metric (in an evaluation result) to get
+            the best model from.
+          enum:
+          - f1
+          - precision
+          - recall
+          - accuracy
+          - rmse
+          - auc
+          - meanAbsoluteError
+          - meanRelativeError
+          - r2
+          type: string
+        evalType:
+          description: the evaluation type to aggregate for each model's revisions
+          enum:
+          - ROC_BINARY
+          - ROC
+          - EVALUATION_BINARY
+          - EVALUATION
+          - REGRESSON_EVALUATION
+          - ROC_MULTI_CLASS
+          type: string
+      type: object
+    ModelFeedBackRequest:
+      example:
+        correct: '["0", "0", "2"]'
+        guesses: '["0", "1", "2"]'
+        batchId: batchId
+      properties:
+        batchId:
+          description: The GUID of the minibatch this feedback corresponds to
+          type: string
+        guesses:
+          description: The guessed label IDs by the model
+          example: '["0", "1", "2"]'
+          items:
+            type: string
+          type: array
+        correct:
+          description: The actual label IDs
+          example: '["0", "0", "2"]'
+          items:
+            type: string
+          type: array
+      type: object
+    Resource:
+      example:
+        resourceId: 0
+        name: name
+        credentialId: credentialId
+        subType: EMR
+        type: COMPUTE
+      properties:
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        name:
+          description: Resource nickname
+          type: string
+        type:
+          description: Resource type (whether COMPUTE or STORAGE)
+          enum:
+          - COMPUTE
+          - STORAGE
+          type: string
+        subType:
+          description: Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]
+            | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])
+          enum:
+          - EMR
+          - S3
+          - GoogleStorage
+          - DataProc
+          - HDInsight
+          - AzureStorage
+          - HDFS
+          - YARN
+          type: string
+        credentialId:
+          description: Credentials GUID
+          type: string
+      type: object
+    EMRResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.compute.EMRResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - COMPUTE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - EMR
+          type: string
+        clusterId:
+          description: EMR cluster ID
+          type: string
+        region:
+          description: Region name where the cluster is deployed
+          type: string
+      type: object
+    S3ResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.storage.S3ResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - STORAGE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - S3
+          type: string
+        bucket:
+          description: S3 Bucket Name
+          type: string
+        region:
+          description: Region name where the S3 bucket is present
+          type: string
+      type: object
+    GoogleStorageResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - STORAGE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - GoogleStorage
+          type: string
+        projectId:
+          description: Project ID
+          type: string
+        bucketName:
+          description: Name of the storage bucket
+          type: string
+      type: object
+    DataProcResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.compute.DataProcResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - COMPUTE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - DataProc
+          type: string
+        projectId:
+          description: Project ID
+          type: string
+        region:
+          description: DataProc region
+          type: string
+        sparkClusterName:
+          description: Name of the spark cluster
+          type: string
+      type: object
+    HDInsightResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.compute.HDInsightResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - COMPUTE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - HDInsight
+          type: string
+        subscriptionId:
+          description: Azure subscription ID
+          type: string
+        resourceGroupName:
+          description: name of the resource group
+          type: string
+        clusterName:
+          description: Cluster name
+          type: string
+      type: object
+    AzureStorageResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.storage.AzureStorageResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - STORAGE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - AzureStorage
+          type: string
+        containerName:
+          description: Storage container name
+          type: string
+      type: object
+    HDFSResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.storage.HDFSResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - STORAGE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - HDFS
+          type: string
+        nameNodeHost:
+          description: Host of the node running the NameNode
+          type: string
+        nameNodePort:
+          description: Port of the node running the NameNode
+          type: string
+      type: object
+    YARNResourceDetails:
+      properties:
+        '@class':
+          default: io.skymind.resource.model.subtypes.compute.YARNResourceDetails
+          type: string
+        resourceId:
+          description: ID of the resource
+          format: int64
+          type: integer
+        type:
+          description: Resource type
+          enum:
+          - COMPUTE
+          type: string
+        subType:
+          description: Resource subtype
+          enum:
+          - YARN
+          type: string
+        localSparkHome:
+          description: Local Spark Home path
+          type: string
+      type: object
+    ResourceGroup:
+      example:
+        groupName: groupName
+        added: 6
+        groupId: 0
+        updated: 1
+      properties:
+        groupId:
+          description: ID of the resource group
+          format: int64
+          type: integer
+        groupName:
+          description: Name of the resource group
+          type: string
+        added:
+          description: Milliseconds in Long when the resource group was added
+          format: int64
+          type: integer
+        updated:
+          description: Milliseconds in Long when the resource group was updated
+          format: int64
+          type: integer
+      type: object
+    ResourceCredentials:
+      example:
+        name: name
+        credentialId: 0
+        type: AWS
+        uri: uri
+      properties:
+        credentialId:
+          description: ID of the credentials
+          format: int64
+          type: integer
+        type:
+          description: Type of the credentials
+          enum:
+          - AWS
+          - Azure
+          - GoogleCloud
+          - Hadoop
+          type: string
+        name:
+          description: Name of the credentials
+          type: string
+        uri:
+          description: URI of the credentials
+          type: string
+      type: object
+    AddResourceRequest:
+      example:
+        resourceDetails: '{}'
+        credentialId: 0
+        resourceName: resourceName
+        subType: EMR
+        type: COMPUTE
+        credentialUri: credentialUri
+      properties:
+        resourceName:
+          description: Name of the new resource
+          type: string
+        resourceDetails:
+          description: One of the resource details objects
+          properties: {}
+          type: object
+        credentialUri:
+          description: URI of the credentials. If this is present, you can leave out
+            the 'credentialId'
+          type: string
+        type:
+          description: Resource type (whether COMPUTE or STORAGE)
+          enum:
+          - COMPUTE
+          - STORAGE
+          type: string
+        subType:
+          description: Resource subtype (COMPUTE -> [EMR, DataProc, HDInsight, YARN]
+            | STORAGE -> [S3, GoogleStorage, AzureStorage, HDFS])
+          enum:
+          - EMR
+          - S3
+          - GoogleStorage
+          - DataProc
+          - HDInsight
+          - AzureStorage
+          - HDFS
+          - YARN
+          type: string
+        credentialId:
+          description: ID of the credentials. If this is given then you can leave
+            out the 'credentialsUri'
+          format: int64
+          type: integer
+      type: object
+    AddCredentialsRequest:
+      example:
+        name: name
+        type: AWS
+        uri: uri
+      properties:
+        type:
+          description: Type of the credentials
+          enum:
+          - AWS
+          - Azure
+          - GoogleCloud
+          - Hadoop
+          type: string
+        name:
+          description: Name of the credentials
+          type: string
+        uri:
+          description: URI of the credentials
+          type: string
+      type: object
+    JobEntity:
+      example:
+        storageResourceId: 1
+        jobId: 0
+        outputFileName: outputFileName
+        jobArgs: jobArgs
+        runId: runId
+        jobType: TRAINING
+        computeResourceId: 6
+        status: PENDING
+      properties:
+        jobId:
+          description: Job ID
+          format: int64
+          type: integer
+        jobType:
+          description: Whether a job is for training or inference
+          enum:
+          - TRAINING
+          - INFERENCE
+          type: string
+        computeResourceId:
+          description: Compute resource ID
+          format: int64
+          type: integer
+        storageResourceId:
+          description: Storage resource ID
+          format: int64
+          type: integer
+        jobArgs:
+          description: Job arguments
+          type: string
+        runId:
+          description: Job run ID
+          type: string
+        status:
+          description: Job's status
+          enum:
+          - PENDING
+          - RUNNING
+          - CONTINUE
+          - COMPLETED
+          - CANCELLED
+          - FAILED
+          - INTERRUPTED
+          type: string
+        outputFileName:
+          description: Output file name
+          type: string
+      type: object
+    CreateJobRequest:
+      example:
+        storageResourceId: 6
+        outputFileName: outputFileName
+        jobArgs: jobArgs
+        computeResourceId: 0
+      properties:
+        computeResourceId:
+          description: Compute resource ID
+          format: int64
+          type: integer
+        storageResourceId:
+          description: Storage resource ID
+          format: int64
+          type: integer
+        jobArgs:
+          description: Job arguments
+          type: string
+        outputFileName:
+          description: Output file name
+          type: string
+      type: object
+    DownloadOutputFileRequest:
+      example:
+        localDownloadPath: localDownloadPath
+      properties:
+        localDownloadPath:
+          description: Local path where the file is to be downloaded
+          type: string
+      type: object
+    FeedbackResponse:
+      example:
+        accumulatedSoFar: 6
+        retrainThreshold: 0
+      properties:
+        retrainThreshold:
+          description: The number of examples required to start the retraining process.
+          format: int32
+          type: integer
+        accumulatedSoFar:
+          description: The number of retraining examples accumulated so far.
+          format: int32
+          type: integer
+      type: object
+    RetrainingStatus:
+      example:
+        istraining: true
+      properties:
+        istraining:
+          description: True if the retrainer is busy training.
+          type: boolean
+      type: object
+    RevisionsWritten:
+      example:
+        numRevisions: 0
+      properties:
+        numRevisions:
+          format: int32
+          type: integer
+      type: object
+    AccumulatedResults:
+      example:
+        accumulatedDataWithLabels: 0
+        accumulatedDataWithOutLabels: 6
+      properties:
+        accumulatedDataWithLabels:
+          format: int32
+          type: integer
+        accumulatedDataWithOutLabels:
+          format: int32
+          type: integer
+      type: object
+    RollbackStatus:
+      example:
+        status: status
+      properties:
+        status:
+          description: Status of the model revision rollback.
+          type: string
+      type: object
+    inline_response_200:
+      example:
+        status: status
+      properties:
+        status:
+          type: string
+  securitySchemes:
+    api_key:
+      description: |
+        For accessing the API a valid JWT token must be passed in all the queries in
+        the 'Authorization' header.
+
+
+        A valid JWT token is generated by the API and returned as answer of a call
+        to the route /login giving a valid user & password.
+
+
+        The following syntax must be used in the 'Authorization' header :
+
+          authorization: Bearer <auth_token>
+      in: header
+      name: authorization
+      type: apiKey
+    x_api_key:
+      description: |
+        For accessing the API a valid API key must be passed in all the queries in
+        the 'X-API-Key' header.
+
+
+        A valid API key is generated by the API and returned as answer of a call
+        to the route /auth/key. Or through the SKIL UI under: Settings -> API Keys
+
+
+        The following syntax must be used in the 'X-API-Key' header :
+
+           x_api_key: <api-key>
+      in: header
+      name: X-API-Key
+      type: apiKey
+x-samples-languages:
+- curl
+- python
+- java
+- csharp
+- node
+- javascript
+- objectivec
+- php
+- ruby
+- swift
+- go
+x-proxy-enabled: false

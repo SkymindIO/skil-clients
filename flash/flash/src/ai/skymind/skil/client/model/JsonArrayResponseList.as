@@ -1,6 +1,6 @@
 package ai.skymind.skil.client.model {
 
-import io.swagger.common.ListWrapper;
+import org.openapitools.common.ListWrapper;
 import ai.skymind.skil.client.model.INDArray;
 
     public class JsonArrayResponseList implements ListWrapper {

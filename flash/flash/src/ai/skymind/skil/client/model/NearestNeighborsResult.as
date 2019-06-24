@@ -4,9 +4,9 @@ package ai.skymind.skil.client.model {
     [XmlRootNode(name="NearestNeighborsResult")]
     public class NearestNeighborsResult {
                 [XmlElement(name="index")]
-        public var index: Number = NaN;
+        public var index: Number = 0;
                 [XmlElement(name="distance")]
-        public var distance: Number = NaN;
+        public var distance: Number = 0.0;
                 [XmlElement(name="label")]
         public var label: String = null;
 

@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.JobEntity
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -12,5 +14,7 @@ Name | Type | Description | Notes
 **Status** | **string** | Job&#39;s status | [optional] 
 **OutputFileName** | **string** | Output file name | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

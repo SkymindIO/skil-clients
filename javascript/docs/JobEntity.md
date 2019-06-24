@@ -1,6 +1,7 @@
 # SkilClient.JobEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **jobId** | **Number** | Job ID | [optional] 
@@ -13,7 +14,7 @@ Name | Type | Description | Notes
 **outputFileName** | **String** | Output file name | [optional] 
 
 
-<a name="JobTypeEnum"></a>
+
 ## Enum: JobTypeEnum
 
 
@@ -24,7 +25,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

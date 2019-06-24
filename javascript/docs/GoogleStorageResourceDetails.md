@@ -1,6 +1,7 @@
 # SkilClient.GoogleStorageResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  | [optional] [default to &#39;io.skymind.resource.model.subtypes.storage.GoogleStorageResourceDetails&#39;]
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **bucketName** | **String** | Name of the storage bucket | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
 
 

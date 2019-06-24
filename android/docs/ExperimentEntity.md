@@ -1,7 +1,9 @@
 
+
 # ExperimentEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bestModelId** | **String** | GUID of the best selected model in an experiment |  [optional]
@@ -14,6 +16,7 @@ Name | Type | Description | Notes
 **zeppelinId** | **String** | Zeppelin ID |  [optional]
 **modelHistoryId** | **String** | Id of the model history / workspace |  [optional]
 **lastUpdated** | **Long** | Indicates the time when experiment was last updated |  [optional]
+
 
 
 

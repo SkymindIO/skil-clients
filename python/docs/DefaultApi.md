@@ -129,18 +129,53 @@ Method | HTTP request | Description
 Tells how many retraining examples have labels associated with them.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Tells how many retraining examples have labels associated with them.
+    api_response = api_instance.accumulated_results()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->accumulated_results: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -162,12 +197,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the accumulated results currently in ememory. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -177,18 +217,54 @@ This endpoint does not need any parameter.
 Adds credentials
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+add_credentials_request = skil_client.AddCredentialsRequest() # AddCredentialsRequest | Add credentials request object
+
+try:
+    # Adds credentials
+    api_response = api_instance.add_credentials(add_credentials_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_credentials: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -214,12 +290,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created credentials object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -229,18 +310,55 @@ Name | Type | Description  | Notes
 Adds an evaluation result
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+evaluation_results_entity = skil_client.EvaluationResultsEntity() # EvaluationResultsEntity | The evaluation result entity
+
+try:
+    # Adds an evaluation result
+    api_response = api_instance.add_evaluation_result(model_history_server_id, evaluation_results_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_evaluation_result: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -268,12 +386,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added evaluation result entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -283,18 +406,55 @@ Name | Type | Description  | Notes
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+add_example_request = skil_client.AddExampleRequest() # AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
+
+try:
+    # Adds a number of examples to a minibatch ID given an AddExampleRequest.
+    api_response = api_instance.add_example_for_batch(model_history_server_id, add_example_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_example_for_batch: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -322,12 +482,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The add example request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -337,18 +502,55 @@ Name | Type | Description  | Notes
 Adds an example to a minibatch
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+example_entity = skil_client.ExampleEntity() # ExampleEntity | The example to add to the minibatch
+
+try:
+    # Adds an example to a minibatch
+    api_response = api_instance.add_example_to_minibatch(model_history_server_id, example_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_example_to_minibatch: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -376,12 +578,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added example entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -391,18 +598,55 @@ Name | Type | Description  | Notes
 Add an experiment, given an experiment entity
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+experiment_entity = skil_client.ExperimentEntity() # ExperimentEntity | The experiment entity to add
+
+try:
+    # Add an experiment, given an experiment entity
+    api_response = api_instance.add_experiment(model_history_server_id, experiment_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_experiment: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -430,12 +674,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added experiment entity. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -445,24 +694,61 @@ Name | Type | Description  | Notes
 
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 id = 'id_example' # str | Batch ID to retrain the model with and get feedback for.
 type = 'type_example' # str | The type of the labels array.
-file = '/path/to/file.txt' # file | The labels file to upload. (optional)
+file = '/path/to/file' # file | The labels file to upload. (optional)
+
+try:
+    api_response = api_instance.add_feedback_binary(id, type, file=file)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_feedback_binary: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+id = 'id_example' # str | Batch ID to retrain the model with and get feedback for.
+type = 'type_example' # str | The type of the labels array.
+file = '/path/to/file' # file | The labels file to upload. (optional)
 
 try:
     api_response = api_instance.add_feedback_binary(id, type, file=file)
@@ -485,12 +771,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The feedback response object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -500,23 +791,60 @@ Name | Type | Description  | Notes
 Gets the retraining feedback for the given batch ID.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 id = 'id_example' # str | Batch ID to retrain the model with and get feedback for.
-labels = [skil_client.list[list[float]]()] # list[list[float]] | The associated labels (one-hot vectors) with the batch for retraining. (optional)
+labels = None # list[list[float]] | The associated labels (one-hot vectors) with the batch for retraining. (optional)
+
+try:
+    # Gets the retraining feedback for the given batch ID.
+    api_response = api_instance.add_feedback_json(id, labels=labels)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_feedback_json: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+id = 'id_example' # str | Batch ID to retrain the model with and get feedback for.
+labels = None # list[list[float]] | The associated labels (one-hot vectors) with the batch for retraining. (optional)
 
 try:
     # Gets the retraining feedback for the given batch ID.
@@ -531,7 +859,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**| Batch ID to retrain the model with and get feedback for. | 
- **labels** | **list[list[float]]**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+ **labels** | [**list[list[float]]**](list.md)| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
 
 ### Return type
 
@@ -539,12 +867,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The feedback response object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -554,18 +887,55 @@ Name | Type | Description  | Notes
 Adds a minibatch
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+minibatch_entity = skil_client.MinibatchEntity() # MinibatchEntity | The minibatch entity to add
+
+try:
+    # Adds a minibatch
+    api_response = api_instance.add_minibatch(model_history_server_id, minibatch_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_minibatch: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -593,12 +963,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added minibatch entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -608,18 +983,55 @@ Name | Type | Description  | Notes
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_feed_back_request = skil_client.ModelFeedBackRequest() # ModelFeedBackRequest | The model feedback request object
+
+try:
+    # Adds an evaluation feedback to the model against a given minibatch id.
+    api_response = api_instance.add_model_feedback(model_history_server_id, model_feed_back_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_model_feedback: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -647,12 +1059,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The model feedback request object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -662,18 +1079,55 @@ Name | Type | Description  | Notes
 Add a model history / workspace
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+add_model_history_request = skil_client.AddModelHistoryRequest() # AddModelHistoryRequest | The model history request object
+
+try:
+    # Add a model history / workspace
+    api_response = api_instance.add_model_history(model_history_server_id, add_model_history_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_model_history: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -701,12 +1155,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added model history entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -716,18 +1175,55 @@ Name | Type | Description  | Notes
 Adds a model
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_instance_entity = skil_client.ModelInstanceEntity() # ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
+
+try:
+    # Adds a model
+    api_response = api_instance.add_model_instance(model_history_server_id, model_instance_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_model_instance: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -755,12 +1251,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The added model instance entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -770,18 +1271,54 @@ Name | Type | Description  | Notes
 Adds a resource
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+add_resource_request = skil_client.AddResourceRequest() # AddResourceRequest | The Add resource request object
+
+try:
+    # Adds a resource
+    api_response = api_instance.add_resource(add_resource_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_resource: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -807,12 +1344,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | One of the resource details object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -822,18 +1364,54 @@ Name | Type | Description  | Notes
 Adds a resource group
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+group_name = 'group_name_example' # str | Name of the resource group
+
+try:
+    # Adds a resource group
+    api_response = api_instance.add_resource_group(group_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_resource_group: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -859,12 +1437,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain; charset=utf-8
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created resource group object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -874,23 +1457,59 @@ Name | Type | Description  | Notes
 Adds a resource to a resource group
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_group_id = 789 # int | ID of the resource group
-resource_id = 789 # int | ID of the resource
+resource_group_id = 56 # int | ID of the resource group
+resource_id = 56 # int | ID of the resource
+
+try:
+    # Adds a resource to a resource group
+    api_instance.add_resource_to_group(resource_group_id, resource_id)
+except ApiException as e:
+    print("Exception when calling DefaultApi->add_resource_to_group: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_group_id = 56 # int | ID of the resource group
+resource_id = 56 # int | ID of the resource
 
 try:
     # Adds a resource to a resource group
@@ -912,12 +1531,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully added resource to the resource group |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -927,18 +1551,55 @@ void (empty response body)
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+aggregate_prediction = skil_client.AggregatePrediction() # AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
+
+try:
+    # Aggregates the evaluaition results of a model instance, based on the evaluation type
+    api_response = api_instance.aggregate_model_results(model_history_server_id, aggregate_prediction)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->aggregate_model_results: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -966,12 +1627,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Evaluation result entity contained the aggregated/merged results |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -981,18 +1647,55 @@ Name | Type | Description  | Notes
 Change user's password
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user_id = 'user_id_example' # str | User's ID
+change_password_request = skil_client.ChangePasswordRequest() # ChangePasswordRequest | Password details.
+
+try:
+    # Change user's password
+    api_response = api_instance.change_user_password(user_id, change_password_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->change_user_password: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1020,44 +1723,88 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated user. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classify**
-> ClassificationResult classify(body, deployment_name, version_name, model_name)
+> ClassificationResult classify(deployment_name, version_name, model_name, body)
 
 Use the deployed model to classify the input
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
 
 try:
     # Use the deployed model to classify the input
-    api_response = api_instance.classify(body, deployment_name, version_name, model_name)
+    api_response = api_instance.classify(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->classify: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
+
+try:
+    # Use the deployed model to classify the input
+    api_response = api_instance.classify(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classify: %s\n" % e)
@@ -1067,10 +1814,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1078,44 +1825,90 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **classifyarray**
-> Base64NDArrayBody classifyarray(body, deployment_name, version_name, model_name)
+> Base64NDArrayBody classifyarray(deployment_name, version_name, model_name, body)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
 
 try:
     # Same as /classify but returns the output as Base64NDArrayBody
-    api_response = api_instance.classifyarray(body, deployment_name, version_name, model_name)
+    api_response = api_instance.classifyarray(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->classifyarray: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
+
+try:
+    # Same as /classify but returns the output as Base64NDArrayBody
+    api_response = api_instance.classifyarray(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->classifyarray: %s\n" % e)
@@ -1125,10 +1918,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1136,12 +1929,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1151,25 +1951,64 @@ Name | Type | Description  | Notes
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
-image = '/path/to/file.txt' # file | The file to upload. (optional)
+image = '/path/to/file' # file | The file to upload. (optional)
+
+try:
+    # Use the deployed model to classify the input, using input image file from multipart form data.
+    api_response = api_instance.classifyimage(deployment_name, version_name, model_name, image=image)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->classifyimage: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+image = '/path/to/file' # file | The file to upload. (optional)
 
 try:
     # Use the deployed model to classify the input, using input image file from multipart form data.
@@ -1184,7 +2023,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
  **image** | **file**| The file to upload. | [optional] 
 
@@ -1194,12 +2033,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating classification |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1209,18 +2054,53 @@ Name | Type | Description  | Notes
 Clears the accumulated data for retraining.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Clears the accumulated data for retraining.
+    api_response = api_instance.clear_state()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->clear_state: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1242,12 +2122,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The feedback response object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1257,18 +2142,55 @@ This endpoint does not need any parameter.
 Create a job
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+job_id_or_type = 'job_id_or_type_example' # str | Job Type
+create_job_request = skil_client.CreateJobRequest() # CreateJobRequest | Create job request object
+
+try:
+    # Create a job
+    api_response = api_instance.create_job(job_id_or_type, create_job_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_job: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1296,12 +2218,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created job entity object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1311,18 +2238,55 @@ Name | Type | Description  | Notes
 Creates model History
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_history_entity = skil_client.ModelHistoryEntity() # ModelHistoryEntity | The model history entity
+
+try:
+    # Creates model History
+    api_response = api_instance.create_model_history(model_history_server_id, model_history_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->create_model_history: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1350,12 +2314,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The created model history |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1365,22 +2334,57 @@ Name | Type | Description  | Notes
 Delete credentials given an ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-credential_id = 789 # int | Credentials ID
+credential_id = 56 # int | Credentials ID
+
+try:
+    # Delete credentials given an ID
+    api_instance.delete_credentials_by_id(credential_id)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_credentials_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+credential_id = 56 # int | Credentials ID
 
 try:
     # Delete credentials given an ID
@@ -1401,12 +2405,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Credentials successfully deteled |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1416,18 +2425,55 @@ void (empty response body)
 Deletes an experiment, given an experiment entity
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+experiment_id = 'experiment_id_example' # str | the GUID of the experiment to delete
+
+try:
+    # Deletes an experiment, given an experiment entity
+    api_response = api_instance.delete_experiment(model_history_server_id, experiment_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_experiment: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1455,12 +2501,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment deleted successfully |  -  |
+**400** | Experiment no longer exists |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1470,22 +2522,57 @@ Name | Type | Description  | Notes
 Deletes a job given its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id_or_type = 789 # int | Job ID
+job_id_or_type = 56 # int | Job ID
+
+try:
+    # Deletes a job given its ID
+    api_instance.delete_job_by_id(job_id_or_type)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_job_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+job_id_or_type = 56 # int | Job ID
 
 try:
     # Deletes a job given its ID
@@ -1506,12 +2593,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully deleted a job |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1521,18 +2613,55 @@ void (empty response body)
 Delete a model by deployment and model id
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | ID deployment group
+model_id = 'model_id_example' # str | the id of the deployed model
+
+try:
+    # Delete a model by deployment and model id
+    api_response = api_instance.delete_model(deployment_id, model_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_model: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1560,12 +2689,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the deleted model status |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1575,18 +2709,55 @@ Name | Type | Description  | Notes
 Deletes a model history / workspace, given its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace to delete
+
+try:
+    # Deletes a model history / workspace, given its ID
+    api_response = api_instance.delete_model_history(model_history_server_id, model_history_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_model_history: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1614,12 +2785,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Workspace deleted |  -  |
+**400** | The specified Workspace no longer exists |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1629,18 +2806,54 @@ Name | Type | Description  | Notes
 Deletes a model instance, given its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to delete.
+
+try:
+    # Deletes a model instance, given its ID
+    api_instance.delete_model_instance(model_history_server_id, model_instance_id)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_model_instance: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1667,12 +2880,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Empty content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1682,22 +2900,58 @@ void (empty response body)
 Delete the resource with the specified resource ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_id = 789 # int | ID of the resource
+resource_id = 56 # int | ID of the resource
+
+try:
+    # Delete the resource with the specified resource ID
+    api_response = api_instance.delete_resource_by_id(resource_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_resource_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_id = 56 # int | ID of the resource
 
 try:
     # Delete the resource with the specified resource ID
@@ -1719,12 +2973,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1734,23 +2993,59 @@ Name | Type | Description  | Notes
 Removes a resource from a resource group
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_group_id = 789 # int | ID of the resource group
-resource_id = 789 # int | ID of the resource
+resource_group_id = 56 # int | ID of the resource group
+resource_id = 56 # int | ID of the resource
+
+try:
+    # Removes a resource from a resource group
+    api_instance.delete_resource_from_group(resource_group_id, resource_id)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_resource_from_group: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_group_id = 56 # int | ID of the resource group
+resource_id = 56 # int | ID of the resource
 
 try:
     # Removes a resource from a resource group
@@ -1772,12 +3067,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully removed resource from the resource group |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1787,22 +3087,58 @@ void (empty response body)
 Delete the resource group with the specified resource group ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_group_id = 789 # int | ID of the resource group
+resource_group_id = 56 # int | ID of the resource group
+
+try:
+    # Delete the resource group with the specified resource group ID
+    api_response = api_instance.delete_resource_group_by_id(resource_group_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_resource_group_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_group_id = 56 # int | ID of the resource group
 
 try:
     # Delete the resource group with the specified resource group ID
@@ -1824,12 +3160,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Group Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1839,18 +3180,55 @@ Name | Type | Description  | Notes
 Deploy a model in a deployment group.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | ID deployment group
+body = skil_client.ImportModelRequest() # ImportModelRequest | the model import request
+
+try:
+    # Deploy a model in a deployment group.
+    api_response = api_instance.deploy_model(deployment_id, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->deploy_model: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1878,12 +3256,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the deployed model |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1893,18 +3276,54 @@ Name | Type | Description  | Notes
 Create a new deployment group.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+body = skil_client.CreateDeploymentRequest() # CreateDeploymentRequest | the deployment request
+
+try:
+    # Create a new deployment group.
+    api_response = api_instance.deployment_create(body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->deployment_create: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1930,12 +3349,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the added deployment |  -  |
+**500** | Error creating deployment |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1945,18 +3370,54 @@ Name | Type | Description  | Notes
 Delete a deployment by id
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | Id of the deployment group
+
+try:
+    # Delete a deployment by id
+    api_response = api_instance.deployment_delete(deployment_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->deployment_delete: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -1982,12 +3443,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The status of the removed deployment |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1997,18 +3463,54 @@ Name | Type | Description  | Notes
 Get a deployment details by id
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | Id of the deployment group
+
+try:
+    # Get a deployment details by id
+    api_response = api_instance.deployment_get(deployment_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->deployment_get: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2034,12 +3536,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The deployment details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2049,18 +3556,53 @@ Name | Type | Description  | Notes
 Get a list of deployments
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get a list of deployments
+    api_response = api_instance.deployments()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->deployments: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2082,47 +3624,94 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of the deployments retrieved successfully |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **detectobjects**
-> DetectionResult detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
+> DetectionResult detectobjects(deployment_name, version_name, model_name, id, needs_preprocessing, threshold, file)
 
 Detect the objects, given a (input) prediction request
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-id = 'id_example' # str | the GUID for mapping the results in the detections
-needs_preprocessing = true # bool | (true) if the image needs preprocessing
-threshold = 3.4 # float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-file = '/path/to/file.txt' # file | the image file to detect objects from
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+id = 'id_example' # str | the GUID for mapping the results in the detections
+needs_preprocessing = True # bool | (true) if the image needs preprocessing
+threshold = 3.4 # float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+file = '/path/to/file' # file | the image file to detect objects from
 
 try:
     # Detect the objects, given a (input) prediction request
-    api_response = api_instance.detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
+    api_response = api_instance.detectobjects(deployment_name, version_name, model_name, id, needs_preprocessing, threshold, file)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->detectobjects: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+id = 'id_example' # str | the GUID for mapping the results in the detections
+needs_preprocessing = True # bool | (true) if the image needs preprocessing
+threshold = 3.4 # float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+file = '/path/to/file' # file | the image file to detect objects from
+
+try:
+    # Detect the objects, given a (input) prediction request
+    api_response = api_instance.detectobjects(deployment_name, version_name, model_name, id, needs_preprocessing, threshold, file)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->detectobjects: %s\n" % e)
@@ -2132,13 +3721,13 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
+ **model_name** | **str**| ID or name of the deployed model | 
  **id** | **str**| the GUID for mapping the results in the detections | 
  **needs_preprocessing** | **bool**| (true) if the image needs preprocessing | 
  **threshold** | **float**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
  **file** | **file**| the image file to detect objects from | 
- **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -2146,12 +3735,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the detected objects in the given input |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2161,22 +3755,58 @@ Name | Type | Description  | Notes
 Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id = 789 # int | Job ID
+job_id = 56 # int | Job ID
+download_output_file_request = skil_client.DownloadOutputFileRequest() # DownloadOutputFileRequest | Download output file request object
+
+try:
+    # Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
+    api_instance.download_job_output_file(job_id, download_output_file_request)
+except ApiException as e:
+    print("Exception when calling DefaultApi->download_job_output_file: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+job_id = 56 # int | Job ID
 download_output_file_request = skil_client.DownloadOutputFileRequest() # DownloadOutputFileRequest | Download output file request object
 
 try:
@@ -2199,12 +3829,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The file download has started |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2214,18 +3849,54 @@ void (empty response body)
 Generate new auth token
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+token_generate_request = skil_client.TokenGenerateRequest() # TokenGenerateRequest | Auth token details.
+
+try:
+    # Generate new auth token
+    api_response = api_instance.generate_auth_token(token_generate_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->generate_auth_token: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2251,12 +3922,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Generated auth token. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2266,18 +3942,53 @@ Name | Type | Description  | Notes
 Get a list of all available jobs
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get a list of all available jobs
+    api_response = api_instance.get_all_jobs()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_all_jobs: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2299,12 +4010,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of job entity objects |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2316,18 +4032,54 @@ Get the memory mapped array based on the array type.
 The array is specified through a file path, in the configuration object, during model server deployment.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+accept = 'accept_example' # str | 
+array_type = 'array_type_example' # str | The format in which the memory mapped array is returned.
+
+try:
+    # Get the memory mapped array based on the array type.
+    api_instance.get_array(accept, array_type)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_array: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2354,12 +4106,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Get the whole memory mapped array in the specified format. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2369,18 +4126,56 @@ void (empty response body)
 Get the memory mapped array indices based on the array type.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`.
+accept = 'accept_example' # str | 
+array_type = 'array_type_example' # str | Format in which the memory mapped array is returned in.
+input = 'input_example' # str | Input indices array (optional)
+
+try:
+    # Get the memory mapped array indices based on the array type.
+    api_instance.get_array_indices(content_type, accept, array_type, input=input)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_array_indices: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2411,12 +4206,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
- - **Accept**: application/json, application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the arrays given the indices. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2426,18 +4226,56 @@ void (empty response body)
 Get the memory mapped array within a range based on the array type.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+accept = 'accept_example' # str | 
+array_type = 'array_type_example' # str | Format in which the memory mapped array is returned in.
+_from = 56 # int | 
+to = 56 # int | 
+
+try:
+    # Get the memory mapped array within a range based on the array type.
+    api_instance.get_array_range(accept, array_type, _from, to)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_array_range: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2468,12 +4306,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json, application/octet-stream
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the arrays given the from/to indices |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2483,18 +4326,53 @@ void (empty response body)
 Get auth policy
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get auth policy
+    api_response = api_instance.get_auth_policy()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_auth_policy: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2516,12 +4394,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | AuthPolicy object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2531,18 +4414,55 @@ This endpoint does not need any parameter.
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+best_model = skil_client.BestModel() # BestModel | Object encapsulating the model ids, eval type and column metric name
+
+try:
+    # Gets the best model among the given model instance IDs, based on the evaluation type and column metric
+    api_response = api_instance.get_best_model_among_model_ids(model_history_server_id, best_model)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_best_model_among_model_ids: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2570,12 +4490,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The best model instance entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2585,22 +4510,58 @@ Name | Type | Description  | Notes
 Get credentials given an ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-credential_id = 789 # int | Credentials ID
+credential_id = 56 # int | Credentials ID
+
+try:
+    # Get credentials given an ID
+    api_response = api_instance.get_credentials_by_id(credential_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_credentials_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+credential_id = 56 # int | Credentials ID
 
 try:
     # Get credentials given an ID
@@ -2622,12 +4583,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Credentials Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2637,18 +4603,52 @@ Name | Type | Description  | Notes
 Returns the current model being used for retraining.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Returns the current model being used for retraining.
+    api_instance.get_current_model()
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_current_model: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2669,12 +4669,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the current model being used for retraining in the form of a downloadable file. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2684,18 +4689,55 @@ void (empty response body)
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to get evaluation results for.
+
+try:
+    # Gets the list of evaluation results entity, given a model instance ID
+    api_response = api_instance.get_evaluation_for_model_id(model_history_server_id, model_instance_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_evaluation_for_model_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2723,12 +4765,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of evaluation result entities |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2738,18 +4785,55 @@ Name | Type | Description  | Notes
 Gets all the examples for a minibatch ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+minibatch_id = 'minibatch_id_example' # str | The GUID of the minibatch
+
+try:
+    # Gets all the examples for a minibatch ID
+    api_response = api_instance.get_examples_for_minibatch(model_history_server_id, minibatch_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_examples_for_minibatch: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2777,12 +4861,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of the associated examples with the minibatch |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2792,18 +4881,55 @@ Name | Type | Description  | Notes
 Obtain an experiment's details, given its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+experiment_id = 'experiment_id_example' # str | the GUID of the experiment to obtain
+
+try:
+    # Obtain an experiment's details, given its ID
+    api_response = api_instance.get_experiment(model_history_server_id, experiment_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_experiment: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2831,12 +4957,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Experiment Entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2846,18 +4977,55 @@ Name | Type | Description  | Notes
 Obtain all experiments for a model history / workspace
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace
+
+try:
+    # Obtain all experiments for a model history / workspace
+    api_response = api_instance.get_experiments_for_model_history(model_history_server_id, model_history_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_experiments_for_model_history: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2885,12 +5053,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of all the experiment entities in a model history |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2900,22 +5073,58 @@ Name | Type | Description  | Notes
 Get a job by its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id_or_type = 789 # int | Job ID
+job_id_or_type = 56 # int | Job ID
+
+try:
+    # Get a job by its ID
+    api_response = api_instance.get_job_by_id(job_id_or_type)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_job_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+job_id_or_type = 56 # int | Job ID
 
 try:
     # Get a job by its ID
@@ -2937,12 +5146,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Job entity Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2952,18 +5166,53 @@ Name | Type | Description  | Notes
 Get the last evaluation specifications from the current model.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get the last evaluation specifications from the current model.
+    api_response = api_instance.get_last_evaluation()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_last_evaluation: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -2985,12 +5234,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the last evaluation ran by the model. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3000,18 +5254,55 @@ This endpoint does not need any parameter.
 Gets a minibatch for the model
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+minibatch_id = 'minibatch_id_example' # str | The GUID of the minibatch
+
+try:
+    # Gets a minibatch for the model
+    api_response = api_instance.get_minibatch(model_history_server_id, minibatch_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_minibatch: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3039,12 +5330,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The minibatch entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3054,18 +5350,55 @@ Name | Type | Description  | Notes
 Get model details
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | ID deployment group
+model_id = 'model_id_example' # str | the id of the deployed model
+
+try:
+    # Get model details
+    api_response = api_instance.get_model_details(deployment_id, model_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_model_details: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3093,12 +5426,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A model entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3108,18 +5446,55 @@ Name | Type | Description  | Notes
 Gets a model history, given its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_history_id = 'model_history_id_example' # str | GUID of the model history to get information of.
+
+try:
+    # Gets a model history, given its ID
+    api_response = api_instance.get_model_history(model_history_server_id, model_history_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_model_history: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3147,12 +5522,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model history entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3162,18 +5542,55 @@ Name | Type | Description  | Notes
 Gets a model instance, given its ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_instance_id = 'model_instance_id_example' # str | GUID of the model instance to get information of.
+
+try:
+    # Gets a model instance, given its ID
+    api_response = api_instance.get_model_instance(model_history_server_id, model_instance_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_model_instance: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3201,12 +5618,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model instance entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3216,18 +5638,55 @@ Name | Type | Description  | Notes
 Obtain a list of all the models for an experiment
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+experiment_id = 'experiment_id_example' # str | the GUID of the experiment
+
+try:
+    # Obtain a list of all the models for an experiment
+    api_response = api_instance.get_models_for_experiment(model_history_server_id, experiment_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_models_for_experiment: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3255,12 +5714,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of all the models for the specified experiment |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3270,22 +5734,58 @@ Name | Type | Description  | Notes
 Get the resource with the specified resource ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_id = 789 # int | ID of the resource
+resource_id = 56 # int | ID of the resource
+
+try:
+    # Get the resource with the specified resource ID
+    api_response = api_instance.get_resource_by_id(resource_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_id = 56 # int | ID of the resource
 
 try:
     # Get the resource with the specified resource ID
@@ -3307,12 +5807,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3322,18 +5827,54 @@ Name | Type | Description  | Notes
 Get all the resources with the specified resource subtype
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_sub_type = 'resource_sub_type_example' # str | Subtype of the resource
+
+try:
+    # Get all the resources with the specified resource subtype
+    api_response = api_instance.get_resource_by_sub_type(resource_sub_type)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_by_sub_type: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3359,12 +5900,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Resource Objects by specified subtype |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3374,18 +5920,54 @@ Name | Type | Description  | Notes
 Get all the resources with the specified resource type
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_type = 'resource_type_example' # str | Type of the resource
+
+try:
+    # Get all the resources with the specified resource type
+    api_response = api_instance.get_resource_by_type(resource_type)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_by_type: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3411,12 +5993,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Resource Objects by specified type |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3428,22 +6015,58 @@ Get the resource details with the specified resource ID
 Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_id = 789 # int | ID of the resource
+resource_id = 56 # int | ID of the resource
+
+try:
+    # Get the resource details with the specified resource ID
+    api_response = api_instance.get_resource_details_by_id(resource_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_details_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_id = 56 # int | ID of the resource
 
 try:
     # Get the resource details with the specified resource ID
@@ -3465,12 +6088,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | One of the resource details object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3480,22 +6108,58 @@ Name | Type | Description  | Notes
 Get the resource group with the specified resource group ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_group_id = 789 # int | ID of the resource group
+resource_group_id = 56 # int | ID of the resource group
+
+try:
+    # Get the resource group with the specified resource group ID
+    api_response = api_instance.get_resource_group_by_id(resource_group_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_group_by_id: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_group_id = 56 # int | ID of the resource group
 
 try:
     # Get the resource group with the specified resource group ID
@@ -3517,12 +6181,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Group Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3532,18 +6201,53 @@ Name | Type | Description  | Notes
 Get a list of all the resource groups
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get a list of all the resource groups
+    api_response = api_instance.get_resource_groups()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resource_groups: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3565,12 +6269,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Resource Group Object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3580,18 +6289,53 @@ This endpoint does not need any parameter.
 A list of all known/registered resources, of all types
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # A list of all known/registered resources, of all types
+    api_response = api_instance.get_resources()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resources: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3613,12 +6357,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of Resource Objects |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3628,22 +6377,58 @@ This endpoint does not need any parameter.
 Get all resources from a resource group
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-resource_group_id = 789 # int | ID of the resource group
+resource_group_id = 56 # int | ID of the resource group
+
+try:
+    # Get all resources from a resource group
+    api_response = api_instance.get_resources_from_group(resource_group_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_resources_from_group: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+resource_group_id = 56 # int | ID of the resource group
 
 try:
     # Get all resources from a resource group
@@ -3665,12 +6450,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of resources from a resource group |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3680,18 +6470,53 @@ Name | Type | Description  | Notes
 Get all roles.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get all roles.
+    api_response = api_instance.get_roles()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_roles: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3713,12 +6538,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received all roles. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3728,18 +6558,54 @@ This endpoint does not need any parameter.
 Get a user by user ID
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user_id = 'user_id_example' # str | User's ID
+
+try:
+    # Get a user by user ID
+    api_response = api_instance.get_user(user_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_user: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3765,12 +6631,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received the user details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3780,23 +6651,60 @@ Name | Type | Description  | Notes
 Get auth tokens for a user.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 user_id = 'user_id_example' # str | User's ID
-only_valid = true # bool | True if you only want the valid tokens. (optional)
+only_valid = True # bool | True if you only want the valid tokens. (optional)
+
+try:
+    # Get auth tokens for a user.
+    api_response = api_instance.get_user_auth_tokens(user_id, only_valid=only_valid)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_user_auth_tokens: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user_id = 'user_id_example' # str | User's ID
+only_valid = True # bool | True if you only want the valid tokens. (optional)
 
 try:
     # Get auth tokens for a user.
@@ -3819,12 +6727,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received the user auth tokens. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3834,18 +6747,53 @@ Name | Type | Description  | Notes
 Get all users.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get all users.
+    api_response = api_instance.get_users()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->get_users: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3867,12 +6815,17 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successfully received all users. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3882,18 +6835,53 @@ This endpoint does not need any parameter.
 Get the retraining status
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Get the retraining status
+    api_response = api_instance.is_training()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->is_training: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -3915,44 +6903,88 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns whether the model is currently being trained or not. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **jsonarray**
-> JsonArrayResponse jsonarray(body, deployment_name, version_name, model_name)
+> JsonArrayResponse jsonarray(deployment_name, version_name, model_name, body)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
 
 try:
     # Run inference on the input and returns it as a JsonArrayResponse
-    api_response = api_instance.jsonarray(body, deployment_name, version_name, model_name)
+    api_response = api_instance.jsonarray(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->jsonarray: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
+
+try:
+    # Run inference on the input and returns it as a JsonArrayResponse
+    api_response = api_instance.jsonarray(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->jsonarray: %s\n" % e)
@@ -3962,10 +6994,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -3973,12 +7005,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating array prediction |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3990,23 +7028,62 @@ Runs knn on the given index with the given k
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+knn_name = 'knn_name_example' # str | ID or name of the deployed knn
+body = skil_client.NearestNeighborRequest() # NearestNeighborRequest | 
+
+try:
+    # Runs knn on the given index with the given k
+    api_response = api_instance.knn(deployment_name, version_name, knn_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->knn: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 knn_name = 'knn_name_example' # str | ID or name of the deployed knn
 body = skil_client.NearestNeighborRequest() # NearestNeighborRequest | 
 
@@ -4023,7 +7100,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **knn_name** | **str**| ID or name of the deployed knn | 
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -4033,12 +7110,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4048,23 +7132,62 @@ Name | Type | Description  | Notes
 Run a k nearest neighbors search on a NEW data point
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+knn_name = 'knn_name_example' # str | ID or name of the deployed knn
+body = skil_client.Base64NDArrayBodyKNN() # Base64NDArrayBodyKNN | The input NDArray
+
+try:
+    # Run a k nearest neighbors search on a NEW data point
+    api_response = api_instance.knnnew(deployment_name, version_name, knn_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->knnnew: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 knn_name = 'knn_name_example' # str | ID or name of the deployed knn
 body = skil_client.Base64NDArrayBodyKNN() # Base64NDArrayBodyKNN | The input NDArray
 
@@ -4081,7 +7204,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **knn_name** | **str**| ID or name of the deployed knn | 
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray | 
 
@@ -4091,12 +7214,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4106,18 +7236,54 @@ Name | Type | Description  | Notes
 List all of the experiments in every model history / workspace
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+
+try:
+    # List all of the experiments in every model history / workspace
+    api_response = api_instance.list_all_experiments(model_history_server_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->list_all_experiments: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -4143,12 +7309,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of all the experiment entities. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4158,23 +7329,61 @@ Name | Type | Description  | Notes
 Get logs file path
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+
+try:
+    # Get logs file path
+    api_response = api_instance.logfilepath(deployment_name, version_name, model_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->logfilepath: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
@@ -4190,7 +7399,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
@@ -4199,12 +7408,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: text
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the retrieved log file path |  -  |
+**500** | Error retrieving log file path |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4214,15 +7429,57 @@ Name | Type | Description  | Notes
 Post JSON credentials and obtain a JWT authorization token.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = skil_client.DefaultApi()
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+login_request = skil_client.LoginRequest() # LoginRequest | Login credentials.
+
+try:
+    # Post JSON credentials and obtain a JWT authorization token.
+    api_response = api_instance.login(login_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->login: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 login_request = skil_client.LoginRequest() # LoginRequest | Login credentials.
 
 try:
@@ -4245,12 +7502,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**401** | Invalid credentials |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4260,23 +7523,62 @@ No authorization required
 Get logs
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+log_request = skil_client.LogRequest() # LogRequest | The log object
+
+try:
+    # Get logs
+    api_response = api_instance.logs(deployment_name, version_name, model_name, log_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->logs: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
 log_request = skil_client.LogRequest() # LogRequest | The log object
 
@@ -4293,7 +7595,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
  **log_request** | [**LogRequest**](LogRequest.md)| The log object | 
 
@@ -4303,38 +7605,82 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Logs obtained successfully |  -  |
+**500** | Error retrieving logs |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_get**
-> MetaData meta_get(deployment_name, version_name, model_name)
+> object meta_get(deployment_name, version_name, model_name)
 
 this method can be used to get the meta data for the current model which set to the server
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+
+try:
+    # this method can be used to get the meta data for the current model which set to the server
+    api_response = api_instance.meta_get(deployment_name, version_name, model_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->meta_get: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
 
 try:
@@ -4350,54 +7696,99 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The meta data details |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **meta_post**
-> MetaData meta_post(content_type, body, deployment_name, version_name, model_name)
+> object meta_post(content_type, deployment_name, version_name, model_name, body)
 
 This method can be used to set meta data for the current model which is set to the server
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`
-body = 'body_example' # str | the meta data object
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = 'body_example' # str | the meta data object
 
 try:
     # This method can be used to set meta data for the current model which is set to the server
-    api_response = api_instance.meta_post(content_type, body, deployment_name, version_name, model_name)
+    api_response = api_instance.meta_post(content_type, deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->meta_post: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = 'body_example' # str | the meta data object
+
+try:
+    # This method can be used to set meta data for the current model which is set to the server
+    api_response = api_instance.meta_post(content_type, deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->meta_post: %s\n" % e)
@@ -4408,23 +7799,28 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content_type** | **str**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
- **body** | **str**| the meta data object | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | **str**| the meta data object | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the meta data object that was set |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4434,18 +7830,56 @@ Name | Type | Description  | Notes
 Modify the state (start/stop) of a deployed model
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | ID deployment group
+model_id = 'model_id_example' # str | the id of the deployed model
+body = skil_client.SetState() # SetState | the model state object
+
+try:
+    # Modify the state (start/stop) of a deployed model
+    api_response = api_instance.model_state_change(deployment_id, model_id, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->model_state_change: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -4475,12 +7909,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the model entity with its state changed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4490,18 +7929,54 @@ Name | Type | Description  | Notes
 Retrieve a list of all the deployed models given a deployment id
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | ID deployment group
+
+try:
+    # Retrieve a list of all the deployed models given a deployment id
+    api_response = api_instance.models(deployment_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->models: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -4527,12 +8002,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Retrieved model list |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4542,25 +8022,64 @@ Name | Type | Description  | Notes
 Set the model to be served
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
-file = '/path/to/file.txt' # file | The model file to upload (.pb file) (optional)
+file = '/path/to/file' # file | The model file to upload (.pb file) (optional)
+
+try:
+    # Set the model to be served
+    api_response = api_instance.modelset(deployment_name, version_name, model_name, file=file)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->modelset: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+file = '/path/to/file' # file | The model file to upload (.pb file) (optional)
 
 try:
     # Set the model to be served
@@ -4575,7 +8094,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
  **file** | **file**| The model file to upload (.pb file) | [optional] 
 
@@ -4585,44 +8104,89 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model set successfully |  -  |
+**500** | Error setting model |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **modelupdate**
-> ModelStatus modelupdate(file, deployment_name, version_name, model_name)
+> ModelStatus modelupdate(deployment_name, version_name, model_name, file)
 
 Update the model to be served
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-file = '/path/to/file.txt' # file | The model file to update with (.pb file)
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+file = '/path/to/file' # file | The model file to update with (.pb file)
 
 try:
     # Update the model to be served
-    api_response = api_instance.modelupdate(file, deployment_name, version_name, model_name)
+    api_response = api_instance.modelupdate(deployment_name, version_name, model_name, file)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->modelupdate: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+file = '/path/to/file' # file | The model file to update with (.pb file)
+
+try:
+    # Update the model to be served
+    api_response = api_instance.modelupdate(deployment_name, version_name, model_name, file)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->modelupdate: %s\n" % e)
@@ -4632,10 +8196,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **file**| The model file to update with (.pb file) | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **file** | **file**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -4643,44 +8207,89 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Model updated successfully or model update failed |  -  |
+**500** | Error updating model |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multiclassify**
-> MultiClassClassificationResult multiclassify(body, deployment_name, version_name, model_name)
+> MultiClassClassificationResult multiclassify(deployment_name, version_name, model_name, body)
 
 Represents all of the labels for a given classification
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
 
 try:
     # Represents all of the labels for a given classification
-    api_response = api_instance.multiclassify(body, deployment_name, version_name, model_name)
+    api_response = api_instance.multiclassify(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->multiclassify: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
+
+try:
+    # Represents all of the labels for a given classification
+    api_response = api_instance.multiclassify(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multiclassify: %s\n" % e)
@@ -4690,10 +8299,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4701,46 +8310,92 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multipredict**
-> MultiPredictResponse multipredict(body, deployment_name, version_name, model_name)
+> MultiPredictResponse multipredict(deployment_name, version_name, model_name, body)
 
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.MultiPredictRequest() # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.MultiPredictRequest() # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
 
 try:
     # Get the output from the network, based on the given INDArray[] input
-    api_response = api_instance.multipredict(body, deployment_name, version_name, model_name)
+    api_response = api_instance.multipredict(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->multipredict: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.MultiPredictRequest() # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
+
+try:
+    # Get the output from the network, based on the given INDArray[] input
+    api_response = api_instance.multipredict(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multipredict: %s\n" % e)
@@ -4750,10 +8405,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
 
 ### Return type
 
@@ -4761,48 +8416,95 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating prediction |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **multipredictimage**
-> MultiPredictResponse multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name)
+> MultiPredictResponse multipredictimage(deployment_name, version_name, model_name, file, id, needs_preprocessing)
 
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-file = '/path/to/file.txt' # file | The image file to run the prediction on
-id = 'id_example' # str | The id of the request (could be self generated)
-needs_preprocessing = true # bool | Whether or not the preprocessing is required (either 'true' or 'false')
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+file = '/path/to/file' # file | The image file to run the prediction on
+id = 'id_example' # str | The id of the request (could be self generated)
+needs_preprocessing = True # bool | Whether or not the preprocessing is required (either 'true' or 'false')
 
 try:
     # Get the output from the network using the given image file using the /multipredict endpoint's method
-    api_response = api_instance.multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name)
+    api_response = api_instance.multipredictimage(deployment_name, version_name, model_name, file, id, needs_preprocessing)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->multipredictimage: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+file = '/path/to/file' # file | The image file to run the prediction on
+id = 'id_example' # str | The id of the request (could be self generated)
+needs_preprocessing = True # bool | Whether or not the preprocessing is required (either 'true' or 'false')
+
+try:
+    # Get the output from the network using the given image file using the /multipredict endpoint's method
+    api_response = api_instance.multipredictimage(deployment_name, version_name, model_name, file, id, needs_preprocessing)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->multipredictimage: %s\n" % e)
@@ -4812,12 +8514,12 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deployment_name** | **str**| Name of the deployment group | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
+ **model_name** | **str**| ID or name of the deployed model | 
  **file** | **file**| The image file to run the prediction on | 
  **id** | **str**| The id of the request (could be self generated) | 
  **needs_preprocessing** | **bool**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
- **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **model_name** | **str**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -4825,12 +8527,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating prediction |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4840,18 +8548,53 @@ Name | Type | Description  | Notes
 Gets the number of retrained models written with retraining.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+
+try:
+    # Gets the number of retrained models written with retraining.
+    api_response = api_instance.num_revisions()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->num_revisions: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -4873,44 +8616,88 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the number of revisions for retraining of the model. |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predict**
-> Prediction predict(body, deployment_name, version_name, model_name)
+> Prediction predict(deployment_name, version_name, model_name, body)
 
 Run inference on the input array.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = skil_client.Prediction() # Prediction | The input NDArray
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
 
 try:
     # Run inference on the input array.
-    api_response = api_instance.predict(body, deployment_name, version_name, model_name)
+    api_response = api_instance.predict(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predict: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = skil_client.Prediction() # Prediction | The input NDArray
+
+try:
+    # Run inference on the input array.
+    api_response = api_instance.predict(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predict: %s\n" % e)
@@ -4920,10 +8707,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4931,12 +8718,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Invalid input |  -  |
+**500** | Invalid deployment or model name |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4948,18 +8742,56 @@ Runs inference and find invalid rows based on the input data. Output is defined 
 These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`.
+operation = 'operation_example' # str | Operation to perform on the input data.
+input_type = 'input_type_example' # str | Type of the input data.
+input_data = 'input_data_example' # str |  (optional)
+
+try:
+    # Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
+    api_instance.predict_error(content_type, operation, input_type, input_data=input_data)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predict_error: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -4990,12 +8822,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction along with the skipped, invalid data rows |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5005,24 +8842,61 @@ void (empty response body)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 operation = 'operation_example' # str | The operation to perform on the input data. 
 input_type_file = 'input_type_file_example' # str | Type of the input data. 
-input_data = '/path/to/file.txt' # file | The input data to run inference on.
+input_data = '/path/to/file' # file | The input data to run inference on.
+
+try:
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    api_instance.predict_v2_file(operation, input_type_file, input_data)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predict_v2_file: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+operation = 'operation_example' # str | The operation to perform on the input data. 
+input_type_file = 'input_type_file_example' # str | Type of the input data. 
+input_data = '/path/to/file' # file | The input data to run inference on.
 
 try:
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
@@ -5045,12 +8919,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5060,18 +8939,56 @@ void (empty response body)
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should always be `application/json`.
+operation = 'operation_example' # str | The operation to perform on the input data. 
+input_type_json = 'input_type_json_example' # str | Type of the input data. 
+input_data = 'input_data_example' # str | The input data to run inference on. (Specify a JSON string here)
+
+try:
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    api_instance.predict_v2_json(content_type, operation, input_type_json, input_data)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predict_v2_json: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -5102,12 +9019,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
- - **Accept**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5117,25 +9039,64 @@ void (empty response body)
 Run inference on the input array, using input image file from multipart form data.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
-image = '/path/to/file.txt' # file | The file to upload. (optional)
+image = '/path/to/file' # file | The file to upload. (optional)
+
+try:
+    # Run inference on the input array, using input image file from multipart form data.
+    api_response = api_instance.predictimage(deployment_name, version_name, model_name, image=image)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predictimage: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+image = '/path/to/file' # file | The file to upload. (optional)
 
 try:
     # Run inference on the input array, using input image file from multipart form data.
@@ -5150,7 +9111,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
  **image** | **file**| The file to upload. | [optional] 
 
@@ -5160,44 +9121,89 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error generating prediction |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, deployment_name, version_name, model_name)
+> Prediction predictwithpreprocess(deployment_name, version_name, model_name, body)
 
 Preprocesses the input and run inference on it
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = [skil_client.list[str]()] # list[str] | The input array
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = ['body_example'] # list[str] | The input array
 
 try:
     # Preprocesses the input and run inference on it
-    api_response = api_instance.predictwithpreprocess(body, deployment_name, version_name, model_name)
+    api_response = api_instance.predictwithpreprocess(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predictwithpreprocess: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = ['body_example'] # list[str] | The input array
+
+try:
+    # Preprocesses the input and run inference on it
+    api_response = api_instance.predictwithpreprocess(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictwithpreprocess: %s\n" % e)
@@ -5207,10 +9213,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **list[str]**| The input array | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**list[str]**](str.md)| The input array | 
 
 ### Return type
 
@@ -5218,44 +9224,89 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error executing predictPreProcess |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, deployment_name, version_name, model_name)
+> JsonArrayResponse predictwithpreprocessjson(deployment_name, version_name, model_name, body)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-body = [skil_client.list[str]()] # list[str] | The input array
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 model_name = 'model_name_example' # str | ID or name of the deployed model
+body = ['body_example'] # list[str] | The input array
 
 try:
     # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-    api_response = api_instance.predictwithpreprocessjson(body, deployment_name, version_name, model_name)
+    api_response = api_instance.predictwithpreprocessjson(deployment_name, version_name, model_name, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->predictwithpreprocessjson: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+model_name = 'model_name_example' # str | ID or name of the deployed model
+body = ['body_example'] # list[str] | The input array
+
+try:
+    # Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
+    api_response = api_instance.predictwithpreprocessjson(deployment_name, version_name, model_name, body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->predictwithpreprocessjson: %s\n" % e)
@@ -5265,10 +9316,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **list[str]**| The input array | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **str**| ID or name of the deployed model | 
+ **body** | [**list[str]**](str.md)| The input array | 
 
 ### Return type
 
@@ -5276,12 +9327,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**500** | Error executing predictPreProcessJson |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5291,24 +9348,61 @@ Name | Type | Description  | Notes
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 input_type = 'input_type_example' # str | Input data type.
 output_type = 'output_type_example' # str | Binary output data type.
-input_data = '/path/to/file.txt' # file | The input file to upload. (optional)
+input_data = '/path/to/file' # file | The input file to upload. (optional)
+
+try:
+    # Runs inference based on the input data. Output is defined relative to the output adapter specified.
+    api_instance.raw_predict_binary(input_type, output_type, input_data=input_data)
+except ApiException as e:
+    print("Exception when calling DefaultApi->raw_predict_binary: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+input_type = 'input_type_example' # str | Input data type.
+output_type = 'output_type_example' # str | Binary output data type.
+input_data = '/path/to/file' # file | The input file to upload. (optional)
 
 try:
     # Runs inference based on the input data. Output is defined relative to the output adapter specified.
@@ -5331,12 +9425,17 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/octet-stream
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Input data returned a prediction in raw binary file format. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5346,22 +9445,58 @@ void (empty response body)
 Refresh the remote job status. Can be used for monitoring.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id = 789 # int | Job ID
+job_id = 56 # int | Job ID
+
+try:
+    # Refresh the remote job status. Can be used for monitoring.
+    api_response = api_instance.refresh_job_status(job_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->refresh_job_status: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+job_id = 56 # int | Job ID
 
 try:
     # Refresh the remote job status. Can be used for monitoring.
@@ -5383,12 +9518,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The associated job entity object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5398,18 +9538,54 @@ Name | Type | Description  | Notes
 Register a new user
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user = skil_client.User() # User | User details
+
+try:
+    # Register a new user
+    api_response = api_instance.register_user(user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->register_user: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -5435,12 +9611,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | User added successfully. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5450,18 +9631,56 @@ Name | Type | Description  | Notes
 Reimport a model to a previous deployed model in a deployment
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_id = 'deployment_id_example' # str | ID deployment group
+model_id = 'model_id_example' # str | the id of the deployed model
+body = skil_client.ImportModelRequest() # ImportModelRequest | the deployment request
+
+try:
+    # Reimport a model to a previous deployed model in a deployment
+    api_response = api_instance.reimport_model(deployment_id, model_id, body)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->reimport_model: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -5491,12 +9710,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the reimported model entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5506,22 +9730,58 @@ Name | Type | Description  | Notes
 Revoke a user token.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-token_id = 789 # int | Token ID
+token_id = 56 # int | Token ID
+
+try:
+    # Revoke a user token.
+    api_response = api_instance.revoke_user_token(token_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->revoke_user_token: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+token_id = 56 # int | Token ID
 
 try:
     # Revoke a user token.
@@ -5543,12 +9803,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The revoked token object. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5558,18 +9823,54 @@ Name | Type | Description  | Notes
 Rollback to a previous revision of the model.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+index = 56 # int | Model revision index.
+
+try:
+    # Rollback to a previous revision of the model.
+    api_response = api_instance.rollback(index)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->rollback: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -5595,12 +9896,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Returns the status of the rollback. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5610,22 +9916,58 @@ Name | Type | Description  | Notes
 Start running an (already created) job on the remote resource
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-job_id = 789 # int | Job ID
+job_id = 56 # int | Job ID
+
+try:
+    # Start running an (already created) job on the remote resource
+    api_response = api_instance.run_a_job(job_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->run_a_job: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+job_id = 56 # int | Job ID
 
 try:
     # Start running an (already created) job on the remote resource
@@ -5647,12 +9989,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The associated job entity object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5664,23 +10011,62 @@ Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+transform_name = 'transform_name_example' # str | ID or name of the deployed transform
+batch_csv_record = skil_client.BatchCSVRecord() # BatchCSVRecord | The input batch of record arrays (optional)
+
+try:
+    # Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
+    api_response = api_instance.transform_csv(deployment_name, version_name, transform_name, batch_csv_record=batch_csv_record)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transform_csv: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 batch_csv_record = skil_client.BatchCSVRecord() # BatchCSVRecord | The input batch of record arrays (optional)
 
@@ -5697,7 +10083,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **str**| ID or name of the deployed transform | 
  **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -5707,12 +10093,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5722,23 +10114,62 @@ Name | Type | Description  | Notes
 Takes a batch input arrays and transforms it
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+transform_name = 'transform_name_example' # str | ID or name of the deployed transform
+batch_record = skil_client.BatchRecord() # BatchRecord | The input batch of record arrays (optional)
+
+try:
+    # Takes a batch input arrays and transforms it
+    api_response = api_instance.transformarray(deployment_name, version_name, transform_name, batch_record=batch_record)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformarray: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 batch_record = skil_client.BatchRecord() # BatchRecord | The input batch of record arrays (optional)
 
@@ -5755,7 +10186,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **str**| ID or name of the deployed transform | 
  **batch_record** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
@@ -5765,12 +10196,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5782,25 +10219,64 @@ Takes multiple multipart image file to transform and returns Base64NDArrayBody
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
-files = ['files_example'] # list[str] | The image files to upload
+files = '/path/to/file' # list[file] | The image files to upload
+
+try:
+    # Takes multiple multipart image file to transform and returns Base64NDArrayBody
+    api_response = api_instance.transformimage(deployment_name, version_name, image_transform_name, files)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformimage: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
+files = '/path/to/file' # list[file] | The image files to upload
 
 try:
     # Takes multiple multipart image file to transform and returns Base64NDArrayBody
@@ -5815,9 +10291,9 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
- **files** | [**list[str]**](str.md)| The image files to upload | 
+ **files** | **list[file]**| The image files to upload | 
 
 ### Return type
 
@@ -5825,12 +10301,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**400** | No uploaded files found |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5842,23 +10325,62 @@ Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRec
 Takes a SingleCSVRecord object and transforms it into the desired format
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+transform_name = 'transform_name_example' # str | ID or name of the deployed transform
+single_csv_record = skil_client.SingleCSVRecord() # SingleCSVRecord | The input record array (optional)
+
+try:
+    # Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
+    api_response = api_instance.transformincremental_csv(deployment_name, version_name, transform_name, single_csv_record=single_csv_record)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformincremental_csv: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 single_csv_record = skil_client.SingleCSVRecord() # SingleCSVRecord | The input record array (optional)
 
@@ -5875,7 +10397,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **str**| ID or name of the deployed transform | 
  **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -5885,12 +10407,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5900,23 +10428,62 @@ Name | Type | Description  | Notes
 Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+transform_name = 'transform_name_example' # str | ID or name of the deployed transform
+single_record = skil_client.SingleRecord() # SingleRecord | The input record array (optional)
+
+try:
+    # Same as /transformincremental but returns Base64NDArrayBody.
+    api_response = api_instance.transformincrementalarray(deployment_name, version_name, transform_name, single_record=single_record)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformincrementalarray: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 single_record = skil_client.SingleRecord() # SingleRecord | The input record array (optional)
 
@@ -5933,7 +10500,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **str**| ID or name of the deployed transform | 
  **single_record** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
@@ -5943,12 +10510,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5960,25 +10533,64 @@ Takes a single multipart image file to transform and returns Base64NDArrayBody
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
-file = '/path/to/file.txt' # file | The image file to upload
+file = '/path/to/file' # file | The image file to upload
+
+try:
+    # Takes a single multipart image file to transform and returns Base64NDArrayBody
+    api_response = api_instance.transformincrementalimage(deployment_name, version_name, image_transform_name, file)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformincrementalimage: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+image_transform_name = 'image_transform_name_example' # str | ID or name of the deployed image transform
+file = '/path/to/file' # file | The image file to upload
 
 try:
     # Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -5993,7 +10605,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **image_transform_name** | **str**| ID or name of the deployed image transform | 
  **file** | **file**| The image file to upload | 
 
@@ -6003,12 +10615,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | array transformed and returned successfully |  -  |
+**400** | No uploaded file found or the file couldn&#39;t be loaded |  -  |
+**500** | internal server error during transforming the array |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6018,23 +10637,61 @@ Name | Type | Description  | Notes
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+transform_name = 'transform_name_example' # str | ID or name of the deployed transform
+
+try:
+    # Gets the JSON string of the deployed transform process (CSV or Image)
+    api_response = api_instance.transformprocess_get(deployment_name, version_name, transform_name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformprocess_get: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 
 try:
@@ -6050,7 +10707,7 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **str**| ID or name of the deployed transform | 
 
 ### Return type
@@ -6059,12 +10716,19 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | the deployed transform process |  -  |
+**400** | the transform process is probably null |  -  |
+**500** | internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6074,24 +10738,64 @@ Name | Type | Description  | Notes
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
 content_type = 'content_type_example' # str | The `Content-Type` should be `application/json`.
 deployment_name = 'deployment_name_example' # str | Name of the deployment group
-version_name = 'version_name_example' # str | Version name of the endpoint. The default value is \"default\"
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
+transform_name = 'transform_name_example' # str | ID or name of the deployed transform
+transform_process = 'transform_process_example' # str | The transform process to set (Specify a JSON string here). (optional)
+
+try:
+    # Sets the deployed (CSV or Image) transform process through the provided JSON string
+    api_response = api_instance.transformprocess_post(content_type, deployment_name, version_name, transform_name, transform_process=transform_process)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->transformprocess_post: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+content_type = 'content_type_example' # str | The `Content-Type` should be `application/json`.
+deployment_name = 'deployment_name_example' # str | Name of the deployment group
+version_name = 'default' # str | Version name of the endpoint. The default value is \"default\" (default to 'default')
 transform_name = 'transform_name_example' # str | ID or name of the deployed transform
 transform_process = 'transform_process_example' # str | The transform process to set (Specify a JSON string here). (optional)
 
@@ -6109,7 +10813,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content_type** | **str**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deployment_name** | **str**| Name of the deployment group | 
- **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **str**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **str**| ID or name of the deployed transform | 
  **transform_process** | **str**| The transform process to set (Specify a JSON string here). | [optional] 
 
@@ -6119,12 +10823,18 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: text/plain
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | transform process set successfully |  -  |
+**500** | internal server error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6134,18 +10844,54 @@ Name | Type | Description  | Notes
 Update auth policy
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+auth_policy = skil_client.AuthPolicy() # AuthPolicy | Auth policy object
+
+try:
+    # Update auth policy
+    api_response = api_instance.update_auth_policy(auth_policy)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_auth_policy: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -6171,12 +10917,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Update AuthPolicy object |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6186,18 +10937,55 @@ Name | Type | Description  | Notes
 Updates the best model for an experiment
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+update_best_model = skil_client.UpdateBestModel() # UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
+
+try:
+    # Updates the best model for an experiment
+    api_response = api_instance.update_best_model_for_experiment(model_history_server_id, update_best_model)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_best_model_for_experiment: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -6225,12 +11013,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated experiment entity. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6240,18 +11033,56 @@ Name | Type | Description  | Notes
 Updates an experiment, given an experiment entity
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+experiment_id = 'experiment_id_example' # str | the GUID of the experiment to update
+experiment_entity = skil_client.ExperimentEntity() # ExperimentEntity | The experiment entity to update with
+
+try:
+    # Updates an experiment, given an experiment entity
+    api_response = api_instance.update_experiment(model_history_server_id, experiment_id, experiment_entity)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_experiment: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -6281,12 +11112,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated experiment entity. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6296,18 +11132,56 @@ Name | Type | Description  | Notes
 Update a model history / workspace
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+model_history_server_id = 'model_history_server_id_example' # str | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+model_history_id = 'model_history_id_example' # str | the GUID of the model history / workspace to update
+update_model_history_request = skil_client.AddModelHistoryRequest() # AddModelHistoryRequest | The model history request object
+
+try:
+    # Update a model history / workspace
+    api_response = api_instance.update_model_history(model_history_server_id, model_history_id, update_model_history_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_model_history: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -6337,12 +11211,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated model history entity |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6352,18 +11231,54 @@ Name | Type | Description  | Notes
 Update a user
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+user = skil_client.User() # User | User details
+
+try:
+    # Update a user
+    api_response = api_instance.update_user(user)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->update_user: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
@@ -6389,12 +11304,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | User updated successfully. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6404,22 +11324,58 @@ Name | Type | Description  | Notes
 Upload a model file to SKIL for import.
 
 ### Example
+
+* Api Key Authentication (api_key):
 ```python
 from __future__ import print_function
 import time
 import skil_client
 from skil_client.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: api_key
 configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
 
 # create an instance of the API class
 api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
-file = '/path/to/file.txt' # file | The file to upload. (optional)
+file = '/path/to/file' # file | The file to upload. (optional)
+
+try:
+    # Upload a model file to SKIL for import.
+    api_response = api_instance.upload(file=file)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->upload: %s\n" % e)
+```
+
+* Api Key Authentication (x_api_key):
+```python
+from __future__ import print_function
+import time
+import skil_client
+from skil_client.rest import ApiException
+from pprint import pprint
+configuration = skil_client.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['authorization'] = 'Bearer'
+configuration = skil_client.Configuration()
+# Configure API key authorization: x_api_key
+configuration.api_key['X-API-Key'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-API-Key'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = skil_client.DefaultApi(skil_client.ApiClient(configuration))
+file = '/path/to/file' # file | The file to upload. (optional)
 
 try:
     # Upload a model file to SKIL for import.
@@ -6441,12 +11397,17 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

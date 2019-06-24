@@ -1,7 +1,9 @@
 
+
 # Token
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tokenId** | **Long** |  |  [optional]
@@ -10,6 +12,7 @@ Name | Type | Description | Notes
 **token** | **String** |  |  [optional]
 **userId** | **String** |  |  [optional]
 **isRevoked** | **Integer** |  |  [optional]
+
 
 
 

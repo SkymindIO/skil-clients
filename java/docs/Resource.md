@@ -1,7 +1,9 @@
 
+
 # Resource
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **resourceId** | **Long** | ID of the resource |  [optional]
@@ -11,16 +13,18 @@ Name | Type | Description | Notes
 **credentialId** | **String** | Credentials GUID |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 COMPUTE | &quot;COMPUTE&quot;
 STORAGE | &quot;STORAGE&quot;
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
+
 Name | Value
 ---- | -----
 EMR | &quot;EMR&quot;

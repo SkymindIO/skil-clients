@@ -1,6 +1,7 @@
 # SkilClient.MultiClassClassificationResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **rankedOutcomes** | **[[String]]** |  | [optional] 

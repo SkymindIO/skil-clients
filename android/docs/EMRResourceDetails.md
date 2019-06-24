@@ -1,7 +1,9 @@
 
+
 # EMRResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  |  [optional]
@@ -12,16 +14,17 @@ Name | Type | Description | Notes
 **region** | **String** | Region name where the cluster is deployed |  [optional]
 
 
-<a name="TypeEnum"></a>
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 
 
-<a name="SubTypeEnum"></a>
 ## Enum: SubTypeEnum
+
 Name | Value
 ---- | -----
+
 
 
 

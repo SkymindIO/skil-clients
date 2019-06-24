@@ -1,6 +1,7 @@
 # SkilClient.ModelEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** |  | [optional] 
@@ -16,11 +17,11 @@ Name | Type | Description | Notes
 **subType** | **String** |  | [optional] 
 **labelsFileLocation** | **String** |  | [optional] 
 **extraArgs** | **String** |  | [optional] 
-**launchPolicy** | **Object** |  | [optional] 
+**launchPolicy** | [**Object**](.md) |  | [optional] 
 **modelState** | **String** |  | [optional] 
 
 
-<a name="ModelTypeEnum"></a>
+
 ## Enum: ModelTypeEnum
 
 
@@ -35,7 +36,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
 
 
@@ -56,7 +57,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="ModelStateEnum"></a>
+
 ## Enum: ModelStateEnum
 
 

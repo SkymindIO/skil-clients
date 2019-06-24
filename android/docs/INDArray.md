@@ -1,7 +1,9 @@
 
+
 # INDArray
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **array** | **String** |  |  [optional]
@@ -11,16 +13,17 @@ Name | Type | Description | Notes
 **dataType** | [**DataTypeEnum**](#DataTypeEnum) |  |  [optional]
 
 
-<a name="OrderingEnum"></a>
 ## Enum: OrderingEnum
+
 Name | Value
 ---- | -----
 
 
-<a name="DataTypeEnum"></a>
 ## Enum: DataTypeEnum
+
 Name | Value
 ---- | -----
+
 
 
 

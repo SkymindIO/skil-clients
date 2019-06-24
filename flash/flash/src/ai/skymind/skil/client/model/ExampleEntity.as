@@ -8,10 +8,10 @@ package ai.skymind.skil.client.model {
         public var exampleId: String = null;
         /* Example version */
         [XmlElement(name="exampleVersion")]
-        public var exampleVersion: Number = NaN;
+        public var exampleVersion: Number = 0;
         /* Row Number */
         [XmlElement(name="rowNumber")]
-        public var rowNumber: Number = NaN;
+        public var rowNumber: Number = 0;
         /* when the example was created */
         [XmlElement(name="created")]
         public var created: Number = 0;
@@ -20,7 +20,7 @@ package ai.skymind.skil.client.model {
         public var miniBatchId: String = null;
         /* minibatch version */
         [XmlElement(name="miniBatchVersion")]
-        public var miniBatchVersion: Number = NaN;
+        public var miniBatchVersion: Number = 0;
 
     public function toString(): String {
         var str: String = "ExampleEntity: ";

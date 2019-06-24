@@ -4,12 +4,11 @@ import ai.skymind.skil.client.model.MinibatchEntity;
 
     [XmlRootNode(name="AddExampleRequest")]
     public class AddExampleRequest {
-        /* the minibatch the examples are going to be associated with */
-        [XmlElement(name="minibatch")]
+                [XmlElement(name="minibatch")]
         public var minibatch: MinibatchEntity = NaN;
         /* the size of the batch to create */
         [XmlElement(name="batchSize")]
-        public var batchSize: Number = NaN;
+        public var batchSize: Number = 0;
 
     public function toString(): String {
         var str: String = "AddExampleRequest: ";

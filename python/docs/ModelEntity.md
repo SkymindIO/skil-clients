@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **sub_type** | **str** |  | [optional] 
 **labels_file_location** | **str** |  | [optional] 
 **extra_args** | **str** |  | [optional] 
-**launch_policy** | **object** |  | [optional] 
+**launch_policy** | [**object**](.md) |  | [optional] 
 **model_state** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

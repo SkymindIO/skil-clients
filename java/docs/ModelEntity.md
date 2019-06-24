@@ -1,7 +1,9 @@
 
+
 # ModelEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Long** |  |  [optional]
@@ -17,12 +19,13 @@ Name | Type | Description | Notes
 **subType** | **String** |  |  [optional]
 **labelsFileLocation** | **String** |  |  [optional]
 **extraArgs** | **String** |  |  [optional]
-**launchPolicy** | **Object** |  |  [optional]
+**launchPolicy** | [**Object**](.md) |  |  [optional]
 **modelState** | [**ModelStateEnum**](#ModelStateEnum) |  |  [optional]
 
 
-<a name="ModelTypeEnum"></a>
+
 ## Enum: ModelTypeEnum
+
 Name | Value
 ---- | -----
 TRANSFORM | &quot;transform&quot;
@@ -31,8 +34,9 @@ KNN | &quot;knn&quot;
 MODELV2 | &quot;modelv2&quot;
 
 
-<a name="StateEnum"></a>
+
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 CREATED | &quot;created&quot;
@@ -44,8 +48,9 @@ UNHEALTHY | &quot;unhealthy&quot;
 FAILED | &quot;failed&quot;
 
 
-<a name="ModelStateEnum"></a>
+
 ## Enum: ModelStateEnum
+
 Name | Value
 ---- | -----
 CREATED | &quot;CREATED&quot;

@@ -1,11 +1,11 @@
 package ai.skymind.skil.client.api {
 
-import io.swagger.common.ApiInvoker;
-import io.swagger.exception.ApiErrorCodes;
-import io.swagger.exception.ApiError;
-import io.swagger.common.ApiUserCredentials;
-import io.swagger.event.Response;
-import io.swagger.common.SwaggerApi;
+import org.openapitools.common.ApiInvoker;
+import org.openapitools.exception.ApiErrorCodes;
+import org.openapitools.exception.ApiError;
+import org.openapitools.common.ApiUserCredentials;
+import org.openapitools.event.Response;
+import org.openapitools.common.OpenApi;
 import ai.skymind.skil.client.model.AccumulatedResults;
 import ai.skymind.skil.client.model.AddCredentialsRequest;
 import ai.skymind.skil.client.model.AddExampleRequest;
@@ -39,7 +39,6 @@ import ai.skymind.skil.client.model.LogBatch;
 import ai.skymind.skil.client.model.LogRequest;
 import ai.skymind.skil.client.model.LoginRequest;
 import ai.skymind.skil.client.model.LoginResponse;
-import ai.skymind.skil.client.model.MetaData;
 import ai.skymind.skil.client.model.MinibatchEntity;
 import ai.skymind.skil.client.model.ModelEntity;
 import ai.skymind.skil.client.model.ModelFeedBackRequest;
@@ -73,7 +72,7 @@ import mx.utils.UIDUtil;
 import flash.utils.Dictionary;
 import flash.events.EventDispatcher;
 
-public class DefaultApi extends SwaggerApi {
+public class DefaultApi extends OpenApi {
     /**
     * Constructor for the DefaultApi api client
     * @param apiCredentials Wrapper object for tokens and hostName required towards authentication
@@ -767,7 +766,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns ClassificationResult 
      */
-    public function classify (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
+    public function classify (deploymentName: String, versionName: String, modelName: String, body: Prediction): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classify".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -809,7 +808,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns Base64NDArrayBody 
      */
-    public function classifyarray (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
+    public function classifyarray (deploymentName: String, versionName: String, modelName: String, body: Prediction): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/classifyarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -1427,7 +1426,7 @@ public class DefaultApi extends SwaggerApi {
     /*
      * Returns DetectionResult 
      */
-    public function detectobjects (id: String, needsPreprocessing: Boolean, threshold: Number, file: File, deploymentName: String, versionName: String, modelName: String): String {
+    public function detectobjects (deploymentName: String, versionName: String, modelName: String, id: String, needsPreprocessing: Boolean, threshold: Number, file: File): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/detectobjects".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -2547,7 +2546,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns JsonArrayResponse 
      */
-    public function jsonarray (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
+    public function jsonarray (deploymentName: String, versionName: String, modelName: String, body: Prediction): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/jsonarray".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -2811,7 +2810,7 @@ headerParams["accept"] = toPathValue(accept);
     }
 
     /*
-     * Returns MetaData 
+     * Returns Object 
      */
     public function meta_get (deploymentName: String, versionName: String, modelName: String): String {
         // create path and map variables
@@ -2843,15 +2842,15 @@ headerParams["accept"] = toPathValue(accept);
         token.requestId = requestId;
         token.completionEventType = "meta_get";
 
-        token.returnType = MetaData;
+        token.returnType = Object;
         return requestId;
 
     }
 
     /*
-     * Returns MetaData 
+     * Returns Object 
      */
-    public function meta_post (contentType: String, body: String, deploymentName: String, versionName: String, modelName: String): String {
+    public function meta_post (contentType: String, deploymentName: String, versionName: String, modelName: String, body: String): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/meta".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -2890,7 +2889,7 @@ headerParams["accept"] = toPathValue(accept);
         token.requestId = requestId;
         token.completionEventType = "meta_post";
 
-        token.returnType = MetaData;
+        token.returnType = Object;
         return requestId;
 
     }
@@ -3008,7 +3007,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns ModelStatus 
      */
-    public function modelupdate (file: File, deploymentName: String, versionName: String, modelName: String): String {
+    public function modelupdate (deploymentName: String, versionName: String, modelName: String, file: File): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/modelupdate".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -3050,7 +3049,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns MultiClassClassificationResult 
      */
-    public function multiclassify (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
+    public function multiclassify (deploymentName: String, versionName: String, modelName: String, body: Prediction): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multiclassify".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -3092,7 +3091,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns MultiPredictResponse 
      */
-    public function multipredict (body: MultiPredictRequest, deploymentName: String, versionName: String, modelName: String): String {
+    public function multipredict (deploymentName: String, versionName: String, modelName: String, body: MultiPredictRequest): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredict".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -3134,7 +3133,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns MultiPredictResponse 
      */
-    public function multipredictimage (file: File, id: String, needsPreprocessing: Boolean, deploymentName: String, versionName: String, modelName: String): String {
+    public function multipredictimage (deploymentName: String, versionName: String, modelName: String, file: File, id: String, needsPreprocessing: Boolean): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/multipredictimage".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -3210,7 +3209,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns Prediction 
      */
-    public function predict (body: Prediction, deploymentName: String, versionName: String, modelName: String): String {
+    public function predict (deploymentName: String, versionName: String, modelName: String, body: Prediction): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predict".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -3418,7 +3417,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns Prediction 
      */
-    public function predictwithpreprocess (body: Array, deploymentName: String, versionName: String, modelName: String): String {
+    public function predictwithpreprocess (deploymentName: String, versionName: String, modelName: String, body: Array): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocess".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 
@@ -3460,7 +3459,7 @@ headerParams["accept"] = toPathValue(accept);
     /*
      * Returns JsonArrayResponse 
      */
-    public function predictwithpreprocessjson (body: Array, deploymentName: String, versionName: String, modelName: String): String {
+    public function predictwithpreprocessjson (deploymentName: String, versionName: String, modelName: String, body: Array): String {
         // create path and map variables
         var path: String = "/endpoints/{deploymentName}/model/{modelName}/{versionName}/predictwithpreprocessjson".replace(/{format}/g,"xml").replace("{" + "deploymentName" + "}", getApiInvoker().escapeString(deploymentName)).replace("{" + "versionName" + "}", getApiInvoker().escapeString(versionName)).replace("{" + "modelName" + "}", getApiInvoker().escapeString(modelName));
 

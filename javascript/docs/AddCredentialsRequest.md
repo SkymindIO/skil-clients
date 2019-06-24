@@ -1,6 +1,7 @@
 # SkilClient.AddCredentialsRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Type of the credentials | [optional] 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **uri** | **String** | URI of the credentials | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 

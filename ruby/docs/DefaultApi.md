@@ -123,12 +123,15 @@ Method | HTTP request | Description
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
-# **accumulated_results**
+
+## accumulated_results
+
 > AccumulatedResults accumulated_results
 
 Tells how many retraining examples have labels associated with them.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -138,6 +141,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -152,6 +160,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -160,21 +169,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## add_credentials
 
-# **add_credentials**
 > ResourceCredentials add_credentials(add_credentials_request)
 
 Adds credentials
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -184,12 +194,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 add_credentials_request = SkilCient::AddCredentialsRequest.new # AddCredentialsRequest | Add credentials request object
-
 
 begin
   #Adds credentials
@@ -202,6 +215,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **add_credentials_request** | [**AddCredentialsRequest**](AddCredentialsRequest.md)| Add credentials request object | 
@@ -212,21 +226,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_evaluation_result
 
-# **add_evaluation_result**
 > EvaluationResultsEntity add_evaluation_result(model_history_server_id, evaluation_results_entity)
 
 Adds an evaluation result
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -236,14 +251,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 evaluation_results_entity = SkilCient::EvaluationResultsEntity.new # EvaluationResultsEntity | The evaluation result entity
-
 
 begin
   #Adds an evaluation result
@@ -256,6 +273,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -267,21 +285,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_example_for_batch
 
-# **add_example_for_batch**
 > AddExampleRequest add_example_for_batch(model_history_server_id, add_example_request)
 
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -291,14 +310,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 add_example_request = SkilCient::AddExampleRequest.new # AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
-
 
 begin
   #Adds a number of examples to a minibatch ID given an AddExampleRequest.
@@ -311,6 +332,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -322,21 +344,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_example_to_minibatch
 
-# **add_example_to_minibatch**
 > ExampleEntity add_example_to_minibatch(model_history_server_id, example_entity)
 
 Adds an example to a minibatch
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -346,14 +369,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 example_entity = SkilCient::ExampleEntity.new # ExampleEntity | The example to add to the minibatch
-
 
 begin
   #Adds an example to a minibatch
@@ -366,6 +391,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -377,21 +403,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_experiment
 
-# **add_experiment**
 > ExperimentEntity add_experiment(model_history_server_id, experiment_entity)
 
 Add an experiment, given an experiment entity
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -401,14 +428,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 experiment_entity = SkilCient::ExperimentEntity.new # ExperimentEntity | The experiment entity to add
-
 
 begin
   #Add an experiment, given an experiment entity
@@ -421,6 +450,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -432,21 +462,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_feedback_binary
 
-# **add_feedback_binary**
 > FeedbackResponse add_feedback_binary(id, type, opts)
 
 
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -456,16 +487,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 id = 'id_example' # String | Batch ID to retrain the model with and get feedback for.
-
 type = 'type_example' # String | The type of the labels array.
-
-opts = { 
-  file: File.new('/path/to/file.txt') # File | The labels file to upload.
+opts = {
+  file: File.new('/path/to/file') # File | The labels file to upload.
 }
 
 begin
@@ -477,6 +510,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -490,21 +524,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## add_feedback_json
 
-# **add_feedback_json**
 > FeedbackResponse add_feedback_json(id, opts)
 
 Gets the retraining feedback for the given batch ID.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -514,14 +549,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 id = 'id_example' # String | Batch ID to retrain the model with and get feedback for.
-
-opts = { 
-  labels: [SkilCient::Array<Array<Float>>.new] # Array<Array<Float>> | The associated labels (one-hot vectors) with the batch for retraining.
+opts = {
+  labels: nil # Array<Array<Float>> | The associated labels (one-hot vectors) with the batch for retraining.
 }
 
 begin
@@ -535,10 +573,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
- **labels** | **Array&lt;Array&lt;Float&gt;&gt;**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+ **labels** | [**Array&lt;Array&lt;Float&gt;&gt;**](Array.md)| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
 
 ### Return type
 
@@ -546,21 +585,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_minibatch
 
-# **add_minibatch**
 > MinibatchEntity add_minibatch(model_history_server_id, minibatch_entity)
 
 Adds a minibatch
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -570,14 +610,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 minibatch_entity = SkilCient::MinibatchEntity.new # MinibatchEntity | The minibatch entity to add
-
 
 begin
   #Adds a minibatch
@@ -590,6 +632,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -601,21 +644,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_model_feedback
 
-# **add_model_feedback**
 > ModelFeedBackRequest add_model_feedback(model_history_server_id, model_feed_back_request)
 
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -625,14 +669,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_feed_back_request = SkilCient::ModelFeedBackRequest.new # ModelFeedBackRequest | The model feedback request object
-
 
 begin
   #Adds an evaluation feedback to the model against a given minibatch id.
@@ -645,6 +691,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -656,21 +703,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_model_history
 
-# **add_model_history**
 > ModelHistoryEntity add_model_history(model_history_server_id, add_model_history_request)
 
 Add a model history / workspace
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -680,14 +728,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 add_model_history_request = SkilCient::AddModelHistoryRequest.new # AddModelHistoryRequest | The model history request object
-
 
 begin
   #Add a model history / workspace
@@ -700,6 +750,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -711,21 +762,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_model_instance
 
-# **add_model_instance**
 > ModelInstanceEntity add_model_instance(model_history_server_id, model_instance_entity)
 
 Adds a model
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -735,14 +787,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_instance_entity = SkilCient::ModelInstanceEntity.new # ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
-
 
 begin
   #Adds a model
@@ -755,6 +809,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -766,21 +821,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_resource
 
-# **add_resource**
 > Object add_resource(add_resource_request)
 
 Adds a resource
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -790,12 +846,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 add_resource_request = SkilCient::AddResourceRequest.new # AddResourceRequest | The Add resource request object
-
 
 begin
   #Adds a resource
@@ -808,6 +867,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **add_resource_request** | [**AddResourceRequest**](AddResourceRequest.md)| The Add resource request object | 
@@ -818,21 +878,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## add_resource_group
 
-# **add_resource_group**
 > ResourceGroup add_resource_group(group_name)
 
 Adds a resource group
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -842,12 +903,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 group_name = 'group_name_example' # String | Name of the resource group
-
 
 begin
   #Adds a resource group
@@ -860,6 +924,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **group_name** | **String**| Name of the resource group | 
@@ -870,21 +935,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain; charset=utf-8
- - **Accept**: application/json
+- **Content-Type**: text/plain; charset=utf-8
+- **Accept**: application/json
 
 
+## add_resource_to_group
 
-# **add_resource_to_group**
 > add_resource_to_group(resource_group_id, resource_id)
 
 Adds a resource to a resource group
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -894,14 +960,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_group_id = 789 # Integer | ID of the resource group
-
-resource_id = 789 # Integer | ID of the resource
-
+resource_group_id = 56 # Integer | ID of the resource group
+resource_id = 56 # Integer | ID of the resource
 
 begin
   #Adds a resource to a resource group
@@ -912,6 +980,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -924,21 +993,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## aggregate_model_results
 
-# **aggregate_model_results**
 > EvaluationResultsEntity aggregate_model_results(model_history_server_id, aggregate_prediction)
 
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -948,14 +1018,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 aggregate_prediction = SkilCient::AggregatePrediction.new # AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
-
 
 begin
   #Aggregates the evaluaition results of a model instance, based on the evaluation type
@@ -968,6 +1040,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -979,21 +1052,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## change_user_password
 
-# **change_user_password**
 > User change_user_password(user_id, change_password_request)
 
 Change user's password
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1003,14 +1077,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 user_id = 'user_id_example' # String | User's ID
-
 change_password_request = SkilCient::ChangePasswordRequest.new # ChangePasswordRequest | Password details.
-
 
 begin
   #Change user's password
@@ -1023,6 +1099,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **String**| User&#39;s ID | 
@@ -1034,21 +1111,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## classify
 
-# **classify**
-> ClassificationResult classify(body, deployment_name, version_name, model_name)
+> ClassificationResult classify(deployment_name, version_name, model_name, body)
 
 Use the deployed model to classify the input
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1058,22 +1136,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = SkilCient::Prediction.new # Prediction | The input NDArray
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = SkilCient::Prediction.new # Prediction | The input NDArray
 
 begin
   #Use the deployed model to classify the input
-  result = api_instance.classify(body, deployment_name, version_name, model_name)
+  result = api_instance.classify(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->classify: #{e}"
@@ -1082,12 +1160,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1095,21 +1174,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## classifyarray
 
-# **classifyarray**
-> Base64NDArrayBody classifyarray(body, deployment_name, version_name, model_name)
+> Base64NDArrayBody classifyarray(deployment_name, version_name, model_name, body)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1119,22 +1199,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = SkilCient::Prediction.new # Prediction | The input NDArray
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = SkilCient::Prediction.new # Prediction | The input NDArray
 
 begin
   #Same as /classify but returns the output as Base64NDArrayBody
-  result = api_instance.classifyarray(body, deployment_name, version_name, model_name)
+  result = api_instance.classifyarray(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->classifyarray: #{e}"
@@ -1143,12 +1223,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1156,21 +1237,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## classifyimage
 
-# **classifyimage**
 > ClassificationResult classifyimage(deployment_name, version_name, model_name, opts)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1180,18 +1262,19 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
-opts = { 
-  image: File.new('/path/to/file.txt') # File | The file to upload.
+opts = {
+  image: File.new('/path/to/file') # File | The file to upload.
 }
 
 begin
@@ -1205,10 +1288,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
  **image** | **File**| The file to upload. | [optional] 
 
@@ -1218,21 +1302,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## clear_state
 
-# **clear_state**
 > FeedbackResponse clear_state
 
 Clears the accumulated data for retraining.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1242,6 +1327,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -1256,6 +1346,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1264,21 +1355,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## create_job
 
-# **create_job**
 > JobEntity create_job(job_id_or_type, create_job_request)
 
 Create a job
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1288,14 +1380,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 job_id_or_type = 'job_id_or_type_example' # String | Job Type
-
 create_job_request = SkilCient::CreateJobRequest.new # CreateJobRequest | Create job request object
-
 
 begin
   #Create a job
@@ -1308,6 +1402,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id_or_type** | **String**| Job Type | 
@@ -1319,21 +1414,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## create_model_history
 
-# **create_model_history**
 > ModelHistoryEntity create_model_history(model_history_server_id, model_history_entity)
 
 Creates model History
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1343,14 +1439,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_history_entity = SkilCient::ModelHistoryEntity.new # ModelHistoryEntity | The model history entity
-
 
 begin
   #Creates model History
@@ -1363,6 +1461,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -1374,21 +1473,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## delete_credentials_by_id
 
-# **delete_credentials_by_id**
 > delete_credentials_by_id(credential_id)
 
 Delete credentials given an ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1398,12 +1498,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-credential_id = 789 # Integer | Credentials ID
-
+credential_id = 56 # Integer | Credentials ID
 
 begin
   #Delete credentials given an ID
@@ -1415,6 +1518,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credential_id** | **Integer**| Credentials ID | 
@@ -1425,21 +1529,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## delete_experiment
 
-# **delete_experiment**
 > InlineResponse200 delete_experiment(model_history_server_id, experiment_id)
 
 Deletes an experiment, given an experiment entity
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1449,14 +1554,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment to delete
-
 
 begin
   #Deletes an experiment, given an experiment entity
@@ -1469,6 +1576,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -1480,21 +1588,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## delete_job_by_id
 
-# **delete_job_by_id**
 > delete_job_by_id(job_id_or_type)
 
 Deletes a job given its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1504,12 +1613,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-job_id_or_type = 789 # Integer | Job ID
-
+job_id_or_type = 56 # Integer | Job ID
 
 begin
   #Deletes a job given its ID
@@ -1521,6 +1633,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id_or_type** | **Integer**| Job ID | 
@@ -1531,21 +1644,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## delete_model
 
-# **delete_model**
 > InlineResponse200 delete_model(deployment_id, model_id)
 
 Delete a model by deployment and model id
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1555,14 +1669,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | ID deployment group
-
 model_id = 'model_id_example' # String | the id of the deployed model
-
 
 begin
   #Delete a model by deployment and model id
@@ -1575,6 +1691,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **String**| ID deployment group | 
@@ -1586,21 +1703,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## delete_model_history
 
-# **delete_model_history**
 > InlineResponse200 delete_model_history(model_history_server_id, model_history_id)
 
 Deletes a model history / workspace, given its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1610,14 +1728,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace to delete
-
 
 begin
   #Deletes a model history / workspace, given its ID
@@ -1630,6 +1750,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -1641,21 +1762,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## delete_model_instance
 
-# **delete_model_instance**
 > delete_model_instance(model_history_server_id, model_instance_id)
 
 Deletes a model instance, given its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1665,14 +1787,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to delete.
-
 
 begin
   #Deletes a model instance, given its ID
@@ -1683,6 +1807,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1695,21 +1820,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## delete_resource_by_id
 
-# **delete_resource_by_id**
 > Resource delete_resource_by_id(resource_id)
 
 Delete the resource with the specified resource ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1719,12 +1845,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_id = 789 # Integer | ID of the resource
-
+resource_id = 56 # Integer | ID of the resource
 
 begin
   #Delete the resource with the specified resource ID
@@ -1737,6 +1866,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_id** | **Integer**| ID of the resource | 
@@ -1747,21 +1877,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## delete_resource_from_group
 
-# **delete_resource_from_group**
 > delete_resource_from_group(resource_group_id, resource_id)
 
 Removes a resource from a resource group
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1771,14 +1902,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_group_id = 789 # Integer | ID of the resource group
-
-resource_id = 789 # Integer | ID of the resource
-
+resource_group_id = 56 # Integer | ID of the resource group
+resource_id = 56 # Integer | ID of the resource
 
 begin
   #Removes a resource from a resource group
@@ -1789,6 +1922,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1801,21 +1935,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## delete_resource_group_by_id
 
-# **delete_resource_group_by_id**
 > ResourceGroup delete_resource_group_by_id(resource_group_id)
 
 Delete the resource group with the specified resource group ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1825,12 +1960,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_group_id = 789 # Integer | ID of the resource group
-
+resource_group_id = 56 # Integer | ID of the resource group
 
 begin
   #Delete the resource group with the specified resource group ID
@@ -1843,6 +1981,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_group_id** | **Integer**| ID of the resource group | 
@@ -1853,21 +1992,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## deploy_model
 
-# **deploy_model**
 > ModelEntity deploy_model(deployment_id, body)
 
 Deploy a model in a deployment group.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1877,14 +2017,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | ID deployment group
-
 body = SkilCient::ImportModelRequest.new # ImportModelRequest | the model import request
-
 
 begin
   #Deploy a model in a deployment group.
@@ -1897,6 +2039,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **String**| ID deployment group | 
@@ -1908,21 +2051,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## deployment_create
 
-# **deployment_create**
 > DeploymentResponse deployment_create(body)
 
 Create a new deployment group.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1932,12 +2076,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 body = SkilCient::CreateDeploymentRequest.new # CreateDeploymentRequest | the deployment request
-
 
 begin
   #Create a new deployment group.
@@ -1950,6 +2097,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**CreateDeploymentRequest**](CreateDeploymentRequest.md)| the deployment request | 
@@ -1960,21 +2108,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## deployment_delete
 
-# **deployment_delete**
 > InlineResponse200 deployment_delete(deployment_id)
 
 Delete a deployment by id
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -1984,12 +2133,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | Id of the deployment group
-
 
 begin
   #Delete a deployment by id
@@ -2002,6 +2154,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **String**| Id of the deployment group | 
@@ -2012,21 +2165,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## deployment_get
 
-# **deployment_get**
 > DeploymentResponse deployment_get(deployment_id)
 
 Get a deployment details by id
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2036,12 +2190,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | Id of the deployment group
-
 
 begin
   #Get a deployment details by id
@@ -2054,6 +2211,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **String**| Id of the deployment group | 
@@ -2064,21 +2222,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## deployments
 
-# **deployments**
 > Array&lt;DeploymentResponse&gt; deployments
 
 Get a list of deployments
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2088,6 +2247,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -2102,6 +2266,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2110,21 +2275,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## detectobjects
 
-# **detectobjects**
-> DetectionResult detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
+> DetectionResult detectobjects(deployment_name, version_name, model_name, id, needs_preprocessing, threshold, file)
 
 Detect the objects, given a (input) prediction request
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2134,28 +2300,25 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-id = 'id_example' # String | the GUID for mapping the results in the detections
-
-needs_preprocessing = true # BOOLEAN | (true) if the image needs preprocessing
-
-threshold = 3.4 # Float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-
-file = File.new('/path/to/file.txt') # File | the image file to detect objects from
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+id = 'id_example' # String | the GUID for mapping the results in the detections
+needs_preprocessing = true # Boolean | (true) if the image needs preprocessing
+threshold = 3.4 # Float | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+file = File.new('/path/to/file') # File | the image file to detect objects from
 
 begin
   #Detect the objects, given a (input) prediction request
-  result = api_instance.detectobjects(id, needs_preprocessing, threshold, file, deployment_name, version_name, model_name)
+  result = api_instance.detectobjects(deployment_name, version_name, model_name, id, needs_preprocessing, threshold, file)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->detectobjects: #{e}"
@@ -2164,15 +2327,16 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
+ **model_name** | **String**| ID or name of the deployed model | 
  **id** | **String**| the GUID for mapping the results in the detections | 
- **needs_preprocessing** | **BOOLEAN**| (true) if the image needs preprocessing | 
+ **needs_preprocessing** | **Boolean**| (true) if the image needs preprocessing | 
  **threshold** | **Float**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
  **file** | **File**| the image file to detect objects from | 
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -2180,21 +2344,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## download_job_output_file
 
-# **download_job_output_file**
 > download_job_output_file(job_id, download_output_file_request)
 
 Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2204,14 +2369,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-job_id = 789 # Integer | Job ID
-
+job_id = 56 # Integer | Job ID
 download_output_file_request = SkilCient::DownloadOutputFileRequest.new # DownloadOutputFileRequest | Download output file request object
-
 
 begin
   #Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
@@ -2222,6 +2389,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2234,21 +2402,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 
+## generate_auth_token
 
-# **generate_auth_token**
 > Token generate_auth_token(token_generate_request)
 
 Generate new auth token
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2258,12 +2427,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 token_generate_request = SkilCient::TokenGenerateRequest.new # TokenGenerateRequest | Auth token details.
-
 
 begin
   #Generate new auth token
@@ -2276,6 +2448,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token_generate_request** | [**TokenGenerateRequest**](TokenGenerateRequest.md)| Auth token details. | 
@@ -2286,21 +2459,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## get_all_jobs
 
-# **get_all_jobs**
 > Array&lt;JobEntity&gt; get_all_jobs
 
 Get a list of all available jobs
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2310,6 +2484,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -2324,6 +2503,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2332,16 +2512,16 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_array
 
-# **get_array**
 > get_array(accept, array_type)
 
 Get the memory mapped array based on the array type.
@@ -2349,6 +2529,7 @@ Get the memory mapped array based on the array type.
 The array is specified through a file path, in the configuration object, during model server deployment.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2358,14 +2539,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 accept = 'accept_example' # String | 
-
 array_type = 'array_type_example' # String | The format in which the memory mapped array is returned.
-
 
 begin
   #Get the memory mapped array based on the array type.
@@ -2376,6 +2559,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2388,21 +2572,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_array_indices
 
-# **get_array_indices**
 > get_array_indices(content_type, accept, array_type, opts)
 
 Get the memory mapped array indices based on the array type.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2412,17 +2597,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`.
-
 accept = 'accept_example' # String | 
-
 array_type = 'array_type_example' # String | Format in which the memory mapped array is returned in.
-
-opts = { 
+opts = {
   input: 'input_example' # String | Input indices array
 }
 
@@ -2435,6 +2621,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2449,21 +2636,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
 
+## get_array_range
 
-# **get_array_range**
 > get_array_range(accept, array_type, from, to)
 
 Get the memory mapped array within a range based on the array type.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2473,18 +2661,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 accept = 'accept_example' # String | 
-
 array_type = 'array_type_example' # String | Format in which the memory mapped array is returned in.
-
 from = 56 # Integer | 
-
 to = 56 # Integer | 
-
 
 begin
   #Get the memory mapped array within a range based on the array type.
@@ -2495,6 +2683,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2509,21 +2698,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_auth_policy
 
-# **get_auth_policy**
 > AuthPolicy get_auth_policy
 
 Get auth policy
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2533,6 +2723,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -2547,6 +2742,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2555,21 +2751,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_best_model_among_model_ids
 
-# **get_best_model_among_model_ids**
 > ModelInstanceEntity get_best_model_among_model_ids(model_history_server_id, best_model)
 
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2579,14 +2776,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 best_model = SkilCient::BestModel.new # BestModel | Object encapsulating the model ids, eval type and column metric name
-
 
 begin
   #Gets the best model among the given model instance IDs, based on the evaluation type and column metric
@@ -2599,6 +2798,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -2610,21 +2810,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## get_credentials_by_id
 
-# **get_credentials_by_id**
 > ResourceCredentials get_credentials_by_id(credential_id)
 
 Get credentials given an ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2634,12 +2835,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-credential_id = 789 # Integer | Credentials ID
-
+credential_id = 56 # Integer | Credentials ID
 
 begin
   #Get credentials given an ID
@@ -2652,6 +2856,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **credential_id** | **Integer**| Credentials ID | 
@@ -2662,21 +2867,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_current_model
 
-# **get_current_model**
 > get_current_model
 
 Returns the current model being used for retraining.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2686,6 +2892,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -2699,6 +2910,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2707,21 +2919,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 
+## get_evaluation_for_model_id
 
-# **get_evaluation_for_model_id**
 > Array&lt;EvaluationResultsEntity&gt; get_evaluation_for_model_id(model_history_server_id, model_instance_id)
 
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2731,14 +2944,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to get evaluation results for.
-
 
 begin
   #Gets the list of evaluation results entity, given a model instance ID
@@ -2751,6 +2966,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -2762,21 +2978,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_examples_for_minibatch
 
-# **get_examples_for_minibatch**
 > Array&lt;ExampleEntity&gt; get_examples_for_minibatch(model_history_server_id, minibatch_id)
 
 Gets all the examples for a minibatch ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2786,14 +3003,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 minibatch_id = 'minibatch_id_example' # String | The GUID of the minibatch
-
 
 begin
   #Gets all the examples for a minibatch ID
@@ -2806,6 +3025,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -2817,21 +3037,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_experiment
 
-# **get_experiment**
 > ExperimentEntity get_experiment(model_history_server_id, experiment_id)
 
 Obtain an experiment's details, given its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2841,14 +3062,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment to obtain
-
 
 begin
   #Obtain an experiment's details, given its ID
@@ -2861,6 +3084,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -2872,21 +3096,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_experiments_for_model_history
 
-# **get_experiments_for_model_history**
 > Array&lt;ExperimentEntity&gt; get_experiments_for_model_history(model_history_server_id, model_history_id)
 
 Obtain all experiments for a model history / workspace
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2896,14 +3121,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace
-
 
 begin
   #Obtain all experiments for a model history / workspace
@@ -2916,6 +3143,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -2927,21 +3155,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_job_by_id
 
-# **get_job_by_id**
 > JobEntity get_job_by_id(job_id_or_type)
 
 Get a job by its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -2951,12 +3180,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-job_id_or_type = 789 # Integer | Job ID
-
+job_id_or_type = 56 # Integer | Job ID
 
 begin
   #Get a job by its ID
@@ -2969,6 +3201,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id_or_type** | **Integer**| Job ID | 
@@ -2979,21 +3212,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_last_evaluation
 
-# **get_last_evaluation**
 > EvaluationResultsEntity get_last_evaluation
 
 Get the last evaluation specifications from the current model.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3003,6 +3237,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -3017,6 +3256,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3025,21 +3265,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_minibatch
 
-# **get_minibatch**
 > MinibatchEntity get_minibatch(model_history_server_id, minibatch_id)
 
 Gets a minibatch for the model
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3049,14 +3290,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 minibatch_id = 'minibatch_id_example' # String | The GUID of the minibatch
-
 
 begin
   #Gets a minibatch for the model
@@ -3069,6 +3312,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -3080,21 +3324,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_model_details
 
-# **get_model_details**
 > ModelEntity get_model_details(deployment_id, model_id)
 
 Get model details
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3104,14 +3349,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | ID deployment group
-
 model_id = 'model_id_example' # String | the id of the deployed model
-
 
 begin
   #Get model details
@@ -3124,6 +3371,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **String**| ID deployment group | 
@@ -3135,21 +3383,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_model_history
 
-# **get_model_history**
 > ModelHistoryEntity get_model_history(model_history_server_id, model_history_id)
 
 Gets a model history, given its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3159,14 +3408,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_history_id = 'model_history_id_example' # String | GUID of the model history to get information of.
-
 
 begin
   #Gets a model history, given its ID
@@ -3179,6 +3430,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -3190,21 +3442,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_model_instance
 
-# **get_model_instance**
 > ModelInstanceEntity get_model_instance(model_history_server_id, model_instance_id)
 
 Gets a model instance, given its ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3214,14 +3467,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_instance_id = 'model_instance_id_example' # String | GUID of the model instance to get information of.
-
 
 begin
   #Gets a model instance, given its ID
@@ -3234,6 +3489,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -3245,21 +3501,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_models_for_experiment
 
-# **get_models_for_experiment**
 > Array&lt;ModelInstanceEntity&gt; get_models_for_experiment(model_history_server_id, experiment_id)
 
 Obtain a list of all the models for an experiment
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3269,14 +3526,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment
-
 
 begin
   #Obtain a list of all the models for an experiment
@@ -3289,6 +3548,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -3300,21 +3560,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resource_by_id
 
-# **get_resource_by_id**
 > Resource get_resource_by_id(resource_id)
 
 Get the resource with the specified resource ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3324,12 +3585,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_id = 789 # Integer | ID of the resource
-
+resource_id = 56 # Integer | ID of the resource
 
 begin
   #Get the resource with the specified resource ID
@@ -3342,6 +3606,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_id** | **Integer**| ID of the resource | 
@@ -3352,21 +3617,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resource_by_sub_type
 
-# **get_resource_by_sub_type**
 > Array&lt;Resource&gt; get_resource_by_sub_type(resource_sub_type)
 
 Get all the resources with the specified resource subtype
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3376,12 +3642,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 resource_sub_type = 'resource_sub_type_example' # String | Subtype of the resource
-
 
 begin
   #Get all the resources with the specified resource subtype
@@ -3394,6 +3663,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_sub_type** | **String**| Subtype of the resource | 
@@ -3404,21 +3674,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resource_by_type
 
-# **get_resource_by_type**
 > Array&lt;Resource&gt; get_resource_by_type(resource_type)
 
 Get all the resources with the specified resource type
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3428,12 +3699,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 resource_type = 'resource_type_example' # String | Type of the resource
-
 
 begin
   #Get all the resources with the specified resource type
@@ -3446,6 +3720,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_type** | **String**| Type of the resource | 
@@ -3456,16 +3731,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resource_details_by_id
 
-# **get_resource_details_by_id**
 > Object get_resource_details_by_id(resource_id)
 
 Get the resource details with the specified resource ID
@@ -3473,6 +3748,7 @@ Get the resource details with the specified resource ID
 Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3482,12 +3758,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_id = 789 # Integer | ID of the resource
-
+resource_id = 56 # Integer | ID of the resource
 
 begin
   #Get the resource details with the specified resource ID
@@ -3500,6 +3779,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_id** | **Integer**| ID of the resource | 
@@ -3510,21 +3790,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resource_group_by_id
 
-# **get_resource_group_by_id**
 > ResourceGroup get_resource_group_by_id(resource_group_id)
 
 Get the resource group with the specified resource group ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3534,12 +3815,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_group_id = 789 # Integer | ID of the resource group
-
+resource_group_id = 56 # Integer | ID of the resource group
 
 begin
   #Get the resource group with the specified resource group ID
@@ -3552,6 +3836,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_group_id** | **Integer**| ID of the resource group | 
@@ -3562,21 +3847,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resource_groups
 
-# **get_resource_groups**
 > Array&lt;ResourceGroup&gt; get_resource_groups
 
 Get a list of all the resource groups
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3586,6 +3872,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -3600,6 +3891,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3608,21 +3900,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resources
 
-# **get_resources**
 > Array&lt;Resource&gt; get_resources
 
 A list of all known/registered resources, of all types
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3632,6 +3925,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -3646,6 +3944,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3654,21 +3953,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_resources_from_group
 
-# **get_resources_from_group**
 > Array&lt;Resource&gt; get_resources_from_group(resource_group_id)
 
 Get all resources from a resource group
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3678,12 +3978,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-resource_group_id = 789 # Integer | ID of the resource group
-
+resource_group_id = 56 # Integer | ID of the resource group
 
 begin
   #Get all resources from a resource group
@@ -3696,6 +3999,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **resource_group_id** | **Integer**| ID of the resource group | 
@@ -3706,21 +4010,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_roles
 
-# **get_roles**
 > Array&lt;Role&gt; get_roles
 
 Get all roles.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3730,6 +4035,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -3744,6 +4054,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3752,21 +4063,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_user
 
-# **get_user**
 > User get_user(user_id)
 
 Get a user by user ID
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3776,12 +4088,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 user_id = 'user_id_example' # String | User's ID
-
 
 begin
   #Get a user by user ID
@@ -3794,6 +4109,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **String**| User&#39;s ID | 
@@ -3804,21 +4120,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_user_auth_tokens
 
-# **get_user_auth_tokens**
 > Array&lt;Token&gt; get_user_auth_tokens(user_id, opts)
 
 Get auth tokens for a user.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3828,14 +4145,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 user_id = 'user_id_example' # String | User's ID
-
-opts = { 
-  only_valid: true # BOOLEAN | True if you only want the valid tokens.
+opts = {
+  only_valid: true # Boolean | True if you only want the valid tokens.
 }
 
 begin
@@ -3849,10 +4169,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **String**| User&#39;s ID | 
- **only_valid** | **BOOLEAN**| True if you only want the valid tokens. | [optional] 
+ **only_valid** | **Boolean**| True if you only want the valid tokens. | [optional] 
 
 ### Return type
 
@@ -3860,21 +4181,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## get_users
 
-# **get_users**
 > Array&lt;User&gt; get_users
 
 Get all users.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3884,6 +4206,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -3898,6 +4225,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3906,21 +4234,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## is_training
 
-# **is_training**
 > RetrainingStatus is_training
 
 Get the retraining status
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3930,6 +4259,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -3944,6 +4278,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3952,21 +4287,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## jsonarray
 
-# **jsonarray**
-> JsonArrayResponse jsonarray(body, deployment_name, version_name, model_name)
+> JsonArrayResponse jsonarray(deployment_name, version_name, model_name, body)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -3976,22 +4312,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = SkilCient::Prediction.new # Prediction | The input NDArray
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = SkilCient::Prediction.new # Prediction | The input NDArray
 
 begin
   #Run inference on the input and returns it as a JsonArrayResponse
-  result = api_instance.jsonarray(body, deployment_name, version_name, model_name)
+  result = api_instance.jsonarray(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->jsonarray: #{e}"
@@ -4000,12 +4336,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4013,16 +4350,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## knn
 
-# **knn**
 > NearestNeighborsResults knn(deployment_name, version_name, knn_name, body)
 
 Runs knn on the given index with the given k
@@ -4030,6 +4367,7 @@ Runs knn on the given index with the given k
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4039,18 +4377,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 knn_name = 'knn_name_example' # String | ID or name of the deployed knn
-
 body = SkilCient::NearestNeighborRequest.new # NearestNeighborRequest | 
-
 
 begin
   #Runs knn on the given index with the given k
@@ -4063,10 +4401,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **knn_name** | **String**| ID or name of the deployed knn | 
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -4076,21 +4415,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## knnnew
 
-# **knnnew**
 > NearestNeighborsResults knnnew(deployment_name, version_name, knn_name, body)
 
 Run a k nearest neighbors search on a NEW data point
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4100,18 +4440,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 knn_name = 'knn_name_example' # String | ID or name of the deployed knn
-
 body = SkilCient::Base64NDArrayBodyKNN.new # Base64NDArrayBodyKNN | The input NDArray
-
 
 begin
   #Run a k nearest neighbors search on a NEW data point
@@ -4124,10 +4464,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **knn_name** | **String**| ID or name of the deployed knn | 
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray | 
 
@@ -4137,21 +4478,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## list_all_experiments
 
-# **list_all_experiments**
 > Array&lt;ExperimentEntity&gt; list_all_experiments(model_history_server_id)
 
 List all of the experiments in every model history / workspace
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4161,12 +4503,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 
 begin
   #List all of the experiments in every model history / workspace
@@ -4179,6 +4524,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -4189,21 +4535,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## logfilepath
 
-# **logfilepath**
 > String logfilepath(deployment_name, version_name, model_name)
 
 Get logs file path
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4213,16 +4560,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
 
 begin
   #Get logs file path
@@ -4235,10 +4583,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
@@ -4247,29 +4596,40 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text
+- **Content-Type**: Not defined
+- **Accept**: text
 
 
+## login
 
-# **login**
 > LoginResponse login(login_request)
 
 Post JSON credentials and obtain a JWT authorization token.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
+# setup authorization
+SkilCient.configure do |config|
+  # Configure API key authorization: api_key
+  config.api_key['authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
+end
 
 api_instance = SkilCient::DefaultApi.new
-
 login_request = SkilCient::LoginRequest.new # LoginRequest | Login credentials.
-
 
 begin
   #Post JSON credentials and obtain a JWT authorization token.
@@ -4282,6 +4642,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **login_request** | [**LoginRequest**](LoginRequest.md)| Login credentials. | 
@@ -4292,21 +4653,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## logs
 
-# **logs**
 > LogBatch logs(deployment_name, version_name, model_name, log_request)
 
 Get logs
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4316,18 +4678,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
 log_request = SkilCient::LogRequest.new # LogRequest | The log object
-
 
 begin
   #Get logs
@@ -4340,10 +4702,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
  **log_request** | [**LogRequest**](LogRequest.md)| The log object | 
 
@@ -4353,21 +4716,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## meta_get
 
-# **meta_get**
-> MetaData meta_get(deployment_name, version_name, model_name)
+> Object meta_get(deployment_name, version_name, model_name)
 
 this method can be used to get the meta data for the current model which set to the server
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4377,16 +4741,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
 
 begin
   #this method can be used to get the meta data for the current model which set to the server
@@ -4399,33 +4764,35 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## meta_post
 
-# **meta_post**
-> MetaData meta_post(content_type, body, deployment_name, version_name, model_name)
+> Object meta_post(content_type, deployment_name, version_name, model_name, body)
 
 This method can be used to set meta data for the current model which is set to the server
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4435,24 +4802,23 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`
-
-body = 'body_example' # String | the meta data object
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = 'body_example' # String | the meta data object
 
 begin
   #This method can be used to set meta data for the current model which is set to the server
-  result = api_instance.meta_post(content_type, body, deployment_name, version_name, model_name)
+  result = api_instance.meta_post(content_type, deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->meta_post: #{e}"
@@ -4461,35 +4827,37 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content_type** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
- **body** | **String**| the meta data object | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | **String**| the meta data object | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
 
+## model_state_change
 
-# **model_state_change**
 > ModelEntity model_state_change(deployment_id, model_id, body)
 
 Modify the state (start/stop) of a deployed model
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4499,16 +4867,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | ID deployment group
-
 model_id = 'model_id_example' # String | the id of the deployed model
-
 body = SkilCient::SetState.new # SetState | the model state object
-
 
 begin
   #Modify the state (start/stop) of a deployed model
@@ -4520,6 +4889,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4533,21 +4903,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## models
 
-# **models**
 > Array&lt;ModelEntity&gt; models(deployment_id)
 
 Retrieve a list of all the deployed models given a deployment id
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4557,12 +4928,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | ID deployment group
-
 
 begin
   #Retrieve a list of all the deployed models given a deployment id
@@ -4575,6 +4949,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_id** | **String**| ID deployment group | 
@@ -4585,21 +4960,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## modelset
 
-# **modelset**
 > ModelStatus modelset(deployment_name, version_name, model_name, opts)
 
 Set the model to be served
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4609,18 +4985,19 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
-opts = { 
-  file: File.new('/path/to/file.txt') # File | The model file to upload (.pb file)
+opts = {
+  file: File.new('/path/to/file') # File | The model file to upload (.pb file)
 }
 
 begin
@@ -4634,10 +5011,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
  **file** | **File**| The model file to upload (.pb file) | [optional] 
 
@@ -4647,21 +5025,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## modelupdate
 
-# **modelupdate**
-> ModelStatus modelupdate(file, deployment_name, version_name, model_name)
+> ModelStatus modelupdate(deployment_name, version_name, model_name, file)
 
 Update the model to be served
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4671,22 +5050,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-file = File.new('/path/to/file.txt') # File | The model file to update with (.pb file)
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+file = File.new('/path/to/file') # File | The model file to update with (.pb file)
 
 begin
   #Update the model to be served
-  result = api_instance.modelupdate(file, deployment_name, version_name, model_name)
+  result = api_instance.modelupdate(deployment_name, version_name, model_name, file)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->modelupdate: #{e}"
@@ -4695,12 +5074,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| The model file to update with (.pb file) | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **file** | **File**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -4708,21 +5088,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## multiclassify
 
-# **multiclassify**
-> MultiClassClassificationResult multiclassify(body, deployment_name, version_name, model_name)
+> MultiClassClassificationResult multiclassify(deployment_name, version_name, model_name, body)
 
 Represents all of the labels for a given classification
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4732,22 +5113,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = SkilCient::Prediction.new # Prediction | The input NDArray
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = SkilCient::Prediction.new # Prediction | The input NDArray
 
 begin
   #Represents all of the labels for a given classification
-  result = api_instance.multiclassify(body, deployment_name, version_name, model_name)
+  result = api_instance.multiclassify(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->multiclassify: #{e}"
@@ -4756,12 +5137,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4769,23 +5151,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## multipredict
 
-# **multipredict**
-> MultiPredictResponse multipredict(body, deployment_name, version_name, model_name)
+> MultiPredictResponse multipredict(deployment_name, version_name, model_name, body)
 
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4795,22 +5178,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = SkilCient::MultiPredictRequest.new # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = SkilCient::MultiPredictRequest.new # MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
 
 begin
   #Get the output from the network, based on the given INDArray[] input
-  result = api_instance.multipredict(body, deployment_name, version_name, model_name)
+  result = api_instance.multipredict(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->multipredict: #{e}"
@@ -4819,12 +5202,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
 
 ### Return type
 
@@ -4832,23 +5216,24 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## multipredictimage
 
-# **multipredictimage**
-> MultiPredictResponse multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name)
+> MultiPredictResponse multipredictimage(deployment_name, version_name, model_name, file, id, needs_preprocessing)
 
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4858,26 +5243,24 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-file = File.new('/path/to/file.txt') # File | The image file to run the prediction on
-
-id = 'id_example' # String | The id of the request (could be self generated)
-
-needs_preprocessing = true # BOOLEAN | Whether or not the preprocessing is required (either 'true' or 'false')
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+file = File.new('/path/to/file') # File | The image file to run the prediction on
+id = 'id_example' # String | The id of the request (could be self generated)
+needs_preprocessing = true # Boolean | Whether or not the preprocessing is required (either 'true' or 'false')
 
 begin
   #Get the output from the network using the given image file using the /multipredict endpoint's method
-  result = api_instance.multipredictimage(file, id, needs_preprocessing, deployment_name, version_name, model_name)
+  result = api_instance.multipredictimage(deployment_name, version_name, model_name, file, id, needs_preprocessing)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->multipredictimage: #{e}"
@@ -4886,14 +5269,15 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deployment_name** | **String**| Name of the deployment group | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
+ **model_name** | **String**| ID or name of the deployed model | 
  **file** | **File**| The image file to run the prediction on | 
  **id** | **String**| The id of the request (could be self generated) | 
- **needs_preprocessing** | **BOOLEAN**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
- **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **model_name** | **String**| ID or name of the deployed model | 
+ **needs_preprocessing** | **Boolean**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
 
 ### Return type
 
@@ -4901,21 +5285,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## num_revisions
 
-# **num_revisions**
 > RevisionsWritten num_revisions
 
 Gets the number of retrained models written with retraining.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4925,6 +5310,11 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
@@ -4939,6 +5329,7 @@ end
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4947,21 +5338,22 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## predict
 
-# **predict**
-> Prediction predict(body, deployment_name, version_name, model_name)
+> Prediction predict(deployment_name, version_name, model_name, body)
 
 Run inference on the input array.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -4971,22 +5363,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = SkilCient::Prediction.new # Prediction | The input NDArray
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = SkilCient::Prediction.new # Prediction | The input NDArray
 
 begin
   #Run inference on the input array.
-  result = api_instance.predict(body, deployment_name, version_name, model_name)
+  result = api_instance.predict(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predict: #{e}"
@@ -4995,12 +5387,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -5008,16 +5401,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## predict_error
 
-# **predict_error**
 > predict_error(content_type, operation, input_type, opts)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
@@ -5025,6 +5418,7 @@ Runs inference and find invalid rows based on the input data. Output is defined 
 These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5034,17 +5428,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`.
-
 operation = 'operation_example' # String | Operation to perform on the input data.
-
 input_type = 'input_type_example' # String | Type of the input data.
-
-opts = { 
+opts = {
   input_data: 'input_data_example' # String | 
 }
 
@@ -5057,6 +5452,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5071,21 +5467,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
 
+## predict_v2_file
 
-# **predict_v2_file**
 > predict_v2_file(operation, input_type_file, input_data)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5095,16 +5492,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 operation = 'operation_example' # String | The operation to perform on the input data. 
-
 input_type_file = 'input_type_file_example' # String | Type of the input data. 
-
-input_data = File.new('/path/to/file.txt') # File | The input data to run inference on.
-
+input_data = File.new('/path/to/file') # File | The input data to run inference on.
 
 begin
   #Runs inference based on the input data. Output is defined relative to the output adapter specified.
@@ -5115,6 +5513,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5128,21 +5527,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
 
+## predict_v2_json
 
-# **predict_v2_json**
 > predict_v2_json(content_type, operation, input_type_json, input_data)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5152,18 +5552,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 content_type = 'content_type_example' # String | The `Content-Type` should always be `application/json`.
-
 operation = 'operation_example' # String | The operation to perform on the input data. 
-
 input_type_json = 'input_type_json_example' # String | Type of the input data. 
-
 input_data = 'input_data_example' # String | The input data to run inference on. (Specify a JSON string here)
-
 
 begin
   #Runs inference based on the input data. Output is defined relative to the output adapter specified.
@@ -5174,6 +5574,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5188,21 +5589,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
 
+## predictimage
 
-# **predictimage**
 > Prediction predictimage(deployment_name, version_name, model_name, opts)
 
 Run inference on the input array, using input image file from multipart form data.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5212,18 +5614,19 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
-opts = { 
-  image: File.new('/path/to/file.txt') # File | The file to upload.
+opts = {
+  image: File.new('/path/to/file') # File | The file to upload.
 }
 
 begin
@@ -5237,10 +5640,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
  **image** | **File**| The file to upload. | [optional] 
 
@@ -5250,21 +5654,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## predictwithpreprocess
 
-# **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, deployment_name, version_name, model_name)
+> Prediction predictwithpreprocess(deployment_name, version_name, model_name, body)
 
 Preprocesses the input and run inference on it
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5274,22 +5679,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = [SkilCient::Array<String>.new] # Array<String> | The input array
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = ['body_example'] # Array<String> | The input array
 
 begin
   #Preprocesses the input and run inference on it
-  result = api_instance.predictwithpreprocess(body, deployment_name, version_name, model_name)
+  result = api_instance.predictwithpreprocess(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predictwithpreprocess: #{e}"
@@ -5298,12 +5703,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Array&lt;String&gt;**| The input array | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Array&lt;String&gt;**](String.md)| The input array | 
 
 ### Return type
 
@@ -5311,21 +5717,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## predictwithpreprocessjson
 
-# **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, deployment_name, version_name, model_name)
+> JsonArrayResponse predictwithpreprocessjson(deployment_name, version_name, model_name, body)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5335,22 +5742,22 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-body = [SkilCient::Array<String>.new] # Array<String> | The input array
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 model_name = 'model_name_example' # String | ID or name of the deployed model
-
+body = ['body_example'] # Array<String> | The input array
 
 begin
   #Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-  result = api_instance.predictwithpreprocessjson(body, deployment_name, version_name, model_name)
+  result = api_instance.predictwithpreprocessjson(deployment_name, version_name, model_name, body)
   p result
 rescue SkilCient::ApiError => e
   puts "Exception when calling DefaultApi->predictwithpreprocessjson: #{e}"
@@ -5359,12 +5766,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Array&lt;String&gt;**| The input array | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **model_name** | **String**| ID or name of the deployed model | 
+ **body** | [**Array&lt;String&gt;**](String.md)| The input array | 
 
 ### Return type
 
@@ -5372,21 +5780,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## raw_predict_binary
 
-# **raw_predict_binary**
 > raw_predict_binary(input_type, output_type, opts)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5396,16 +5805,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 input_type = 'input_type_example' # String | Input data type.
-
 output_type = 'output_type_example' # String | Binary output data type.
-
-opts = { 
-  input_data: File.new('/path/to/file.txt') # File | The input file to upload.
+opts = {
+  input_data: File.new('/path/to/file') # File | The input file to upload.
 }
 
 begin
@@ -5417,6 +5828,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5430,21 +5842,22 @@ nil (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/octet-stream
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
 
+## refresh_job_status
 
-# **refresh_job_status**
 > JobEntity refresh_job_status(job_id)
 
 Refresh the remote job status. Can be used for monitoring.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5454,12 +5867,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-job_id = 789 # Integer | Job ID
-
+job_id = 56 # Integer | Job ID
 
 begin
   #Refresh the remote job status. Can be used for monitoring.
@@ -5472,6 +5888,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **Integer**| Job ID | 
@@ -5482,21 +5899,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## register_user
 
-# **register_user**
 > User register_user(user)
 
 Register a new user
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5506,12 +5924,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 user = SkilCient::User.new # User | User details
-
 
 begin
   #Register a new user
@@ -5524,6 +5945,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user** | [**User**](User.md)| User details | 
@@ -5534,21 +5956,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## reimport_model
 
-# **reimport_model**
 > ModelEntity reimport_model(deployment_id, model_id, body)
 
 Reimport a model to a previous deployed model in a deployment
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5558,16 +5981,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_id = 'deployment_id_example' # String | ID deployment group
-
 model_id = 'model_id_example' # String | the id of the deployed model
-
 body = SkilCient::ImportModelRequest.new # ImportModelRequest | the deployment request
-
 
 begin
   #Reimport a model to a previous deployed model in a deployment
@@ -5579,6 +6003,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5592,21 +6017,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## revoke_user_token
 
-# **revoke_user_token**
 > Token revoke_user_token(token_id)
 
 Revoke a user token.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5616,12 +6042,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-token_id = 789 # Integer | Token ID
-
+token_id = 56 # Integer | Token ID
 
 begin
   #Revoke a user token.
@@ -5634,6 +6063,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **token_id** | **Integer**| Token ID | 
@@ -5644,21 +6074,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## rollback
 
-# **rollback**
 > RollbackStatus rollback(index)
 
 Rollback to a previous revision of the model.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5668,12 +6099,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 index = 56 # Integer | Model revision index.
-
 
 begin
   #Rollback to a previous revision of the model.
@@ -5686,6 +6120,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **index** | **Integer**| Model revision index. | 
@@ -5696,21 +6131,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## run_a_job
 
-# **run_a_job**
 > JobEntity run_a_job(job_id)
 
 Start running an (already created) job on the remote resource
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5720,12 +6156,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-job_id = 789 # Integer | Job ID
-
+job_id = 56 # Integer | Job ID
 
 begin
   #Start running an (already created) job on the remote resource
@@ -5738,6 +6177,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_id** | **Integer**| Job ID | 
@@ -5748,16 +6188,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## transform_csv
 
-# **transform_csv**
 > BatchCSVRecord transform_csv(deployment_name, version_name, transform_name, opts)
 
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -5765,6 +6205,7 @@ Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5774,17 +6215,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
-
-opts = { 
+opts = {
   batch_csv_record: SkilCient::BatchCSVRecord.new # BatchCSVRecord | The input batch of record arrays
 }
 
@@ -5799,10 +6241,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **String**| ID or name of the deployed transform | 
  **batch_csv_record** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -5812,21 +6255,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## transformarray
 
-# **transformarray**
 > Base64NDArrayBody transformarray(deployment_name, version_name, transform_name, opts)
 
 Takes a batch input arrays and transforms it
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5836,17 +6280,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
-
-opts = { 
+opts = {
   batch_record: SkilCient::BatchRecord.new # BatchRecord | The input batch of record arrays
 }
 
@@ -5861,10 +6306,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **String**| ID or name of the deployed transform | 
  **batch_record** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
@@ -5874,16 +6320,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## transformimage
 
-# **transformimage**
 > Base64NDArrayBody transformimage(deployment_name, version_name, image_transform_name, files)
 
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
@@ -5891,6 +6337,7 @@ Takes multiple multipart image file to transform and returns Base64NDArrayBody
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5900,18 +6347,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-files = ['files_example'] # Array<String> | The image files to upload
-
+files = File.new('/path/to/file') # Array<File> | The image files to upload
 
 begin
   #Takes multiple multipart image file to transform and returns Base64NDArrayBody
@@ -5924,12 +6371,13 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **image_transform_name** | **String**| ID or name of the deployed image transform | 
- **files** | [**Array&lt;String&gt;**](String.md)| The image files to upload | 
+ **files** | **Array&lt;File&gt;**| The image files to upload | 
 
 ### Return type
 
@@ -5937,16 +6385,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## transformincremental_csv
 
-# **transformincremental_csv**
 > SingleCSVRecord transformincremental_csv(deployment_name, version_name, transform_name, opts)
 
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
@@ -5954,6 +6402,7 @@ Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRec
 Takes a SingleCSVRecord object and transforms it into the desired format
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -5963,17 +6412,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
-
-opts = { 
+opts = {
   single_csv_record: SkilCient::SingleCSVRecord.new # SingleCSVRecord | The input record array
 }
 
@@ -5988,10 +6438,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **String**| ID or name of the deployed transform | 
  **single_csv_record** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -6001,21 +6452,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## transformincrementalarray
 
-# **transformincrementalarray**
 > Base64NDArrayBody transformincrementalarray(deployment_name, version_name, transform_name, opts)
 
 Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6025,17 +6477,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
-
-opts = { 
+opts = {
   single_record: SkilCient::SingleRecord.new # SingleRecord | The input record array
 }
 
@@ -6050,10 +6503,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **String**| ID or name of the deployed transform | 
  **single_record** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
@@ -6063,16 +6517,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## transformincrementalimage
 
-# **transformincrementalimage**
 > Base64NDArrayBody transformincrementalimage(deployment_name, version_name, image_transform_name, file)
 
 Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -6080,6 +6534,7 @@ Takes a single multipart image file to transform and returns Base64NDArrayBody
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6089,18 +6544,18 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 image_transform_name = 'image_transform_name_example' # String | ID or name of the deployed image transform
-
-file = File.new('/path/to/file.txt') # File | The image file to upload
-
+file = File.new('/path/to/file') # File | The image file to upload
 
 begin
   #Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -6113,10 +6568,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **image_transform_name** | **String**| ID or name of the deployed image transform | 
  **file** | **File**| The image file to upload | 
 
@@ -6126,21 +6582,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
 
+## transformprocess_get
 
-# **transformprocess_get**
 > Object transformprocess_get(deployment_name, version_name, transform_name)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6150,16 +6607,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
-
 
 begin
   #Gets the JSON string of the deployed transform process (CSV or Image)
@@ -6172,10 +6630,11 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **String**| ID or name of the deployed transform | 
 
 ### Return type
@@ -6184,21 +6643,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
+## transformprocess_post
 
-# **transformprocess_post**
 > Object transformprocess_post(content_type, deployment_name, version_name, transform_name, opts)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6208,19 +6668,19 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 content_type = 'content_type_example' # String | The `Content-Type` should be `application/json`.
-
 deployment_name = 'deployment_name_example' # String | Name of the deployment group
-
-version_name = 'version_name_example' # String | Version name of the endpoint. The default value is \"default\"
-
+version_name = 'default' # String | Version name of the endpoint. The default value is \"default\"
 transform_name = 'transform_name_example' # String | ID or name of the deployed transform
-
-opts = { 
+opts = {
   transform_process: 'transform_process_example' # String | The transform process to set (Specify a JSON string here).
 }
 
@@ -6235,11 +6695,12 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content_type** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deployment_name** | **String**| Name of the deployment group | 
- **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **version_name** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transform_name** | **String**| ID or name of the deployed transform | 
  **transform_process** | **String**| The transform process to set (Specify a JSON string here). | [optional] 
 
@@ -6249,21 +6710,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
 
+## update_auth_policy
 
-# **update_auth_policy**
 > AuthPolicy update_auth_policy(auth_policy)
 
 Update auth policy
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6273,12 +6735,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 auth_policy = SkilCient::AuthPolicy.new # AuthPolicy | Auth policy object
-
 
 begin
   #Update auth policy
@@ -6291,6 +6756,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **auth_policy** | [**AuthPolicy**](AuthPolicy.md)| Auth policy object | 
@@ -6301,21 +6767,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## update_best_model_for_experiment
 
-# **update_best_model_for_experiment**
 > ExperimentEntity update_best_model_for_experiment(model_history_server_id, update_best_model)
 
 Updates the best model for an experiment
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6325,14 +6792,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 update_best_model = SkilCient::UpdateBestModel.new # UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
-
 
 begin
   #Updates the best model for an experiment
@@ -6345,6 +6814,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **model_history_server_id** | **String**| Process GUID of the model history server. Run &#x60;$SKIL_HOME/sbin/skil services&#x60; in a console to find out the model history server GUID. | 
@@ -6356,21 +6826,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## update_experiment
 
-# **update_experiment**
 > ExperimentEntity update_experiment(model_history_server_id, experiment_id, experiment_entity)
 
 Updates an experiment, given an experiment entity
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6380,16 +6851,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 experiment_id = 'experiment_id_example' # String | the GUID of the experiment to update
-
 experiment_entity = SkilCient::ExperimentEntity.new # ExperimentEntity | The experiment entity to update with
-
 
 begin
   #Updates an experiment, given an experiment entity
@@ -6401,6 +6873,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6414,21 +6887,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## update_model_history
 
-# **update_model_history**
 > ModelHistoryEntity update_model_history(model_history_server_id, model_history_id, update_model_history_request)
 
 Update a model history / workspace
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6438,16 +6912,17 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 model_history_server_id = 'model_history_server_id_example' # String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
 model_history_id = 'model_history_id_example' # String | the GUID of the model history / workspace to update
-
 update_model_history_request = SkilCient::AddModelHistoryRequest.new # AddModelHistoryRequest | The model history request object
-
 
 begin
   #Update a model history / workspace
@@ -6459,6 +6934,7 @@ end
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6472,21 +6948,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## update_user
 
-# **update_user**
 > User update_user(user)
 
 Update a user
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6496,12 +6973,15 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
 user = SkilCient::User.new # User | User details
-
 
 begin
   #Update a user
@@ -6514,6 +6994,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user** | [**User**](User.md)| User details | 
@@ -6524,21 +7005,22 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
+## upload
 
-# **upload**
 > FileUploadList upload(opts)
 
 Upload a model file to SKIL for import.
 
 ### Example
+
 ```ruby
 # load the gem
 require 'skil_client'
@@ -6548,12 +7030,16 @@ SkilCient.configure do |config|
   config.api_key['authorization'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
   #config.api_key_prefix['authorization'] = 'Bearer'
+
+  # Configure API key authorization: x_api_key
+  config.api_key['X-API-Key'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-Key'] = 'Bearer'
 end
 
 api_instance = SkilCient::DefaultApi.new
-
-opts = { 
-  file: File.new('/path/to/file.txt') # File | The file to upload.
+opts = {
+  file: File.new('/path/to/file') # File | The file to upload.
 }
 
 begin
@@ -6567,6 +7053,7 @@ end
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | **File**| The file to upload. | [optional] 
@@ -6577,12 +7064,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 

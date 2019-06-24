@@ -1,14 +1,17 @@
 
+
 # AuthPolicy
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**propertyClass** | [**PropertyClassEnum**](#PropertyClassEnum) |  |  [optional]
+**atClass** | [**AtClassEnum**](#AtClassEnum) |  |  [optional]
 
 
-<a name="PropertyClassEnum"></a>
-## Enum: PropertyClassEnum
+
+## Enum: AtClassEnum
+
 Name | Value
 ---- | -----
 SIMPLEAUTHPOLICY | &quot;SimpleAuthPolicy&quot;

@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.ExampleEntity
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,5 +12,7 @@ Name | Type | Description | Notes
 **MiniBatchId** | **string** | The GUID of the minibatch | [optional] 
 **MiniBatchVersion** | **int?** | minibatch version | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

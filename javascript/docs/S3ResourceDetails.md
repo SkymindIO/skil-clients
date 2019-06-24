@@ -1,6 +1,7 @@
 # SkilClient.S3ResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  | [optional] [default to &#39;io.skymind.resource.model.subtypes.storage.S3ResourceDetails&#39;]
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **region** | **String** | Region name where the S3 bucket is present | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
 
 

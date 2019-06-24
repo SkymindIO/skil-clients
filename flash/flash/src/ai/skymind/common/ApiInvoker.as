@@ -1,6 +1,6 @@
-package io.swagger.common {
-import io.swagger.event.ApiClientEvent;
-import io.swagger.event.Response;
+package org.openapitools.common {
+import org.openapitools.event.ApiClientEvent;
+import org.openapitools.event.Response;
 
 import flash.events.EventDispatcher;
 import flash.utils.*;

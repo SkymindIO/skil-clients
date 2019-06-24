@@ -1,4 +1,4 @@
-package io.swagger.common
+package org.openapitools.common
 {
 	public interface ListWrapper
 	{

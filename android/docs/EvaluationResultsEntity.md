@@ -1,7 +1,9 @@
 
+
 # EvaluationResultsEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **evaluation** | **String** |  |  [optional]
@@ -21,6 +23,7 @@ Name | Type | Description | Notes
 **evalVersion** | **Integer** |  |  [optional]
 **binaryThreshold** | **Double** |  |  [optional]
 **binaryThresholds** | **String** |  |  [optional]
+
 
 
 

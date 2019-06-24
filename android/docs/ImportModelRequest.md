@@ -1,7 +1,9 @@
 
+
 # ImportModelRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  |  [optional]
@@ -16,6 +18,7 @@ Name | Type | Description | Notes
 **etlJson** | **String** |  |  [optional]
 **inputNames** | **List&lt;String&gt;** |  |  [optional]
 **outputNames** | **List&lt;String&gt;** |  |  [optional]
+
 
 
 

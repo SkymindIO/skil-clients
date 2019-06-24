@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.ModelEntity
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -16,8 +18,10 @@ Name | Type | Description | Notes
 **SubType** | **string** |  | [optional] 
 **LabelsFileLocation** | **string** |  | [optional] 
 **ExtraArgs** | **string** |  | [optional] 
-**LaunchPolicy** | **Object** |  | [optional] 
+**LaunchPolicy** | [**Object**](.md) |  | [optional] 
 **ModelState** | **string** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

@@ -1,6 +1,7 @@
 # SkilClient.INDArray
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_array** | **String** |  | [optional] 
@@ -10,7 +11,7 @@ Name | Type | Description | Notes
 **dataType** | **String** |  | [optional] 
 
 
-<a name="OrderingEnum"></a>
+
 ## Enum: OrderingEnum
 
 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="DataTypeEnum"></a>
+
 ## Enum: DataTypeEnum
 
 
