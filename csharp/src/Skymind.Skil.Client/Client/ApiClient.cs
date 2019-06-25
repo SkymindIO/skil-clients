@@ -497,6 +497,7 @@ namespace Skymind.Skil.Client.Client
         /// Convert params to key/value pairs. 
         /// Use collectionFormat to properly format lists and collections.
         /// </summary>
+        /// <param name="collectionFormat">The Collection Format.</param>
         /// <param name="name">Key name.</param>
         /// <param name="value">Value object.</param>
         /// <returns>A list of KeyValuePairs</returns>

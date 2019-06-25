@@ -46,3 +46,10 @@ java -jar openapi-generator-cli.jar generate -Dapis=Default -Dmodels -Dsupportin
 # html2 (For documentation site)
 java -jar openapi-generator-cli.jar generate -Dapis=Default -Dmodels -DsupportingFiles -i swagger.yaml -g html2 -o html2
 # ---------------------------------------------------------
+
+# Updating configuration scripts...
+cp config/Packaging/python/setup.py python/setup.py
+cp config/Packaging/java/pom.xml java/pom.xml
+cp config/Packaging/csharp/Skymind.Skil.Client.nuspec csharp/src/Skymind.Skil.Client/Skymind.Skil.Client.nuspec
+# ---------------------------------------------------------
+

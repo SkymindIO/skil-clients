@@ -23632,7 +23632,7 @@ namespace Skymind.Skil.Client.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (files != null) localVarFileParams.Add("files", this.Configuration.ApiClient.ParameterToFile("files", files));
+            if (files != null) localVarFileParams.Add("files", this.Configuration.ApiClient.ParameterToFile("files", files[0]));
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))
@@ -23728,7 +23728,7 @@ namespace Skymind.Skil.Client.Api
             if (deploymentName != null) localVarPathParams.Add("deploymentName", this.Configuration.ApiClient.ParameterToString(deploymentName)); // path parameter
             if (versionName != null) localVarPathParams.Add("versionName", this.Configuration.ApiClient.ParameterToString(versionName)); // path parameter
             if (imageTransformName != null) localVarPathParams.Add("imageTransformName", this.Configuration.ApiClient.ParameterToString(imageTransformName)); // path parameter
-            if (files != null) localVarFileParams.Add("files", this.Configuration.ApiClient.ParameterToFile("files", files));
+            if (files != null) localVarFileParams.Add("files", this.Configuration.ApiClient.ParameterToFile("files", files[0]));
 
             // authentication (api_key) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("authorization")))

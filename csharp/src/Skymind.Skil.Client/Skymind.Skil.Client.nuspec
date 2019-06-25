@@ -30,7 +30,7 @@
 
         </dependencies>
 
-        <license type="expression">Apache-2.0</license>
+        <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0.txt</licenseUrl>
     </metadata>
     <files>
 
