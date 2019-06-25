@@ -1,11 +1,10 @@
-package io.swagger.common
+package org.openapitools.common
 {
 	public class XMLWriter
 	{
 		public var xml:XML;
 		
-		public function XMLWriter()
-		{
+		public function XMLWriter() {
 			xml=<obj/>;
 		}
 		

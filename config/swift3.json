@@ -1,6 +1,6 @@
 {
   "projectName": "SkilClient",
-  "podVersion": "1.2.1.5",
+  "podVersion": "1.2.2.0",
   "podLicense": "Apache 2.0",
   "podHomepage": "http://skymind.ai/",
   "podSummary": "Swift3 bindings for SKIL HTTP API"

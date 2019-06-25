@@ -1,7 +1,9 @@
 
+
 # FileUpload
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** |  |  [optional]
@@ -10,6 +12,7 @@ Name | Type | Description | Notes
 **type** | **String** |  |  [optional]
 **path** | **String** |  |  [optional]
 **fileContent** | **String** |  |  [optional]
+
 
 
 

@@ -1,7 +1,9 @@
 
+
 # DetectedObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **centerX** | **Float** |  |  [optional]

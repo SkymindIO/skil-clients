@@ -1,6 +1,7 @@
 # SkilClient.LogRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **offset** | **Number** |  | [optional] 

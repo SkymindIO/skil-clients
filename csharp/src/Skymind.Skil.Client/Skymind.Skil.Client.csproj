@@ -4,7 +4,7 @@ Endpoints
 
 Endpoints API for different services in SKIL
 
-OpenAPI spec version: 1.2.0-rc1
+The version of the OpenAPI document: 1.2.2
 
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -12,7 +12,7 @@ OpenAPI spec version: 1.2.0-rc1
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AA4C056D-D7BE-4710-8B66-A369B0D2335B}</ProjectGuid>
+    <ProjectGuid>{F97D63A8-4B48-4D63-B0C5-7FD37C499F04}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Skymind.Skil.Client</RootNamespace>
@@ -28,6 +28,7 @@ OpenAPI spec version: 1.2.0-rc1
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Skymind.Skil.Client.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +37,7 @@ OpenAPI spec version: 1.2.0-rc1
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Skymind.Skil.Client.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,16 +50,16 @@ OpenAPI spec version: 1.2.0-rc1
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\packages')">..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\..\packages')">..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath Condition="Exists('..\packages')">..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath Condition="Exists('..\..\packages')">..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="JsonSubTypes">
-      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
-      <HintPath Condition="Exists('..\packages')">..\packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
-      <HintPath Condition="Exists('..\..\packages')">..\..\packages\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
-      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\JsonSubTypes.1.2.0\lib\net45\JsonSubTypes.dll</HintPath>
+      <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\JsonSubTypes.1.5.2\lib\net45\JsonSubTypes.dll</HintPath>
+      <HintPath Condition="Exists('..\packages')">..\packages\JsonSubTypes.1.5.2\lib\net45\JsonSubTypes.dll</HintPath>
+      <HintPath Condition="Exists('..\..\packages')">..\..\packages\JsonSubTypes.1.5.2\lib\net45\JsonSubTypes.dll</HintPath>
+      <HintPath Condition="Exists('..\..\vendor')">..\..\vendor\JsonSubTypes.1.5.2\lib\net45\JsonSubTypes.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp">
         <HintPath Condition="Exists('$(SolutionDir)\packages')">$(SolutionDir)\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>

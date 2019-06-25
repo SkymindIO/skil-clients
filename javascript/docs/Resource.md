@@ -1,6 +1,7 @@
 # SkilClient.Resource
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **resourceId** | **Number** | ID of the resource | [optional] 
@@ -10,7 +11,7 @@ Name | Type | Description | Notes
 **credentialId** | **String** | Credentials GUID | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
 
 

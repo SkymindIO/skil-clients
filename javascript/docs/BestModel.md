@@ -1,6 +1,7 @@
 # SkilClient.BestModel
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ids** | **[String]** | the list of GUIDs for the models to get the best model from | [optional] 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **evalType** | **String** | the evaluation type to aggregate for each model&#39;s revisions | [optional] 
 
 
-<a name="ColumnNameMetricEnum"></a>
+
 ## Enum: ColumnNameMetricEnum
 
 
@@ -33,7 +34,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="EvalTypeEnum"></a>
+
 ## Enum: EvalTypeEnum
 
 

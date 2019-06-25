@@ -15,7 +15,7 @@
     <!-- Flex Ant Tasks used to perform compc and mxml compiling more info at http://labs.adobe.com/wiki/index.php/Flex_Ant_Tasks -->
     <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
 
-    <target name="setup" description="perform an setup operations"/>
+    <target name="setup" description="perform setup operations"/>
 
     <!-- Execute the ASDoc Compile which runs 3 separate tasks in a series -->
     <target name="compile" description="series of tasks to create docs and swc">
@@ -28,7 +28,7 @@
 
     </target>
 
-    <target name="deploy" description="perform an deployment operations"/>
+    <target name="deploy" description="perform deployment operations"/>
 
     <target name="install" description="perform an installation operations"/>
 
@@ -62,11 +62,11 @@
             <arg line="-doc-sources ${sourcepath}"/>
             <arg line="-source-path ${sourcepath}"/>
             <arg line="-footer 'Copyright Wordnik'"/>
-            <arg line="-package io.swagger.api 'Contains the apis which are used by clients to make calls to the services deployed'"/>
-            <arg line="-package io.swagger.codegen.model 'Contains common classes which encapsulate data elements required'"/>
-            <arg line="-package io.swagger.common 'Contains classes which are used by the api classes to invoke the deployed api like SwaggerApi - a base class, ApiUserCredentials, etc.'"/>
-            <arg line="-package io.swagger.event 'Results of calls made to Wordnik are returned via dispatched events. This package contains such event classes. Right now thats just ApiClientEvent and Response.'"/>
-            <arg line="-package io.swagger.exception 'Contains classes that encapsulate the errors generated'"/>
+            <arg line="-package org.openapitools.api 'Contains the apis which are used by clients to make calls to the services deployed'"/>
+            <arg line="-package org.openapitools.codegen.model 'Contains common classes which encapsulate data elements required'"/>
+            <arg line="-package org.openapitools.common 'Contains classes which are used by the api classes to invoke the deployed api like OpenApi - a base class, ApiUserCredentials, etc.'"/>
+            <arg line="-package org.openapitools.event 'Results of calls made to Wordnik are returned via dispatched events. This package contains such event classes. Right now thats just ApiClientEvent and Response.'"/>
+            <arg line="-package org.openapitools.exception 'Contains classes that encapsulate the errors generated'"/>
 
             <arg value="-window-title"/>
             <arg value="${title}"/>

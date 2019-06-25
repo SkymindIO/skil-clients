@@ -1,4 +1,4 @@
-package io.swagger.event {
+package org.openapitools.event {
 
 /**
  * Response contains info on the result of an API invocation.

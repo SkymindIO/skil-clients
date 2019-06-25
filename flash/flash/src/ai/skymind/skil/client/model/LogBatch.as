@@ -4,9 +4,9 @@ package ai.skymind.skil.client.model {
     [XmlRootNode(name="LogBatch")]
     public class LogBatch {
                 [XmlElement(name="offset")]
-        public var offset: Number = NaN;
+        public var offset: Number = 0;
                 [XmlElement(name="rowCount")]
-        public var rowCount: Number = NaN;
+        public var rowCount: Number = 0;
                 [XmlElement(name="logs")]
         public var logs: String = null;
 

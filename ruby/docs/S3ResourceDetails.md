@@ -1,6 +1,7 @@
 # SkilCient::S3ResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  | [optional] [default to &#39;io.skymind.resource.model.subtypes.storage.S3ResourceDetails&#39;]
@@ -9,5 +10,18 @@ Name | Type | Description | Notes
 **sub_type** | **String** | Resource subtype | [optional] 
 **bucket** | **String** | S3 Bucket Name | [optional] 
 **region** | **String** | Region name where the S3 bucket is present | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::S3ResourceDetails.new(_class: null,
+                                 resource_id: null,
+                                 type: null,
+                                 sub_type: null,
+                                 bucket: null,
+                                 region: null)
+```
 
 

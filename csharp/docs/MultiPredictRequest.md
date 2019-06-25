@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.MultiPredictRequest
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -8,5 +10,7 @@ Name | Type | Description | Notes
 **Inputs** | [**List&lt;INDArray&gt;**](INDArray.md) |  | [optional] 
 **InputMasks** | [**List&lt;INDArray&gt;**](INDArray.md) |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

@@ -1,6 +1,7 @@
 # SkilClient.DataProcResourceDetails
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_class** | **String** |  | [optional] [default to &#39;io.skymind.resource.model.subtypes.compute.DataProcResourceDetails&#39;]
@@ -12,7 +13,7 @@ Name | Type | Description | Notes
 **sparkClusterName** | **String** | Name of the spark cluster | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="SubTypeEnum"></a>
+
 ## Enum: SubTypeEnum
 
 

@@ -1,7 +1,9 @@
 
+
 # ResourceCredentials
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **credentialId** | **Long** | ID of the credentials |  [optional]
@@ -10,8 +12,9 @@ Name | Type | Description | Notes
 **uri** | **String** | URI of the credentials |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 AWS | &quot;AWS&quot;

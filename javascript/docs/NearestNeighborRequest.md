@@ -1,6 +1,7 @@
 # SkilClient.NearestNeighborRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **k** | **Number** | the number of results | [optional] 

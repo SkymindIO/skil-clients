@@ -1,6 +1,7 @@
 # SkilCient::ImportModelRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | [optional] 
@@ -15,5 +16,24 @@ Name | Type | Description | Notes
 **etl_json** | **String** |  | [optional] 
 **input_names** | **Array&lt;String&gt;** |  | [optional] 
 **output_names** | **Array&lt;String&gt;** |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::ImportModelRequest.new(name: null,
+                                 scale: null,
+                                 uri: null,
+                                 model_type: null,
+                                 file_location: null,
+                                 jvm_args: null,
+                                 sub_type: null,
+                                 labels_file_location: null,
+                                 extra_args: null,
+                                 etl_json: null,
+                                 input_names: null,
+                                 output_names: null)
+```
 
 

@@ -1,9 +1,10 @@
 # FileUploadList
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileUploadResponseList** | [**[]FileUpload**](FileUpload.md) |  | [optional] [default to null]
+**FileUploadResponseList** | [**[]FileUpload**](FileUpload.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

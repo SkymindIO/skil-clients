@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.BestModel
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -7,5 +9,7 @@ Name | Type | Description | Notes
 **ColumnNameMetric** | **string** | Name of the column metric (in an evaluation result) to get the best model from. | [optional] 
 **EvalType** | **string** | the evaluation type to aggregate for each model&#39;s revisions | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

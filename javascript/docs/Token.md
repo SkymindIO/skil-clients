@@ -1,6 +1,7 @@
 # SkilClient.Token
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tokenId** | **Number** |  | [optional] 

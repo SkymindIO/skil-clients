@@ -1,7 +1,9 @@
 
+
 # ModelResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
@@ -9,6 +11,7 @@ Name | Type | Description | Notes
 **status** | **String** |  |  [optional]
 **scale** | **Integer** |  |  [optional]
 **uri** | **List&lt;String&gt;** |  |  [optional]
+
 
 
 

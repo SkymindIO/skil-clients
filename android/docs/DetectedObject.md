@@ -1,7 +1,9 @@
 
+
 # DetectedObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **centerX** | **Float** |  |  [optional]
@@ -10,6 +12,7 @@ Name | Type | Description | Notes
 **height** | **Float** |  |  [optional]
 **predictedClasses** | **List&lt;String&gt;** |  |  [optional]
 **confidences** | **List&lt;Float&gt;** |  |  [optional]
+
 
 
 

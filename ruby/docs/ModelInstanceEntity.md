@@ -1,6 +1,7 @@
 # SkilCient::ModelInstanceEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uri** | **String** | The model URI | [optional] 
@@ -15,5 +16,24 @@ Name | Type | Description | Notes
 **original_model_id** | **String** | Original GUID of the model (used for maintaining revisions of a particular model) | [optional] 
 **model_version** | **String** | Model version | [optional] 
 **experiment_id** | **String** | GUID of the Experiment which is associated with the model. | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::ModelInstanceEntity.new(uri: null,
+                                 etl_json: null,
+                                 model_id: null,
+                                 model_labels: null,
+                                 input_formats: null,
+                                 created: null,
+                                 notebook_json: null,
+                                 eval_id: null,
+                                 model_name: null,
+                                 original_model_id: null,
+                                 model_version: null,
+                                 experiment_id: null)
+```
 
 

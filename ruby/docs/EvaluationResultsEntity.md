@@ -1,6 +1,7 @@
 # SkilCient::EvaluationResultsEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **evaluation** | **String** |  | [optional] 
@@ -20,5 +21,29 @@ Name | Type | Description | Notes
 **eval_version** | **Integer** |  | [optional] 
 **binary_threshold** | **Float** |  | [optional] 
 **binary_thresholds** | **String** |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::EvaluationResultsEntity.new(evaluation: null,
+                                 eval_name: null,
+                                 model_instance_id: null,
+                                 created: null,
+                                 f1: null,
+                                 precision: null,
+                                 recall: null,
+                                 accuracy: null,
+                                 rmse: null,
+                                 auc: null,
+                                 mean_absolute_error: null,
+                                 mean_relative_error: null,
+                                 r2: null,
+                                 eval_id: null,
+                                 eval_version: null,
+                                 binary_threshold: null,
+                                 binary_thresholds: null)
+```
 
 

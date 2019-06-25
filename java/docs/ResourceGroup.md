@@ -1,7 +1,9 @@
 
+
 # ResourceGroup
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **groupId** | **Long** | ID of the resource group |  [optional]

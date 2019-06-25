@@ -1,9 +1,10 @@
 # NearestNeighborsResults
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | [**[]NearestNeighborsResult**](NearestNeighborsResult.md) |  | [optional] [default to null]
+**Results** | [**[]NearestNeighborsResult**](NearestNeighborsResult.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

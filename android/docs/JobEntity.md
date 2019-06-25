@@ -1,7 +1,9 @@
 
+
 # JobEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **jobId** | **Long** | Job ID |  [optional]
@@ -14,16 +16,17 @@ Name | Type | Description | Notes
 **outputFileName** | **String** | Output file name |  [optional]
 
 
-<a name="JobTypeEnum"></a>
 ## Enum: JobTypeEnum
+
 Name | Value
 ---- | -----
 
 
-<a name="StatusEnum"></a>
 ## Enum: StatusEnum
+
 Name | Value
 ---- | -----
+
 
 
 

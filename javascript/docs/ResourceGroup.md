@@ -1,6 +1,7 @@
 # SkilClient.ResourceGroup
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **groupId** | **Number** | ID of the resource group | [optional] 

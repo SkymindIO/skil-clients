@@ -1,5 +1,5 @@
-package io.swagger.common {
-import io.swagger.common.ApiUserCredentials;
+package org.openapitools.common {
+import org.openapitools.common.ApiUserCredentials;
 
 /**
  * @private

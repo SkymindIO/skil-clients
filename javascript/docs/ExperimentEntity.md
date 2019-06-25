@@ -1,6 +1,7 @@
 # SkilClient.ExperimentEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bestModelId** | **String** | GUID of the best selected model in an experiment | [optional] 

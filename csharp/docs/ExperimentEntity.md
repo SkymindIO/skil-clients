@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.ExperimentEntity
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -14,5 +16,7 @@ Name | Type | Description | Notes
 **ModelHistoryId** | **string** | Id of the model history / workspace | [optional] 
 **LastUpdated** | **long?** | Indicates the time when experiment was last updated | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

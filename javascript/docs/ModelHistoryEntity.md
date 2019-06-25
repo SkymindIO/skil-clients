@@ -1,6 +1,7 @@
 # SkilClient.ModelHistoryEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | **Number** | When the model history / workspace was created | [optional] 

@@ -1,6 +1,6 @@
 package ai.skymind.skil.client.model {
 
-import io.swagger.common.ListWrapper;
+import org.openapitools.common.ListWrapper;
 
     public class AuthPolicyList implements ListWrapper {
         // This declaration below of _AuthPolicy_obj_class is to force flash compiler to include this class

@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.S3ResourceDetails
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,5 +12,7 @@ Name | Type | Description | Notes
 **Bucket** | **string** | S3 Bucket Name | [optional] 
 **Region** | **string** | Region name where the S3 bucket is present | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

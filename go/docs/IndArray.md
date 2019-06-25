@@ -1,13 +1,14 @@
 # IndArray
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Array** | **string** |  | [optional] [default to null]
-**Shape** | **[]int32** |  | [optional] [default to null]
-**Ordering** | **string** |  | [optional] [default to null]
-**Data** | **[]float32** |  | [optional] [default to null]
-**DataType** | **string** |  | [optional] [default to null]
+**Array** | **string** |  | [optional] 
+**Shape** | **[]int32** |  | [optional] 
+**Ordering** | **string** |  | [optional] 
+**Data** | **[]float32** |  | [optional] 
+**DataType** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

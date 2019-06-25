@@ -1,7 +1,9 @@
 
+
 # ClassificationResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **results** | **List&lt;Integer&gt;** | index classification results for the minibatch |  [optional]

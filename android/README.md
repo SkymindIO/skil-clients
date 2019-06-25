@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>ai.skymind</groupId>
     <artifactId>skil-client</artifactId>
-    <version>1.2.1.5</version>
+    <version>1.2.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "ai.skymind:skil-client:1.2.1.5"
+compile "ai.skymind:skil-client:1.2.2.0"
 ```
 
 ### Others
@@ -49,8 +49,8 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/skil-client-1.2.1.5.jar
-* target/lib/*.jar
+- target/skil-client-1.2.2.0.jar
+- target/lib/*.jar
 
 ## Getting Started
 
@@ -237,7 +237,6 @@ Class | Method | HTTP request | Description
  - [HDFSResourceDetails](docs/HDFSResourceDetails.md)
  - [HDInsightResourceDetails](docs/HDInsightResourceDetails.md)
  - [INDArray](docs/INDArray.md)
- - [ImageTransformProcess](docs/ImageTransformProcess.md)
  - [ImportModelRequest](docs/ImportModelRequest.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [JobEntity](docs/JobEntity.md)
@@ -246,7 +245,6 @@ Class | Method | HTTP request | Description
  - [LogRequest](docs/LogRequest.md)
  - [LoginRequest](docs/LoginRequest.md)
  - [LoginResponse](docs/LoginResponse.md)
- - [MetaData](docs/MetaData.md)
  - [MinibatchEntity](docs/MinibatchEntity.md)
  - [ModelEntity](docs/ModelEntity.md)
  - [ModelFeedBackRequest](docs/ModelFeedBackRequest.md)
@@ -275,7 +273,6 @@ Class | Method | HTTP request | Description
  - [SingleRecord](docs/SingleRecord.md)
  - [Token](docs/Token.md)
  - [TokenGenerateRequest](docs/TokenGenerateRequest.md)
- - [TransformProcess](docs/TransformProcess.md)
  - [UpdateBestModel](docs/UpdateBestModel.md)
  - [User](docs/User.md)
  - [YARNResourceDetails](docs/YARNResourceDetails.md)
@@ -287,7 +284,15 @@ Authentication schemes defined for the API:
 ### api_key
 
 - **Type**: API key
+
 - **API key parameter name**: authorization
+- **Location**: HTTP header
+
+### x_api_key
+
+- **Type**: API key
+
+- **API key parameter name**: X-API-Key
 - **Location**: HTTP header
 
 

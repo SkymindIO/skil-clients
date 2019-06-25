@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.ModelInstanceEntity
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -16,5 +18,7 @@ Name | Type | Description | Notes
 **ModelVersion** | **string** | Model version | [optional] 
 **ExperimentId** | **string** | GUID of the Experiment which is associated with the model. | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 

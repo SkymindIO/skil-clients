@@ -1,10 +1,12 @@
 
+
 # ModelInstanceEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**uri** | **String** | The model URI |  [optional]
+**uri** | [**URI**](URI.md) | The model URI |  [optional]
 **etlJson** | **String** | The json string for the ETL (Extract, Transform and Load) |  [optional]
 **modelId** | **String** | GUID of the model. |  [optional]
 **modelLabels** | **String** | Comma-separated labels string for the model |  [optional]
@@ -16,6 +18,7 @@ Name | Type | Description | Notes
 **originalModelId** | **String** | Original GUID of the model (used for maintaining revisions of a particular model) |  [optional]
 **modelVersion** | **String** | Model version |  [optional]
 **experimentId** | **String** | GUID of the Experiment which is associated with the model. |  [optional]
+
 
 
 

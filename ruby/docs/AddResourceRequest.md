@@ -1,13 +1,27 @@
 # SkilCient::AddResourceRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **resource_name** | **String** | Name of the new resource | [optional] 
-**resource_details** | **Object** | One of the resource details objects | [optional] 
+**resource_details** | [**Object**](.md) | One of the resource details objects | [optional] 
 **credential_uri** | **String** | URI of the credentials. If this is present, you can leave out the &#39;credentialId&#39; | [optional] 
 **type** | **String** | Resource type (whether COMPUTE or STORAGE) | [optional] 
 **sub_type** | **String** | Resource subtype (COMPUTE -&gt; [EMR, DataProc, HDInsight, YARN] | STORAGE -&gt; [S3, GoogleStorage, AzureStorage, HDFS]) | [optional] 
 **credential_id** | **Integer** | ID of the credentials. If this is given then you can leave out the &#39;credentialsUri&#39; | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::AddResourceRequest.new(resource_name: null,
+                                 resource_details: null,
+                                 credential_uri: null,
+                                 type: null,
+                                 sub_type: null,
+                                 credential_id: null)
+```
 
 

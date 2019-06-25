@@ -34,7 +34,7 @@ package ai.skymind.skil.client.model {
         [XmlElement(name="evalId")]
         public var evalId: String = null;
                 [XmlElement(name="evalVersion")]
-        public var evalVersion: Number = NaN;
+        public var evalVersion: Number = 0;
                 [XmlElement(name="binaryThreshold")]
         public var binaryThreshold: Number = 0.0;
                 [XmlElement(name="binaryThresholds")]

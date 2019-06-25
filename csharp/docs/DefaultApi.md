@@ -123,15 +123,16 @@ Method | HTTP request | Description
 [**Upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
-<a name="accumulatedresults"></a>
-# **AccumulatedResults**
+
+## AccumulatedResults
+
 > AccumulatedResults AccumulatedResults ()
 
 Tells how many retraining examples have labels associated with them.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -141,14 +142,19 @@ namespace Example
 {
     public class AccumulatedResultsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -156,9 +162,11 @@ namespace Example
                 AccumulatedResults result = apiInstance.AccumulatedResults();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AccumulatedResults: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -166,6 +174,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -174,24 +183,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addcredentials"></a>
-# **AddCredentials**
+
+## AddCredentials
+
 > ResourceCredentials AddCredentials (AddCredentialsRequest addCredentialsRequest)
 
 Adds credentials
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -201,14 +214,19 @@ namespace Example
 {
     public class AddCredentialsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addCredentialsRequest = new AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
 
             try
@@ -217,9 +235,11 @@ namespace Example
                 ResourceCredentials result = apiInstance.AddCredentials(addCredentialsRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddCredentials: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -227,6 +247,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -238,24 +259,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addevaluationresult"></a>
-# **AddEvaluationResult**
+
+## AddEvaluationResult
+
 > EvaluationResultsEntity AddEvaluationResult (string modelHistoryServerId, EvaluationResultsEntity evaluationResultsEntity)
 
 Adds an evaluation result
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -265,14 +290,19 @@ namespace Example
 {
     public class AddEvaluationResultExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var evaluationResultsEntity = new EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
 
@@ -282,9 +312,11 @@ namespace Example
                 EvaluationResultsEntity result = apiInstance.AddEvaluationResult(modelHistoryServerId, evaluationResultsEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddEvaluationResult: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -292,6 +324,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -304,24 +337,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addexampleforbatch"></a>
-# **AddExampleForBatch**
+
+## AddExampleForBatch
+
 > AddExampleRequest AddExampleForBatch (string modelHistoryServerId, AddExampleRequest addExampleRequest)
 
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -331,14 +368,19 @@ namespace Example
 {
     public class AddExampleForBatchExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var addExampleRequest = new AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
 
@@ -348,9 +390,11 @@ namespace Example
                 AddExampleRequest result = apiInstance.AddExampleForBatch(modelHistoryServerId, addExampleRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddExampleForBatch: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -358,6 +402,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -370,24 +415,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addexampletominibatch"></a>
-# **AddExampleToMinibatch**
+
+## AddExampleToMinibatch
+
 > ExampleEntity AddExampleToMinibatch (string modelHistoryServerId, ExampleEntity exampleEntity)
 
 Adds an example to a minibatch
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -397,14 +446,19 @@ namespace Example
 {
     public class AddExampleToMinibatchExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var exampleEntity = new ExampleEntity(); // ExampleEntity | The example to add to the minibatch
 
@@ -414,9 +468,11 @@ namespace Example
                 ExampleEntity result = apiInstance.AddExampleToMinibatch(modelHistoryServerId, exampleEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddExampleToMinibatch: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -424,6 +480,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -436,24 +493,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addexperiment"></a>
-# **AddExperiment**
+
+## AddExperiment
+
 > ExperimentEntity AddExperiment (string modelHistoryServerId, ExperimentEntity experimentEntity)
 
 Add an experiment, given an experiment entity
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -463,14 +524,19 @@ namespace Example
 {
     public class AddExperimentExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to add
 
@@ -480,9 +546,11 @@ namespace Example
                 ExperimentEntity result = apiInstance.AddExperiment(modelHistoryServerId, experimentEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddExperiment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -490,6 +558,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -502,24 +571,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addfeedbackbinary"></a>
-# **AddFeedbackBinary**
+
+## AddFeedbackBinary
+
 > FeedbackResponse AddFeedbackBinary (string id, string type, System.IO.Stream file = null)
 
 
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -529,26 +602,33 @@ namespace Example
 {
     public class AddFeedbackBinaryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Batch ID to retrain the model with and get feedback for.
             var type = type_example;  // string | The type of the labels array.
-            var file = new System.IO.Stream(); // System.IO.Stream | The labels file to upload. (optional) 
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The labels file to upload. (optional) 
 
             try
             {
                 FeedbackResponse result = apiInstance.AddFeedbackBinary(id, type, file);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddFeedbackBinary: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -556,6 +636,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -569,24 +650,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addfeedbackjson"></a>
-# **AddFeedbackJson**
+
+## AddFeedbackJson
+
 > FeedbackResponse AddFeedbackJson (string id, List<List<double?>> labels = null)
 
 Gets the retraining feedback for the given batch ID.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -596,16 +681,21 @@ namespace Example
 {
     public class AddFeedbackJsonExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var id = id_example;  // string | Batch ID to retrain the model with and get feedback for.
-            var labels = ;  // List<List<double?>> | The associated labels (one-hot vectors) with the batch for retraining. (optional) 
+            var labels = new List<List<double?>>(); // List<List<double?>> | The associated labels (one-hot vectors) with the batch for retraining. (optional) 
 
             try
             {
@@ -613,9 +703,11 @@ namespace Example
                 FeedbackResponse result = apiInstance.AddFeedbackJson(id, labels);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddFeedbackJson: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -624,10 +716,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| Batch ID to retrain the model with and get feedback for. | 
- **labels** | **List&lt;List&lt;double?&gt;&gt;**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+ **labels** | [**List&lt;List&lt;double?&gt;&gt;**](List.md)| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
 
 ### Return type
 
@@ -635,24 +728,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addminibatch"></a>
-# **AddMinibatch**
+
+## AddMinibatch
+
 > MinibatchEntity AddMinibatch (string modelHistoryServerId, MinibatchEntity minibatchEntity)
 
 Adds a minibatch
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -662,14 +759,19 @@ namespace Example
 {
     public class AddMinibatchExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var minibatchEntity = new MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
 
@@ -679,9 +781,11 @@ namespace Example
                 MinibatchEntity result = apiInstance.AddMinibatch(modelHistoryServerId, minibatchEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddMinibatch: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -689,6 +793,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -701,24 +806,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addmodelfeedback"></a>
-# **AddModelFeedback**
+
+## AddModelFeedback
+
 > ModelFeedBackRequest AddModelFeedback (string modelHistoryServerId, ModelFeedBackRequest modelFeedBackRequest)
 
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -728,14 +837,19 @@ namespace Example
 {
     public class AddModelFeedbackExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelFeedBackRequest = new ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
 
@@ -745,9 +859,11 @@ namespace Example
                 ModelFeedBackRequest result = apiInstance.AddModelFeedback(modelHistoryServerId, modelFeedBackRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddModelFeedback: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -755,6 +871,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -767,24 +884,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addmodelhistory"></a>
-# **AddModelHistory**
+
+## AddModelHistory
+
 > ModelHistoryEntity AddModelHistory (string modelHistoryServerId, AddModelHistoryRequest addModelHistoryRequest)
 
 Add a model history / workspace
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -794,14 +915,19 @@ namespace Example
 {
     public class AddModelHistoryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var addModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
 
@@ -811,9 +937,11 @@ namespace Example
                 ModelHistoryEntity result = apiInstance.AddModelHistory(modelHistoryServerId, addModelHistoryRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddModelHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -821,6 +949,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -833,24 +962,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addmodelinstance"></a>
-# **AddModelInstance**
+
+## AddModelInstance
+
 > ModelInstanceEntity AddModelInstance (string modelHistoryServerId, ModelInstanceEntity modelInstanceEntity)
 
 Adds a model
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -860,14 +993,19 @@ namespace Example
 {
     public class AddModelInstanceExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelInstanceEntity = new ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
 
@@ -877,9 +1015,11 @@ namespace Example
                 ModelInstanceEntity result = apiInstance.AddModelInstance(modelHistoryServerId, modelInstanceEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddModelInstance: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -887,6 +1027,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -899,24 +1040,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addresource"></a>
-# **AddResource**
+
+## AddResource
+
 > Object AddResource (AddResourceRequest addResourceRequest)
 
 Adds a resource
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -926,14 +1071,19 @@ namespace Example
 {
     public class AddResourceExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var addResourceRequest = new AddResourceRequest(); // AddResourceRequest | The Add resource request object
 
             try
@@ -942,9 +1092,11 @@ namespace Example
                 Object result = apiInstance.AddResource(addResourceRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddResource: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -952,6 +1104,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -963,24 +1116,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addresourcegroup"></a>
-# **AddResourceGroup**
+
+## AddResourceGroup
+
 > ResourceGroup AddResourceGroup (string groupName)
 
 Adds a resource group
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -990,14 +1147,19 @@ namespace Example
 {
     public class AddResourceGroupExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var groupName = groupName_example;  // string | Name of the resource group
 
             try
@@ -1006,9 +1168,11 @@ namespace Example
                 ResourceGroup result = apiInstance.AddResourceGroup(groupName);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddResourceGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1016,6 +1180,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1027,24 +1192,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain; charset=utf-8
- - **Accept**: application/json
+- **Content-Type**: text/plain; charset=utf-8
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="addresourcetogroup"></a>
-# **AddResourceToGroup**
+
+## AddResourceToGroup
+
 > void AddResourceToGroup (long? resourceGroupId, long? resourceId)
 
 Adds a resource to a resource group
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1054,14 +1223,19 @@ namespace Example
 {
     public class AddResourceToGroupExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceGroupId = 789;  // long? | ID of the resource group
             var resourceId = 789;  // long? | ID of the resource
 
@@ -1070,9 +1244,11 @@ namespace Example
                 // Adds a resource to a resource group
                 apiInstance.AddResourceToGroup(resourceGroupId, resourceId);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AddResourceToGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1080,6 +1256,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1092,24 +1269,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="aggregatemodelresults"></a>
-# **AggregateModelResults**
+
+## AggregateModelResults
+
 > EvaluationResultsEntity AggregateModelResults (string modelHistoryServerId, AggregatePrediction aggregatePrediction)
 
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1119,14 +1300,19 @@ namespace Example
 {
     public class AggregateModelResultsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var aggregatePrediction = new AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
 
@@ -1136,9 +1322,11 @@ namespace Example
                 EvaluationResultsEntity result = apiInstance.AggregateModelResults(modelHistoryServerId, aggregatePrediction);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.AggregateModelResults: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1146,6 +1334,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1158,24 +1347,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="changeuserpassword"></a>
-# **ChangeUserPassword**
+
+## ChangeUserPassword
+
 > User ChangeUserPassword (string userId, ChangePasswordRequest changePasswordRequest)
 
 Change user's password
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1185,14 +1378,19 @@ namespace Example
 {
     public class ChangeUserPasswordExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var userId = userId_example;  // string | User's ID
             var changePasswordRequest = new ChangePasswordRequest(); // ChangePasswordRequest | Password details.
 
@@ -1202,9 +1400,11 @@ namespace Example
                 User result = apiInstance.ChangeUserPassword(userId, changePasswordRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.ChangeUserPassword: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1212,6 +1412,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1224,24 +1425,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="classify"></a>
-# **Classify**
-> ClassificationResult Classify (Prediction body, string deploymentName, string versionName, string modelName)
+
+## Classify
+
+> ClassificationResult Classify (string deploymentName, string versionName, string modelName, Prediction body)
 
 Use the deployed model to classify the input
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1251,28 +1456,35 @@ namespace Example
 {
     public class ClassifyExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = new Prediction(); // Prediction | The input NDArray
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new Prediction(); // Prediction | The input NDArray
 
             try
             {
                 // Use the deployed model to classify the input
-                ClassificationResult result = apiInstance.Classify(body, deploymentName, versionName, modelName);
+                ClassificationResult result = apiInstance.Classify(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Classify: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1281,12 +1493,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1294,24 +1507,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="classifyarray"></a>
-# **Classifyarray**
-> Base64NDArrayBody Classifyarray (Prediction body, string deploymentName, string versionName, string modelName)
+
+## Classifyarray
+
+> Base64NDArrayBody Classifyarray (string deploymentName, string versionName, string modelName, Prediction body)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1321,28 +1538,35 @@ namespace Example
 {
     public class ClassifyarrayExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = new Prediction(); // Prediction | The input NDArray
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new Prediction(); // Prediction | The input NDArray
 
             try
             {
                 // Same as /classify but returns the output as Base64NDArrayBody
-                Base64NDArrayBody result = apiInstance.Classifyarray(body, deploymentName, versionName, modelName);
+                Base64NDArrayBody result = apiInstance.Classifyarray(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Classifyarray: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1351,12 +1575,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1364,24 +1589,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="classifyimage"></a>
-# **Classifyimage**
+
+## Classifyimage
+
 > ClassificationResult Classifyimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1391,18 +1620,23 @@ namespace Example
 {
     public class ClassifyimageExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
-            var image = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
+            var image = BINARY_DATA_HERE;  // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
@@ -1410,9 +1644,11 @@ namespace Example
                 ClassificationResult result = apiInstance.Classifyimage(deploymentName, versionName, modelName, image);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Classifyimage: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1421,10 +1657,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
  **image** | **System.IO.Stream**| The file to upload. | [optional] 
 
@@ -1434,24 +1671,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="clearstate"></a>
-# **ClearState**
+
+## ClearState
+
 > FeedbackResponse ClearState ()
 
 Clears the accumulated data for retraining.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1461,14 +1702,19 @@ namespace Example
 {
     public class ClearStateExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -1476,9 +1722,11 @@ namespace Example
                 FeedbackResponse result = apiInstance.ClearState();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.ClearState: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1486,6 +1734,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1494,24 +1743,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="createjob"></a>
-# **CreateJob**
+
+## CreateJob
+
 > JobEntity CreateJob (string jobIdOrType, CreateJobRequest createJobRequest)
 
 Create a job
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1521,14 +1774,19 @@ namespace Example
 {
     public class CreateJobExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var jobIdOrType = jobIdOrType_example;  // string | Job Type
             var createJobRequest = new CreateJobRequest(); // CreateJobRequest | Create job request object
 
@@ -1538,9 +1796,11 @@ namespace Example
                 JobEntity result = apiInstance.CreateJob(jobIdOrType, createJobRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.CreateJob: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1548,6 +1808,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1560,24 +1821,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="createmodelhistory"></a>
-# **CreateModelHistory**
+
+## CreateModelHistory
+
 > ModelHistoryEntity CreateModelHistory (string modelHistoryServerId, ModelHistoryEntity modelHistoryEntity)
 
 Creates model History
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1587,14 +1852,19 @@ namespace Example
 {
     public class CreateModelHistoryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelHistoryEntity = new ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
 
@@ -1604,9 +1874,11 @@ namespace Example
                 ModelHistoryEntity result = apiInstance.CreateModelHistory(modelHistoryServerId, modelHistoryEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.CreateModelHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1614,6 +1886,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1626,24 +1899,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deletecredentialsbyid"></a>
-# **DeleteCredentialsById**
+
+## DeleteCredentialsById
+
 > void DeleteCredentialsById (long? credentialId)
 
 Delete credentials given an ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1653,14 +1930,19 @@ namespace Example
 {
     public class DeleteCredentialsByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var credentialId = 789;  // long? | Credentials ID
 
             try
@@ -1668,9 +1950,11 @@ namespace Example
                 // Delete credentials given an ID
                 apiInstance.DeleteCredentialsById(credentialId);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteCredentialsById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1678,6 +1962,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1689,24 +1974,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deleteexperiment"></a>
-# **DeleteExperiment**
+
+## DeleteExperiment
+
 > InlineResponse200 DeleteExperiment (string modelHistoryServerId, string experimentID)
 
 Deletes an experiment, given an experiment entity
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1716,14 +2005,19 @@ namespace Example
 {
     public class DeleteExperimentExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment to delete
 
@@ -1733,9 +2027,11 @@ namespace Example
                 InlineResponse200 result = apiInstance.DeleteExperiment(modelHistoryServerId, experimentID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteExperiment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1743,6 +2039,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1755,24 +2052,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deletejobbyid"></a>
-# **DeleteJobById**
+
+## DeleteJobById
+
 > void DeleteJobById (long? jobIdOrType)
 
 Deletes a job given its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1782,14 +2083,19 @@ namespace Example
 {
     public class DeleteJobByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var jobIdOrType = 789;  // long? | Job ID
 
             try
@@ -1797,9 +2103,11 @@ namespace Example
                 // Deletes a job given its ID
                 apiInstance.DeleteJobById(jobIdOrType);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteJobById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1807,6 +2115,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1818,24 +2127,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deletemodel"></a>
-# **DeleteModel**
+
+## DeleteModel
+
 > InlineResponse200 DeleteModel (string deploymentId, string modelId)
 
 Delete a model by deployment and model id
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1845,14 +2158,19 @@ namespace Example
 {
     public class DeleteModelExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | ID deployment group
             var modelId = modelId_example;  // string | the id of the deployed model
 
@@ -1862,9 +2180,11 @@ namespace Example
                 InlineResponse200 result = apiInstance.DeleteModel(deploymentId, modelId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteModel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1872,6 +2192,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1884,24 +2205,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deletemodelhistory"></a>
-# **DeleteModelHistory**
+
+## DeleteModelHistory
+
 > InlineResponse200 DeleteModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Deletes a model history / workspace, given its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1911,14 +2236,19 @@ namespace Example
 {
     public class DeleteModelHistoryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | the GUID of the model history / workspace to delete
 
@@ -1928,9 +2258,11 @@ namespace Example
                 InlineResponse200 result = apiInstance.DeleteModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteModelHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -1938,6 +2270,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1950,24 +2283,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deletemodelinstance"></a>
-# **DeleteModelInstance**
+
+## DeleteModelInstance
+
 > void DeleteModelInstance (string modelHistoryServerId, string modelInstanceID)
 
 Deletes a model instance, given its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -1977,14 +2314,19 @@ namespace Example
 {
     public class DeleteModelInstanceExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelInstanceID = modelInstanceID_example;  // string | GUID of the model instance to delete.
 
@@ -1993,9 +2335,11 @@ namespace Example
                 // Deletes a model instance, given its ID
                 apiInstance.DeleteModelInstance(modelHistoryServerId, modelInstanceID);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteModelInstance: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2003,6 +2347,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2015,24 +2360,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deleteresourcebyid"></a>
-# **DeleteResourceById**
+
+## DeleteResourceById
+
 > Resource DeleteResourceById (long? resourceId)
 
 Delete the resource with the specified resource ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2042,14 +2391,19 @@ namespace Example
 {
     public class DeleteResourceByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceId = 789;  // long? | ID of the resource
 
             try
@@ -2058,9 +2412,11 @@ namespace Example
                 Resource result = apiInstance.DeleteResourceById(resourceId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteResourceById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2068,6 +2424,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2079,24 +2436,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deleteresourcefromgroup"></a>
-# **DeleteResourceFromGroup**
+
+## DeleteResourceFromGroup
+
 > void DeleteResourceFromGroup (long? resourceGroupId, long? resourceId)
 
 Removes a resource from a resource group
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2106,14 +2467,19 @@ namespace Example
 {
     public class DeleteResourceFromGroupExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceGroupId = 789;  // long? | ID of the resource group
             var resourceId = 789;  // long? | ID of the resource
 
@@ -2122,9 +2488,11 @@ namespace Example
                 // Removes a resource from a resource group
                 apiInstance.DeleteResourceFromGroup(resourceGroupId, resourceId);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteResourceFromGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2132,6 +2500,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2144,24 +2513,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deleteresourcegroupbyid"></a>
-# **DeleteResourceGroupById**
+
+## DeleteResourceGroupById
+
 > ResourceGroup DeleteResourceGroupById (long? resourceGroupId)
 
 Delete the resource group with the specified resource group ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2171,14 +2544,19 @@ namespace Example
 {
     public class DeleteResourceGroupByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceGroupId = 789;  // long? | ID of the resource group
 
             try
@@ -2187,9 +2565,11 @@ namespace Example
                 ResourceGroup result = apiInstance.DeleteResourceGroupById(resourceGroupId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeleteResourceGroupById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2197,6 +2577,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2208,24 +2589,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deploymodel"></a>
-# **DeployModel**
+
+## DeployModel
+
 > ModelEntity DeployModel (string deploymentId, ImportModelRequest body)
 
 Deploy a model in a deployment group.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2235,14 +2620,19 @@ namespace Example
 {
     public class DeployModelExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | ID deployment group
             var body = new ImportModelRequest(); // ImportModelRequest | the model import request
 
@@ -2252,9 +2642,11 @@ namespace Example
                 ModelEntity result = apiInstance.DeployModel(deploymentId, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeployModel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2262,6 +2654,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2274,24 +2667,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deploymentcreate"></a>
-# **DeploymentCreate**
+
+## DeploymentCreate
+
 > DeploymentResponse DeploymentCreate (CreateDeploymentRequest body)
 
 Create a new deployment group.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2301,14 +2698,19 @@ namespace Example
 {
     public class DeploymentCreateExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var body = new CreateDeploymentRequest(); // CreateDeploymentRequest | the deployment request
 
             try
@@ -2317,9 +2719,11 @@ namespace Example
                 DeploymentResponse result = apiInstance.DeploymentCreate(body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeploymentCreate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2327,6 +2731,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2338,24 +2743,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deploymentdelete"></a>
-# **DeploymentDelete**
+
+## DeploymentDelete
+
 > InlineResponse200 DeploymentDelete (string deploymentId)
 
 Delete a deployment by id
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2365,14 +2774,19 @@ namespace Example
 {
     public class DeploymentDeleteExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | Id of the deployment group
 
             try
@@ -2381,9 +2795,11 @@ namespace Example
                 InlineResponse200 result = apiInstance.DeploymentDelete(deploymentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeploymentDelete: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2391,6 +2807,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2402,24 +2819,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deploymentget"></a>
-# **DeploymentGet**
+
+## DeploymentGet
+
 > DeploymentResponse DeploymentGet (string deploymentId)
 
 Get a deployment details by id
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2429,14 +2850,19 @@ namespace Example
 {
     public class DeploymentGetExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | Id of the deployment group
 
             try
@@ -2445,9 +2871,11 @@ namespace Example
                 DeploymentResponse result = apiInstance.DeploymentGet(deploymentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DeploymentGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2455,6 +2883,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2466,24 +2895,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="deployments"></a>
-# **Deployments**
+
+## Deployments
+
 > List<DeploymentResponse> Deployments ()
 
 Get a list of deployments
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2493,14 +2926,19 @@ namespace Example
 {
     public class DeploymentsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -2508,9 +2946,11 @@ namespace Example
                 List&lt;DeploymentResponse&gt; result = apiInstance.Deployments();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Deployments: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2518,6 +2958,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2526,24 +2967,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="detectobjects"></a>
-# **Detectobjects**
-> DetectionResult Detectobjects (string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file, string deploymentName, string versionName, string modelName)
+
+## Detectobjects
+
+> DetectionResult Detectobjects (string deploymentName, string versionName, string modelName, string id, bool? needsPreprocessing, float? threshold, System.IO.Stream file)
 
 Detect the objects, given a (input) prediction request
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2553,31 +2998,38 @@ namespace Example
 {
     public class DetectobjectsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
+            var modelName = modelName_example;  // string | ID or name of the deployed model
             var id = id_example;  // string | the GUID for mapping the results in the detections
             var needsPreprocessing = true;  // bool? | (true) if the image needs preprocessing
-            var threshold = 3.4;  // float? | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-            var file = new System.IO.Stream(); // System.IO.Stream | the image file to detect objects from
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var modelName = modelName_example;  // string | ID or name of the deployed model
+            var threshold = 3.4F;  // float? | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | the image file to detect objects from
 
             try
             {
                 // Detect the objects, given a (input) prediction request
-                DetectionResult result = apiInstance.Detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName);
+                DetectionResult result = apiInstance.Detectobjects(deploymentName, versionName, modelName, id, needsPreprocessing, threshold, file);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Detectobjects: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2586,15 +3038,16 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
+ **modelName** | **string**| ID or name of the deployed model | 
  **id** | **string**| the GUID for mapping the results in the detections | 
  **needsPreprocessing** | **bool?**| (true) if the image needs preprocessing | 
  **threshold** | **float?**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
  **file** | **System.IO.Stream**| the image file to detect objects from | 
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -2602,24 +3055,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="downloadjoboutputfile"></a>
-# **DownloadJobOutputFile**
+
+## DownloadJobOutputFile
+
 > void DownloadJobOutputFile (long? jobId, DownloadOutputFileRequest downloadOutputFileRequest)
 
 Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2629,14 +3086,19 @@ namespace Example
 {
     public class DownloadJobOutputFileExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var jobId = 789;  // long? | Job ID
             var downloadOutputFileRequest = new DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
 
@@ -2645,9 +3107,11 @@ namespace Example
                 // Download the output file from the job's execution. This will ONLY work if the job's run status is 'COMPLETE'.
                 apiInstance.DownloadJobOutputFile(jobId, downloadOutputFileRequest);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.DownloadJobOutputFile: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2655,6 +3119,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2667,24 +3132,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="generateauthtoken"></a>
-# **GenerateAuthToken**
+
+## GenerateAuthToken
+
 > Token GenerateAuthToken (TokenGenerateRequest tokenGenerateRequest)
 
 Generate new auth token
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2694,14 +3163,19 @@ namespace Example
 {
     public class GenerateAuthTokenExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var tokenGenerateRequest = new TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
 
             try
@@ -2710,9 +3184,11 @@ namespace Example
                 Token result = apiInstance.GenerateAuthToken(tokenGenerateRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GenerateAuthToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2720,6 +3196,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2731,24 +3208,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getalljobs"></a>
-# **GetAllJobs**
+
+## GetAllJobs
+
 > List<JobEntity> GetAllJobs ()
 
 Get a list of all available jobs
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2758,14 +3239,19 @@ namespace Example
 {
     public class GetAllJobsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -2773,9 +3259,11 @@ namespace Example
                 List&lt;JobEntity&gt; result = apiInstance.GetAllJobs();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetAllJobs: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2783,6 +3271,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2791,17 +3280,21 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getarray"></a>
-# **GetArray**
+
+## GetArray
+
 > void GetArray (string accept, string arrayType)
 
 Get the memory mapped array based on the array type.
@@ -2809,8 +3302,8 @@ Get the memory mapped array based on the array type.
 The array is specified through a file path, in the configuration object, during model server deployment.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2820,14 +3313,19 @@ namespace Example
 {
     public class GetArrayExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var accept = accept_example;  // string | 
             var arrayType = arrayType_example;  // string | The format in which the memory mapped array is returned.
 
@@ -2836,9 +3334,11 @@ namespace Example
                 // Get the memory mapped array based on the array type.
                 apiInstance.GetArray(accept, arrayType);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetArray: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2846,6 +3346,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2858,24 +3359,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getarrayindices"></a>
-# **GetArrayIndices**
+
+## GetArrayIndices
+
 > void GetArrayIndices (string contentType, string accept, string arrayType, string input = null)
 
 Get the memory mapped array indices based on the array type.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2885,14 +3390,19 @@ namespace Example
 {
     public class GetArrayIndicesExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`.
             var accept = accept_example;  // string | 
             var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
@@ -2903,9 +3413,11 @@ namespace Example
                 // Get the memory mapped array indices based on the array type.
                 apiInstance.GetArrayIndices(contentType, accept, arrayType, input);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetArrayIndices: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2913,6 +3425,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2927,24 +3440,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getarrayrange"></a>
-# **GetArrayRange**
+
+## GetArrayRange
+
 > void GetArrayRange (string accept, string arrayType, int? from, int? to)
 
 Get the memory mapped array within a range based on the array type.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -2954,14 +3471,19 @@ namespace Example
 {
     public class GetArrayRangeExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var accept = accept_example;  // string | 
             var arrayType = arrayType_example;  // string | Format in which the memory mapped array is returned in.
             var from = 56;  // int? | 
@@ -2972,9 +3494,11 @@ namespace Example
                 // Get the memory mapped array within a range based on the array type.
                 apiInstance.GetArrayRange(accept, arrayType, from, to);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetArrayRange: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -2982,6 +3506,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2996,24 +3521,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getauthpolicy"></a>
-# **GetAuthPolicy**
+
+## GetAuthPolicy
+
 > AuthPolicy GetAuthPolicy ()
 
 Get auth policy
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3023,14 +3552,19 @@ namespace Example
 {
     public class GetAuthPolicyExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -3038,9 +3572,11 @@ namespace Example
                 AuthPolicy result = apiInstance.GetAuthPolicy();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetAuthPolicy: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3048,6 +3584,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3056,24 +3593,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getbestmodelamongmodelids"></a>
-# **GetBestModelAmongModelIds**
+
+## GetBestModelAmongModelIds
+
 > ModelInstanceEntity GetBestModelAmongModelIds (string modelHistoryServerId, BestModel bestModel)
 
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3083,14 +3624,19 @@ namespace Example
 {
     public class GetBestModelAmongModelIdsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var bestModel = new BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
 
@@ -3100,9 +3646,11 @@ namespace Example
                 ModelInstanceEntity result = apiInstance.GetBestModelAmongModelIds(modelHistoryServerId, bestModel);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetBestModelAmongModelIds: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3110,6 +3658,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3122,24 +3671,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getcredentialsbyid"></a>
-# **GetCredentialsById**
+
+## GetCredentialsById
+
 > ResourceCredentials GetCredentialsById (long? credentialId)
 
 Get credentials given an ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3149,14 +3702,19 @@ namespace Example
 {
     public class GetCredentialsByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var credentialId = 789;  // long? | Credentials ID
 
             try
@@ -3165,9 +3723,11 @@ namespace Example
                 ResourceCredentials result = apiInstance.GetCredentialsById(credentialId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetCredentialsById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3175,6 +3735,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3186,24 +3747,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getcurrentmodel"></a>
-# **GetCurrentModel**
+
+## GetCurrentModel
+
 > void GetCurrentModel ()
 
 Returns the current model being used for retraining.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3213,23 +3778,30 @@ namespace Example
 {
     public class GetCurrentModelExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
                 // Returns the current model being used for retraining.
                 apiInstance.GetCurrentModel();
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetCurrentModel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3237,6 +3809,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3245,24 +3818,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getevaluationformodelid"></a>
-# **GetEvaluationForModelID**
+
+## GetEvaluationForModelID
+
 > List<EvaluationResultsEntity> GetEvaluationForModelID (string modelHistoryServerId, string modelInstanceID)
 
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3272,14 +3849,19 @@ namespace Example
 {
     public class GetEvaluationForModelIDExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelInstanceID = modelInstanceID_example;  // string | GUID of the model instance to get evaluation results for.
 
@@ -3289,9 +3871,11 @@ namespace Example
                 List&lt;EvaluationResultsEntity&gt; result = apiInstance.GetEvaluationForModelID(modelHistoryServerId, modelInstanceID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetEvaluationForModelID: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3299,6 +3883,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3311,24 +3896,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getexamplesforminibatch"></a>
-# **GetExamplesForMinibatch**
+
+## GetExamplesForMinibatch
+
 > List<ExampleEntity> GetExamplesForMinibatch (string modelHistoryServerId, string minibatchId)
 
 Gets all the examples for a minibatch ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3338,14 +3927,19 @@ namespace Example
 {
     public class GetExamplesForMinibatchExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var minibatchId = minibatchId_example;  // string | The GUID of the minibatch
 
@@ -3355,9 +3949,11 @@ namespace Example
                 List&lt;ExampleEntity&gt; result = apiInstance.GetExamplesForMinibatch(modelHistoryServerId, minibatchId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetExamplesForMinibatch: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3365,6 +3961,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3377,24 +3974,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getexperiment"></a>
-# **GetExperiment**
+
+## GetExperiment
+
 > ExperimentEntity GetExperiment (string modelHistoryServerId, string experimentID)
 
 Obtain an experiment's details, given its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3404,14 +4005,19 @@ namespace Example
 {
     public class GetExperimentExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment to obtain
 
@@ -3421,9 +4027,11 @@ namespace Example
                 ExperimentEntity result = apiInstance.GetExperiment(modelHistoryServerId, experimentID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetExperiment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3431,6 +4039,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3443,24 +4052,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getexperimentsformodelhistory"></a>
-# **GetExperimentsForModelHistory**
+
+## GetExperimentsForModelHistory
+
 > List<ExperimentEntity> GetExperimentsForModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Obtain all experiments for a model history / workspace
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3470,14 +4083,19 @@ namespace Example
 {
     public class GetExperimentsForModelHistoryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | the GUID of the model history / workspace
 
@@ -3487,9 +4105,11 @@ namespace Example
                 List&lt;ExperimentEntity&gt; result = apiInstance.GetExperimentsForModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetExperimentsForModelHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3497,6 +4117,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3509,24 +4130,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getjobbyid"></a>
-# **GetJobById**
+
+## GetJobById
+
 > JobEntity GetJobById (long? jobIdOrType)
 
 Get a job by its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3536,14 +4161,19 @@ namespace Example
 {
     public class GetJobByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var jobIdOrType = 789;  // long? | Job ID
 
             try
@@ -3552,9 +4182,11 @@ namespace Example
                 JobEntity result = apiInstance.GetJobById(jobIdOrType);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetJobById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3562,6 +4194,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3573,24 +4206,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getlastevaluation"></a>
-# **GetLastEvaluation**
+
+## GetLastEvaluation
+
 > EvaluationResultsEntity GetLastEvaluation ()
 
 Get the last evaluation specifications from the current model.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3600,14 +4237,19 @@ namespace Example
 {
     public class GetLastEvaluationExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -3615,9 +4257,11 @@ namespace Example
                 EvaluationResultsEntity result = apiInstance.GetLastEvaluation();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetLastEvaluation: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3625,6 +4269,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3633,24 +4278,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getminibatch"></a>
-# **GetMinibatch**
+
+## GetMinibatch
+
 > MinibatchEntity GetMinibatch (string modelHistoryServerId, string minibatchId)
 
 Gets a minibatch for the model
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3660,14 +4309,19 @@ namespace Example
 {
     public class GetMinibatchExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var minibatchId = minibatchId_example;  // string | The GUID of the minibatch
 
@@ -3677,9 +4331,11 @@ namespace Example
                 MinibatchEntity result = apiInstance.GetMinibatch(modelHistoryServerId, minibatchId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetMinibatch: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3687,6 +4343,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3699,24 +4356,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getmodeldetails"></a>
-# **GetModelDetails**
+
+## GetModelDetails
+
 > ModelEntity GetModelDetails (string deploymentId, string modelId)
 
 Get model details
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3726,14 +4387,19 @@ namespace Example
 {
     public class GetModelDetailsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | ID deployment group
             var modelId = modelId_example;  // string | the id of the deployed model
 
@@ -3743,9 +4409,11 @@ namespace Example
                 ModelEntity result = apiInstance.GetModelDetails(deploymentId, modelId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetModelDetails: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3753,6 +4421,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3765,24 +4434,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getmodelhistory"></a>
-# **GetModelHistory**
+
+## GetModelHistory
+
 > ModelHistoryEntity GetModelHistory (string modelHistoryServerId, string modelHistoryID)
 
 Gets a model history, given its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3792,14 +4465,19 @@ namespace Example
 {
     public class GetModelHistoryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | GUID of the model history to get information of.
 
@@ -3809,9 +4487,11 @@ namespace Example
                 ModelHistoryEntity result = apiInstance.GetModelHistory(modelHistoryServerId, modelHistoryID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetModelHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3819,6 +4499,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3831,24 +4512,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getmodelinstance"></a>
-# **GetModelInstance**
+
+## GetModelInstance
+
 > ModelInstanceEntity GetModelInstance (string modelHistoryServerId, string modelInstanceID)
 
 Gets a model instance, given its ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3858,14 +4543,19 @@ namespace Example
 {
     public class GetModelInstanceExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelInstanceID = modelInstanceID_example;  // string | GUID of the model instance to get information of.
 
@@ -3875,9 +4565,11 @@ namespace Example
                 ModelInstanceEntity result = apiInstance.GetModelInstance(modelHistoryServerId, modelInstanceID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetModelInstance: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3885,6 +4577,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3897,24 +4590,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getmodelsforexperiment"></a>
-# **GetModelsForExperiment**
+
+## GetModelsForExperiment
+
 > List<ModelInstanceEntity> GetModelsForExperiment (string modelHistoryServerId, string experimentID)
 
 Obtain a list of all the models for an experiment
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3924,14 +4621,19 @@ namespace Example
 {
     public class GetModelsForExperimentExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment
 
@@ -3941,9 +4643,11 @@ namespace Example
                 List&lt;ModelInstanceEntity&gt; result = apiInstance.GetModelsForExperiment(modelHistoryServerId, experimentID);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetModelsForExperiment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -3951,6 +4655,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3963,24 +4668,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcebyid"></a>
-# **GetResourceById**
+
+## GetResourceById
+
 > Resource GetResourceById (long? resourceId)
 
 Get the resource with the specified resource ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -3990,14 +4699,19 @@ namespace Example
 {
     public class GetResourceByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceId = 789;  // long? | ID of the resource
 
             try
@@ -4006,9 +4720,11 @@ namespace Example
                 Resource result = apiInstance.GetResourceById(resourceId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourceById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4016,6 +4732,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4027,24 +4744,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcebysubtype"></a>
-# **GetResourceBySubType**
+
+## GetResourceBySubType
+
 > List<Resource> GetResourceBySubType (string resourceSubType)
 
 Get all the resources with the specified resource subtype
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4054,14 +4775,19 @@ namespace Example
 {
     public class GetResourceBySubTypeExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceSubType = resourceSubType_example;  // string | Subtype of the resource
 
             try
@@ -4070,9 +4796,11 @@ namespace Example
                 List&lt;Resource&gt; result = apiInstance.GetResourceBySubType(resourceSubType);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourceBySubType: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4080,6 +4808,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4091,24 +4820,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcebytype"></a>
-# **GetResourceByType**
+
+## GetResourceByType
+
 > List<Resource> GetResourceByType (string resourceType)
 
 Get all the resources with the specified resource type
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4118,14 +4851,19 @@ namespace Example
 {
     public class GetResourceByTypeExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceType = resourceType_example;  // string | Type of the resource
 
             try
@@ -4134,9 +4872,11 @@ namespace Example
                 List&lt;Resource&gt; result = apiInstance.GetResourceByType(resourceType);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourceByType: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4144,6 +4884,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4155,17 +4896,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcedetailsbyid"></a>
-# **GetResourceDetailsById**
+
+## GetResourceDetailsById
+
 > Object GetResourceDetailsById (long? resourceId)
 
 Get the resource details with the specified resource ID
@@ -4173,8 +4918,8 @@ Get the resource details with the specified resource ID
 Get the details for the resource, for the given ID. Note that a 'ResourceDetails' object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the 'Resource' object contains only general information (name, id, type, subtype). 
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4184,14 +4929,19 @@ namespace Example
 {
     public class GetResourceDetailsByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceId = 789;  // long? | ID of the resource
 
             try
@@ -4200,9 +4950,11 @@ namespace Example
                 Object result = apiInstance.GetResourceDetailsById(resourceId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourceDetailsById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4210,6 +4962,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4221,24 +4974,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcegroupbyid"></a>
-# **GetResourceGroupById**
+
+## GetResourceGroupById
+
 > ResourceGroup GetResourceGroupById (long? resourceGroupId)
 
 Get the resource group with the specified resource group ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4248,14 +5005,19 @@ namespace Example
 {
     public class GetResourceGroupByIdExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceGroupId = 789;  // long? | ID of the resource group
 
             try
@@ -4264,9 +5026,11 @@ namespace Example
                 ResourceGroup result = apiInstance.GetResourceGroupById(resourceGroupId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourceGroupById: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4274,6 +5038,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4285,24 +5050,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcegroups"></a>
-# **GetResourceGroups**
+
+## GetResourceGroups
+
 > List<ResourceGroup> GetResourceGroups ()
 
 Get a list of all the resource groups
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4312,14 +5081,19 @@ namespace Example
 {
     public class GetResourceGroupsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -4327,9 +5101,11 @@ namespace Example
                 List&lt;ResourceGroup&gt; result = apiInstance.GetResourceGroups();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourceGroups: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4337,6 +5113,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4345,24 +5122,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresources"></a>
-# **GetResources**
+
+## GetResources
+
 > List<Resource> GetResources ()
 
 A list of all known/registered resources, of all types
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4372,14 +5153,19 @@ namespace Example
 {
     public class GetResourcesExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -4387,9 +5173,11 @@ namespace Example
                 List&lt;Resource&gt; result = apiInstance.GetResources();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResources: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4397,6 +5185,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4405,24 +5194,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getresourcesfromgroup"></a>
-# **GetResourcesFromGroup**
+
+## GetResourcesFromGroup
+
 > List<Resource> GetResourcesFromGroup (long? resourceGroupId)
 
 Get all resources from a resource group
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4432,14 +5225,19 @@ namespace Example
 {
     public class GetResourcesFromGroupExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var resourceGroupId = 789;  // long? | ID of the resource group
 
             try
@@ -4448,9 +5246,11 @@ namespace Example
                 List&lt;Resource&gt; result = apiInstance.GetResourcesFromGroup(resourceGroupId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetResourcesFromGroup: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4458,6 +5258,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4469,24 +5270,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getroles"></a>
-# **GetRoles**
+
+## GetRoles
+
 > List<Role> GetRoles ()
 
 Get all roles.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4496,14 +5301,19 @@ namespace Example
 {
     public class GetRolesExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -4511,9 +5321,11 @@ namespace Example
                 List&lt;Role&gt; result = apiInstance.GetRoles();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetRoles: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4521,6 +5333,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4529,24 +5342,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getuser"></a>
-# **GetUser**
+
+## GetUser
+
 > User GetUser (string userId)
 
 Get a user by user ID
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4556,14 +5373,19 @@ namespace Example
 {
     public class GetUserExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var userId = userId_example;  // string | User's ID
 
             try
@@ -4572,9 +5394,11 @@ namespace Example
                 User result = apiInstance.GetUser(userId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4582,6 +5406,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4593,24 +5418,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getuserauthtokens"></a>
-# **GetUserAuthTokens**
+
+## GetUserAuthTokens
+
 > List<Token> GetUserAuthTokens (string userId, bool? onlyValid = null)
 
 Get auth tokens for a user.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4620,14 +5449,19 @@ namespace Example
 {
     public class GetUserAuthTokensExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var userId = userId_example;  // string | User's ID
             var onlyValid = true;  // bool? | True if you only want the valid tokens. (optional) 
 
@@ -4637,9 +5471,11 @@ namespace Example
                 List&lt;Token&gt; result = apiInstance.GetUserAuthTokens(userId, onlyValid);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetUserAuthTokens: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4647,6 +5483,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4659,24 +5496,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="getusers"></a>
-# **GetUsers**
+
+## GetUsers
+
 > List<User> GetUsers ()
 
 Get all users.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4686,14 +5527,19 @@ namespace Example
 {
     public class GetUsersExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -4701,9 +5547,11 @@ namespace Example
                 List&lt;User&gt; result = apiInstance.GetUsers();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.GetUsers: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4711,6 +5559,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4719,24 +5568,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="istraining"></a>
-# **IsTraining**
+
+## IsTraining
+
 > RetrainingStatus IsTraining ()
 
 Get the retraining status
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4746,14 +5599,19 @@ namespace Example
 {
     public class IsTrainingExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -4761,9 +5619,11 @@ namespace Example
                 RetrainingStatus result = apiInstance.IsTraining();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.IsTraining: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4771,6 +5631,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4779,24 +5640,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="jsonarray"></a>
-# **Jsonarray**
-> JsonArrayResponse Jsonarray (Prediction body, string deploymentName, string versionName, string modelName)
+
+## Jsonarray
+
+> JsonArrayResponse Jsonarray (string deploymentName, string versionName, string modelName, Prediction body)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4806,28 +5671,35 @@ namespace Example
 {
     public class JsonarrayExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = new Prediction(); // Prediction | The input NDArray
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new Prediction(); // Prediction | The input NDArray
 
             try
             {
                 // Run inference on the input and returns it as a JsonArrayResponse
-                JsonArrayResponse result = apiInstance.Jsonarray(body, deploymentName, versionName, modelName);
+                JsonArrayResponse result = apiInstance.Jsonarray(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Jsonarray: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4836,12 +5708,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4849,17 +5722,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="knn"></a>
-# **Knn**
+
+## Knn
+
 > NearestNeighborsResults Knn (string deploymentName, string versionName, string knnName, NearestNeighborRequest body)
 
 Runs knn on the given index with the given k
@@ -4867,8 +5744,8 @@ Runs knn on the given index with the given k
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4878,16 +5755,21 @@ namespace Example
 {
     public class KnnExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var knnName = knnName_example;  // string | ID or name of the deployed knn
             var body = new NearestNeighborRequest(); // NearestNeighborRequest | 
 
@@ -4897,9 +5779,11 @@ namespace Example
                 NearestNeighborsResults result = apiInstance.Knn(deploymentName, versionName, knnName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Knn: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4908,10 +5792,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **knnName** | **string**| ID or name of the deployed knn | 
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -4921,24 +5806,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="knnnew"></a>
-# **Knnnew**
+
+## Knnnew
+
 > NearestNeighborsResults Knnnew (string deploymentName, string versionName, string knnName, Base64NDArrayBodyKNN body)
 
 Run a k nearest neighbors search on a NEW data point
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -4948,16 +5837,21 @@ namespace Example
 {
     public class KnnnewExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var knnName = knnName_example;  // string | ID or name of the deployed knn
             var body = new Base64NDArrayBodyKNN(); // Base64NDArrayBodyKNN | The input NDArray
 
@@ -4967,9 +5861,11 @@ namespace Example
                 NearestNeighborsResults result = apiInstance.Knnnew(deploymentName, versionName, knnName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Knnnew: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -4978,10 +5874,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **knnName** | **string**| ID or name of the deployed knn | 
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray | 
 
@@ -4991,24 +5888,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="listallexperiments"></a>
-# **ListAllExperiments**
+
+## ListAllExperiments
+
 > List<ExperimentEntity> ListAllExperiments (string modelHistoryServerId)
 
 List all of the experiments in every model history / workspace
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5018,14 +5919,19 @@ namespace Example
 {
     public class ListAllExperimentsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
 
             try
@@ -5034,9 +5940,11 @@ namespace Example
                 List&lt;ExperimentEntity&gt; result = apiInstance.ListAllExperiments(modelHistoryServerId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.ListAllExperiments: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5044,6 +5952,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5055,24 +5964,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="logfilepath"></a>
-# **Logfilepath**
+
+## Logfilepath
+
 > string Logfilepath (string deploymentName, string versionName, string modelName)
 
 Get logs file path
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5082,16 +5995,21 @@ namespace Example
 {
     public class LogfilepathExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
@@ -5100,9 +6018,11 @@ namespace Example
                 string result = apiInstance.Logfilepath(deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Logfilepath: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5111,10 +6031,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
@@ -5123,24 +6044,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text
+- **Content-Type**: Not defined
+- **Accept**: text
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="login"></a>
-# **Login**
+
+## Login
+
 > LoginResponse Login (LoginRequest loginRequest)
 
 Post JSON credentials and obtain a JWT authorization token.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5150,9 +6075,19 @@ namespace Example
 {
     public class LoginExample
     {
-        public void main()
+        public static void Main()
         {
-            var apiInstance = new DefaultApi();
+            Configuration.Default.BasePath = "http://localhost:9008";
+            // Configure API key authorization: api_key
+            Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
+
+            var apiInstance = new DefaultApi(Configuration.Default);
             var loginRequest = new LoginRequest(); // LoginRequest | Login credentials.
 
             try
@@ -5161,9 +6096,11 @@ namespace Example
                 LoginResponse result = apiInstance.Login(loginRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Login: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5171,6 +6108,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5182,24 +6120,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="logs"></a>
-# **Logs**
+
+## Logs
+
 > LogBatch Logs (string deploymentName, string versionName, string modelName, LogRequest logRequest)
 
 Get logs
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5209,16 +6151,21 @@ namespace Example
 {
     public class LogsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
             var logRequest = new LogRequest(); // LogRequest | The log object
 
@@ -5228,9 +6175,11 @@ namespace Example
                 LogBatch result = apiInstance.Logs(deploymentName, versionName, modelName, logRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Logs: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5239,10 +6188,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
  **logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
 
@@ -5252,24 +6202,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="metaget"></a>
-# **MetaGet**
-> MetaData MetaGet (string deploymentName, string versionName, string modelName)
+
+## MetaGet
+
+> Object MetaGet (string deploymentName, string versionName, string modelName)
 
 this method can be used to get the meta data for the current model which set to the server
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5279,27 +6233,34 @@ namespace Example
 {
     public class MetaGetExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // this method can be used to get the meta data for the current model which set to the server
-                MetaData result = apiInstance.MetaGet(deploymentName, versionName, modelName);
+                Object result = apiInstance.MetaGet(deploymentName, versionName, modelName);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.MetaGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5308,36 +6269,41 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="metapost"></a>
-# **MetaPost**
-> MetaData MetaPost (string contentType, string body, string deploymentName, string versionName, string modelName)
+
+## MetaPost
+
+> Object MetaPost (string contentType, string deploymentName, string versionName, string modelName, string body)
 
 This method can be used to set meta data for the current model which is set to the server
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5347,29 +6313,36 @@ namespace Example
 {
     public class MetaPostExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`
-            var body = body_example;  // string | the meta data object
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = body_example;  // string | the meta data object
 
             try
             {
                 // This method can be used to set meta data for the current model which is set to the server
-                MetaData result = apiInstance.MetaPost(contentType, body, deploymentName, versionName, modelName);
+                Object result = apiInstance.MetaPost(contentType, deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.MetaPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5378,38 +6351,43 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
- **body** | **string**| the meta data object | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | **string**| the meta data object | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="modelstatechange"></a>
-# **ModelStateChange**
+
+## ModelStateChange
+
 > ModelEntity ModelStateChange (string deploymentId, string modelId, SetState body)
 
 Modify the state (start/stop) of a deployed model
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5419,14 +6397,19 @@ namespace Example
 {
     public class ModelStateChangeExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | ID deployment group
             var modelId = modelId_example;  // string | the id of the deployed model
             var body = new SetState(); // SetState | the model state object
@@ -5437,9 +6420,11 @@ namespace Example
                 ModelEntity result = apiInstance.ModelStateChange(deploymentId, modelId, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.ModelStateChange: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5447,6 +6432,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5460,24 +6446,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="models"></a>
-# **Models**
+
+## Models
+
 > List<ModelEntity> Models (string deploymentId)
 
 Retrieve a list of all the deployed models given a deployment id
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5487,14 +6477,19 @@ namespace Example
 {
     public class ModelsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | ID deployment group
 
             try
@@ -5503,9 +6498,11 @@ namespace Example
                 List&lt;ModelEntity&gt; result = apiInstance.Models(deploymentId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Models: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5513,6 +6510,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5524,24 +6522,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="modelset"></a>
-# **Modelset**
+
+## Modelset
+
 > ModelStatus Modelset (string deploymentName, string versionName, string modelName, System.IO.Stream file = null)
 
 Set the model to be served
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5551,18 +6553,23 @@ namespace Example
 {
     public class ModelsetExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
-            var file = new System.IO.Stream(); // System.IO.Stream | The model file to upload (.pb file) (optional) 
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The model file to upload (.pb file) (optional) 
 
             try
             {
@@ -5570,9 +6577,11 @@ namespace Example
                 ModelStatus result = apiInstance.Modelset(deploymentName, versionName, modelName, file);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Modelset: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5581,10 +6590,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
  **file** | **System.IO.Stream**| The model file to upload (.pb file) | [optional] 
 
@@ -5594,24 +6604,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="modelupdate"></a>
-# **Modelupdate**
-> ModelStatus Modelupdate (System.IO.Stream file, string deploymentName, string versionName, string modelName)
+
+## Modelupdate
+
+> ModelStatus Modelupdate (string deploymentName, string versionName, string modelName, System.IO.Stream file)
 
 Update the model to be served
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5621,28 +6635,35 @@ namespace Example
 {
     public class ModelupdateExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var file = new System.IO.Stream(); // System.IO.Stream | The model file to update with (.pb file)
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The model file to update with (.pb file)
 
             try
             {
                 // Update the model to be served
-                ModelStatus result = apiInstance.Modelupdate(file, deploymentName, versionName, modelName);
+                ModelStatus result = apiInstance.Modelupdate(deploymentName, versionName, modelName, file);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Modelupdate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5651,12 +6672,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **System.IO.Stream**| The model file to update with (.pb file) | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **file** | **System.IO.Stream**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -5664,24 +6686,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="multiclassify"></a>
-# **Multiclassify**
-> MultiClassClassificationResult Multiclassify (Prediction body, string deploymentName, string versionName, string modelName)
+
+## Multiclassify
+
+> MultiClassClassificationResult Multiclassify (string deploymentName, string versionName, string modelName, Prediction body)
 
 Represents all of the labels for a given classification
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5691,28 +6717,35 @@ namespace Example
 {
     public class MulticlassifyExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = new Prediction(); // Prediction | The input NDArray
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new Prediction(); // Prediction | The input NDArray
 
             try
             {
                 // Represents all of the labels for a given classification
-                MultiClassClassificationResult result = apiInstance.Multiclassify(body, deploymentName, versionName, modelName);
+                MultiClassClassificationResult result = apiInstance.Multiclassify(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Multiclassify: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5721,12 +6754,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -5734,26 +6768,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="multipredict"></a>
-# **Multipredict**
-> MultiPredictResponse Multipredict (MultiPredictRequest body, string deploymentName, string versionName, string modelName)
+
+## Multipredict
+
+> MultiPredictResponse Multipredict (string deploymentName, string versionName, string modelName, MultiPredictRequest body)
 
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5763,28 +6801,35 @@ namespace Example
 {
     public class MultipredictExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = new MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
 
             try
             {
                 // Get the output from the network, based on the given INDArray[] input
-                MultiPredictResponse result = apiInstance.Multipredict(body, deploymentName, versionName, modelName);
+                MultiPredictResponse result = apiInstance.Multipredict(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Multipredict: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5793,12 +6838,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
 
 ### Return type
 
@@ -5806,26 +6852,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="multipredictimage"></a>
-# **Multipredictimage**
-> MultiPredictResponse Multipredictimage (System.IO.Stream file, string id, bool? needsPreprocessing, string deploymentName, string versionName, string modelName)
+
+## Multipredictimage
+
+> MultiPredictResponse Multipredictimage (string deploymentName, string versionName, string modelName, System.IO.Stream file, string id, bool? needsPreprocessing)
 
 Get the output from the network using the given image file using the /multipredict endpoint's method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5835,30 +6885,37 @@ namespace Example
 {
     public class MultipredictimageExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var file = new System.IO.Stream(); // System.IO.Stream | The image file to run the prediction on
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var deploymentName = deploymentName_example;  // string | Name of the deployment group
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
+            var modelName = modelName_example;  // string | ID or name of the deployed model
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image file to run the prediction on
             var id = id_example;  // string | The id of the request (could be self generated)
             var needsPreprocessing = true;  // bool? | Whether or not the preprocessing is required (either 'true' or 'false')
-            var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
-            var modelName = modelName_example;  // string | ID or name of the deployed model
 
             try
             {
                 // Get the output from the network using the given image file using the /multipredict endpoint's method
-                MultiPredictResponse result = apiInstance.Multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName);
+                MultiPredictResponse result = apiInstance.Multipredictimage(deploymentName, versionName, modelName, file, id, needsPreprocessing);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Multipredictimage: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5867,14 +6924,15 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deploymentName** | **string**| Name of the deployment group | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
+ **modelName** | **string**| ID or name of the deployed model | 
  **file** | **System.IO.Stream**| The image file to run the prediction on | 
  **id** | **string**| The id of the request (could be self generated) | 
  **needsPreprocessing** | **bool?**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
- **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **modelName** | **string**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -5882,24 +6940,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="numrevisions"></a>
-# **NumRevisions**
+
+## NumRevisions
+
 > RevisionsWritten NumRevisions ()
 
 Gets the number of retrained models written with retraining.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5909,14 +6971,19 @@ namespace Example
 {
     public class NumRevisionsExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
 
             try
             {
@@ -5924,9 +6991,11 @@ namespace Example
                 RevisionsWritten result = apiInstance.NumRevisions();
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.NumRevisions: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5934,6 +7003,7 @@ namespace Example
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -5942,24 +7012,28 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predict"></a>
-# **Predict**
-> Prediction Predict (Prediction body, string deploymentName, string versionName, string modelName)
+
+## Predict
+
+> Prediction Predict (string deploymentName, string versionName, string modelName, Prediction body)
 
 Run inference on the input array.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -5969,28 +7043,35 @@ namespace Example
 {
     public class PredictExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = new Prediction(); // Prediction | The input NDArray
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new Prediction(); // Prediction | The input NDArray
 
             try
             {
                 // Run inference on the input array.
-                Prediction result = apiInstance.Predict(body, deploymentName, versionName, modelName);
+                Prediction result = apiInstance.Predict(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Predict: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -5999,12 +7080,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -6012,17 +7094,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predicterror"></a>
-# **PredictError**
+
+## PredictError
+
 > void PredictError (string contentType, string operation, string inputType, string inputData = null)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
@@ -6030,8 +7116,8 @@ Runs inference and find invalid rows based on the input data. Output is defined 
 These \"error\" endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6041,14 +7127,19 @@ namespace Example
 {
     public class PredictErrorExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`.
             var operation = operation_example;  // string | Operation to perform on the input data.
             var inputType = inputType_example;  // string | Type of the input data.
@@ -6059,9 +7150,11 @@ namespace Example
                 // Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
                 apiInstance.PredictError(contentType, operation, inputType, inputData);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.PredictError: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6069,6 +7162,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6083,24 +7177,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predictv2file"></a>
-# **PredictV2File**
+
+## PredictV2File
+
 > void PredictV2File (string operation, string inputTypeFile, System.IO.Stream inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6110,26 +7208,33 @@ namespace Example
 {
     public class PredictV2FileExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var operation = operation_example;  // string | The operation to perform on the input data. 
             var inputTypeFile = inputTypeFile_example;  // string | Type of the input data. 
-            var inputData = new System.IO.Stream(); // System.IO.Stream | The input data to run inference on.
+            var inputData = BINARY_DATA_HERE;  // System.IO.Stream | The input data to run inference on.
 
             try
             {
                 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
                 apiInstance.PredictV2File(operation, inputTypeFile, inputData);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.PredictV2File: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6137,6 +7242,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6150,24 +7256,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predictv2json"></a>
-# **PredictV2Json**
+
+## PredictV2Json
+
 > void PredictV2Json (string contentType, string operation, string inputTypeJson, string inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6177,14 +7287,19 @@ namespace Example
 {
     public class PredictV2JsonExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var contentType = contentType_example;  // string | The `Content-Type` should always be `application/json`.
             var operation = operation_example;  // string | The operation to perform on the input data. 
             var inputTypeJson = inputTypeJson_example;  // string | Type of the input data. 
@@ -6195,9 +7310,11 @@ namespace Example
                 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
                 apiInstance.PredictV2Json(contentType, operation, inputTypeJson, inputData);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.PredictV2Json: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6205,6 +7322,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6219,24 +7337,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predictimage"></a>
-# **Predictimage**
+
+## Predictimage
+
 > Prediction Predictimage (string deploymentName, string versionName, string modelName, System.IO.Stream image = null)
 
 Run inference on the input array, using input image file from multipart form data.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6246,18 +7368,23 @@ namespace Example
 {
     public class PredictimageExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
-            var image = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
+            var image = BINARY_DATA_HERE;  // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
@@ -6265,9 +7392,11 @@ namespace Example
                 Prediction result = apiInstance.Predictimage(deploymentName, versionName, modelName, image);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Predictimage: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6276,10 +7405,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
  **image** | **System.IO.Stream**| The file to upload. | [optional] 
 
@@ -6289,24 +7419,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predictwithpreprocess"></a>
-# **Predictwithpreprocess**
-> Prediction Predictwithpreprocess (List<string> body, string deploymentName, string versionName, string modelName)
+
+## Predictwithpreprocess
+
+> Prediction Predictwithpreprocess (string deploymentName, string versionName, string modelName, List<string> body)
 
 Preprocesses the input and run inference on it
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6316,28 +7450,35 @@ namespace Example
 {
     public class PredictwithpreprocessExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = ;  // List<string> | The input array
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new List<string>(); // List<string> | The input array
 
             try
             {
                 // Preprocesses the input and run inference on it
-                Prediction result = apiInstance.Predictwithpreprocess(body, deploymentName, versionName, modelName);
+                Prediction result = apiInstance.Predictwithpreprocess(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Predictwithpreprocess: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6346,12 +7487,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;string&gt;**| The input array | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**List&lt;string&gt;**](string.md)| The input array | 
 
 ### Return type
 
@@ -6359,24 +7501,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="predictwithpreprocessjson"></a>
-# **Predictwithpreprocessjson**
-> JsonArrayResponse Predictwithpreprocessjson (List<string> body, string deploymentName, string versionName, string modelName)
+
+## Predictwithpreprocessjson
+
+> JsonArrayResponse Predictwithpreprocessjson (string deploymentName, string versionName, string modelName, List<string> body)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6386,28 +7532,35 @@ namespace Example
 {
     public class PredictwithpreprocessjsonExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var body = ;  // List<string> | The input array
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var modelName = modelName_example;  // string | ID or name of the deployed model
+            var body = new List<string>(); // List<string> | The input array
 
             try
             {
                 // Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
-                JsonArrayResponse result = apiInstance.Predictwithpreprocessjson(body, deploymentName, versionName, modelName);
+                JsonArrayResponse result = apiInstance.Predictwithpreprocessjson(deploymentName, versionName, modelName, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Predictwithpreprocessjson: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6416,12 +7569,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **List&lt;string&gt;**| The input array | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **modelName** | **string**| ID or name of the deployed model | 
+ **body** | [**List&lt;string&gt;**](string.md)| The input array | 
 
 ### Return type
 
@@ -6429,24 +7583,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="rawpredictbinary"></a>
-# **RawPredictBinary**
+
+## RawPredictBinary
+
 > void RawPredictBinary (string inputType, string outputType, System.IO.Stream inputData = null)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6456,26 +7614,33 @@ namespace Example
 {
     public class RawPredictBinaryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var inputType = inputType_example;  // string | Input data type.
             var outputType = outputType_example;  // string | Binary output data type.
-            var inputData = new System.IO.Stream(); // System.IO.Stream | The input file to upload. (optional) 
+            var inputData = BINARY_DATA_HERE;  // System.IO.Stream | The input file to upload. (optional) 
 
             try
             {
                 // Runs inference based on the input data. Output is defined relative to the output adapter specified.
                 apiInstance.RawPredictBinary(inputType, outputType, inputData);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.RawPredictBinary: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6483,6 +7648,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6496,24 +7662,28 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/octet-stream
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="refreshjobstatus"></a>
-# **RefreshJobStatus**
+
+## RefreshJobStatus
+
 > JobEntity RefreshJobStatus (long? jobId)
 
 Refresh the remote job status. Can be used for monitoring.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6523,14 +7693,19 @@ namespace Example
 {
     public class RefreshJobStatusExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var jobId = 789;  // long? | Job ID
 
             try
@@ -6539,9 +7714,11 @@ namespace Example
                 JobEntity result = apiInstance.RefreshJobStatus(jobId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.RefreshJobStatus: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6549,6 +7726,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6560,24 +7738,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="registeruser"></a>
-# **RegisterUser**
+
+## RegisterUser
+
 > User RegisterUser (User user)
 
 Register a new user
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6587,14 +7769,19 @@ namespace Example
 {
     public class RegisterUserExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var user = new User(); // User | User details
 
             try
@@ -6603,9 +7790,11 @@ namespace Example
                 User result = apiInstance.RegisterUser(user);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.RegisterUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6613,6 +7802,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6624,24 +7814,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="reimportmodel"></a>
-# **ReimportModel**
+
+## ReimportModel
+
 > ModelEntity ReimportModel (string deploymentId, string modelId, ImportModelRequest body)
 
 Reimport a model to a previous deployed model in a deployment
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6651,14 +7845,19 @@ namespace Example
 {
     public class ReimportModelExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentId = deploymentId_example;  // string | ID deployment group
             var modelId = modelId_example;  // string | the id of the deployed model
             var body = new ImportModelRequest(); // ImportModelRequest | the deployment request
@@ -6669,9 +7868,11 @@ namespace Example
                 ModelEntity result = apiInstance.ReimportModel(deploymentId, modelId, body);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.ReimportModel: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6679,6 +7880,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6692,24 +7894,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="revokeusertoken"></a>
-# **RevokeUserToken**
+
+## RevokeUserToken
+
 > Token RevokeUserToken (long? tokenId)
 
 Revoke a user token.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6719,14 +7925,19 @@ namespace Example
 {
     public class RevokeUserTokenExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var tokenId = 789;  // long? | Token ID
 
             try
@@ -6735,9 +7946,11 @@ namespace Example
                 Token result = apiInstance.RevokeUserToken(tokenId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.RevokeUserToken: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6745,6 +7958,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6756,24 +7970,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="rollback"></a>
-# **Rollback**
+
+## Rollback
+
 > RollbackStatus Rollback (int? index)
 
 Rollback to a previous revision of the model.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6783,14 +8001,19 @@ namespace Example
 {
     public class RollbackExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var index = 56;  // int? | Model revision index.
 
             try
@@ -6799,9 +8022,11 @@ namespace Example
                 RollbackStatus result = apiInstance.Rollback(index);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Rollback: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6809,6 +8034,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6820,24 +8046,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="runajob"></a>
-# **RunAJob**
+
+## RunAJob
+
 > JobEntity RunAJob (long? jobId)
 
 Start running an (already created) job on the remote resource
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6847,14 +8077,19 @@ namespace Example
 {
     public class RunAJobExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var jobId = 789;  // long? | Job ID
 
             try
@@ -6863,9 +8098,11 @@ namespace Example
                 JobEntity result = apiInstance.RunAJob(jobId);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.RunAJob: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6873,6 +8110,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6884,17 +8122,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformcsv"></a>
-# **TransformCsv**
+
+## TransformCsv
+
 > BatchCSVRecord TransformCsv (string deploymentName, string versionName, string transformName, BatchCSVRecord batchCSVRecord = null)
 
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -6902,8 +8144,8 @@ Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6913,16 +8155,21 @@ namespace Example
 {
     public class TransformCsvExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var batchCSVRecord = new BatchCSVRecord(); // BatchCSVRecord | The input batch of record arrays (optional) 
 
@@ -6932,9 +8179,11 @@ namespace Example
                 BatchCSVRecord result = apiInstance.TransformCsv(deploymentName, versionName, transformName, batchCSVRecord);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransformCsv: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -6943,10 +8192,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **string**| ID or name of the deployed transform | 
  **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -6956,24 +8206,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformarray"></a>
-# **Transformarray**
+
+## Transformarray
+
 > Base64NDArrayBody Transformarray (string deploymentName, string versionName, string transformName, BatchRecord batchRecord = null)
 
 Takes a batch input arrays and transforms it
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -6983,16 +8237,21 @@ namespace Example
 {
     public class TransformarrayExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var batchRecord = new BatchRecord(); // BatchRecord | The input batch of record arrays (optional) 
 
@@ -7002,9 +8261,11 @@ namespace Example
                 Base64NDArrayBody result = apiInstance.Transformarray(deploymentName, versionName, transformName, batchRecord);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Transformarray: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7013,10 +8274,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **string**| ID or name of the deployed transform | 
  **batchRecord** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
@@ -7026,26 +8288,30 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformimage"></a>
-# **Transformimage**
-> Base64NDArrayBody Transformimage (string deploymentName, string versionName, string imageTransformName, List<byte[]> files)
+
+## Transformimage
+
+> Base64NDArrayBody Transformimage (string deploymentName, string versionName, string imageTransformName, List<System.IO.Stream> files)
 
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
 
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7055,18 +8321,23 @@ namespace Example
 {
     public class TransformimageExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var files = new List<byte[]>(); // List<byte[]> | The image files to upload
+            var files = new List<System.IO.Stream>(); // List<System.IO.Stream> | The image files to upload
 
             try
             {
@@ -7074,9 +8345,11 @@ namespace Example
                 Base64NDArrayBody result = apiInstance.Transformimage(deploymentName, versionName, imageTransformName, files);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Transformimage: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7085,12 +8358,13 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
- **files** | [**List&lt;byte[]&gt;**](byte[].md)| The image files to upload | 
+ **files** | [**List&lt;System.IO.Stream&gt;**](System.IO.Stream.md)| The image files to upload | 
 
 ### Return type
 
@@ -7098,17 +8372,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformincrementalcsv"></a>
-# **TransformincrementalCsv**
+
+## TransformincrementalCsv
+
 > SingleCSVRecord TransformincrementalCsv (string deploymentName, string versionName, string transformName, SingleCSVRecord singleCSVRecord = null)
 
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
@@ -7116,8 +8394,8 @@ Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRec
 Takes a SingleCSVRecord object and transforms it into the desired format
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7127,16 +8405,21 @@ namespace Example
 {
     public class TransformincrementalCsvExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var singleCSVRecord = new SingleCSVRecord(); // SingleCSVRecord | The input record array (optional) 
 
@@ -7146,9 +8429,11 @@ namespace Example
                 SingleCSVRecord result = apiInstance.TransformincrementalCsv(deploymentName, versionName, transformName, singleCSVRecord);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransformincrementalCsv: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7157,10 +8442,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **string**| ID or name of the deployed transform | 
  **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -7170,24 +8456,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformincrementalarray"></a>
-# **Transformincrementalarray**
+
+## Transformincrementalarray
+
 > Base64NDArrayBody Transformincrementalarray (string deploymentName, string versionName, string transformName, SingleRecord singleRecord = null)
 
 Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7197,16 +8487,21 @@ namespace Example
 {
     public class TransformincrementalarrayExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var singleRecord = new SingleRecord(); // SingleRecord | The input record array (optional) 
 
@@ -7216,9 +8511,11 @@ namespace Example
                 Base64NDArrayBody result = apiInstance.Transformincrementalarray(deploymentName, versionName, transformName, singleRecord);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Transformincrementalarray: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7227,10 +8524,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **string**| ID or name of the deployed transform | 
  **singleRecord** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
@@ -7240,17 +8538,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformincrementalimage"></a>
-# **Transformincrementalimage**
+
+## Transformincrementalimage
+
 > Base64NDArrayBody Transformincrementalimage (string deploymentName, string versionName, string imageTransformName, System.IO.Stream file)
 
 Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -7258,8 +8560,8 @@ Takes a single multipart image file to transform and returns Base64NDArrayBody
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7269,18 +8571,23 @@ namespace Example
 {
     public class TransformincrementalimageExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var imageTransformName = imageTransformName_example;  // string | ID or name of the deployed image transform
-            var file = new System.IO.Stream(); // System.IO.Stream | The image file to upload
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The image file to upload
 
             try
             {
@@ -7288,9 +8595,11 @@ namespace Example
                 Base64NDArrayBody result = apiInstance.Transformincrementalimage(deploymentName, versionName, imageTransformName, file);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Transformincrementalimage: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7299,10 +8608,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **imageTransformName** | **string**| ID or name of the deployed image transform | 
  **file** | **System.IO.Stream**| The image file to upload | 
 
@@ -7312,24 +8622,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformprocessget"></a>
-# **TransformprocessGet**
+
+## TransformprocessGet
+
 > Object TransformprocessGet (string deploymentName, string versionName, string transformName)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7339,16 +8653,21 @@ namespace Example
 {
     public class TransformprocessGetExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var transformName = transformName_example;  // string | ID or name of the deployed transform
 
             try
@@ -7357,9 +8676,11 @@ namespace Example
                 Object result = apiInstance.TransformprocessGet(deploymentName, versionName, transformName);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransformprocessGet: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7368,10 +8689,11 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **string**| ID or name of the deployed transform | 
 
 ### Return type
@@ -7380,24 +8702,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="transformprocesspost"></a>
-# **TransformprocessPost**
+
+## TransformprocessPost
+
 > Object TransformprocessPost (string contentType, string deploymentName, string versionName, string transformName, string transformProcess = null)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7407,17 +8733,22 @@ namespace Example
 {
     public class TransformprocessPostExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var contentType = contentType_example;  // string | The `Content-Type` should be `application/json`.
             var deploymentName = deploymentName_example;  // string | Name of the deployment group
-            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\"
+            var versionName = versionName_example;  // string | Version name of the endpoint. The default value is \"default\" (default to "default")
             var transformName = transformName_example;  // string | ID or name of the deployed transform
             var transformProcess = transformProcess_example;  // string | The transform process to set (Specify a JSON string here). (optional) 
 
@@ -7427,9 +8758,11 @@ namespace Example
                 Object result = apiInstance.TransformprocessPost(contentType, deploymentName, versionName, transformName, transformProcess);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.TransformprocessPost: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7438,11 +8771,12 @@ namespace Example
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **string**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deploymentName** | **string**| Name of the deployment group | 
- **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **string**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &quot;default&quot;]
  **transformName** | **string**| ID or name of the deployed transform | 
  **transformProcess** | **string**| The transform process to set (Specify a JSON string here). | [optional] 
 
@@ -7452,24 +8786,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="updateauthpolicy"></a>
-# **UpdateAuthPolicy**
+
+## UpdateAuthPolicy
+
 > AuthPolicy UpdateAuthPolicy (AuthPolicy authPolicy)
 
 Update auth policy
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7479,14 +8817,19 @@ namespace Example
 {
     public class UpdateAuthPolicyExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var authPolicy = new AuthPolicy(); // AuthPolicy | Auth policy object
 
             try
@@ -7495,9 +8838,11 @@ namespace Example
                 AuthPolicy result = apiInstance.UpdateAuthPolicy(authPolicy);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.UpdateAuthPolicy: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7505,6 +8850,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -7516,24 +8862,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="updatebestmodelforexperiment"></a>
-# **UpdateBestModelForExperiment**
+
+## UpdateBestModelForExperiment
+
 > ExperimentEntity UpdateBestModelForExperiment (string modelHistoryServerId, UpdateBestModel updateBestModel)
 
 Updates the best model for an experiment
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7543,14 +8893,19 @@ namespace Example
 {
     public class UpdateBestModelForExperimentExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var updateBestModel = new UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
 
@@ -7560,9 +8915,11 @@ namespace Example
                 ExperimentEntity result = apiInstance.UpdateBestModelForExperiment(modelHistoryServerId, updateBestModel);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.UpdateBestModelForExperiment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7570,6 +8927,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -7582,24 +8940,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="updateexperiment"></a>
-# **UpdateExperiment**
+
+## UpdateExperiment
+
 > ExperimentEntity UpdateExperiment (string modelHistoryServerId, string experimentID, ExperimentEntity experimentEntity)
 
 Updates an experiment, given an experiment entity
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7609,14 +8971,19 @@ namespace Example
 {
     public class UpdateExperimentExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var experimentID = experimentID_example;  // string | the GUID of the experiment to update
             var experimentEntity = new ExperimentEntity(); // ExperimentEntity | The experiment entity to update with
@@ -7627,9 +8994,11 @@ namespace Example
                 ExperimentEntity result = apiInstance.UpdateExperiment(modelHistoryServerId, experimentID, experimentEntity);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.UpdateExperiment: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7637,6 +9006,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -7650,24 +9020,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="updatemodelhistory"></a>
-# **UpdateModelHistory**
+
+## UpdateModelHistory
+
 > ModelHistoryEntity UpdateModelHistory (string modelHistoryServerId, string modelHistoryID, AddModelHistoryRequest updateModelHistoryRequest)
 
 Update a model history / workspace
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7677,14 +9051,19 @@ namespace Example
 {
     public class UpdateModelHistoryExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var modelHistoryServerId = modelHistoryServerId_example;  // string | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
             var modelHistoryID = modelHistoryID_example;  // string | the GUID of the model history / workspace to update
             var updateModelHistoryRequest = new AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
@@ -7695,9 +9074,11 @@ namespace Example
                 ModelHistoryEntity result = apiInstance.UpdateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.UpdateModelHistory: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7705,6 +9086,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -7718,24 +9100,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="updateuser"></a>
-# **UpdateUser**
+
+## UpdateUser
+
 > User UpdateUser (User user)
 
 Update a user
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7745,14 +9131,19 @@ namespace Example
 {
     public class UpdateUserExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
+            var apiInstance = new DefaultApi(Configuration.Default);
             var user = new User(); // User | User details
 
             try
@@ -7761,9 +9152,11 @@ namespace Example
                 User result = apiInstance.UpdateUser(user);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.UpdateUser: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7771,6 +9164,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -7782,24 +9176,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-<a name="upload"></a>
-# **Upload**
+
+## Upload
+
 > FileUploadList Upload (System.IO.Stream file = null)
 
 Upload a model file to SKIL for import.
 
 ### Example
+
 ```csharp
-using System;
 using System.Diagnostics;
 using Skymind.Skil.Client.Api;
 using Skymind.Skil.Client.Client;
@@ -7809,15 +9207,20 @@ namespace Example
 {
     public class UploadExample
     {
-        public void main()
+        public static void Main()
         {
+            Configuration.Default.BasePath = "http://localhost:9008";
             // Configure API key authorization: api_key
             Configuration.Default.AddApiKey("authorization", "YOUR_API_KEY");
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // Configuration.Default.AddApiKeyPrefix("authorization", "Bearer");
+            // Configure API key authorization: x_api_key
+            Configuration.Default.AddApiKey("X-API-Key", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("X-API-Key", "Bearer");
 
-            var apiInstance = new DefaultApi();
-            var file = new System.IO.Stream(); // System.IO.Stream | The file to upload. (optional) 
+            var apiInstance = new DefaultApi(Configuration.Default);
+            var file = BINARY_DATA_HERE;  // System.IO.Stream | The file to upload. (optional) 
 
             try
             {
@@ -7825,9 +9228,11 @@ namespace Example
                 FileUploadList result = apiInstance.Upload(file);
                 Debug.WriteLine(result);
             }
-            catch (Exception e)
+            catch (ApiException e)
             {
                 Debug.Print("Exception when calling DefaultApi.Upload: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
             }
         }
     }
@@ -7835,6 +9240,7 @@ namespace Example
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -7846,12 +9252,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

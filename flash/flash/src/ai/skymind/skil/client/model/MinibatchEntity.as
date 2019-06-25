@@ -11,10 +11,10 @@ package ai.skymind.skil.client.model {
         public var evalId: String = null;
         /* Eval version */
         [XmlElement(name="evalVersion")]
-        public var evalVersion: Number = NaN;
+        public var evalVersion: Number = 0;
         /* Batch version */
         [XmlElement(name="batchVersion")]
-        public var batchVersion: Number = NaN;
+        public var batchVersion: Number = 0;
 
     public function toString(): String {
         var str: String = "MinibatchEntity: ";

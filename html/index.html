@@ -181,15 +181,16 @@ font-style: italic;
   <body>
   <h1>Endpoints</h1>
     <div class="app-desc">Endpoints API for different services in SKIL</div>
-    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
-    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
-    <div class="app-desc">Version: 1.2.0-rc1</div>
+    <div class="app-desc">More information: <a href="https://openapi-generator.tech">https://openapi-generator.tech</a></div>
+    <div class="app-desc">Contact Info: <a href="team@openapitools.org">team@openapitools.org</a></div>
+    <div class="app-desc">Version: 1.2.2</div>
     <div class="app-desc">BasePath:</div>
     <div class="license-info">All rights reserved</div>
     <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
   <h2>Access</h2>
     <ol>
       <li>APIKey KeyParamName:authorization KeyInQuery:false KeyInHeader:true</li>
+      <li>APIKey KeyParamName:X-API-Key KeyInQuery:false KeyInHeader:true</li>
     </ol>
 
   <h2><a name="__Methods">Methods</a></h2>
@@ -378,7 +379,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">AddCredentialsRequest <a href="#AddCredentialsRequest">AddCredentialsRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Add credentials request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -426,7 +427,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -439,7 +440,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">evaluationResultsEntity <a href="#EvaluationResultsEntity">EvaluationResultsEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The evaluation result entity </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -500,7 +501,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -513,7 +514,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">AddExampleRequest <a href="#AddExampleRequest">AddExampleRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The add example request, encapsulating minibatch details and examples batch size </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -564,7 +565,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -577,7 +578,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">exampleEntity <a href="#ExampleEntity">ExampleEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The example to add to the minibatch </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -627,7 +628,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -640,7 +641,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">experimentEntity <a href="#ExperimentEntity">ExperimentEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The experiment entity to add </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -694,9 +695,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">id (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Batch ID to retrain the model with and get feedback for. </div><div class="param">type (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Batch ID to retrain the model with and get feedback for. default: null </div><div class="param">type (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the labels array. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The type of the labels array. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -712,7 +713,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">file (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The labels file to upload. </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The labels file to upload. default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -754,7 +755,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">id (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Batch ID to retrain the model with and get feedback for. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Batch ID to retrain the model with and get feedback for. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -767,7 +768,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">labels <a href="#array">array</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The associated labels (one-hot vectors) with the batch for retraining. </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -813,7 +814,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -826,7 +827,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">minibatchEntity <a href="#MinibatchEntity">MinibatchEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The minibatch entity to add </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -874,7 +875,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -887,7 +888,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">ModelFeedBackRequest <a href="#ModelFeedBackRequest">ModelFeedBackRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The model feedback request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -934,7 +935,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -947,7 +948,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">addModelHistoryRequest <a href="#AddModelHistoryRequest">AddModelHistoryRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The model history request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -995,7 +996,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1008,7 +1009,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelInstanceEntity <a href="#ModelInstanceEntity">ModelInstanceEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The object encapsulating the model instance id and evaluation type to aggregate </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1036,7 +1037,7 @@ font-style: italic;
   "etlJson" : "etlJson",
   "experimentId" : "experimentId",
   "inputFormats" : "inputFormats",
-  "uri" : "http://example.com/aeiou",
+  "uri" : "https://openapi-generator.tech",
   "notebookJson" : "notebookJson"
 }</code></pre>
 
@@ -1071,7 +1072,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">AddResourceRequest <a href="#AddResourceRequest">AddResourceRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The Add resource request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1086,9 +1087,6 @@ font-style: italic;
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1121,7 +1119,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">groupName <a href="#string">string</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Name of the resource group </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1169,9 +1167,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceGroupId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group format: int64</div><div class="param">resourceId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group default: null format: int64</div><div class="param">resourceId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -1183,12 +1181,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -1207,7 +1199,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1220,7 +1212,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">aggregatePrediction <a href="#AggregatePrediction">AggregatePrediction</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The object encapsulating the model instance id and evaluation type to aggregate </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1281,7 +1273,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">userId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User's ID </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User's ID default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1294,7 +1286,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">ChangePasswordRequest <a href="#ChangePasswordRequest">ChangePasswordRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Password details. </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1343,11 +1335,11 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1360,7 +1352,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">body <a href="#Prediction">Prediction</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input NDArray </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1413,11 +1405,11 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1430,7 +1422,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">body <a href="#Prediction">Prediction</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input NDArray </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1481,11 +1473,11 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1501,7 +1493,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">image (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The file to upload. </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The file to upload. default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -1588,7 +1580,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">jobIdOrType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job Type </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job Type default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1601,7 +1593,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">CreateJobRequest <a href="#CreateJobRequest">CreateJobRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Create job request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1653,7 +1645,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -1666,7 +1658,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryEntity <a href="#ModelHistoryEntity">ModelHistoryEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The model history entity </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -1714,7 +1706,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">credentialId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Credentials ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Credentials ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -1726,12 +1718,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -1750,9 +1736,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to delete </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to delete default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -1801,7 +1787,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">jobIdOrType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -1813,12 +1799,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -1837,9 +1817,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div><div class="param">modelId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group default: null </div><div class="param">modelId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -1885,9 +1865,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to delete </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to delete default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -1936,9 +1916,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelInstanceID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelInstanceID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to delete. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to delete. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -1950,12 +1930,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -1974,7 +1948,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -2024,9 +1998,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceGroupId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group format: int64</div><div class="param">resourceId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group default: null format: int64</div><div class="param">resourceId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -2038,12 +2012,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -2062,7 +2030,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceGroupId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -2111,7 +2079,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -2124,7 +2092,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">body <a href="#ImportModelRequest">ImportModelRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the model import request </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -2145,7 +2113,7 @@ font-style: italic;
   "launchPolicy" : "{}",
   "created" : 6,
   "modelState" : "CREATED",
-  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "scale" : 5.637376656633329,
   "modelType" : "transform",
   "fileLocation" : "fileLocation",
   "jvmArgs" : "jvmArgs",
@@ -2190,7 +2158,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">body <a href="#CreateDeploymentRequest">CreateDeploymentRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the deployment request </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -2282,7 +2250,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of the deployment group </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of the deployment group default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -2328,7 +2296,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of the deployment group </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Id of the deployment group default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -2430,7 +2398,7 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "name" : "name",
   "id" : "id",
   "body" : {
@@ -2476,53 +2444,7 @@ font-style: italic;
   },
   "deploymentSlug" : "deploymentSlug",
   "status" : "status"
-}, {
-  "name" : "name",
-  "id" : "id",
-  "body" : {
-    "models" : [ {
-      "name" : "name",
-      "scale" : 0,
-      "id" : "id",
-      "uri" : [ "uri", "uri" ],
-      "status" : "status"
-    }, {
-      "name" : "name",
-      "scale" : 0,
-      "id" : "id",
-      "uri" : [ "uri", "uri" ],
-      "status" : "status"
-    } ],
-    "transforms" : [ {
-      "name" : "name",
-      "scale" : 0,
-      "id" : "id",
-      "uri" : [ "uri", "uri" ],
-      "status" : "status"
-    }, {
-      "name" : "name",
-      "scale" : 0,
-      "id" : "id",
-      "uri" : [ "uri", "uri" ],
-      "status" : "status"
-    } ],
-    "knn" : [ {
-      "name" : "name",
-      "scale" : 0,
-      "id" : "id",
-      "uri" : [ "uri", "uri" ],
-      "status" : "status"
-    }, {
-      "name" : "name",
-      "scale" : 0,
-      "id" : "id",
-      "uri" : [ "uri", "uri" ],
-      "status" : "status"
-    } ]
-  },
-  "deploymentSlug" : "deploymentSlug",
-  "status" : "status"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -2548,11 +2470,11 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -2568,13 +2490,13 @@ font-style: italic;
     <div class="field-items">
       <div class="param">id (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; the GUID for mapping the results in the detections </div><div class="param">needsPreprocessing (required)</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; the GUID for mapping the results in the detections default: null </div><div class="param">needsPreprocessing (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; (true) if the image needs preprocessing </div><div class="param">threshold (required)</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; (true) if the image needs preprocessing default: null </div><div class="param">threshold (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. format: float</div><div class="param">file (required)</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. default: null format: float</div><div class="param">file (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; the image file to detect objects from </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; the image file to detect objects from default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -2630,7 +2552,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">jobId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -2643,7 +2565,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">DownloadOutputFileRequest <a href="#DownloadOutputFileRequest">DownloadOutputFileRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Download output file request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -2654,12 +2576,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -2685,7 +2601,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">TokenGenerateRequest <a href="#TokenGenerateRequest">TokenGenerateRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Auth token details. </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -2747,7 +2663,7 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "storageResourceId" : 1,
   "jobId" : 0,
   "outputFileName" : "outputFileName",
@@ -2756,16 +2672,7 @@ font-style: italic;
   "jobType" : "TRAINING",
   "computeResourceId" : 6,
   "status" : "PENDING"
-}, {
-  "storageResourceId" : 1,
-  "jobId" : 0,
-  "outputFileName" : "outputFileName",
-  "jobArgs" : "jobArgs",
-  "runId" : "runId",
-  "jobType" : "TRAINING",
-  "computeResourceId" : 6,
-  "status" : "PENDING"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -2791,14 +2698,17 @@ font-style: italic;
     <div class="field-items">
       <div class="param">arrayType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The format in which the memory mapped array is returned. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The format in which the memory mapped array is returned. default: null </div>
     </div>  <!-- field-items -->
 
 
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">accept (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash;  default: null </div>
+
     </div>  <!-- field-items -->
 
 
@@ -2807,13 +2717,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-      <li><code>application/octet-stream</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -2832,7 +2735,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">arrayType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Format in which the memory mapped array is returned in. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Format in which the memory mapped array is returned in. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -2845,13 +2748,19 @@ font-style: italic;
     <div class="field-items">
       <div class="param">input <a href="#string">string</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Input indices array </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">Content-Type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; The <code>Content-Type</code> should always be <code>application/json</code>. default: null </div>
+<div class="param">accept (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash;  default: null </div>
+
     </div>  <!-- field-items -->
 
 
@@ -2860,13 +2769,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-      <li><code>application/octet-stream</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -2885,23 +2787,21 @@ font-style: italic;
     <div class="field-items">
       <div class="param">arrayType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Format in which the memory mapped array is returned in. </div><div class="param">from (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Format in which the memory mapped array is returned in. default: null </div><div class="param">from (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: int32</div><div class="param">to (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null format: int32</div><div class="param">to (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  format: int32</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash;  default: null format: int32</div>
     </div>  <!-- field-items -->
 
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">accept (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash;  default: null </div>
+
     </div>  <!-- field-items -->
 
 
@@ -2910,13 +2810,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-      <li><code>application/octet-stream</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -2975,7 +2868,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -2988,7 +2881,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">bestModel <a href="#BestModel">BestModel</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object encapsulating the model ids, eval type and column metric name </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -3016,7 +2909,7 @@ font-style: italic;
   "etlJson" : "etlJson",
   "experimentId" : "experimentId",
   "inputFormats" : "inputFormats",
-  "uri" : "http://example.com/aeiou",
+  "uri" : "https://openapi-generator.tech",
   "notebookJson" : "notebookJson"
 }</code></pre>
 
@@ -3044,7 +2937,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">credentialId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Credentials ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Credentials ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -3099,12 +2992,6 @@ font-style: italic;
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/octet-stream</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -3123,9 +3010,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelInstanceID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelInstanceID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to get evaluation results for. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to get evaluation results for. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3143,7 +3030,7 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "r2" : 2.027123023002322,
   "binaryThresholds" : "binaryThresholds",
   "created" : 0,
@@ -3161,25 +3048,7 @@ font-style: italic;
   "recall" : 5.962133916683182,
   "rmse" : 2.3021358869347655,
   "binaryThreshold" : 7.386281948385884
-}, {
-  "r2" : 2.027123023002322,
-  "binaryThresholds" : "binaryThresholds",
-  "created" : 0,
-  "precision" : 1.4658129805029452,
-  "accuracy" : 5.637376656633329,
-  "f1" : 6.027456183070403,
-  "meanAbsoluteError" : 9.301444243932576,
-  "auc" : 7.061401241503109,
-  "evaluation" : "evaluation",
-  "evalId" : "evalId",
-  "meanRelativeError" : 3.616076749251911,
-  "evalVersion" : 4,
-  "evalName" : "evalName",
-  "modelInstanceId" : "modelInstanceId",
-  "recall" : 5.962133916683182,
-  "rmse" : 2.3021358869347655,
-  "binaryThreshold" : 7.386281948385884
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3205,9 +3074,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">minibatchId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">minibatchId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The GUID of the minibatch </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The GUID of the minibatch default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3225,21 +3094,14 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "exampleId" : "exampleId",
   "created" : 1,
   "miniBatchId" : "miniBatchId",
   "miniBatchVersion" : 5,
   "rowNumber" : 6,
   "exampleVersion" : 0
-}, {
-  "exampleId" : "exampleId",
-  "created" : 1,
-  "miniBatchId" : "miniBatchId",
-  "miniBatchVersion" : 5,
-  "rowNumber" : 6,
-  "exampleVersion" : 0
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3265,9 +3127,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to obtain </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to obtain default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3322,9 +3184,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3342,7 +3204,7 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "experimentDescription" : "experimentDescription",
   "lastUpdated" : 0,
   "modelHistoryId" : "modelHistoryId",
@@ -3353,18 +3215,7 @@ font-style: italic;
   "experimentId" : "experimentId",
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
-}, {
-  "experimentDescription" : "experimentDescription",
-  "lastUpdated" : 0,
-  "modelHistoryId" : "modelHistoryId",
-  "notebookUrl" : "notebookUrl",
-  "bestModelId" : "bestModelId",
-  "inputDataUri" : "inputDataUri",
-  "zeppelinId" : "zeppelinId",
-  "experimentId" : "experimentId",
-  "experimentName" : "experimentName",
-  "notebookJson" : "notebookJson"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3390,7 +3241,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">jobIdOrType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -3499,9 +3350,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">minibatchId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">minibatchId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The GUID of the minibatch </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The GUID of the minibatch default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3550,9 +3401,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div><div class="param">modelId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group default: null </div><div class="param">modelId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3574,7 +3425,7 @@ font-style: italic;
   "launchPolicy" : "{}",
   "created" : 6,
   "modelState" : "CREATED",
-  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "scale" : 5.637376656633329,
   "modelType" : "transform",
   "fileLocation" : "fileLocation",
   "jvmArgs" : "jvmArgs",
@@ -3612,9 +3463,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model history to get information of. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model history to get information of. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3663,9 +3514,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelInstanceID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelInstanceID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to get information of. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; GUID of the model instance to get information of. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3694,7 +3545,7 @@ font-style: italic;
   "etlJson" : "etlJson",
   "experimentId" : "experimentId",
   "inputFormats" : "inputFormats",
-  "uri" : "http://example.com/aeiou",
+  "uri" : "https://openapi-generator.tech",
   "notebookJson" : "notebookJson"
 }</code></pre>
 
@@ -3722,9 +3573,9 @@ font-style: italic;
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3742,7 +3593,7 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "evalId" : "evalId",
   "modelName" : "modelName",
   "originalModelId" : "originalModelId",
@@ -3753,22 +3604,9 @@ font-style: italic;
   "etlJson" : "etlJson",
   "experimentId" : "experimentId",
   "inputFormats" : "inputFormats",
-  "uri" : "http://example.com/aeiou",
+  "uri" : "https://openapi-generator.tech",
   "notebookJson" : "notebookJson"
-}, {
-  "evalId" : "evalId",
-  "modelName" : "modelName",
-  "originalModelId" : "originalModelId",
-  "modelId" : "modelId",
-  "created" : 0,
-  "modelVersion" : "modelVersion",
-  "modelLabels" : "modelLabels",
-  "etlJson" : "etlJson",
-  "experimentId" : "experimentId",
-  "inputFormats" : "inputFormats",
-  "uri" : "http://example.com/aeiou",
-  "notebookJson" : "notebookJson"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3794,7 +3632,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -3844,7 +3682,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceSubType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Subtype of the resource </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Subtype of the resource default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3862,19 +3700,13 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "resourceId" : 0,
   "name" : "name",
   "credentialId" : "credentialId",
   "subType" : "EMR",
   "type" : "COMPUTE"
-}, {
-  "resourceId" : 0,
-  "name" : "name",
-  "credentialId" : "credentialId",
-  "subType" : "EMR",
-  "type" : "COMPUTE"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3900,7 +3732,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">resourceType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the resource </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the resource default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -3918,19 +3750,13 @@ font-style: italic;
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "resourceId" : 0,
   "name" : "name",
   "credentialId" : "credentialId",
   "subType" : "EMR",
   "type" : "COMPUTE"
-}, {
-  "resourceId" : 0,
-  "name" : "name",
-  "credentialId" : "credentialId",
-  "subType" : "EMR",
-  "type" : "COMPUTE"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3958,7 +3784,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">resourceId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -3974,9 +3800,6 @@ object contains only general information (name, id, type, subtype).</div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4002,7 +3825,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">resourceGroupId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -4063,17 +3886,12 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "groupName" : "groupName",
   "added" : 6,
   "groupId" : 0,
   "updated" : 1
-}, {
-  "groupName" : "groupName",
-  "added" : 6,
-  "groupId" : 0,
-  "updated" : 1
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4111,19 +3929,13 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "resourceId" : 0,
   "name" : "name",
   "credentialId" : "credentialId",
   "subType" : "EMR",
   "type" : "COMPUTE"
-}, {
-  "resourceId" : 0,
-  "name" : "name",
-  "credentialId" : "credentialId",
-  "subType" : "EMR",
-  "type" : "COMPUTE"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4149,7 +3961,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">resourceGroupId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID of the resource group default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -4167,19 +3979,13 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "resourceId" : 0,
   "name" : "name",
   "credentialId" : "credentialId",
   "subType" : "EMR",
   "type" : "COMPUTE"
-}, {
-  "resourceId" : 0,
-  "name" : "name",
-  "credentialId" : "credentialId",
-  "subType" : "EMR",
-  "type" : "COMPUTE"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4217,13 +4023,10 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "roleId" : "roleId",
   "roleName" : "roleName"
-}, {
-  "roleId" : "roleId",
-  "roleName" : "roleName"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4249,7 +4052,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">userId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User's ID </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User's ID default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -4299,7 +4102,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">userId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User's ID </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User's ID default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -4309,7 +4112,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">onlyValid (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; True if you only want the valid tokens. </div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; True if you only want the valid tokens. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -4323,21 +4126,14 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "isRevoked" : 5,
   "tokenId" : 0,
   "expire" : 1,
   "issued" : 6,
   "userId" : "userId",
   "token" : "token"
-}, {
-  "isRevoked" : 5,
-  "tokenId" : 0,
-  "expire" : 1,
-  "issued" : 6,
-  "userId" : "userId",
-  "token" : "token"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4375,19 +4171,13 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "password" : "password",
   "role" : "role",
   "scope" : "scope",
   "userName" : "userName",
   "userId" : "userId"
-}, {
-  "password" : "password",
-  "role" : "role",
-  "scope" : "scope",
-  "userName" : "userName",
-  "userId" : "userId"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4453,11 +4243,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -4470,7 +4260,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#Prediction">Prediction</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input NDArray </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -4520,11 +4310,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">knnName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">knnName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed knn </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed knn default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -4596,11 +4386,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">knnName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">knnName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed knn </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed knn default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -4613,7 +4403,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#Base64NDArrayBodyKNN">Base64NDArrayBodyKNN</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input NDArray </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -4672,7 +4462,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -4690,7 +4480,7 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "experimentDescription" : "experimentDescription",
   "lastUpdated" : 0,
   "modelHistoryId" : "modelHistoryId",
@@ -4701,18 +4491,7 @@ object contains only general information (name, id, type, subtype).</div>
   "experimentId" : "experimentId",
   "experimentName" : "experimentName",
   "notebookJson" : "notebookJson"
-}, {
-  "experimentDescription" : "experimentDescription",
-  "lastUpdated" : 0,
-  "modelHistoryId" : "modelHistoryId",
-  "notebookUrl" : "notebookUrl",
-  "bestModelId" : "bestModelId",
-  "inputDataUri" : "inputDataUri",
-  "zeppelinId" : "zeppelinId",
-  "experimentId" : "experimentId",
-  "experimentName" : "experimentName",
-  "notebookJson" : "notebookJson"
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4738,11 +4517,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -4796,7 +4575,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">LoginRequest <a href="#LoginRequest">LoginRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Login credentials. </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -4844,11 +4623,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -4861,7 +4640,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">LogRequest <a href="#LogRequest">LogRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The log object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -4911,18 +4690,13 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
 
 
@@ -4930,15 +4704,12 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#MetaData">MetaData</a>
       
+      Object
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -4950,7 +4721,7 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     The meta data details
-        <a href="#MetaData">MetaData</a>
+        <a href="#Object">Object</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="metaPost"/>
@@ -4964,11 +4735,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -4981,28 +4752,28 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#string">string</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the meta data object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">Content-Type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; The <code>Content-Type</code> should always be <code>application/json</code> default: null </div>
+
     </div>  <!-- field-items -->
 
 
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#MetaData">MetaData</a>
       
+      Object
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -5014,7 +4785,7 @@ object contains only general information (name, id, type, subtype).</div>
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     the meta data object that was set
-        <a href="#MetaData">MetaData</a>
+        <a href="#Object">Object</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="modelStateChange"/>
@@ -5028,9 +4799,9 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div><div class="param">modelId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group default: null </div><div class="param">modelId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5043,7 +4814,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#SetState">SetState</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the model state object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -5064,7 +4835,7 @@ object contains only general information (name, id, type, subtype).</div>
   "launchPolicy" : "{}",
   "created" : 6,
   "modelState" : "CREATED",
-  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "scale" : 5.637376656633329,
   "modelType" : "transform",
   "fileLocation" : "fileLocation",
   "jvmArgs" : "jvmArgs",
@@ -5102,7 +4873,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -5120,11 +4891,11 @@ object contains only general information (name, id, type, subtype).</div>
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
+    <pre class="example"><code>{
   "launchPolicy" : "{}",
   "created" : 6,
   "modelState" : "CREATED",
-  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "scale" : 5.637376656633329,
   "modelType" : "transform",
   "fileLocation" : "fileLocation",
   "jvmArgs" : "jvmArgs",
@@ -5136,23 +4907,7 @@ object contains only general information (name, id, type, subtype).</div>
   "id" : 0,
   "state" : "created",
   "updated" : 1
-}, {
-  "launchPolicy" : "{}",
-  "created" : 6,
-  "modelState" : "CREATED",
-  "scale" : 5.63737665663332876420099637471139430999755859375,
-  "modelType" : "transform",
-  "fileLocation" : "fileLocation",
-  "jvmArgs" : "jvmArgs",
-  "labelsFileLocation" : "labelsFileLocation",
-  "extraArgs" : "extraArgs",
-  "deploymentId" : 5,
-  "name" : "name",
-  "subType" : "subType",
-  "id" : 0,
-  "state" : "created",
-  "updated" : 1
-} ]</code></pre>
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -5178,11 +4933,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5198,7 +4953,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">file (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The model file to upload (.pb file) </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The model file to upload (.pb file) default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -5242,11 +4997,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5262,7 +5017,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">file (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The model file to update with (.pb file) </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The model file to update with (.pb file) default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -5306,11 +5061,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5323,7 +5078,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#Prediction">Prediction</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input NDArray </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -5376,11 +5131,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5393,7 +5148,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#MultiPredictRequest">MultiPredictRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The multiple input arrays with mask inputs to run inferences on </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -5455,11 +5210,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5475,11 +5230,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">file (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The image file to run the prediction on </div><div class="param">id (required)</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The image file to run the prediction on default: null format: binary</div><div class="param">id (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The id of the request (could be self generated) </div><div class="param">needs_preprocessing (required)</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The id of the request (could be self generated) default: null </div><div class="param">needs_preprocessing (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; Whether or not the preprocessing is required (either 'true' or 'false') </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; Whether or not the preprocessing is required (either 'true' or 'false') default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -5577,11 +5332,11 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5594,7 +5349,7 @@ object contains only general information (name, id, type, subtype).</div>
     <div class="field-items">
       <div class="param">body <a href="#Prediction">Prediction</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input NDArray </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -5651,9 +5406,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">operation (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Operation to perform on the input data. </div><div class="param">inputType (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Operation to perform on the input data. default: null </div><div class="param">inputType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5672,7 +5427,10 @@ fix problems with input data pipelines.</div>
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">Content-Type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; The <code>Content-Type</code> should always be <code>application/json</code>. default: null </div>
+
     </div>  <!-- field-items -->
 
 
@@ -5681,12 +5439,6 @@ fix problems with input data pipelines.</div>
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -5705,9 +5457,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">operation (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. </div><div class="param">inputTypeFile (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. default: null </div><div class="param">inputTypeFile (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5723,19 +5475,13 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">inputData (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input data to run inference on. </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input data to run inference on. default: null format: binary</div>
     </div>  <!-- field-items -->
 
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -5754,9 +5500,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">operation (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. </div><div class="param">inputTypeJson (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; The operation to perform on the input data. default: null </div><div class="param">inputTypeJson (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Type of the input data. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5769,13 +5515,16 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">inputData <a href="#string">string</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input data to run inference on. (Specify a JSON string here) </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">Content-Type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; The <code>Content-Type</code> should always be <code>application/json</code>. default: null </div>
+
     </div>  <!-- field-items -->
 
 
@@ -5784,12 +5533,6 @@ fix problems with input data pipelines.</div>
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -5808,11 +5551,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5828,7 +5571,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">image (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The file to upload. </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The file to upload. default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -5876,11 +5619,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5893,7 +5636,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">body <a href="#string">string</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input array </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -5945,11 +5688,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">modelName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">modelName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -5962,7 +5705,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">body <a href="#string">string</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input array </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6012,9 +5755,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">inputType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Input data type. </div><div class="param">outputType (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Input data type. default: null </div><div class="param">outputType (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Binary output data type. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Binary output data type. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6030,19 +5773,13 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">inputData (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input file to upload. </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The input file to upload. default: null format: binary</div>
     </div>  <!-- field-items -->
 
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
 
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/octet-stream</code></li>
-    </ul>
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
@@ -6061,7 +5798,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">jobId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -6121,7 +5858,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">User <a href="#User">User</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User details </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6170,9 +5907,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group </div><div class="param">modelId (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID deployment group default: null </div><div class="param">modelId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the id of the deployed model default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6185,7 +5922,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">body <a href="#ImportModelRequest">ImportModelRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; the deployment request </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6206,7 +5943,7 @@ fix problems with input data pipelines.</div>
   "launchPolicy" : "{}",
   "created" : 6,
   "modelState" : "CREATED",
-  "scale" : 5.63737665663332876420099637471139430999755859375,
+  "scale" : 5.637376656633329,
   "modelType" : "transform",
   "fileLocation" : "fileLocation",
   "jvmArgs" : "jvmArgs",
@@ -6244,7 +5981,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">tokenId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Token ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Token ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
 
@@ -6295,14 +6032,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">index (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Model revision index. format: int32</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Model revision index. default: null format: int32</div>
     </div>  <!-- field-items -->
 
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
 
 
@@ -6346,14 +6078,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">jobId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID format: int64</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Job ID default: null format: int64</div>
     </div>  <!-- field-items -->
 
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
 
 
 
@@ -6404,11 +6131,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">transformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">transformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6421,7 +6148,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">BatchCSVRecord <a href="#BatchCSVRecord">BatchCSVRecord</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input batch of record arrays </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6473,11 +6200,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">transformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">transformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6490,7 +6217,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">BatchRecord <a href="#BatchRecord">BatchRecord</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input batch of record arrays </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6538,11 +6265,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">imageTransformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">imageTransformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6558,7 +6285,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">files (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The image files to upload format: binary</div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -6605,11 +6332,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">transformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">transformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6622,7 +6349,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">SingleCSVRecord <a href="#SingleCSVRecord">SingleCSVRecord</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input record array </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6670,11 +6397,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">transformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">transformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6687,7 +6414,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">SingleRecord <a href="#SingleRecord">SingleRecord</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The input record array </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6735,11 +6462,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">imageTransformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">imageTransformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed image transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6755,7 +6482,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">file (required)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The image file to upload </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The image file to upload default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -6802,11 +6529,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">transformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">transformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform default: null </div>
     </div>  <!-- field-items -->
 
 
@@ -6822,9 +6549,6 @@ fix problems with input data pipelines.</div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6856,11 +6580,11 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">deploymentName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group </div><div class="param">versionName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of the deployment group default: null </div><div class="param">versionName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; </div><div class="param">transformName (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Version name of the endpoint. The default value is &quot;default&quot; default: default </div><div class="param">transformName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; ID or name of the deployed transform default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6873,13 +6597,16 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">TransformProcess <a href="#string">string</a> (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The transform process to set (Specify a JSON string here). </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      
+      <div class="param">Content-Type (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; The <code>Content-Type</code> should be <code>application/json</code>. default: null </div>
+
     </div>  <!-- field-items -->
 
 
@@ -6892,9 +6619,6 @@ fix problems with input data pipelines.</div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>"{}"</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -6930,7 +6654,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">AuthPolicy <a href="#AuthPolicy">AuthPolicy</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Auth policy object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -6975,7 +6699,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -6988,7 +6712,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">updateBestModel <a href="#UpdateBestModel">UpdateBestModel</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Model encapsulating the experiment id to update and the best model id. </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -7042,9 +6766,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">experimentID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">experimentID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to update </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the experiment to update default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -7057,7 +6781,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">experimentEntity <a href="#ExperimentEntity">ExperimentEntity</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The experiment entity to update with </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -7111,9 +6835,9 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">modelHistoryServerId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. </div><div class="param">modelHistoryID (required)</div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Process GUID of the model history server. Run <code>$SKIL_HOME/sbin/skil services</code> in a console to find out the model history server GUID. default: null </div><div class="param">modelHistoryID (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to update </div>
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; the GUID of the model history / workspace to update default: null </div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Consumes</h3>
@@ -7126,7 +6850,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">updateModelHistoryRequest <a href="#AddModelHistoryRequest">AddModelHistoryRequest</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The model history request object </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -7181,7 +6905,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">User <a href="#User">User</a> (required)</div>
 
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; User details </div>
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
 
     </div>  <!-- field-items -->
 
@@ -7240,7 +6964,7 @@ fix problems with input data pipelines.</div>
     <div class="field-items">
       <div class="param">file (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The file to upload. </div>
+      <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash; The file to upload. default: null format: binary</div>
     </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
@@ -7324,7 +7048,6 @@ fix problems with input data pipelines.</div>
     <li><a href="#HDFSResourceDetails"><code>HDFSResourceDetails</code> - </a></li>
     <li><a href="#HDInsightResourceDetails"><code>HDInsightResourceDetails</code> - </a></li>
     <li><a href="#INDArray"><code>INDArray</code> - </a></li>
-    <li><a href="#ImageTransformProcess"><code>ImageTransformProcess</code> - </a></li>
     <li><a href="#ImportModelRequest"><code>ImportModelRequest</code> - </a></li>
     <li><a href="#JobEntity"><code>JobEntity</code> - </a></li>
     <li><a href="#JsonArrayResponse"><code>JsonArrayResponse</code> - </a></li>
@@ -7332,7 +7055,6 @@ fix problems with input data pipelines.</div>
     <li><a href="#LogRequest"><code>LogRequest</code> - </a></li>
     <li><a href="#LoginRequest"><code>LoginRequest</code> - </a></li>
     <li><a href="#LoginResponse"><code>LoginResponse</code> - </a></li>
-    <li><a href="#MetaData"><code>MetaData</code> - </a></li>
     <li><a href="#MinibatchEntity"><code>MinibatchEntity</code> - </a></li>
     <li><a href="#ModelEntity"><code>ModelEntity</code> - </a></li>
     <li><a href="#ModelFeedBackRequest"><code>ModelFeedBackRequest</code> - </a></li>
@@ -7361,7 +7083,6 @@ fix problems with input data pipelines.</div>
     <li><a href="#SingleRecord"><code>SingleRecord</code> - </a></li>
     <li><a href="#Token"><code>Token</code> - </a></li>
     <li><a href="#TokenGenerateRequest"><code>TokenGenerateRequest</code> - </a></li>
-    <li><a href="#TransformProcess"><code>TransformProcess</code> - </a></li>
     <li><a href="#UpdateBestModel"><code>UpdateBestModel</code> - </a></li>
     <li><a href="#User"><code>User</code> - </a></li>
     <li><a href="#YARNResourceDetails"><code>YARNResourceDetails</code> - </a></li>
@@ -7391,7 +7112,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="AddExampleRequest"><code>AddExampleRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">minibatch (optional)</div><div class="param-desc"><span class="param-type"><a href="#MinibatchEntity">MinibatchEntity</a></span> the minibatch the examples are going to be associated with </div>
+      <div class="param">minibatch (optional)</div><div class="param-desc"><span class="param-type"><a href="#MinibatchEntity">MinibatchEntity</a></span>  </div>
 <div class="param">batchSize (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> the size of the batch to create </div>
     </div>  <!-- field-items -->
   </div>
@@ -7408,7 +7129,7 @@ fix problems with input data pipelines.</div>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">resourceName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name of the new resource </div>
-<div class="param">resourceDetails (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span> One of the resource details objects </div>
+<div class="param">resourceDetails (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> One of the resource details objects </div>
 <div class="param">credentialUri (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> URI of the credentials. If this is present, you can leave out the 'credentialId' </div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type (whether COMPUTE or STORAGE) </div>
         <div class="param-enum-header">Enum:</div>
@@ -7433,7 +7154,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="AuthPolicy"><code>AuthPolicy</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">SimpleAuthPolicy</div><div class="param-enum">RoleAuthPolicy</div>
     </div>  <!-- field-items -->
@@ -7442,7 +7163,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="AzureStorageResourceDetails"><code>AzureStorageResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -7533,7 +7254,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="DataProcResourceDetails"><code>DataProcResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -7597,7 +7318,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="EMRResourceDetails"><code>EMRResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -7691,7 +7412,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="GoogleStorageResourceDetails"><code>GoogleStorageResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -7707,7 +7428,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="HDFSResourceDetails"><code>HDFSResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -7723,7 +7444,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="HDInsightResourceDetails"><code>HDInsightResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -7750,12 +7471,6 @@ fix problems with input data pipelines.</div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">INT8</div><div class="param-enum">UINT8</div><div class="param-enum">INT16</div><div class="param-enum">FLOAT16</div>
     </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="ImageTransformProcess"><code>ImageTransformProcess</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="ImportModelRequest"><code>ImportModelRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
@@ -7834,12 +7549,6 @@ fix problems with input data pipelines.</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="MetaData"><code>MetaData</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-          </div>  <!-- field-items -->
-  </div>
-  <div class="model">
     <h3><a name="MinibatchEntity"><code>MinibatchEntity</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
@@ -7870,7 +7579,7 @@ fix problems with input data pipelines.</div>
 <div class="param">subType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">labelsFileLocation (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">extraArgs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">launchPolicy (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">launchPolicy (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span>  </div>
 <div class="param">modelState (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">CREATED</div><div class="param-enum">STARTING</div><div class="param-enum">STARTED</div><div class="param-enum">STOPPING</div><div class="param-enum">STOPPED</div><div class="param-enum">UNHEALTHY</div><div class="param-enum">FAILED</div>
@@ -7899,7 +7608,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="ModelInstanceEntity"><code>ModelInstanceEntity</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">uri (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The model URI format: uri</div>
+      <div class="param">uri (optional)</div><div class="param-desc"><span class="param-type"><a href="#URI">URI</a></span> The model URI format: uri</div>
 <div class="param">etlJson (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The json string for the ETL (Extract, Transform and Load) </div>
 <div class="param">modelId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> GUID of the model. </div>
 <div class="param">modelLabels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comma-separated labels string for the model </div>
@@ -8072,7 +7781,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="S3ResourceDetails"><code>S3ResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -8129,12 +7838,6 @@ fix problems with input data pipelines.</div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="TransformProcess"><code>TransformProcess</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-          </div>  <!-- field-items -->
-  </div>
-  <div class="model">
     <h3><a name="UpdateBestModel"><code>UpdateBestModel</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
@@ -8157,7 +7860,7 @@ fix problems with input data pipelines.</div>
     <h3><a name="YARNResourceDetails"><code>YARNResourceDetails</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">@class (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">Atclass (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">resourceId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> ID of the resource format: int64</div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Resource type </div>
         <div class="param-enum-header">Enum:</div>
@@ -8170,7 +7873,7 @@ fix problems with input data pipelines.</div>
   </div>
   <div class="model">
     <h3><a name="inline_response_200"><code>inline_response_200</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    
+    <div class='model-description'></div>
     <div class="field-items">
       <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->

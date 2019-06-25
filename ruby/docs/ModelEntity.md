@@ -1,6 +1,7 @@
 # SkilCient::ModelEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Integer** |  | [optional] 
@@ -16,7 +17,29 @@ Name | Type | Description | Notes
 **sub_type** | **String** |  | [optional] 
 **labels_file_location** | **String** |  | [optional] 
 **extra_args** | **String** |  | [optional] 
-**launch_policy** | **Object** |  | [optional] 
+**launch_policy** | [**Object**](.md) |  | [optional] 
 **model_state** | **String** |  | [optional] 
+
+## Code Sample
+
+```ruby
+require 'SkilCient'
+
+instance = SkilCient::ModelEntity.new(id: null,
+                                 created: null,
+                                 updated: null,
+                                 model_type: null,
+                                 deployment_id: null,
+                                 name: null,
+                                 scale: null,
+                                 file_location: null,
+                                 state: null,
+                                 jvm_args: null,
+                                 sub_type: null,
+                                 labels_file_location: null,
+                                 extra_args: null,
+                                 launch_policy: null,
+                                 model_state: null)
+```
 
 

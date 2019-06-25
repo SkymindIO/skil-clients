@@ -123,36 +123,41 @@ Method | HTTP request | Description
 [**upload**](DefaultApi.md#upload) | **POST** /api/upload/model | Upload a model file to SKIL for import.
 
 
-<a name="accumulatedResults"></a>
-# **accumulatedResults**
+
+## accumulatedResults
+
 > AccumulatedResults accumulatedResults()
 
 Tells how many retraining examples have labels associated with them.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.accumulatedResults((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.accumulatedResults(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -161,46 +166,49 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="addCredentials"></a>
-# **addCredentials**
+
+## addCredentials
+
 > ResourceCredentials addCredentials(addCredentialsRequest)
 
 Adds credentials
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var addCredentialsRequest = new SkilClient.AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let addCredentialsRequest = new SkilClient.AddCredentialsRequest(); // AddCredentialsRequest | Add credentials request object
+apiInstance.addCredentials(addCredentialsRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addCredentials(addCredentialsRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -212,48 +220,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addEvaluationResult"></a>
-# **addEvaluationResult**
+
+## addEvaluationResult
+
 > EvaluationResultsEntity addEvaluationResult(modelHistoryServerId, evaluationResultsEntity)
 
 Adds an evaluation result
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var evaluationResultsEntity = new SkilClient.EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let evaluationResultsEntity = new SkilClient.EvaluationResultsEntity(); // EvaluationResultsEntity | The evaluation result entity
+apiInstance.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addEvaluationResult(modelHistoryServerId, evaluationResultsEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -266,48 +276,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addExampleForBatch"></a>
-# **addExampleForBatch**
+
+## addExampleForBatch
+
 > AddExampleRequest addExampleForBatch(modelHistoryServerId, addExampleRequest)
 
 Adds a number of examples to a minibatch ID given an AddExampleRequest.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var addExampleRequest = new SkilClient.AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let addExampleRequest = new SkilClient.AddExampleRequest(); // AddExampleRequest | The add example request, encapsulating minibatch details and examples batch size
+apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addExampleForBatch(modelHistoryServerId, addExampleRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -320,48 +332,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addExampleToMinibatch"></a>
-# **addExampleToMinibatch**
+
+## addExampleToMinibatch
+
 > ExampleEntity addExampleToMinibatch(modelHistoryServerId, exampleEntity)
 
 Adds an example to a minibatch
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var exampleEntity = new SkilClient.ExampleEntity(); // ExampleEntity | The example to add to the minibatch
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let exampleEntity = new SkilClient.ExampleEntity(); // ExampleEntity | The example to add to the minibatch
+apiInstance.addExampleToMinibatch(modelHistoryServerId, exampleEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addExampleToMinibatch(modelHistoryServerId, exampleEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -374,48 +388,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addExperiment"></a>
-# **addExperiment**
+
+## addExperiment
+
 > ExperimentEntity addExperiment(modelHistoryServerId, experimentEntity)
 
 Add an experiment, given an experiment entity
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var experimentEntity = new SkilClient.ExperimentEntity(); // ExperimentEntity | The experiment entity to add
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let experimentEntity = new SkilClient.ExperimentEntity(); // ExperimentEntity | The experiment entity to add
+apiInstance.addExperiment(modelHistoryServerId, experimentEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addExperiment(modelHistoryServerId, experimentEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -428,51 +444,53 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addFeedbackBinary"></a>
-# **addFeedbackBinary**
+
+## addFeedbackBinary
+
 > FeedbackResponse addFeedbackBinary(id, type, opts)
 
 
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
-
-var type = "type_example"; // String | The type of the labels array.
-
-var opts = { 
-  'file': "/path/to/file.txt" // File | The labels file to upload.
+let apiInstance = new SkilClient.DefaultApi();
+let id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
+let type = "type_example"; // String | The type of the labels array.
+let opts = {
+  'file': "/path/to/file" // File | The labels file to upload.
 };
-
-var callback = function(error, data, response) {
+apiInstance.addFeedbackBinary(id, type, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addFeedbackBinary(id, type, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -486,54 +504,57 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="addFeedbackJson"></a>
-# **addFeedbackJson**
+
+## addFeedbackJson
+
 > FeedbackResponse addFeedbackJson(id, opts)
 
 Gets the retraining feedback for the given batch ID.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
-
-var opts = { 
-  'labels': [new SkilClient.[[Number]]()] // [[Number]] | The associated labels (one-hot vectors) with the batch for retraining.
+let apiInstance = new SkilClient.DefaultApi();
+let id = "id_example"; // String | Batch ID to retrain the model with and get feedback for.
+let opts = {
+  'labels': [null] // [[Number]] | The associated labels (one-hot vectors) with the batch for retraining.
 };
-
-var callback = function(error, data, response) {
+apiInstance.addFeedbackJson(id, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addFeedbackJson(id, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Batch ID to retrain the model with and get feedback for. | 
- **labels** | **[[Number]]**| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
+ **labels** | [**[[Number]]**](Array.md)| The associated labels (one-hot vectors) with the batch for retraining. | [optional] 
 
 ### Return type
 
@@ -541,48 +562,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addMinibatch"></a>
-# **addMinibatch**
+
+## addMinibatch
+
 > MinibatchEntity addMinibatch(modelHistoryServerId, minibatchEntity)
 
 Adds a minibatch
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var minibatchEntity = new SkilClient.MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let minibatchEntity = new SkilClient.MinibatchEntity(); // MinibatchEntity | The minibatch entity to add
+apiInstance.addMinibatch(modelHistoryServerId, minibatchEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addMinibatch(modelHistoryServerId, minibatchEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -595,48 +618,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addModelFeedback"></a>
-# **addModelFeedback**
+
+## addModelFeedback
+
 > ModelFeedBackRequest addModelFeedback(modelHistoryServerId, modelFeedBackRequest)
 
 Adds an evaluation feedback to the model against a given minibatch id.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelFeedBackRequest = new SkilClient.ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelFeedBackRequest = new SkilClient.ModelFeedBackRequest(); // ModelFeedBackRequest | The model feedback request object
+apiInstance.addModelFeedback(modelHistoryServerId, modelFeedBackRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addModelFeedback(modelHistoryServerId, modelFeedBackRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -649,48 +674,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addModelHistory"></a>
-# **addModelHistory**
+
+## addModelHistory
+
 > ModelHistoryEntity addModelHistory(modelHistoryServerId, addModelHistoryRequest)
 
 Add a model history / workspace
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var addModelHistoryRequest = new SkilClient.AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let addModelHistoryRequest = new SkilClient.AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
+apiInstance.addModelHistory(modelHistoryServerId, addModelHistoryRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addModelHistory(modelHistoryServerId, addModelHistoryRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -703,48 +730,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addModelInstance"></a>
-# **addModelInstance**
+
+## addModelInstance
+
 > ModelInstanceEntity addModelInstance(modelHistoryServerId, modelInstanceEntity)
 
 Adds a model
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelInstanceEntity = new SkilClient.ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelInstanceEntity = new SkilClient.ModelInstanceEntity(); // ModelInstanceEntity | The object encapsulating the model instance id and evaluation type to aggregate
+apiInstance.addModelInstance(modelHistoryServerId, modelInstanceEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addModelInstance(modelHistoryServerId, modelInstanceEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -757,46 +786,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addResource"></a>
-# **addResource**
+
+## addResource
+
 > Object addResource(addResourceRequest)
 
 Adds a resource
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var addResourceRequest = new SkilClient.AddResourceRequest(); // AddResourceRequest | The Add resource request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let addResourceRequest = new SkilClient.AddResourceRequest(); // AddResourceRequest | The Add resource request object
+apiInstance.addResource(addResourceRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addResource(addResourceRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -808,46 +840,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="addResourceGroup"></a>
-# **addResourceGroup**
+
+## addResourceGroup
+
 > ResourceGroup addResourceGroup(groupName)
 
 Adds a resource group
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var groupName = "groupName_example"; // String | Name of the resource group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let groupName = "groupName_example"; // String | Name of the resource group
+apiInstance.addResourceGroup(groupName, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.addResourceGroup(groupName, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -859,48 +894,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain; charset=utf-8
- - **Accept**: application/json
+- **Content-Type**: text/plain; charset=utf-8
+- **Accept**: application/json
 
-<a name="addResourceToGroup"></a>
-# **addResourceToGroup**
+
+## addResourceToGroup
+
 > addResourceToGroup(resourceGroupId, resourceId)
 
 Adds a resource to a resource group
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceGroupId = 789; // Number | ID of the resource group
-
-var resourceId = 789; // Number | ID of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceGroupId = 789; // Number | ID of the resource group
+let resourceId = 789; // Number | ID of the resource
+apiInstance.addResourceToGroup(resourceGroupId, resourceId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.addResourceToGroup(resourceGroupId, resourceId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -913,48 +950,50 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="aggregateModelResults"></a>
-# **aggregateModelResults**
+
+## aggregateModelResults
+
 > EvaluationResultsEntity aggregateModelResults(modelHistoryServerId, aggregatePrediction)
 
 Aggregates the evaluaition results of a model instance, based on the evaluation type
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var aggregatePrediction = new SkilClient.AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let aggregatePrediction = new SkilClient.AggregatePrediction(); // AggregatePrediction | The object encapsulating the model instance id and evaluation type to aggregate
+apiInstance.aggregateModelResults(modelHistoryServerId, aggregatePrediction, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.aggregateModelResults(modelHistoryServerId, aggregatePrediction, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -967,48 +1006,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="changeUserPassword"></a>
-# **changeUserPassword**
+
+## changeUserPassword
+
 > User changeUserPassword(userId, changePasswordRequest)
 
 Change user&#39;s password
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var userId = "userId_example"; // String | User's ID
-
-var changePasswordRequest = new SkilClient.ChangePasswordRequest(); // ChangePasswordRequest | Password details.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let userId = "userId_example"; // String | User's ID
+let changePasswordRequest = new SkilClient.ChangePasswordRequest(); // ChangePasswordRequest | Password details.
+apiInstance.changeUserPassword(userId, changePasswordRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.changeUserPassword(userId, changePasswordRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1021,59 +1062,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="classify"></a>
-# **classify**
-> ClassificationResult classify(body, deploymentName, versionName, modelName)
+
+## classify
+
+> ClassificationResult classify(deploymentName, versionName, modelName, body)
 
 Use the deployed model to classify the input
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.Prediction(); // Prediction | The input NDArray
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = new SkilClient.Prediction(); // Prediction | The input NDArray
+apiInstance.classify(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.classify(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1081,59 +1122,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="classifyarray"></a>
-# **classifyarray**
-> Base64NDArrayBody classifyarray(body, deploymentName, versionName, modelName)
+
+## classifyarray
+
+> Base64NDArrayBody classifyarray(deploymentName, versionName, modelName, body)
 
 Same as /classify but returns the output as Base64NDArrayBody
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.Prediction(); // Prediction | The input NDArray
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = new SkilClient.Prediction(); // Prediction | The input NDArray
+apiInstance.classifyarray(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.classifyarray(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -1141,58 +1182,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="classifyimage"></a>
-# **classifyimage**
+
+## classifyimage
+
 > ClassificationResult classifyimage(deploymentName, versionName, modelName, opts)
 
 Use the deployed model to classify the input, using input image file from multipart form data.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-var opts = { 
-  'image': "/path/to/file.txt" // File | The file to upload.
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let opts = {
+  'image': "/path/to/file" // File | The file to upload.
 };
-
-var callback = function(error, data, response) {
+apiInstance.classifyimage(deploymentName, versionName, modelName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.classifyimage(deploymentName, versionName, modelName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
  **image** | **File**| The file to upload. | [optional] 
 
@@ -1202,43 +1244,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="clearState"></a>
-# **clearState**
+
+## clearState
+
 > FeedbackResponse clearState()
 
 Clears the accumulated data for retraining.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.clearState((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.clearState(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -1247,48 +1294,50 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="createJob"></a>
-# **createJob**
+
+## createJob
+
 > JobEntity createJob(jobIdOrType, createJobRequest)
 
 Create a job
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var jobIdOrType = "jobIdOrType_example"; // String | Job Type
-
-var createJobRequest = new SkilClient.CreateJobRequest(); // CreateJobRequest | Create job request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let jobIdOrType = "jobIdOrType_example"; // String | Job Type
+let createJobRequest = new SkilClient.CreateJobRequest(); // CreateJobRequest | Create job request object
+apiInstance.createJob(jobIdOrType, createJobRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createJob(jobIdOrType, createJobRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1301,48 +1350,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createModelHistory"></a>
-# **createModelHistory**
+
+## createModelHistory
+
 > ModelHistoryEntity createModelHistory(modelHistoryServerId, modelHistoryEntity)
 
 Creates model History
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelHistoryEntity = new SkilClient.ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelHistoryEntity = new SkilClient.ModelHistoryEntity(); // ModelHistoryEntity | The model history entity
+apiInstance.createModelHistory(modelHistoryServerId, modelHistoryEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createModelHistory(modelHistoryServerId, modelHistoryEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1355,46 +1406,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteCredentialsById"></a>
-# **deleteCredentialsById**
+
+## deleteCredentialsById
+
 > deleteCredentialsById(credentialId)
 
 Delete credentials given an ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var credentialId = 789; // Number | Credentials ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let credentialId = 789; // Number | Credentials ID
+apiInstance.deleteCredentialsById(credentialId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteCredentialsById(credentialId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1406,48 +1460,50 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="deleteExperiment"></a>
-# **deleteExperiment**
+
+## deleteExperiment
+
 > InlineResponse200 deleteExperiment(modelHistoryServerId, experimentID)
 
 Deletes an experiment, given an experiment entity
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var experimentID = "experimentID_example"; // String | the GUID of the experiment to delete
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let experimentID = "experimentID_example"; // String | the GUID of the experiment to delete
+apiInstance.deleteExperiment(modelHistoryServerId, experimentID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deleteExperiment(modelHistoryServerId, experimentID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1460,46 +1516,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteJobById"></a>
-# **deleteJobById**
+
+## deleteJobById
+
 > deleteJobById(jobIdOrType)
 
 Deletes a job given its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var jobIdOrType = 789; // Number | Job ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let jobIdOrType = 789; // Number | Job ID
+apiInstance.deleteJobById(jobIdOrType, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteJobById(jobIdOrType, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1511,48 +1570,50 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="deleteModel"></a>
-# **deleteModel**
+
+## deleteModel
+
 > InlineResponse200 deleteModel(deploymentId, modelId)
 
 Delete a model by deployment and model id
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | ID deployment group
-
-var modelId = "modelId_example"; // String | the id of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | ID deployment group
+let modelId = "modelId_example"; // String | the id of the deployed model
+apiInstance.deleteModel(deploymentId, modelId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deleteModel(deploymentId, modelId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1565,48 +1626,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteModelHistory"></a>
-# **deleteModelHistory**
+
+## deleteModelHistory
+
 > InlineResponse200 deleteModelHistory(modelHistoryServerId, modelHistoryID)
 
 Deletes a model history / workspace, given its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to delete
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to delete
+apiInstance.deleteModelHistory(modelHistoryServerId, modelHistoryID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deleteModelHistory(modelHistoryServerId, modelHistoryID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1619,48 +1682,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteModelInstance"></a>
-# **deleteModelInstance**
+
+## deleteModelInstance
+
 > deleteModelInstance(modelHistoryServerId, modelInstanceID)
 
 Deletes a model instance, given its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to delete.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to delete.
+apiInstance.deleteModelInstance(modelHistoryServerId, modelInstanceID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteModelInstance(modelHistoryServerId, modelInstanceID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1673,46 +1738,49 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="deleteResourceById"></a>
-# **deleteResourceById**
+
+## deleteResourceById
+
 > Resource deleteResourceById(resourceId)
 
 Delete the resource with the specified resource ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceId = 789; // Number | ID of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceId = 789; // Number | ID of the resource
+apiInstance.deleteResourceById(resourceId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deleteResourceById(resourceId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1724,48 +1792,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteResourceFromGroup"></a>
-# **deleteResourceFromGroup**
+
+## deleteResourceFromGroup
+
 > deleteResourceFromGroup(resourceGroupId, resourceId)
 
 Removes a resource from a resource group
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceGroupId = 789; // Number | ID of the resource group
-
-var resourceId = 789; // Number | ID of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceGroupId = 789; // Number | ID of the resource group
+let resourceId = 789; // Number | ID of the resource
+apiInstance.deleteResourceFromGroup(resourceGroupId, resourceId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteResourceFromGroup(resourceGroupId, resourceId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1778,46 +1848,49 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="deleteResourceGroupById"></a>
-# **deleteResourceGroupById**
+
+## deleteResourceGroupById
+
 > ResourceGroup deleteResourceGroupById(resourceGroupId)
 
 Delete the resource group with the specified resource group ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceGroupId = 789; // Number | ID of the resource group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceGroupId = 789; // Number | ID of the resource group
+apiInstance.deleteResourceGroupById(resourceGroupId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deleteResourceGroupById(resourceGroupId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1829,48 +1902,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deployModel"></a>
-# **deployModel**
+
+## deployModel
+
 > ModelEntity deployModel(deploymentId, body)
 
 Deploy a model in a deployment group.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | ID deployment group
-
-var body = new SkilClient.ImportModelRequest(); // ImportModelRequest | the model import request
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | ID deployment group
+let body = new SkilClient.ImportModelRequest(); // ImportModelRequest | the model import request
+apiInstance.deployModel(deploymentId, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deployModel(deploymentId, body, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1883,46 +1958,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deploymentCreate"></a>
-# **deploymentCreate**
+
+## deploymentCreate
+
 > DeploymentResponse deploymentCreate(body)
 
 Create a new deployment group.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.CreateDeploymentRequest(); // CreateDeploymentRequest | the deployment request
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let body = new SkilClient.CreateDeploymentRequest(); // CreateDeploymentRequest | the deployment request
+apiInstance.deploymentCreate(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deploymentCreate(body, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1934,46 +2012,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deploymentDelete"></a>
-# **deploymentDelete**
+
+## deploymentDelete
+
 > InlineResponse200 deploymentDelete(deploymentId)
 
 Delete a deployment by id
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | Id of the deployment group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | Id of the deployment group
+apiInstance.deploymentDelete(deploymentId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deploymentDelete(deploymentId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1985,46 +2066,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deploymentGet"></a>
-# **deploymentGet**
+
+## deploymentGet
+
 > DeploymentResponse deploymentGet(deploymentId)
 
 Get a deployment details by id
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | Id of the deployment group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | Id of the deployment group
+apiInstance.deploymentGet(deploymentId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deploymentGet(deploymentId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2036,43 +2120,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deployments"></a>
-# **deployments**
+
+## deployments
+
 > [DeploymentResponse] deployments()
 
 Get a list of deployments
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.deployments((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.deployments(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2081,68 +2170,65 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="detectobjects"></a>
-# **detectobjects**
-> DetectionResult detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName)
+
+## detectobjects
+
+> DetectionResult detectobjects(deploymentName, versionName, modelName, id, needsPreprocessing, threshold, file)
 
 Detect the objects, given a (input) prediction request
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var id = "id_example"; // String | the GUID for mapping the results in the detections
-
-var needsPreprocessing = true; // Boolean | (true) if the image needs preprocessing
-
-var threshold = 3.4; // Number | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
-
-var file = "/path/to/file.txt"; // File | the image file to detect objects from
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let id = "id_example"; // String | the GUID for mapping the results in the detections
+let needsPreprocessing = true; // Boolean | (true) if the image needs preprocessing
+let threshold = 3.4; // Number | A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none.
+let file = "/path/to/file"; // File | the image file to detect objects from
+apiInstance.detectobjects(deploymentName, versionName, modelName, id, needsPreprocessing, threshold, file, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.detectobjects(id, needsPreprocessing, threshold, file, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deploymentName** | **String**| Name of the deployment group | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
+ **modelName** | **String**| ID or name of the deployed model | 
  **id** | **String**| the GUID for mapping the results in the detections | 
  **needsPreprocessing** | **Boolean**| (true) if the image needs preprocessing | 
  **threshold** | **Number**| A threshold, indicating the required surety for detecting a bounding box. For example, a threshold of 0.1 might give thousand bounding boxes for an image and a threshold of 0.99 might give none. | 
  **file** | **File**| the image file to detect objects from | 
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **modelName** | **String**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -2150,48 +2236,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="downloadJobOutputFile"></a>
-# **downloadJobOutputFile**
+
+## downloadJobOutputFile
+
 > downloadJobOutputFile(jobId, downloadOutputFileRequest)
 
 Download the output file from the job&#39;s execution. This will ONLY work if the job&#39;s run status is &#39;COMPLETE&#39;.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var jobId = 789; // Number | Job ID
-
-var downloadOutputFileRequest = new SkilClient.DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let jobId = 789; // Number | Job ID
+let downloadOutputFileRequest = new SkilClient.DownloadOutputFileRequest(); // DownloadOutputFileRequest | Download output file request object
+apiInstance.downloadJobOutputFile(jobId, downloadOutputFileRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.downloadJobOutputFile(jobId, downloadOutputFileRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2204,46 +2292,49 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
-<a name="generateAuthToken"></a>
-# **generateAuthToken**
+
+## generateAuthToken
+
 > Token generateAuthToken(tokenGenerateRequest)
 
 Generate new auth token
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var tokenGenerateRequest = new SkilClient.TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let tokenGenerateRequest = new SkilClient.TokenGenerateRequest(); // TokenGenerateRequest | Auth token details.
+apiInstance.generateAuthToken(tokenGenerateRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateAuthToken(tokenGenerateRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2255,43 +2346,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getAllJobs"></a>
-# **getAllJobs**
+
+## getAllJobs
+
 > [JobEntity] getAllJobs()
 
 Get a list of all available jobs
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getAllJobs((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllJobs(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2300,15 +2396,16 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getArray"></a>
-# **getArray**
+
+## getArray
+
 > getArray(accept, arrayType)
 
 Get the memory mapped array based on the array type.
@@ -2316,34 +2413,35 @@ Get the memory mapped array based on the array type.
 The array is specified through a file path, in the configuration object, during model server deployment.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var accept = "accept_example"; // String | 
-
-var arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let accept = "accept_example"; // String | 
+let arrayType = "arrayType_example"; // String | The format in which the memory mapped array is returned.
+apiInstance.getArray(accept, arrayType, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.getArray(accept, arrayType, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2356,53 +2454,54 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="getArrayIndices"></a>
-# **getArrayIndices**
+
+## getArrayIndices
+
 > getArrayIndices(contentType, accept, arrayType, opts)
 
 Get the memory mapped array indices based on the array type.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
-
-var accept = "accept_example"; // String | 
-
-var arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+let accept = "accept_example"; // String | 
+let arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
+let opts = {
   'input': "input_example" // String | Input indices array
 };
-
-var callback = function(error, data, response) {
+apiInstance.getArrayIndices(contentType, accept, arrayType, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.getArrayIndices(contentType, accept, arrayType, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2417,52 +2516,52 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-<a name="getArrayRange"></a>
-# **getArrayRange**
+
+## getArrayRange
+
 > getArrayRange(accept, arrayType, from, to)
 
 Get the memory mapped array within a range based on the array type.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var accept = "accept_example"; // String | 
-
-var arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
-
-var from = 56; // Number | 
-
-var to = 56; // Number | 
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let accept = "accept_example"; // String | 
+let arrayType = "arrayType_example"; // String | Format in which the memory mapped array is returned in.
+let from = 56; // Number | 
+let to = 56; // Number | 
+apiInstance.getArrayRange(accept, arrayType, from, to, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.getArrayRange(accept, arrayType, from, to, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2477,43 +2576,48 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json, application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="getAuthPolicy"></a>
-# **getAuthPolicy**
+
+## getAuthPolicy
+
 > AuthPolicy getAuthPolicy()
 
 Get auth policy
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getAuthPolicy((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAuthPolicy(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2522,48 +2626,50 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getBestModelAmongModelIds"></a>
-# **getBestModelAmongModelIds**
+
+## getBestModelAmongModelIds
+
 > ModelInstanceEntity getBestModelAmongModelIds(modelHistoryServerId, bestModel)
 
 Gets the best model among the given model instance IDs, based on the evaluation type and column metric
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var bestModel = new SkilClient.BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let bestModel = new SkilClient.BestModel(); // BestModel | Object encapsulating the model ids, eval type and column metric name
+apiInstance.getBestModelAmongModelIds(modelHistoryServerId, bestModel, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getBestModelAmongModelIds(modelHistoryServerId, bestModel, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2576,46 +2682,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getCredentialsById"></a>
-# **getCredentialsById**
+
+## getCredentialsById
+
 > ResourceCredentials getCredentialsById(credentialId)
 
 Get credentials given an ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var credentialId = 789; // Number | Credentials ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let credentialId = 789; // Number | Credentials ID
+apiInstance.getCredentialsById(credentialId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getCredentialsById(credentialId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2627,43 +2736,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getCurrentModel"></a>
-# **getCurrentModel**
+
+## getCurrentModel
+
 > getCurrentModel()
 
 Returns the current model being used for retraining.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getCurrentModel((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.getCurrentModel(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2672,48 +2786,50 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
-<a name="getEvaluationForModelID"></a>
-# **getEvaluationForModelID**
+
+## getEvaluationForModelID
+
 > [EvaluationResultsEntity] getEvaluationForModelID(modelHistoryServerId, modelInstanceID)
 
 Gets the list of evaluation results entity, given a model instance ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get evaluation results for.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get evaluation results for.
+apiInstance.getEvaluationForModelID(modelHistoryServerId, modelInstanceID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getEvaluationForModelID(modelHistoryServerId, modelInstanceID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2726,48 +2842,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getExamplesForMinibatch"></a>
-# **getExamplesForMinibatch**
+
+## getExamplesForMinibatch
+
 > [ExampleEntity] getExamplesForMinibatch(modelHistoryServerId, minibatchId)
 
 Gets all the examples for a minibatch ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
+apiInstance.getExamplesForMinibatch(modelHistoryServerId, minibatchId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getExamplesForMinibatch(modelHistoryServerId, minibatchId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2780,48 +2898,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getExperiment"></a>
-# **getExperiment**
+
+## getExperiment
+
 > ExperimentEntity getExperiment(modelHistoryServerId, experimentID)
 
 Obtain an experiment&#39;s details, given its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var experimentID = "experimentID_example"; // String | the GUID of the experiment to obtain
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let experimentID = "experimentID_example"; // String | the GUID of the experiment to obtain
+apiInstance.getExperiment(modelHistoryServerId, experimentID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getExperiment(modelHistoryServerId, experimentID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2834,48 +2954,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getExperimentsForModelHistory"></a>
-# **getExperimentsForModelHistory**
+
+## getExperimentsForModelHistory
+
 > [ExperimentEntity] getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID)
 
 Obtain all experiments for a model history / workspace
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace
+apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getExperimentsForModelHistory(modelHistoryServerId, modelHistoryID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2888,46 +3010,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getJobById"></a>
-# **getJobById**
+
+## getJobById
+
 > JobEntity getJobById(jobIdOrType)
 
 Get a job by its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var jobIdOrType = 789; // Number | Job ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let jobIdOrType = 789; // Number | Job ID
+apiInstance.getJobById(jobIdOrType, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getJobById(jobIdOrType, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -2939,43 +3064,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getLastEvaluation"></a>
-# **getLastEvaluation**
+
+## getLastEvaluation
+
 > EvaluationResultsEntity getLastEvaluation()
 
 Get the last evaluation specifications from the current model.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getLastEvaluation((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getLastEvaluation(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -2984,48 +3114,50 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getMinibatch"></a>
-# **getMinibatch**
+
+## getMinibatch
+
 > MinibatchEntity getMinibatch(modelHistoryServerId, minibatchId)
 
 Gets a minibatch for the model
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let minibatchId = "minibatchId_example"; // String | The GUID of the minibatch
+apiInstance.getMinibatch(modelHistoryServerId, minibatchId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getMinibatch(modelHistoryServerId, minibatchId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3038,48 +3170,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getModelDetails"></a>
-# **getModelDetails**
+
+## getModelDetails
+
 > ModelEntity getModelDetails(deploymentId, modelId)
 
 Get model details
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | ID deployment group
-
-var modelId = "modelId_example"; // String | the id of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | ID deployment group
+let modelId = "modelId_example"; // String | the id of the deployed model
+apiInstance.getModelDetails(deploymentId, modelId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getModelDetails(deploymentId, modelId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3092,48 +3226,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getModelHistory"></a>
-# **getModelHistory**
+
+## getModelHistory
+
 > ModelHistoryEntity getModelHistory(modelHistoryServerId, modelHistoryID)
 
 Gets a model history, given its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelHistoryID = "modelHistoryID_example"; // String | GUID of the model history to get information of.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelHistoryID = "modelHistoryID_example"; // String | GUID of the model history to get information of.
+apiInstance.getModelHistory(modelHistoryServerId, modelHistoryID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getModelHistory(modelHistoryServerId, modelHistoryID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3146,48 +3282,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getModelInstance"></a>
-# **getModelInstance**
+
+## getModelInstance
+
 > ModelInstanceEntity getModelInstance(modelHistoryServerId, modelInstanceID)
 
 Gets a model instance, given its ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get information of.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelInstanceID = "modelInstanceID_example"; // String | GUID of the model instance to get information of.
+apiInstance.getModelInstance(modelHistoryServerId, modelInstanceID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getModelInstance(modelHistoryServerId, modelInstanceID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3200,48 +3338,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getModelsForExperiment"></a>
-# **getModelsForExperiment**
+
+## getModelsForExperiment
+
 > [ModelInstanceEntity] getModelsForExperiment(modelHistoryServerId, experimentID)
 
 Obtain a list of all the models for an experiment
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var experimentID = "experimentID_example"; // String | the GUID of the experiment
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let experimentID = "experimentID_example"; // String | the GUID of the experiment
+apiInstance.getModelsForExperiment(modelHistoryServerId, experimentID, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getModelsForExperiment(modelHistoryServerId, experimentID, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3254,46 +3394,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourceById"></a>
-# **getResourceById**
+
+## getResourceById
+
 > Resource getResourceById(resourceId)
 
 Get the resource with the specified resource ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceId = 789; // Number | ID of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceId = 789; // Number | ID of the resource
+apiInstance.getResourceById(resourceId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourceById(resourceId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3305,46 +3448,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourceBySubType"></a>
-# **getResourceBySubType**
+
+## getResourceBySubType
+
 > [Resource] getResourceBySubType(resourceSubType)
 
 Get all the resources with the specified resource subtype
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceSubType = "resourceSubType_example"; // String | Subtype of the resource
+apiInstance.getResourceBySubType(resourceSubType, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourceBySubType(resourceSubType, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3356,46 +3502,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourceByType"></a>
-# **getResourceByType**
+
+## getResourceByType
+
 > [Resource] getResourceByType(resourceType)
 
 Get all the resources with the specified resource type
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceType = "resourceType_example"; // String | Type of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceType = "resourceType_example"; // String | Type of the resource
+apiInstance.getResourceByType(resourceType, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourceByType(resourceType, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3407,15 +3556,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourceDetailsById"></a>
-# **getResourceDetailsById**
+
+## getResourceDetailsById
+
 > Object getResourceDetailsById(resourceId)
 
 Get the resource details with the specified resource ID
@@ -3423,32 +3573,34 @@ Get the resource details with the specified resource ID
 Get the details for the resource, for the given ID. Note that a &#39;ResourceDetails&#39; object contains specific information about the resource (such as region for an AWS resource, or URI for a HDFS resource), where as the &#39;Resource&#39; object contains only general information (name, id, type, subtype). 
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceId = 789; // Number | ID of the resource
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceId = 789; // Number | ID of the resource
+apiInstance.getResourceDetailsById(resourceId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourceDetailsById(resourceId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3460,46 +3612,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourceGroupById"></a>
-# **getResourceGroupById**
+
+## getResourceGroupById
+
 > ResourceGroup getResourceGroupById(resourceGroupId)
 
 Get the resource group with the specified resource group ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceGroupId = 789; // Number | ID of the resource group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceGroupId = 789; // Number | ID of the resource group
+apiInstance.getResourceGroupById(resourceGroupId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourceGroupById(resourceGroupId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3511,43 +3666,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourceGroups"></a>
-# **getResourceGroups**
+
+## getResourceGroups
+
 > [ResourceGroup] getResourceGroups()
 
 Get a list of all the resource groups
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getResourceGroups((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourceGroups(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3556,43 +3716,48 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResources"></a>
-# **getResources**
+
+## getResources
+
 > [Resource] getResources()
 
 A list of all known/registered resources, of all types
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getResources((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResources(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3601,46 +3766,49 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getResourcesFromGroup"></a>
-# **getResourcesFromGroup**
+
+## getResourcesFromGroup
+
 > [Resource] getResourcesFromGroup(resourceGroupId)
 
 Get all resources from a resource group
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var resourceGroupId = 789; // Number | ID of the resource group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let resourceGroupId = 789; // Number | ID of the resource group
+apiInstance.getResourcesFromGroup(resourceGroupId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getResourcesFromGroup(resourceGroupId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3652,43 +3820,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getRoles"></a>
-# **getRoles**
+
+## getRoles
+
 > [Role] getRoles()
 
 Get all roles.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getRoles((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getRoles(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3697,46 +3870,49 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getUser"></a>
-# **getUser**
+
+## getUser
+
 > User getUser(userId)
 
 Get a user by user ID
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var userId = "userId_example"; // String | User's ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let userId = "userId_example"; // String | User's ID
+apiInstance.getUser(userId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getUser(userId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3748,49 +3924,52 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getUserAuthTokens"></a>
-# **getUserAuthTokens**
+
+## getUserAuthTokens
+
 > [Token] getUserAuthTokens(userId, opts)
 
 Get auth tokens for a user.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var userId = "userId_example"; // String | User's ID
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let userId = "userId_example"; // String | User's ID
+let opts = {
   'onlyValid': true // Boolean | True if you only want the valid tokens.
 };
-
-var callback = function(error, data, response) {
+apiInstance.getUserAuthTokens(userId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getUserAuthTokens(userId, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -3803,43 +3982,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getUsers"></a>
-# **getUsers**
+
+## getUsers
+
 > [User] getUsers()
 
 Get all users.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.getUsers((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getUsers(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3848,43 +4032,48 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="isTraining"></a>
-# **isTraining**
+
+## isTraining
+
 > RetrainingStatus isTraining()
 
 Get the retraining status
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.isTraining((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.isTraining(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -3893,59 +4082,59 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="jsonarray"></a>
-# **jsonarray**
-> JsonArrayResponse jsonarray(body, deploymentName, versionName, modelName)
+
+## jsonarray
+
+> JsonArrayResponse jsonarray(deploymentName, versionName, modelName, body)
 
 Run inference on the input and returns it as a JsonArrayResponse
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.Prediction(); // Prediction | The input NDArray
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = new SkilClient.Prediction(); // Prediction | The input NDArray
+apiInstance.jsonarray(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.jsonarray(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -3953,15 +4142,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="knn"></a>
-# **knn**
+
+## knn
+
 > NearestNeighborsResults knn(deploymentName, versionName, knnName, body)
 
 Runs knn on the given index with the given k
@@ -3969,43 +4159,42 @@ Runs knn on the given index with the given k
 Runs knn on the given index with the given k (note that this is for data already within the existing dataset not new data)
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var knnName = "knnName_example"; // String | ID or name of the deployed knn
-
-var body = new SkilClient.NearestNeighborRequest(); // NearestNeighborRequest | 
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let knnName = "knnName_example"; // String | ID or name of the deployed knn
+let body = new SkilClient.NearestNeighborRequest(); // NearestNeighborRequest | 
+apiInstance.knn(deploymentName, versionName, knnName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.knn(deploymentName, versionName, knnName, body, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **knnName** | **String**| ID or name of the deployed knn | 
  **body** | [**NearestNeighborRequest**](NearestNeighborRequest.md)|  | 
 
@@ -4015,57 +4204,57 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="knnnew"></a>
-# **knnnew**
+
+## knnnew
+
 > NearestNeighborsResults knnnew(deploymentName, versionName, knnName, body)
 
 Run a k nearest neighbors search on a NEW data point
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var knnName = "knnName_example"; // String | ID or name of the deployed knn
-
-var body = new SkilClient.Base64NDArrayBodyKNN(); // Base64NDArrayBodyKNN | The input NDArray
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let knnName = "knnName_example"; // String | ID or name of the deployed knn
+let body = new SkilClient.Base64NDArrayBodyKNN(); // Base64NDArrayBodyKNN | The input NDArray
+apiInstance.knnnew(deploymentName, versionName, knnName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.knnnew(deploymentName, versionName, knnName, body, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **knnName** | **String**| ID or name of the deployed knn | 
  **body** | [**Base64NDArrayBodyKNN**](Base64NDArrayBodyKNN.md)| The input NDArray | 
 
@@ -4075,46 +4264,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="listAllExperiments"></a>
-# **listAllExperiments**
+
+## listAllExperiments
+
 > [ExperimentEntity] listAllExperiments(modelHistoryServerId)
 
 List all of the experiments in every model history / workspace
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+apiInstance.listAllExperiments(modelHistoryServerId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.listAllExperiments(modelHistoryServerId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4126,96 +4318,107 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="logfilepath"></a>
-# **logfilepath**
-> &#39;String&#39; logfilepath(deploymentName, versionName, modelName)
+
+## logfilepath
+
+> String logfilepath(deploymentName, versionName, modelName)
 
 Get logs file path
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+apiInstance.logfilepath(deploymentName, versionName, modelName, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.logfilepath(deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
 
 ### Return type
 
-**&#39;String&#39;**
+**String**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: text
+- **Content-Type**: Not defined
+- **Accept**: text
 
-<a name="login"></a>
-# **login**
+
+## login
+
 > LoginResponse login(loginRequest)
 
 Post JSON credentials and obtain a JWT authorization token.
 
 ### Example
+
 ```javascript
-var SkilClient = require('skil-client');
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
+// Configure API key authorization: api_key
+let api_key = defaultClient.authentications['api_key'];
+api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var loginRequest = new SkilClient.LoginRequest(); // LoginRequest | Login credentials.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let loginRequest = new SkilClient.LoginRequest(); // LoginRequest | Login credentials.
+apiInstance.login(loginRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.login(loginRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4227,57 +4430,57 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="logs"></a>
-# **logs**
+
+## logs
+
 > LogBatch logs(deploymentName, versionName, modelName, logRequest)
 
 Get logs
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-var logRequest = new SkilClient.LogRequest(); // LogRequest | The log object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let logRequest = new SkilClient.LogRequest(); // LogRequest | The log object
+apiInstance.logs(deploymentName, versionName, modelName, logRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.logs(deploymentName, versionName, modelName, logRequest, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
  **logRequest** | [**LogRequest**](LogRequest.md)| The log object | 
 
@@ -4287,170 +4490,171 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="metaGet"></a>
-# **metaGet**
-> MetaData metaGet(deploymentName, versionName, modelName)
+
+## metaGet
+
+> Object metaGet(deploymentName, versionName, modelName)
 
 this method can be used to get the meta data for the current model which set to the server
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+apiInstance.metaGet(deploymentName, versionName, modelName, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.metaGet(deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="metaPost"></a>
-# **metaPost**
-> MetaData metaPost(contentType, body, deploymentName, versionName, modelName)
+
+## metaPost
+
+> Object metaPost(contentType, deploymentName, versionName, modelName, body)
 
 This method can be used to set meta data for the current model which is set to the server
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`
-
-var body = "body_example"; // String | the meta data object
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = "body_example"; // String | the meta data object
+apiInstance.metaPost(contentType, deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.metaPost(contentType, body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **String**| The &#x60;Content-Type&#x60; should always be &#x60;application/json&#x60; | 
- **body** | **String**| the meta data object | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | **String**| the meta data object | 
 
 ### Return type
 
-[**MetaData**](MetaData.md)
+**Object**
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
-<a name="modelStateChange"></a>
-# **modelStateChange**
+
+## modelStateChange
+
 > ModelEntity modelStateChange(deploymentId, modelId, body)
 
 Modify the state (start/stop) of a deployed model
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | ID deployment group
-
-var modelId = "modelId_example"; // String | the id of the deployed model
-
-var body = new SkilClient.SetState(); // SetState | the model state object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | ID deployment group
+let modelId = "modelId_example"; // String | the id of the deployed model
+let body = new SkilClient.SetState(); // SetState | the model state object
+apiInstance.modelStateChange(deploymentId, modelId, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.modelStateChange(deploymentId, modelId, body, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4464,46 +4668,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="models"></a>
-# **models**
+
+## models
+
 > [ModelEntity] models(deploymentId)
 
 Retrieve a list of all the deployed models given a deployment id
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | ID deployment group
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | ID deployment group
+apiInstance.models(deploymentId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.models(deploymentId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4515,58 +4722,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="modelset"></a>
-# **modelset**
+
+## modelset
+
 > ModelStatus modelset(deploymentName, versionName, modelName, opts)
 
 Set the model to be served
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-var opts = { 
-  'file': "/path/to/file.txt" // File | The model file to upload (.pb file)
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let opts = {
+  'file': "/path/to/file" // File | The model file to upload (.pb file)
 };
-
-var callback = function(error, data, response) {
+apiInstance.modelset(deploymentName, versionName, modelName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.modelset(deploymentName, versionName, modelName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
  **file** | **File**| The model file to upload (.pb file) | [optional] 
 
@@ -4576,59 +4784,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="modelupdate"></a>
-# **modelupdate**
-> ModelStatus modelupdate(file, deploymentName, versionName, modelName)
+
+## modelupdate
+
+> ModelStatus modelupdate(deploymentName, versionName, modelName, file)
 
 Update the model to be served
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var file = "/path/to/file.txt"; // File | The model file to update with (.pb file)
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let file = "/path/to/file"; // File | The model file to update with (.pb file)
+apiInstance.modelupdate(deploymentName, versionName, modelName, file, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.modelupdate(file, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **File**| The model file to update with (.pb file) | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **file** | **File**| The model file to update with (.pb file) | 
 
 ### Return type
 
@@ -4636,59 +4844,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="multiclassify"></a>
-# **multiclassify**
-> MultiClassClassificationResult multiclassify(body, deploymentName, versionName, modelName)
+
+## multiclassify
+
+> MultiClassClassificationResult multiclassify(deploymentName, versionName, modelName, body)
 
 Represents all of the labels for a given classification
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.Prediction(); // Prediction | The input NDArray
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = new SkilClient.Prediction(); // Prediction | The input NDArray
+apiInstance.multiclassify(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.multiclassify(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4696,61 +4904,61 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="multipredict"></a>
-# **multipredict**
-> MultiPredictResponse multipredict(body, deploymentName, versionName, modelName)
+
+## multipredict
+
+> MultiPredictResponse multipredict(deploymentName, versionName, modelName, body)
 
 Get the output from the network, based on the given INDArray[] input
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = new SkilClient.MultiPredictRequest(); // MultiPredictRequest | The multiple input arrays with mask inputs to run inferences on
+apiInstance.multipredict(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.multipredict(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**MultiPredictRequest**](MultiPredictRequest.md)| The multiple input arrays with mask inputs to run inferences on | 
 
 ### Return type
 
@@ -4758,67 +4966,65 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="multipredictimage"></a>
-# **multipredictimage**
-> MultiPredictResponse multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName)
+
+## multipredictimage
+
+> MultiPredictResponse multipredictimage(deploymentName, versionName, modelName, file, id, needsPreprocessing)
 
 Get the output from the network using the given image file using the /multipredict endpoint&#39;s method
 
 Networks with multiple input/output are supported via this method. A Normalizer will be used if needsPreProcessing is set to true. The output/returned array of INDArray will be the raw predictions, and consequently this method can be used for classification or regression networks, with any type of output layer (standard, time series / RnnOutputLayer, etc).
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var file = "/path/to/file.txt"; // File | The image file to run the prediction on
-
-var id = "id_example"; // String | The id of the request (could be self generated)
-
-var needsPreprocessing = true; // Boolean | Whether or not the preprocessing is required (either 'true' or 'false')
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let file = "/path/to/file"; // File | The image file to run the prediction on
+let id = "id_example"; // String | The id of the request (could be self generated)
+let needsPreprocessing = true; // Boolean | Whether or not the preprocessing is required (either 'true' or 'false')
+apiInstance.multipredictimage(deploymentName, versionName, modelName, file, id, needsPreprocessing, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.multipredictimage(file, id, needsPreprocessing, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **deploymentName** | **String**| Name of the deployment group | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
+ **modelName** | **String**| ID or name of the deployed model | 
  **file** | **File**| The image file to run the prediction on | 
  **id** | **String**| The id of the request (could be self generated) | 
  **needsPreprocessing** | **Boolean**| Whether or not the preprocessing is required (either &#39;true&#39; or &#39;false&#39;) | 
- **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
- **modelName** | **String**| ID or name of the deployed model | 
 
 ### Return type
 
@@ -4826,43 +5032,48 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="numRevisions"></a>
-# **numRevisions**
+
+## numRevisions
+
 > RevisionsWritten numRevisions()
 
 Gets the number of retrained models written with retraining.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+apiInstance.numRevisions((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.numRevisions(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -4871,59 +5082,59 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="predict"></a>
-# **predict**
-> Prediction predict(body, deploymentName, versionName, modelName)
+
+## predict
+
+> Prediction predict(deploymentName, versionName, modelName, body)
 
 Run inference on the input array.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = new SkilClient.Prediction(); // Prediction | The input NDArray
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = new SkilClient.Prediction(); // Prediction | The input NDArray
+apiInstance.predict(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.predict(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Prediction**](Prediction.md)| The input NDArray | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**Prediction**](Prediction.md)| The input NDArray | 
 
 ### Return type
 
@@ -4931,15 +5142,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="predictError"></a>
-# **predictError**
+
+## predictError
+
 > predictError(contentType, operation, inputType, opts)
 
 Runs inference and find invalid rows based on the input data. Output is defined relative to the output adapter specified.
@@ -4947,39 +5159,39 @@ Runs inference and find invalid rows based on the input data. Output is defined 
 These \&quot;error\&quot; endpoints are slower for inference, but will also ignore invalid rows that are found. They will output skipped rows where errors were encountered so users can fix problems with input data pipelines. 
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
-
-var operation = "operation_example"; // String | Operation to perform on the input data.
-
-var inputType = "inputType_example"; // String | Type of the input data.
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+let operation = "operation_example"; // String | Operation to perform on the input data.
+let inputType = "inputType_example"; // String | Type of the input data.
+let opts = {
   'inputData': "inputData_example" // String | 
 };
-
-var callback = function(error, data, response) {
+apiInstance.predictError(contentType, operation, inputType, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.predictError(contentType, operation, inputType, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -4994,50 +5206,51 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-<a name="predictV2File"></a>
-# **predictV2File**
+
+## predictV2File
+
 > predictV2File(operation, inputTypeFile, inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var operation = "operation_example"; // String | The operation to perform on the input data. 
-
-var inputTypeFile = "inputTypeFile_example"; // String | Type of the input data. 
-
-var inputData = "/path/to/file.txt"; // File | The input data to run inference on.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let operation = "operation_example"; // String | The operation to perform on the input data. 
+let inputTypeFile = "inputTypeFile_example"; // String | Type of the input data. 
+let inputData = "/path/to/file"; // File | The input data to run inference on.
+apiInstance.predictV2File(operation, inputTypeFile, inputData, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.predictV2File(operation, inputTypeFile, inputData, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5051,52 +5264,52 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
-<a name="predictV2Json"></a>
-# **predictV2Json**
+
+## predictV2Json
+
 > predictV2Json(contentType, operation, inputTypeJson, inputData)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
-
-var operation = "operation_example"; // String | The operation to perform on the input data. 
-
-var inputTypeJson = "inputTypeJson_example"; // String | Type of the input data. 
-
-var inputData = "inputData_example"; // String | The input data to run inference on. (Specify a JSON string here)
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let contentType = "contentType_example"; // String | The `Content-Type` should always be `application/json`.
+let operation = "operation_example"; // String | The operation to perform on the input data. 
+let inputTypeJson = "inputTypeJson_example"; // String | Type of the input data. 
+let inputData = "inputData_example"; // String | The input data to run inference on. (Specify a JSON string here)
+apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.predictV2Json(contentType, operation, inputTypeJson, inputData, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5111,58 +5324,59 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: Not defined
 
-<a name="predictimage"></a>
-# **predictimage**
+
+## predictimage
+
 > Prediction predictimage(deploymentName, versionName, modelName, opts)
 
 Run inference on the input array, using input image file from multipart form data.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-var opts = { 
-  'image': "/path/to/file.txt" // File | The file to upload.
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let opts = {
+  'image': "/path/to/file" // File | The file to upload.
 };
-
-var callback = function(error, data, response) {
+apiInstance.predictimage(deploymentName, versionName, modelName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.predictimage(deploymentName, versionName, modelName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
  **image** | **File**| The file to upload. | [optional] 
 
@@ -5172,59 +5386,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="predictwithpreprocess"></a>
-# **predictwithpreprocess**
-> Prediction predictwithpreprocess(body, deploymentName, versionName, modelName)
+
+## predictwithpreprocess
+
+> Prediction predictwithpreprocess(deploymentName, versionName, modelName, body)
 
 Preprocesses the input and run inference on it
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = [new SkilClient.[String]()]; // [String] | The input array
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = ["null"]; // [String] | The input array
+apiInstance.predictwithpreprocess(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.predictwithpreprocess(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **[String]**| The input array | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**[String]**](String.md)| The input array | 
 
 ### Return type
 
@@ -5232,59 +5446,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="predictwithpreprocessjson"></a>
-# **predictwithpreprocessjson**
-> JsonArrayResponse predictwithpreprocessjson(body, deploymentName, versionName, modelName)
+
+## predictwithpreprocessjson
+
+> JsonArrayResponse predictwithpreprocessjson(deploymentName, versionName, modelName, body)
 
 Preprocesses the input and run inference on it and returns it as a JsonArrayResponse
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var body = [new SkilClient.[String]()]; // [String] | The input array
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var modelName = "modelName_example"; // String | ID or name of the deployed model
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let modelName = "modelName_example"; // String | ID or name of the deployed model
+let body = ["null"]; // [String] | The input array
+apiInstance.predictwithpreprocessjson(deploymentName, versionName, modelName, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.predictwithpreprocessjson(body, deploymentName, versionName, modelName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **[String]**| The input array | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **modelName** | **String**| ID or name of the deployed model | 
+ **body** | [**[String]**](String.md)| The input array | 
 
 ### Return type
 
@@ -5292,51 +5506,53 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="rawPredictBinary"></a>
-# **rawPredictBinary**
+
+## rawPredictBinary
+
 > rawPredictBinary(inputType, outputType, opts)
 
 Runs inference based on the input data. Output is defined relative to the output adapter specified.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var inputType = "inputType_example"; // String | Input data type.
-
-var outputType = "outputType_example"; // String | Binary output data type.
-
-var opts = { 
-  'inputData': "/path/to/file.txt" // File | The input file to upload.
+let apiInstance = new SkilClient.DefaultApi();
+let inputType = "inputType_example"; // String | Input data type.
+let outputType = "outputType_example"; // String | Binary output data type.
+let opts = {
+  'inputData': "/path/to/file" // File | The input file to upload.
 };
-
-var callback = function(error, data, response) {
+apiInstance.rawPredictBinary(inputType, outputType, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.rawPredictBinary(inputType, outputType, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5350,46 +5566,49 @@ null (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/octet-stream
+- **Content-Type**: multipart/form-data
+- **Accept**: Not defined
 
-<a name="refreshJobStatus"></a>
-# **refreshJobStatus**
+
+## refreshJobStatus
+
 > JobEntity refreshJobStatus(jobId)
 
 Refresh the remote job status. Can be used for monitoring.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var jobId = 789; // Number | Job ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let jobId = 789; // Number | Job ID
+apiInstance.refreshJobStatus(jobId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.refreshJobStatus(jobId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5401,46 +5620,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="registerUser"></a>
-# **registerUser**
+
+## registerUser
+
 > User registerUser(user)
 
 Register a new user
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var user = new SkilClient.User(); // User | User details
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let user = new SkilClient.User(); // User | User details
+apiInstance.registerUser(user, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.registerUser(user, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5452,50 +5674,51 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="reimportModel"></a>
-# **reimportModel**
+
+## reimportModel
+
 > ModelEntity reimportModel(deploymentId, modelId, body)
 
 Reimport a model to a previous deployed model in a deployment
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentId = "deploymentId_example"; // String | ID deployment group
-
-var modelId = "modelId_example"; // String | the id of the deployed model
-
-var body = new SkilClient.ImportModelRequest(); // ImportModelRequest | the deployment request
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentId = "deploymentId_example"; // String | ID deployment group
+let modelId = "modelId_example"; // String | the id of the deployed model
+let body = new SkilClient.ImportModelRequest(); // ImportModelRequest | the deployment request
+apiInstance.reimportModel(deploymentId, modelId, body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.reimportModel(deploymentId, modelId, body, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5509,46 +5732,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="revokeUserToken"></a>
-# **revokeUserToken**
+
+## revokeUserToken
+
 > Token revokeUserToken(tokenId)
 
 Revoke a user token.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var tokenId = 789; // Number | Token ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let tokenId = 789; // Number | Token ID
+apiInstance.revokeUserToken(tokenId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.revokeUserToken(tokenId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5560,46 +5786,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="rollback"></a>
-# **rollback**
+
+## rollback
+
 > RollbackStatus rollback(index)
 
 Rollback to a previous revision of the model.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var index = 56; // Number | Model revision index.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let index = 56; // Number | Model revision index.
+apiInstance.rollback(index, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.rollback(index, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5611,46 +5840,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="runAJob"></a>
-# **runAJob**
+
+## runAJob
+
 > JobEntity runAJob(jobId)
 
 Start running an (already created) job on the remote resource
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var jobId = 789; // Number | Job ID
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let jobId = 789; // Number | Job ID
+apiInstance.runAJob(jobId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.runAJob(jobId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -5662,15 +5894,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="transformCsv"></a>
-# **transformCsv**
+
+## transformCsv
+
 > BatchCSVRecord transformCsv(deploymentName, versionName, transformName, opts)
 
 Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
@@ -5678,44 +5911,44 @@ Takes a BatchCSVRecord and returns the transformed array as BatchCSVRecord
 Takes a batch of SingleCSVRecord object and transforms it into the desired format
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var transformName = "transformName_example"; // String | ID or name of the deployed transform
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let transformName = "transformName_example"; // String | ID or name of the deployed transform
+let opts = {
   'batchCSVRecord': new SkilClient.BatchCSVRecord() // BatchCSVRecord | The input batch of record arrays
 };
-
-var callback = function(error, data, response) {
+apiInstance.transformCsv(deploymentName, versionName, transformName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformCsv(deploymentName, versionName, transformName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transformName** | **String**| ID or name of the deployed transform | 
  **batchCSVRecord** | [**BatchCSVRecord**](BatchCSVRecord.md)| The input batch of record arrays | [optional] 
 
@@ -5725,58 +5958,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="transformarray"></a>
-# **transformarray**
+
+## transformarray
+
 > Base64NDArrayBody transformarray(deploymentName, versionName, transformName, opts)
 
 Takes a batch input arrays and transforms it
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var transformName = "transformName_example"; // String | ID or name of the deployed transform
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let transformName = "transformName_example"; // String | ID or name of the deployed transform
+let opts = {
   'batchRecord': new SkilClient.BatchRecord() // BatchRecord | The input batch of record arrays
 };
-
-var callback = function(error, data, response) {
+apiInstance.transformarray(deploymentName, versionName, transformName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformarray(deploymentName, versionName, transformName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transformName** | **String**| ID or name of the deployed transform | 
  **batchRecord** | [**BatchRecord**](BatchRecord.md)| The input batch of record arrays | [optional] 
 
@@ -5786,15 +6020,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="transformimage"></a>
-# **transformimage**
+
+## transformimage
+
 > Base64NDArrayBody transformimage(deploymentName, versionName, imageTransformName, files)
 
 Takes multiple multipart image file to transform and returns Base64NDArrayBody
@@ -5802,45 +6037,44 @@ Takes multiple multipart image file to transform and returns Base64NDArrayBody
 Takes multiple multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var files = null; // [Blob] | The image files to upload
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
+let files = "/path/to/file"; // [File] | The image files to upload
+apiInstance.transformimage(deploymentName, versionName, imageTransformName, files, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformimage(deploymentName, versionName, imageTransformName, files, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **imageTransformName** | **String**| ID or name of the deployed image transform | 
- **files** | [**[Blob]**](Blob.md)| The image files to upload | 
+ **files** | **[File]**| The image files to upload | 
 
 ### Return type
 
@@ -5848,15 +6082,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="transformincrementalCsv"></a>
-# **transformincrementalCsv**
+
+## transformincrementalCsv
+
 > SingleCSVRecord transformincrementalCsv(deploymentName, versionName, transformName, opts)
 
 Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRecord
@@ -5864,44 +6099,44 @@ Takes SingleCSVRecord as input and returns the transformed array as SingleCSVRec
 Takes a SingleCSVRecord object and transforms it into the desired format
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var transformName = "transformName_example"; // String | ID or name of the deployed transform
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let transformName = "transformName_example"; // String | ID or name of the deployed transform
+let opts = {
   'singleCSVRecord': new SkilClient.SingleCSVRecord() // SingleCSVRecord | The input record array
 };
-
-var callback = function(error, data, response) {
+apiInstance.transformincrementalCsv(deploymentName, versionName, transformName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformincrementalCsv(deploymentName, versionName, transformName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transformName** | **String**| ID or name of the deployed transform | 
  **singleCSVRecord** | [**SingleCSVRecord**](SingleCSVRecord.md)| The input record array | [optional] 
 
@@ -5911,58 +6146,59 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="transformincrementalarray"></a>
-# **transformincrementalarray**
+
+## transformincrementalarray
+
 > Base64NDArrayBody transformincrementalarray(deploymentName, versionName, transformName, opts)
 
 Same as /transformincremental but returns Base64NDArrayBody.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var transformName = "transformName_example"; // String | ID or name of the deployed transform
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let transformName = "transformName_example"; // String | ID or name of the deployed transform
+let opts = {
   'singleRecord': new SkilClient.SingleRecord() // SingleRecord | The input record array
 };
-
-var callback = function(error, data, response) {
+apiInstance.transformincrementalarray(deploymentName, versionName, transformName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformincrementalarray(deploymentName, versionName, transformName, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transformName** | **String**| ID or name of the deployed transform | 
  **singleRecord** | [**SingleRecord**](SingleRecord.md)| The input record array | [optional] 
 
@@ -5972,15 +6208,16 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="transformincrementalimage"></a>
-# **transformincrementalimage**
+
+## transformincrementalimage
+
 > Base64NDArrayBody transformincrementalimage(deploymentName, versionName, imageTransformName, file)
 
 Takes a single multipart image file to transform and returns Base64NDArrayBody
@@ -5988,43 +6225,42 @@ Takes a single multipart image file to transform and returns Base64NDArrayBody
 Takes a single multipart image file and transforms it into the desired format and returns it in the form of Base64NDArrayBody
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
-
-var file = "/path/to/file.txt"; // File | The image file to upload
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let imageTransformName = "imageTransformName_example"; // String | ID or name of the deployed image transform
+let file = "/path/to/file"; // File | The image file to upload
+apiInstance.transformincrementalimage(deploymentName, versionName, imageTransformName, file, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformincrementalimage(deploymentName, versionName, imageTransformName, file, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **imageTransformName** | **String**| ID or name of the deployed image transform | 
  **file** | **File**| The image file to upload | 
 
@@ -6034,55 +6270,56 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 
-<a name="transformprocessGet"></a>
-# **transformprocessGet**
+
+## transformprocessGet
+
 > Object transformprocessGet(deploymentName, versionName, transformName)
 
 Gets the JSON string of the deployed transform process (CSV or Image)
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var transformName = "transformName_example"; // String | ID or name of the deployed transform
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let transformName = "transformName_example"; // String | ID or name of the deployed transform
+apiInstance.transformprocessGet(deploymentName, versionName, transformName, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformprocessGet(deploymentName, versionName, transformName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transformName** | **String**| ID or name of the deployed transform | 
 
 ### Return type
@@ -6091,61 +6328,61 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="transformprocessPost"></a>
-# **transformprocessPost**
+
+## transformprocessPost
+
 > Object transformprocessPost(contentType, deploymentName, versionName, transformName, opts)
 
 Sets the deployed (CSV or Image) transform process through the provided JSON string
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var contentType = "contentType_example"; // String | The `Content-Type` should be `application/json`.
-
-var deploymentName = "deploymentName_example"; // String | Name of the deployment group
-
-var versionName = "versionName_example"; // String | Version name of the endpoint. The default value is \"default\"
-
-var transformName = "transformName_example"; // String | ID or name of the deployed transform
-
-var opts = { 
+let apiInstance = new SkilClient.DefaultApi();
+let contentType = "contentType_example"; // String | The `Content-Type` should be `application/json`.
+let deploymentName = "deploymentName_example"; // String | Name of the deployment group
+let versionName = "'default'"; // String | Version name of the endpoint. The default value is \"default\"
+let transformName = "transformName_example"; // String | ID or name of the deployed transform
+let opts = {
   'transformProcess': "transformProcess_example" // String | The transform process to set (Specify a JSON string here).
 };
-
-var callback = function(error, data, response) {
+apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.transformprocessPost(contentType, deploymentName, versionName, transformName, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contentType** | **String**| The &#x60;Content-Type&#x60; should be &#x60;application/json&#x60;. | 
  **deploymentName** | **String**| Name of the deployment group | 
- **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | 
+ **versionName** | **String**| Version name of the endpoint. The default value is \&quot;default\&quot; | [default to &#39;default&#39;]
  **transformName** | **String**| ID or name of the deployed transform | 
  **transformProcess** | **String**| The transform process to set (Specify a JSON string here). | [optional] 
 
@@ -6155,46 +6392,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: text/plain
- - **Accept**: application/json
+- **Content-Type**: text/plain
+- **Accept**: application/json
 
-<a name="updateAuthPolicy"></a>
-# **updateAuthPolicy**
+
+## updateAuthPolicy
+
 > AuthPolicy updateAuthPolicy(authPolicy)
 
 Update auth policy
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var authPolicy = new SkilClient.AuthPolicy(); // AuthPolicy | Auth policy object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let authPolicy = new SkilClient.AuthPolicy(); // AuthPolicy | Auth policy object
+apiInstance.updateAuthPolicy(authPolicy, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateAuthPolicy(authPolicy, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6206,48 +6446,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateBestModelForExperiment"></a>
-# **updateBestModelForExperiment**
+
+## updateBestModelForExperiment
+
 > ExperimentEntity updateBestModelForExperiment(modelHistoryServerId, updateBestModel)
 
 Updates the best model for an experiment
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var updateBestModel = new SkilClient.UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let updateBestModel = new SkilClient.UpdateBestModel(); // UpdateBestModel | Model encapsulating the experiment id to update and the best model id.
+apiInstance.updateBestModelForExperiment(modelHistoryServerId, updateBestModel, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateBestModelForExperiment(modelHistoryServerId, updateBestModel, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6260,50 +6502,51 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateExperiment"></a>
-# **updateExperiment**
+
+## updateExperiment
+
 > ExperimentEntity updateExperiment(modelHistoryServerId, experimentID, experimentEntity)
 
 Updates an experiment, given an experiment entity
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var experimentID = "experimentID_example"; // String | the GUID of the experiment to update
-
-var experimentEntity = new SkilClient.ExperimentEntity(); // ExperimentEntity | The experiment entity to update with
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let experimentID = "experimentID_example"; // String | the GUID of the experiment to update
+let experimentEntity = new SkilClient.ExperimentEntity(); // ExperimentEntity | The experiment entity to update with
+apiInstance.updateExperiment(modelHistoryServerId, experimentID, experimentEntity, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateExperiment(modelHistoryServerId, experimentID, experimentEntity, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6317,50 +6560,51 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateModelHistory"></a>
-# **updateModelHistory**
+
+## updateModelHistory
+
 > ModelHistoryEntity updateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest)
 
 Update a model history / workspace
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
-
-var modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to update
-
-var updateModelHistoryRequest = new SkilClient.AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let modelHistoryServerId = "modelHistoryServerId_example"; // String | Process GUID of the model history server. Run `$SKIL_HOME/sbin/skil services` in a console to find out the model history server GUID.
+let modelHistoryID = "modelHistoryID_example"; // String | the GUID of the model history / workspace to update
+let updateModelHistoryRequest = new SkilClient.AddModelHistoryRequest(); // AddModelHistoryRequest | The model history request object
+apiInstance.updateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateModelHistory(modelHistoryServerId, modelHistoryID, updateModelHistoryRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6374,46 +6618,49 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateUser"></a>
-# **updateUser**
+
+## updateUser
+
 > User updateUser(user)
 
 Update a user
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var user = new SkilClient.User(); // User | User details
-
-
-var callback = function(error, data, response) {
+let apiInstance = new SkilClient.DefaultApi();
+let user = new SkilClient.User(); // User | User details
+apiInstance.updateUser(user, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateUser(user, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6425,47 +6672,51 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="upload"></a>
-# **upload**
+
+## upload
+
 > FileUploadList upload(opts)
 
 Upload a model file to SKIL for import.
 
 ### Example
-```javascript
-var SkilClient = require('skil-client');
-var defaultClient = SkilClient.ApiClient.instance;
 
+```javascript
+import SkilClient from 'skil-client';
+let defaultClient = SkilClient.ApiClient.instance;
 // Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
+let api_key = defaultClient.authentications['api_key'];
 api_key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //api_key.apiKeyPrefix = 'Token';
+// Configure API key authorization: x_api_key
+let x_api_key = defaultClient.authentications['x_api_key'];
+x_api_key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//x_api_key.apiKeyPrefix = 'Token';
 
-var apiInstance = new SkilClient.DefaultApi();
-
-var opts = { 
-  'file': "/path/to/file.txt" // File | The file to upload.
+let apiInstance = new SkilClient.DefaultApi();
+let opts = {
+  'file': "/path/to/file" // File | The file to upload.
 };
-
-var callback = function(error, data, response) {
+apiInstance.upload(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.upload(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -6477,10 +6728,10 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[api_key](../README.md#api_key), [x_api_key](../README.md#x_api_key)
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
 

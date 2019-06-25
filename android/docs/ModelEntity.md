@@ -1,7 +1,9 @@
 
+
 # ModelEntity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Long** |  |  [optional]
@@ -17,26 +19,27 @@ Name | Type | Description | Notes
 **subType** | **String** |  |  [optional]
 **labelsFileLocation** | **String** |  |  [optional]
 **extraArgs** | **String** |  |  [optional]
-**launchPolicy** | **Object** |  |  [optional]
+**launchPolicy** | [**Object**](.md) |  |  [optional]
 **modelState** | [**ModelStateEnum**](#ModelStateEnum) |  |  [optional]
 
 
-<a name="ModelTypeEnum"></a>
 ## Enum: ModelTypeEnum
+
 Name | Value
 ---- | -----
 
 
-<a name="StateEnum"></a>
 ## Enum: StateEnum
+
 Name | Value
 ---- | -----
 
 
-<a name="ModelStateEnum"></a>
 ## Enum: ModelStateEnum
+
 Name | Value
 ---- | -----
+
 
 
 

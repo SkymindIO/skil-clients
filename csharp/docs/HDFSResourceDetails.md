@@ -1,4 +1,6 @@
+
 # Skymind.Skil.Client.Model.HDFSResourceDetails
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,5 +12,7 @@ Name | Type | Description | Notes
 **NameNodeHost** | **string** | Host of the node running the NameNode | [optional] 
 **NameNodePort** | **string** | Port of the node running the NameNode | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to README]](../README.md)
 
